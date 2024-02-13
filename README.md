@@ -1,6 +1,6 @@
 ## Medical Checkup app
 
-Medical checkup is laravel app that provides Management System Information of medical checkup for patient.
+Medical checkup is laravel app that provides Management System Information of medical checkup for patient including :
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
