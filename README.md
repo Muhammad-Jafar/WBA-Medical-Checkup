@@ -1,31 +1,51 @@
-## Medical Checkup app
+![Image](https://raw.githubusercontent.com/zuramai/laravel-mazer/main/screenshot.png)
+<h1 align="center">Mazer + Laravel Jetstream</h1>
+<p align="center">Mazer is a Admin Dashboard Template that can help you develop faster. We bring Mazer with Laravel starter project. It's completely free and you can use it in your projects.</p>
 
-Medical checkup is laravel app that provides Management System Information of medical checkup for patient including :
+## Main Template
+If you want to check the original template in HTML5 and Bootstrap, [click here](https://github.com/zuramai/mazer) to open template repository.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
+1. Clone this project
+    ```bash
+    git clone https://github.com/zuramai/laravel-mazer
+    cd laravel-mazer
+    ```
+2. Install dependencies
+    ```bash
+    composer install
+    ```
+    And javascript dependencies
+    ```bash
+    yarn install && yarn dev
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    #OR
 
-## Operate
-Not content yet
+    npm install && npm run dev
+    ```
 
-## Sponsors
-Not content yet
+3. Set up Laravel configurations
+    ```bash
+    copy .env.example .env
+    php artisan key:generate
+    ```
 
-## Code of Conduct
+4. Set your database in .env
 
-Not content yet
+5. Migrate database
+    ```bash
+    php artisan migrate --seed
+    ```
 
-## Security Vulnerabilities
+6. Serve the application
+    ```bash
+    php artisan serve
+    ```
 
-Not content yet
+7. Login credentials
 
-## License
+**Email:** user@gmail.com
 
-The App is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Password:** password
+## Contributing
+Feel free to contribute and make a pull request.
