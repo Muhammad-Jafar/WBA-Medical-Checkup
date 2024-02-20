@@ -17,7 +17,9 @@
 
 
     <section class="section">
-        <div class="card">
+        @livewire('dashboard.dashboard-menu')
+        <x-jet-section-border />
+        {{-- <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Example Content</h4>
             </div>
@@ -28,6 +30,6 @@
                 reprehenderit
                 distinctio incidunt! Vel aspernatur dicta consequatur!
             </div>
-        </div>
+        </div> --}}
     </section>
 </x-app-layout>
