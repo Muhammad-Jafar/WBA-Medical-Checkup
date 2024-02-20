@@ -5,7 +5,7 @@
             <a href="index.html"><img src="{{ asset('/images/logo/logo.png') }}" alt="Logo"></a>
         </div> --}}
         <h3 class="auth-title">Medical Checkup</h3>
-        <p class="auth-subtitle mb-5">BLUD RSUD Kab. Buton</p>
+        <p class="auth-subtitle mb-5">Aplikasi internal rekam medik <br> BLUD RSUD Kab. Buton</p>
 
         @if (session('status'))
         <div class="mb-4 font-medium text-sm text-green-600">
@@ -33,12 +33,12 @@
                     <i class="bi bi-shield-lock"></i>
                 </div>
             </div>
-            {{-- <div class="form-check form-check-lg d-flex align-items-end">
+            <div class="form-check form-check-lg d-flex align-items-end">
                 <input class="form-check-input me-2" type="checkbox" name="remember" id="flexCheckDefault">
                 <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                    Keep me logged in
+                    Tandai tetak masuk
                 </label>
-            </div> --}}
+            </div>
             <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Masuk sini</button>
         </form>
         {{-- <div class="text-center mt-5 text-lg fs-4">
