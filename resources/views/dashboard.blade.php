@@ -16,8 +16,9 @@
     </x-slot>
 
     <section class="section">
-        @include('dashboard.dashboard-menu')
-       
+        @include('dashboard.statistic')
+        {{-- @include('dashboard.chart') --}}
+
         {{-- <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Example Content</h4>
