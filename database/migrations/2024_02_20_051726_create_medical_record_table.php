@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('request_by');
             $table->string('purposes');
             $table->date('requested_at');
+            $table->enum('status', ['PENDING','APPROVED','REJECTED'])->default('PENDING');
+            $table->date('approved_at');
+            $table->date('rejected_at')->nullable();
             $table->timestamps();
         });
     }
