@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
     <body>
         <div id="app">
             @include('layouts.partials.sidebar')
-            
+
             <div id="main" class='layout-navbar'>
                 @include('layouts.partials.header')
                 <div id="main-content">

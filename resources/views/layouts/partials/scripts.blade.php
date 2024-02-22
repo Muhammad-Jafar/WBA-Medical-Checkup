@@ -1,4 +1,5 @@
 @vite(["resources/js/app.js"])
+@vite(["resources/js/dark.js"])
 
 <script src="{{ asset('/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('/vendors/tinymce/tinymce.min.js') }}"></script>
