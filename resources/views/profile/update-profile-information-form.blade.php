@@ -1,13 +1,13 @@
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">{{ __('Profile Information') }}</h4>
-            <p class="card-description">{{ __('Update your account\'s profile information and email address.') }}</p>
+            <h4 class="card-title">{{ __('Informasi profil') }}</h4>
+            <p class="card-description">{{ __('Kalo mau update informasi dari profil kamu.') }}</p>
         </div>
         <div class="card-body">
 
             <x-maz-alert class="mr-3" on="saved" color='success'>
-                Saved
+                Simpan
             </x-maz-alert>
             <form wire:submit.prevent="updateProfileInformation">
 
@@ -22,7 +22,7 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                    <x-jet-label for="photo" value="{{ __('Photo') }}" />
+                    <x-jet-label for="photo" value="{{ __('Foto') }}" />
 
                     <div>
                         <div class="avatar avatar-full bg-warning mt-2" x-show="! photoPreview">
@@ -37,12 +37,12 @@
                     </div>
 
                     <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                        {{ __('Select A New Photo') }}
+                        {{ __('Pilih foto baru') }}
                     </x-jet-secondary-button>
 
                     @if ($this->user->profile_photo_path)
                     <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
+                        {{ __('Hapus foto') }}
                     </x-jet-secondary-button>
                     @endif
 
@@ -53,7 +53,7 @@
 
                 <!-- Name -->
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Nama</label>
                     <input id="name" type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" wire:model.defer="state.name" autocomplete="name">
                     <x-maz-input-error for="name" />
                 </div>
@@ -66,7 +66,7 @@
                 </div>
 
 
-                <button class="btn btn-primary float-end mt-2" wire:loading.attr="disabled" wire:target="photo">Save</button>
+                <button class="btn btn-primary float-end mt-2" wire:loading.attr="disabled" wire:target="photo">Simpan</button>
             </form>
         </div>
     </div>
