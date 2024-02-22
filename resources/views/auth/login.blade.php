@@ -21,14 +21,14 @@
             @csrf
             <div class="form-group position-relative has-icon-left mb-4">
                 <input class="form-control form-control-xl" type="email" name="email" placeholder="Email"
-                    value="{{ old('email') }}">
+                    value="user@gmail.com">
                 <div class="form-control-icon">
                     <i class="bi bi-person"></i>
                 </div>
             </div>
             <div class="form-group position-relative has-icon-left mb-4">
-                <input type="password" class="form-control form-control-xl" name="password" placeholder="Password"
-                    placeholder="Password">
+                <input class="form-control form-control-xl" type="password" name="password" placeholder="Password"
+                    value="sandi">
                 <div class="form-control-icon">
                     <i class="bi bi-shield-lock"></i>
                 </div>
