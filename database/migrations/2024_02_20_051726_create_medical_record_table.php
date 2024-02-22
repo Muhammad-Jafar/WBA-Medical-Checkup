@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medical_record', function (Blueprint $table) {
-            $table->id();
-            $table->
+        Schema::create('request', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            // $table->foreign('patient_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('request_by');
+            $table->string('purposes');
+            $table->date('requested_at');
             $table->timestamps();
         });
     }
