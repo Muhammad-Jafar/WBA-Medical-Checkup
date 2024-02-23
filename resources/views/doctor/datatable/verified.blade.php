@@ -1,4 +1,4 @@
-{{-- @if ($model->is_paid == 'PENDING')
+@if ($model->is_paid == 'PENDING')
 		<span class="badge rounded-pill bg-warning">
 			{{ $model->is_paid }}
 		</span>
@@ -10,7 +10,7 @@
 	<span class="badge rounded-pill bg-danger">
 		{{ $model->is_paid }}
 	</span>
-	@endif --}}
+@endif
 
 <span class="badge rounded-pill bg-warning">
 	PENDING

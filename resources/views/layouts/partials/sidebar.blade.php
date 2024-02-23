@@ -6,8 +6,8 @@
     <x-maz-sidebar-item name="Permintaan" :link="route('permintaan')" icon="bi bi-collection-fill"></x-maz-sidebar-item>
 
     <x-maz-sidebar-item name="Master data" icon="bi bi-stack">
-        <x-maz-sidebar-sub-item name="Pasien" :link="route('master.patient')"></x-maz-sidebar-sub-item>
-        <x-maz-sidebar-sub-item name="Dokter" :link="route('master.doctor.index')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Pasien" :link="route('patient.index')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Dokter" :link="route('doctor.index')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
 
     {{-- <x-maz-sidebar-item name="Admin" icon="bi bi-stack">

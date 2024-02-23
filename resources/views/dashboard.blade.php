@@ -15,6 +15,7 @@
         </div>
     </x-slot>
 
+    @section('content')
     <section class="section">
         @include('dashboard.statistic')
         @include('dashboard.chart')

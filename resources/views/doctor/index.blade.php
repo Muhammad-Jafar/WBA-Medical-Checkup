@@ -35,15 +35,15 @@
                                     Export Excel
                                 </a>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
-                                    <i class="bi bi-plus-circle"></i> Tambah Dokter
+                                    <i class="bi bi-plus-circle"></i> Tambah Pasien
                                 </button>
-            
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-sm w-100" id="datatable">
@@ -64,4 +64,6 @@
 
 </x-app-layout>
 
+@push('js')
 @include('doctor.script')
+@endpush

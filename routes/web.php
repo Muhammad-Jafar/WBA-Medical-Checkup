@@ -14,13 +14,15 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         return view('livewire.permintaan.permintaan');
     })->name('permintaan');
 
-    Route::group(['prefix' => 'master', 'as' => 'master.'], function() {
-        Route::get('/pasien', function () {
-            return view('patient.patient');
-        })->name('patient');
+    Route::resource('patient', \App\Http\Controllers\PatientController::class)->except('create', 'show', 'edit');
 
-        Route::resource('doctor', \App\Http\Controllers\DoctorController::class);
-    });
+    Route::resource('doctor', \App\Http\Controllers\DoctorController::class)->except('create', 'show', 'edit');
+
+    // Route::group(['prefix' => 'master', 'as' => 'master.'], function() {
+        // Route::get('/pasien', function () {
+        //     return view('patient.index');
+        // })->name('patient');
+    // });
 
     // Route::group(['prefix' => 'master', 'as' => 'master.'], function() {
     //     Route::get('/pasien', function () {
