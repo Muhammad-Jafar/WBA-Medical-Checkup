@@ -11,6 +11,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'nip', name: 'nip' },
                 { data: 'sip', name: 'sip' },
+                { data: 'verified', name: 'verified' },
                 { data: 'action', name: 'action' },
             ]
         });

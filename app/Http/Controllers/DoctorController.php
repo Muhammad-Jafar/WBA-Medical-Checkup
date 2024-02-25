@@ -15,10 +15,9 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
      */
-    public function index(): View|JsonResponse
+        public function index(): View|JsonResponse
     {
-        $doctors = Doctor::select('id', 'name', 'nip', 'sip')->orderBy('name')->get();
-
+        $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')->orderBy('name')->get();
         if(request()->ajax()) {
             return datatables()->of($doctors)
             ->addIndexColumn()
@@ -30,5 +29,10 @@ class DoctorController extends Controller
 
         return view('doctor.index');
     }
+
+
+    // public function index() {
+    //     return Doctor::select('id', 'name', 'nip', 'sip', 'verified')->orderBy('name')->get();
+    // }
 
 }

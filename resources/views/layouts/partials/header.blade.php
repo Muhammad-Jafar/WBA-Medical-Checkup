@@ -42,7 +42,7 @@
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
                                 <h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>
-                                <p class="mb-0 text-sm text-success">Online</p>
+                                <p class="mb-0 text-sm text-success"> <b>Online</b> </p>
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
@@ -55,7 +55,12 @@
                         <li>
                             <h6 class="dropdown-header">Hello, {{ strtok(Auth::user()->name, " ") }}!</h6>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('profile.show') }}"><i class="icon-mid bi bi-person me-2"></i> Lihat profil</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                <i class="icon-mid bi bi-person me-2"></i> 
+                                Lihat profil
+                            </a>
+                        </li>
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <li>
                             <a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
@@ -63,22 +68,30 @@
                             </a>
                         </li>
                         @endif
+                        <li> <hr class="dropdown-divider"> </li>
                         <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="icon-mid bi bi-box-arrow-left me-2"></i>
                                     {{ __('Logout') }}
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
+                            </form>
+                        </li>
+                        {{-- <li class="dropdown-item">
+                            <a class="dropdown-item" href="{{ route('logout') }}">
+                                <i class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 </header>
+
+{{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}
