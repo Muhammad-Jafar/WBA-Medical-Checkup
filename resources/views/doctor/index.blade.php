@@ -17,7 +17,6 @@
     </x-slot>
 
     <div>
-        @include('utilities.alert-flash-message')
         <div class="card">
             <div class="card-header">
                 <div class="row">
