@@ -18,23 +18,15 @@ class DoctorController extends Controller
         public function index(): View|JsonResponse
     {
         $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')->orderBy('name')->get();
+
         if(request()->ajax()) {
             return datatables()->of($doctors)
             ->addIndexColumn()
             ->addColumn('verified', 'doctor.datatable.verified')
             ->addColumn('action', 'doctor.datatable.action')
             ->rawColumns(['verified', 'action'])
-            ->make(true);
+            ->toJson();
         }
-
-        // if(request()->ajax()) {
-        //     return datatables()->of($doctors)
-        //     ->addIndexColumn()
-        //     ->addColumn('verified', 'doctor.datatable.verified')
-        //     ->addColumn('action', 'doctor.datatable.action')
-        //     ->rawColumns(['verified', 'action'])
-        //     ->toJson();
-        // }
 
         return view('doctor.index');
     }

@@ -57,16 +57,12 @@
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        </tbody>
-                        {{-- @livewire('show') --}}
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    
 @push('js')
 @include('doctor.script')
 @endpush
