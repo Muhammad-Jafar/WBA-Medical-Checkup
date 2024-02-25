@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Doctor;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 
 class DoctorSeeder extends Seeder

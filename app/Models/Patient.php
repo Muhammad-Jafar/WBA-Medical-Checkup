@@ -26,4 +26,16 @@ class Patient extends Model
      */
     protected $fillable = ['name', 'gender', 'born_place', 'born_date', 'address', 'occupation'];
 
+     /**
+     * Get student gender name.
+     *
+     * @return string
+     */
+    public function getGenderName(): string
+    {
+        return match ($this->gender) {
+            1 => 'Laki-laki',
+            2 => 'Perempuan'
+        };
+    }
 }
