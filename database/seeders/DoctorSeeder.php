@@ -17,11 +17,14 @@ class DoctorSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        Doctor::create([
-            'id' => Str::uuid(),
-            'name' => $faker->name,
-            'nip' => str_pad($faker->numberBetween(1, 999999), 13, '0', STR_PAD_LEFT),
-            'sip' => str_pad($faker->numberBetween(1, 999999), 10, '0', STR_PAD_LEFT),
-        ]);
+
+        for($i=1; $i<6; $i++) {
+            Doctor::create([
+                'id' => $i,
+                'name' => $faker->name,
+                'nip' => str_pad($faker->numberBetween(1, 9999999999999999), 16, '0', STR_PAD_LEFT),
+                'sip' => str_pad($faker->numberBetween(1, 9999999999999), 12, '0', STR_PAD_LEFT),
+            ]);
+        }
     }
 }

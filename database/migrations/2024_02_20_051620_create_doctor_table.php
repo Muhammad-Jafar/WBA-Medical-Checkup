@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
             $table->string('sip');
             $table->string('nip');
