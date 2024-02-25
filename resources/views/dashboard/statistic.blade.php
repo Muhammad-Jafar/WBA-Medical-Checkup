@@ -1,7 +1,7 @@
 	<div class="col-12 col-lg-12">
 		<div class="row">
 			<div class="col-6 col-lg-3 col-md-6">
-                <a href="{{ route('patient') }}">
+                <a href="{{ route('patient.index') }}">
 					<div class="card card-stat">
 						<div class="card-body px-3 py-4-5">
 							<div class="row">
@@ -22,7 +22,7 @@
 				</a>
 			</div>
 			<div class="col-6 col-lg-3 col-md-6">
-				<a href="{{ route('doctor') }}">
+				<a href="{{ route('doctor.index') }}">
 					<div class="card card-stat">
 						<div class="card-body px-3 py-4-5">
 							<div class="row">

@@ -13,7 +13,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function invoke(): View
+    public function __invoke(): View
     {
         return view('dashboard.index', [
             'patientCount' => Patient::count(),
