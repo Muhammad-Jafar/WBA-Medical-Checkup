@@ -9,7 +9,8 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Master data</a></li>
-                        <li class="breadcrumb-item active">Dokter</li>
+                        <li class="breadcrumb-item"><a href="{{ route('doctor.index') }}">Dokter</a></li>
+                        <li class="breadcrumb-item active">Riwayat</li>
                     </ol>
                 </nav>
             </div>
@@ -22,24 +23,13 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6 col-lg-6">
-                        <h4>Daftar nama dokter pemeriksa</h4>
+                        <h4>Daftar nama dokter pemeriksa yang dihapus</h4>
                     </div>
                     <div class="col-6 col-lg-6">
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
-                                <a href="#" class="btn btn-secondary">
-                                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    Export ke PDF
-                                </a>
-                                <a href="#" class="btn btn-success">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
-                                    Export ke Excel
-                                </a>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDoctorModal">
-                                    <i class="bi bi-plus-circle"></i> Tambah dokter
-                                </button>
-                                <a href="{{ route('doctor.index.history') }}" class="btn btn-light-secondary">
-                                    <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Histori data dokter
+                                <a href="{{ route('doctor.index') }}" class="btn btn-primary float-end mx-2">
+                                    <i class="bi bi-caret-left-square"></i> Kembali
                                 </a>
                             </div>
                         </div>
@@ -66,13 +56,8 @@
         </div>
     </div>
 
-    @push('modal')
-    @include('doctor.modal.create')
-    @include('doctor.modal.edit')
-    @endpush
-
     @push('js')
-    @include('doctor.script')
+    @include('doctor.history.script')
     @endpush
 
 </x-app-layout>

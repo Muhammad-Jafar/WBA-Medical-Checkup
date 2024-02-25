@@ -47,7 +47,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="list-patient" class="table table-sm w-100">
+                        <table id="list-patient" class="table w-100">
                             <thead>
                                 <tr>
                                     <th scope=" col">#</th>
