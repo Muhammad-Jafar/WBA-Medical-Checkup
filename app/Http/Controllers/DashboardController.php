@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
+use App\Models\Patient;
+use App\Models\Doctor;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 
 class DashboardController extends Controller
 {
     /**
      * Display data for given value.
      *
-     * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\View\View
      */
-    public function index(): View|JsonResponse
+    public function invoke(): View
     {
-        return view('dashboard.dashboard');
+        return view('dashboard.index', [
+            'patientCount' => Patient::count(),
+            'doctorCount' => Doctor::count(),
+        ]);
     }
 }
