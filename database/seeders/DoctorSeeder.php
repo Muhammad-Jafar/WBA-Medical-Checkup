@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Doctor;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class DoctorSeeder extends Seeder
 {
@@ -17,11 +16,12 @@ class DoctorSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         Doctor::create([
             'id' => Str::uuid(),
-            'name' => Str::random(5),
-            'nip' => Str::random(1,12),
-            'sip' => Str::random(1,13),
+            'name' => $faker->name,
+            'nip' => str_pad($faker->numberBetween(1, 999999), 13, '0', STR_PAD_LEFT),
+            'sip' => str_pad($faker->numberBetween(1, 999999), 10, '0', STR_PAD_LEFT),
         ]);
     }
 }
