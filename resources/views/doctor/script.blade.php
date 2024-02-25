@@ -1,11 +1,11 @@
 <script>
     $(function() {
-        //let loadingAlert = $('.modal-body #loading-alert');
+        // let loadingAlert = $('.modal-body #loading-alert');
 
-        $('#datatable').DataTable({
+        $('#list-doctor').DataTable({
             processing: true,
             serverside: true,
-            ajax: " {{ route('doctor.index') }} ",
+            ajax: "{{ route('doctor.index') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'name', name: 'name' },

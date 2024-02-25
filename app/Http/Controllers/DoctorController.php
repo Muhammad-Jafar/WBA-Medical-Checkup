@@ -24,8 +24,17 @@ class DoctorController extends Controller
             ->addColumn('verified', 'doctor.datatable.verified')
             ->addColumn('action', 'doctor.datatable.action')
             ->rawColumns(['verified', 'action'])
-            ->toJson();
+            ->make(true);
         }
+
+        // if(request()->ajax()) {
+        //     return datatables()->of($doctors)
+        //     ->addIndexColumn()
+        //     ->addColumn('verified', 'doctor.datatable.verified')
+        //     ->addColumn('action', 'doctor.datatable.action')
+        //     ->rawColumns(['verified', 'action'])
+        //     ->toJson();
+        // }
 
         return view('doctor.index');
     }

@@ -1,17 +1,9 @@
-@if ($model->is_paid == 'PENDING')
-		<span class="badge rounded-pill bg-warning">
-			{{ $model->is_paid }}
-		</span>
-	@elseif ($model->is_paid == 'APPROVED')
-		<span class="badge rounded-pill bg-success">
-			{{ $model->is_paid }}
-		</span>
-	@elseif ($model->is_paid == 'REJECTED')
-	<span class="badge rounded-pill bg-danger">
-		{{ $model->is_paid }}
+@if ($model->verified == 'TRUE')
+	<span class="badge bg-light-primary">
+		{{ $model->verified }}
+	</span>
+@else
+	<span class="badge bg-light-warning">
+		{{ $model->verified }}
 	</span>
 @endif
-
-<span class="badge rounded-pill bg-warning">
-	PENDING
-</span>

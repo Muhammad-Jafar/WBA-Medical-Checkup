@@ -46,7 +46,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-sm w-100" id="datatable">
+                    <table id="list-doctor" class="table table-sm w-100">
                         <thead>
                             <tr>
                                 <th scope=" col">#</th>
@@ -57,6 +57,8 @@
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
+                        <tbody>
+                        </tbody>
                         {{-- @livewire('show') --}}
                     </table>
                 </div>
@@ -64,8 +66,9 @@
         </div>
     </div>
 
-</x-app-layout>
-
+    
 @push('js')
 @include('doctor.script')
 @endpush
+
+</x-app-layout>
