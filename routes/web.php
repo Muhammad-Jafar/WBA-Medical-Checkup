@@ -8,10 +8,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
 
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard.index');
-    // })->name('dashboard');
-
     Route::get('/permintaan', function () {
         return view('livewire.permintaan.permintaan');
     })->name('permintaan');
@@ -19,6 +15,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::resource('patient', \App\Http\Controllers\PatientController::class)->except('create', 'show', 'edit');
 
     Route::resource('doctor', \App\Http\Controllers\DoctorController::class)->except('create', 'show', 'edit');
+    
     Route::controller(\App\Http\Controllers\DoctorHistoryController::class)->prefix('/doctor/history')->name('doctor.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');

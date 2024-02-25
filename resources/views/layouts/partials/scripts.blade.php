@@ -23,6 +23,20 @@
 
 <script>
     $(function() {
+		$(".select2").select2();
+
+		$("input[type=date]").flatpickr({
+			dateFormat: "d-m-Y",
+			locale: "id",
+		});
+
+		$.extend(true, $.fn.dataTable.defaults, {
+			language: {
+				url: "https://cdn.datatables.net/plug-ins/1.13.3/i18n/id.json",
+			},
+			"pageLength": 10,
+			"lengthMenu": [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']]
+		});
 
         $('#logout-form').click(function (e) {
             e.preventDefault();
@@ -119,6 +133,8 @@
 </script>
 
 @stack('js')
+
+@include('utilities.toastify-flash-message')
 
 @livewireScripts
 <script src="{{ asset('/js/main.js') }}"></script>
