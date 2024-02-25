@@ -24,8 +24,9 @@ class PatientController extends Controller
         if(request()->ajax()) {
             return datatables()->of($patients)
             ->addIndexColumn()
+            ->addColumn('born_place', fn($model) => $model->born_place . ', ' . date('d M Y', strtotime($model->born_date)))
             ->addColumn('action', 'patient.datatable.action')
-            ->rawColumns(['action'])
+            ->rawColumns(['gender', 'action'])
             ->toJson();
         }
 

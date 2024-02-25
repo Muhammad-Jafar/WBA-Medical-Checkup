@@ -47,17 +47,14 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-sm w-100" id="datatable">
+                        <table id="list-patient" class="table table-sm w-100">
                             <thead>
                                 <tr>
                                     <th scope=" col">#</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">JK</th>
-                                    <th scope="col">Tempat lahir</th>
-                                    <th scope="col">Tanggal lahir</th>
-                                    <th scope="col">Alamat</th>
+                                    <th scope="col">TTL</th>
                                     <th scope="col">Pekerjaan</th>
-                                    <th scope="col" >Aksi</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                         </table>
@@ -68,8 +65,8 @@
         </section>
     </div>
 
-</x-app-layout>
-
 @push('js')
 @include('patient.script')
-@endpush
+@endpush    
+
+</x-app-layout>
