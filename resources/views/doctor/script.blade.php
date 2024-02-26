@@ -21,7 +21,7 @@
 
 			let id = $(this).data('id');
 			let url = "";
-            
+
 			url = url.replace(':param', id);
 
 			let formActionURL = "{{ route('doctor.update', ':param') }}"
@@ -55,4 +55,5 @@
 		});
 
     });
+
 </script>

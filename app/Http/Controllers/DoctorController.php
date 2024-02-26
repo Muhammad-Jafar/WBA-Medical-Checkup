@@ -33,10 +33,10 @@ class DoctorController extends Controller
         return view('doctor.index', ['doctorTrashedCount' => $doctorTrashedCount]); //
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\DoctorRequest  $request
+     * @param  \Illuminate\Http\DoctorRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(DoctorRequest $request): RedirectResponse
@@ -48,8 +48,8 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Request\DoctorRequest  $request
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Http\Request\DoctorRequest $request
+     * @param  \App\Models\Doctor $doctor
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(DoctorRequest $request, Doctor $doctor): RedirectResponse
@@ -61,7 +61,7 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Doctor  $doctor
+     * @param  \App\Models\Doctor $doctor
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Doctor $doctor): RedirectResponse

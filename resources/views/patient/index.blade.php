@@ -35,10 +35,12 @@
                                         <i class="bi bi-file-earmark-excel-fill"></i>
                                         Export Excel
                                     </a>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPatientModal">
                                         <i class="bi bi-plus-circle"></i> Tambah Pasien
                                     </button>
-
+                                    <a href="{{ route('patient.index.history') }}" class="btn btn-light-secondary">
+                                        <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Histori data dokter
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +49,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="list-patient" class="table w-100">
+                        <table id="datatable" class="table w-100">
                             <thead>
                                 <tr>
                                     <th scope=" col">#</th>
@@ -65,8 +67,14 @@
         </section>
     </div>
 
-@push('js')
-@include('patient.script')
-@endpush    
+    @push('modal')
+    @include('patient.modal.create')
+    @include('patient.modal.show')
+    @include('patient.modal.edit')
+    @endpush
+
+    @push('js')
+    @include('patient.script')
+    @endpush
 
 </x-app-layout>

@@ -1,8 +1,8 @@
 <script>
     $(function() {
-        //let loadingAlert = $('.modal-body #loading-alert');
+        let loadingAlert = $('.modal-body #loading-alert');
 
-        $('#list-patient').DataTable({
+        $('#datatable').DataTable({
             processing: true,
             serverside: true,
             ajax: "{{ route('patient.index') }}",
@@ -11,12 +11,10 @@
                 { data: 'name', name: 'name' },
                 { data: 'born_place', name: 'born_place' },
                 { data: 'occupation', name: 'occupation' },
-                { data: 'action', name: 'action', "className": "dt-body-left" },
-            ],
-            "fixedColumns": {
-                "rightColumns": 1 // Specify the number of columns to fix to the right
-            }
+                { data: 'action', name: 'action' },
+            ]
         });
+
 
 
     });

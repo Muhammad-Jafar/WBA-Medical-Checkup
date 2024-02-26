@@ -14,8 +14,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
 
     Route::resource('patient', \App\Http\Controllers\PatientController::class)->except('create', 'show', 'edit');
 
+    Route::controller(\App\Http\Controllers\PatientHistoryController::class)->prefix('/patient/history')->name('patient.')->group(function () {
+        Route::get('', 'index')->name('index.history');
+        Route::post('{id}', 'restore')->name('restore.history');
+        Route::delete('{id}', 'destroy')->name('destroy.history');
+    });
+
     Route::resource('doctor', \App\Http\Controllers\DoctorController::class)->except('create', 'show', 'edit');
-    
+
     Route::controller(\App\Http\Controllers\DoctorHistoryController::class)->prefix('/doctor/history')->name('doctor.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');

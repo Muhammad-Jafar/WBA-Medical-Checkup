@@ -7,11 +7,11 @@
     </div>
 
     <div class="mx-1">
-            <form action="{{ route('doctor.destroy', $model->id) }}" method="POST">
-                @csrf @method('DELETE')
-                <button type="submit" class="btn btn-danger delete-dialog">
-                    <i class="bi bi-trash-fill"></i> Hapus
-                </button>
-            </form>
+        <form action="{{ route('doctor.destroy', $model->id) }}" method="POST">
+            @csrf @method('DELETE')
+            <button type="submit" class="btn btn-danger delete-dialog">
+                <i class="bi bi-trash-fill"></i> Hapus
+            </button>
+        </form>
     </div>
 </div>

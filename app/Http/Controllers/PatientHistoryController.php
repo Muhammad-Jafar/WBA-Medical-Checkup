@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use App\Contracts\HistoryInterface;
 use Illuminate\Http\RedirectResponse;
 
-class DoctorHistoryController extends Controller implements HistoryInterface
+class PatientHistoryController extends Controller implements HistoryInterface
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,9 @@ class DoctorHistoryController extends Controller implements HistoryInterface
      */
     public function index(): View|JsonResponse
     {
-        $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')
+        $doctors = Patient::select(
+            'id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation'
+        )
         ->orderBy('name')
         ->onlyTrashed()
         ->get();
@@ -31,7 +33,7 @@ class DoctorHistoryController extends Controller implements HistoryInterface
             ->toJson();
         }
 
-        return view('doctor.history.index');
+        return view('patient.history.index');
     }
 
     /**
@@ -42,8 +44,8 @@ class DoctorHistoryController extends Controller implements HistoryInterface
      */
     public function restore(int $id): RedirectResponse
     {
-        Doctor::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('doctor.index.history')->with('success', 'Data berhasil dikembalikan!');
+        Patient::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->route('patient.index.history')->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
@@ -54,10 +56,9 @@ class DoctorHistoryController extends Controller implements HistoryInterface
      */
     public function destroy(int $id): RedirectResponse
     {
-        $doctor = Doctor::onlyTrashed()->findOrFail($id);
-        $doctor->forceDelete();
+        $patient = Patient::onlyTrashed()->findOrFail($id);
+        $patient->forceDelete();
 
-        return redirect()->route('doctor.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('patient.index.history')->with('success', 'Data berhasil dihapus permanen!');
     }
-
 }
