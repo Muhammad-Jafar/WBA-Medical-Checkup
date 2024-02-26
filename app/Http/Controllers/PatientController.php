@@ -6,6 +6,7 @@ use App\Models\Patient;
 use App\Http\Requests\PatientRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PatientController extends Controller
 {

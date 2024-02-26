@@ -21,11 +21,11 @@ class PatientSeeder extends Seeder
 
         for($i=1; $i<21; $i++) {
             Patient::create([
-                'id' => Str::uuid(),
+                'id' => $i,
                 'name' => $fake->name,
                 'gender' => $fake->randomElement([1, 2]),
                 'born_place' => $fake->city,
-                'born_date' => $fake->dateTimeBetween('-50 years', '-18 years')->format('Y-m-d'),
+                'born_date' => $fake->dateTimeBetween('-50 years', '-20 years')->format('Y-m-d'),
                 'address' => $fake->address,
                 'occupation' => $fake->jobTitle
             ]);

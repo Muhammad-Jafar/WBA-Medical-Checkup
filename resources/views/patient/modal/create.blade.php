@@ -49,10 +49,10 @@
                                 <label for="born_place" class="form-label">TTL</label>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control @error('born_place') is-invalid @enderror" name="born_place" id="born_place"
-                                    value="{{ old('born_place') }}" placeholder="Tempat lahir">
+                                        value="{{ old('born_place') }}" placeholder="Tempat lahir">
                                     <span class="input-group-text">,</span>
                                     <input type="date" class="form-control @error('born_date') is-invalid @enderror" name="born_date" id="born_date"
-                                    value="{{ old('born_date') }}" placeholder="Tanggal lahir">
+                                        value="{{ old('born_date') }}" placeholder="Tanggal lahir">
                                 </div>
 
                                 {{-- <div class="row">

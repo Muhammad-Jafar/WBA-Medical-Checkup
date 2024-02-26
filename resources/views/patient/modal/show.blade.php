@@ -6,8 +6,6 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form action="{{ route('patient.store') }}" method="POST" id="edit-form-patient">
-					@csrf @method('PUT')
 					<div class="row">
 						<div class="col-md-12">
 							<div class="mb-3">
@@ -29,13 +27,10 @@
 					<div class="row">
 						<div class="col-md-12">
                             <label for="nip" class="form-label">TTL</label>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="born_place" id="born_place" placeholder="Tempat lahir" readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="date" class="form-control" name="born_date" id="born_date" placeholder="Tanggal lahir" readonly>
-                                </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="born_place" id="born_place" placeholder="Tempat lahir">
+                                <span class="input-group-text">,</span>
+                                <input type="date" class="form-control" name="born_date" id="born_date" placeholder="Tanggal lahir">
                             </div>
 						</div>
 					</div>
@@ -61,7 +56,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
 					</div>
-				</form>
+
 			</div>
 		</div>
 	</div>

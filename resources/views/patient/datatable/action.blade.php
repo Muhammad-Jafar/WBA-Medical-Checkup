@@ -13,7 +13,7 @@
     <div class="mx-1">
         <form action="{{ route('patient.destroy', $model->id) }}" method="POST">
             @csrf @method('DELETE')
-            <button type="submit" class="btn btn-danger delete-dialog">
+            <button type="submit" class="btn btn-sm btn-danger delete-dialog">
                 <i class="bi bi-trash-fill"></i> Hapus
             </button>
         </form>

@@ -17,7 +17,7 @@ class PatientHistoryController extends Controller implements HistoryInterface
      */
     public function index(): View|JsonResponse
     {
-        $doctors = Patient::select(
+        $patients = Patient::select(
             'id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation'
         )
         ->orderBy('name')
@@ -25,11 +25,11 @@ class PatientHistoryController extends Controller implements HistoryInterface
         ->get();
 
         if(request()->ajax()) {
-            return datatables()->of($doctors)
+            return datatables()->of($patients)
             ->addIndexColumn()
-            ->addColumn('verified', 'doctor.history.datatable.verified')
-            ->addColumn('action', 'doctor.history.datatable.action')
-            ->rawColumns(['verified', 'action'])
+            ->addColumn('born_place', fn($model) => $model->born_place . ', ' . date('d M Y', strtotime($model->born_date)))
+            ->addColumn('action', 'patient.history.datatable.action')
+            ->rawColumns(['born_place', 'action'])
             ->toJson();
         }
 
