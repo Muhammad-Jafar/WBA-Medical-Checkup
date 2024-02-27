@@ -1,12 +1,12 @@
-<div class="modal fade" id="createPatientModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="createApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Tambah data dokter</h5>
+				<h5 class="modal-title">Ajukan permintaan SKBS</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form action="{{ route('patient.store') }}" method="POST">
+				<form action="#" method="POST">
 					@csrf
 					<div class="row">
 						<div class="col-md-12">

@@ -25,8 +25,8 @@ class ApplicationController extends Controller
         if(request()->ajax()) {
             return datatables()->of($application)
             ->addIndexColumn()
-            ->addColumn('status', 'application.datatable.status')
-            ->addColumn('action', 'application.datatable.action')
+            ->addColumn('status', 'applications.datatable.status')
+            ->addColumn('action', 'applications.datatable.action')
             ->rawColumns(['status', 'action'])
             ->toJson();
         }

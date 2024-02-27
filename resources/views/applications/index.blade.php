@@ -34,7 +34,7 @@
                                 <i class="bi bi-file-earmark-excel-fill"></i>
                                 Export ke Excel
                             </a>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDoctorModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
                                 <i class="bi bi-plus-circle"></i> Ajukan permintaan
                             </button>
                             {{-- {{ route('application.index.history') }} --}}
@@ -54,9 +54,10 @@
                         <tr>
                             <th scope=" col">#</th>
                             <th scope="col">Pasien</th>
-                            <th scope="col">Atas permintaan</th>
                             <th scope="col">Keperluan</th>
+                            <th scope="col">Pemeriksa</th>
                             <th scope="col">Oleh</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
