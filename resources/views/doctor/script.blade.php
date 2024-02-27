@@ -8,9 +8,10 @@
             ajax: "{{ route('doctor.index') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                { data: 'name', name: 'request_by' },
-                { data: 'sip', name: 'handle_by' },
-                { data: 'nip', name: 'purposes' },
+                { data: 'name', name: 'name' },
+                { data: 'sip', name: 'sip' },
+                { data: 'nip', name: 'nip' },
+                { data: 'verified', name: 'verified' },
                 { data: 'action', name: 'action' },
             ]
         });
