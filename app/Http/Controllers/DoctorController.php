@@ -17,7 +17,9 @@ class DoctorController extends Controller
      */
         public function index(): View|JsonResponse
     {
-        $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')->orderBy('name')->get();
+        $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')
+        ->orderBy('name')
+        ->get();
 
         if(request()->ajax()) {
             return datatables()->of($doctors)

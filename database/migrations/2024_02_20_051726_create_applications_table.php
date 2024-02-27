@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('request', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) {
             $table->uuid('id')->primary();
             // $table->foreign('patient_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('request_by');
+            $table->integer('handle_by');
             $table->string('purposes');
             $table->date('requested_at');
             $table->enum('status', ['PENDING','APPROVED','REJECTED'])->default('PENDING');
-            $table->date('approved_at');
+            $table->date('approved_at')->nullable();
             $table->date('rejected_at')->nullable();
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medical_record');
+        Schema::dropIfExists('applications');
     }
 };

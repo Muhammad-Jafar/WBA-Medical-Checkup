@@ -8,9 +8,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
 
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
-    Route::get('/permintaan', function () {
-        return view('livewire.permintaan.permintaan');
-    })->name('permintaan');
+    Route::resource('application', \App\Http\Controllers\ApplicationController::class)->except('create', 'show', 'edit');
 
     Route::resource('patient', \App\Http\Controllers\PatientController::class)->except('create', 'show', 'edit');
 

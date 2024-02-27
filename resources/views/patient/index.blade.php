@@ -39,7 +39,7 @@
                                         <i class="bi bi-plus-circle"></i> Tambah Pasien
                                     </button>
                                     <a href="{{ route('patient.index.history') }}" class="btn btn-light-secondary">
-                                        <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Histori data pasien
+                                        <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Riwayat data pasien
                                     </a>
                                 </div>
                             </div>

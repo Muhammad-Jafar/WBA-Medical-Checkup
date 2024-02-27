@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('doctors_log', function (Blueprint $table) {
             $table->id();
-            $table->string('string');
+            $table->string('event');
+            $table->integer('by');
             $table->timestamps();
         });
     }

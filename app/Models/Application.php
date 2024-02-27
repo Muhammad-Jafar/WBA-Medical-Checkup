@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Patient extends Model
+class Application extends Model
 {
     use HasFactory, Notifiable, SoftDeletes;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -25,25 +24,15 @@ class Patient extends Model
      * @var array
      */
     protected $fillable = [
-        'nik',
-        'name',
-        'gender',
-        'born_place',
-        'born_date',
-        'address',
-        'occupation'
+        'request_by',
+        'handle_by',
+        'purposes',
+        'requested_at',
+        'status',
+        'approved_at',
+        'rejected_at'
     ];
 
-     /**
-     * Get student gender name.
-     *
-     * @return string
-     */
-    public function getGenderName(): string
-    {
-        return match ($this->gender) {
-            1 => 'Laki-laki',
-            2 => 'Perempuan'
-        };
-    }
+    
+
 }

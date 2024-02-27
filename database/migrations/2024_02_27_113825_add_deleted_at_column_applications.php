@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medical_record_log', function (Blueprint $table) {
-            $table->id();
-            $table->string('note');
-            $table->timestamps();
+        Schema::table('applications', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medical_record_log');
+        Schema::table('applications', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

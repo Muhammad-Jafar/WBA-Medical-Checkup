@@ -24,6 +24,11 @@ class Doctor extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'sip', 'nip', 'verified'];
+    protected $fillable = [
+        'name',
+        'sip',
+        'nip', 
+        'verified'
+    ];
 
 }

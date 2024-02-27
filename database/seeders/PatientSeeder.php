@@ -22,6 +22,7 @@ class PatientSeeder extends Seeder
         for($i=1; $i<21; $i++) {
             Patient::create([
                 'id' => $i,
+                'nik' => '7404' . $fake->numberBetween(100000000000, 999999999999),
                 'name' => $fake->name,
                 'gender' => $fake->randomElement([1, 2]),
                 'born_place' => $fake->city,
