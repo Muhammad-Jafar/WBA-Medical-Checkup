@@ -18,7 +18,7 @@ class ApplicationController extends Controller
      */
     public function index():View|JsonResponse
     {
-        $application = Application::select('request_by', 'handle_by', 'purposes', 'status')
+        $application = Application::select('user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
         ->orderBy('created_at')
         ->get();
 

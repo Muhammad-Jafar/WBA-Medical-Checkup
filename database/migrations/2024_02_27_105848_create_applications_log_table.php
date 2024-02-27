@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('applications_log', function (Blueprint $table) {
             $table->id();
+            $table->string('application_id');
             $table->string('event');
             $table->integer('by');
             $table->timestamps();
