@@ -1,4 +1,4 @@
-<div class="modal fade" id="createPatientModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="createPatientModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,6 +8,22 @@
 			<div class="modal-body">
 				<form action="{{ route('patient.store') }}" method="POST">
 					@csrf
+                    <div class="row">
+						<div class="col-md-12">
+							<div class="mb-3">
+								<label for="nik" class="form-label">NIK pasien</label>
+								<input type="number" class="form-control @error('nik') is-invalid @enderror" name="nik" id="nik"
+									value="{{ old('nik') }}" placeholder="Masukkan NIK pasien">
+
+								@error('nik')
+								<div class="d-block invalid-feedback">
+									{{ $message }}
+								</div>
+								@enderror
+							</div>
+						</div>
+					</div>
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="mb-3">
@@ -54,29 +70,6 @@
                                     <input type="date" class="form-control @error('born_date') is-invalid @enderror" name="born_date" id="born_date"
                                         value="{{ old('born_date') }}" placeholder="Tanggal lahir">
                                 </div>
-
-                                {{-- <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control @error('born_place') is-invalid @enderror" name="born_place" id="born_place"
-                                        value="{{ old('born_place') }}" placeholder="Tempat lahir">
-
-                                        @error('born_place')
-                                        <div class="d-block invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="date" class="form-control @error('born_date') is-invalid @enderror" name="born_date" id="born_date"
-                                        value="{{ old('born_date') }}" placeholder="Tanggal lahir">
-
-                                        @error('born_date')
-                                        <div class="d-block invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div> --}}
 							</div>
 						</div>
 					</div>

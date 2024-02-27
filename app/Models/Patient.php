@@ -14,13 +14,6 @@ class Patient extends Model
     use HasFactory, Notifiable, SoftDeletes;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $guarded = [];
-
-    /**
      * The attributes that should be protected.
      *
      * @var array
@@ -35,7 +28,14 @@ class Patient extends Model
         'occupation'
     ];
 
-     /**
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
      * Get student gender name.
      *
      * @return string
@@ -58,4 +58,14 @@ class Patient extends Model
         return $this->hasMany(Application::class);
     }
 
+    /**
+     * Set date attribute when storing data.
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setDateAttribute(string $value): void
+    {
+        $this->attributes['born_date'] = date('Y-m-d', strtotime($value));
+    }
 }

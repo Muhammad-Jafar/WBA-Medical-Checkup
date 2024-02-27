@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\Application;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\ApplicationRequest;
 
 class ApplicationController extends Controller
 {
@@ -22,6 +25,9 @@ class ApplicationController extends Controller
         ->orderBy('created_at')
         ->get();
 
+        $patients = Patient::select('id', 'nik', 'name')->get();
+        $doctors = Doctor::select('id', 'nip', 'name')->get();
+
         if(request()->ajax()) {
             return datatables()->of($application)
             ->addIndexColumn()
@@ -34,9 +40,32 @@ class ApplicationController extends Controller
         $applicationTrashedCount = Application::onlyTrashed()->count();
 
         return view('applications.index', [
+            'patients' => $patients,
+            'doctors' => $doctors,
             'applicationTrashedCount' => $applicationTrashedCount,
         ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  App\Http\Requests\AppliicationRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ApplicationRequest $request): RedirectResponse
+    {
+        foreach ($request->patient_id as $patient_id) {
+            Auth::user()->applications()->create([
+                'user_id' => $request->user_id,
+                'patient_id' => $patient_id,
+                'doctor_id' => $request->doctor_id,
+                'purposes' => $request->pusposes,
+                'requested_at' => now(),
+                'note' => $request->note
+            ]);
+        }
+
+        return redirect()->route('applications.index')->with('success', 'Data berhasil ditambahkan!');
+    }
 
 }

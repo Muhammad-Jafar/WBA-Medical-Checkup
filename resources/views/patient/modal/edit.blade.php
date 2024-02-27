@@ -2,7 +2,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Ubah data dokter</h5>
+				<h5 class="modal-title">Ubah data pasien</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
@@ -10,11 +10,21 @@
 				<form action="{{ route('patient.store') }}" method="POST" id="edit-form-patient">
 					@csrf
                     @method('PUT')
+					
 					<div class="row">
 						<div class="col-md-12">
 							<div class="mb-3">
-								<label for="name" class="form-label">Nama Pasien</label>
-								<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama lengkap">
+								<label for="nik" class="form-label">NIK pasien</label>
+								<input type="number" class="form-control" name="nik" id="nik" placeholder="Masukkan NIK pasien">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="mb-3">
+								<label for="name" class="form-label">Nama pasien</label>
+								<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama pasien">
 							</div>
 						</div>
 					</div>

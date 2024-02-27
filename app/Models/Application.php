@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Application extends Model
 {
@@ -38,6 +39,16 @@ class Application extends Model
     ];
 
     /**
+     * Get user class relationship
+     *
+     * @return BelongsTo
+     */
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
      * Get patient class relationship
      *
      * @return BelongsTo
@@ -58,13 +69,14 @@ class Application extends Model
     }
 
     /**
-     * Get user class relationship
+     * Set date attribute when storing data.
      *
-     * @return BelongsTo
+     * @param string $value
+     * @return void
      */
-    public function users(): BelongsTo
+    public function setDateAttribute(string $value): void
     {
-        return $this->belongsTo(User::class, 'user_id');
+        $this->attributes['requested_at'] = date('Y-m-d', strtotime($value));
     }
 
 }

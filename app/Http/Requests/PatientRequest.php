@@ -25,10 +25,11 @@ class PatientRequest extends FormRequest
     public function rules()
     {
         return [
+            'nik' => ['required', 'min:16', 'max:16'],
             'name'=> ['required', 'min:3', 'max:191'],
             'gender' => ['required'],
             'born_place' => ['required', 'min:3', 'max:191'],
-            'born_date' => ['required'],
+            'born_date' => ['required', 'date'],
             'address' => ['required'],
             'occupation' => ['required'],
         ];
@@ -42,6 +43,10 @@ class PatientRequest extends FormRequest
     public function messages()
     {
         return [
+            'nik.required' => 'Kolom NIK wajib diisi!',
+            'nik.min' => 'Kolom NIK harus :min karakter!',
+            'nik.max' => 'Kolom NIK harus :max karakter!',
+
             'name.required' => 'Kolom nama lengkap wajib diisi!',
             'name.min' => 'Kolom nama lengkap minimal :min karakter!',
             'name.max' => 'Kolom nama lengkap maksimal :max karakter!!',
@@ -51,6 +56,7 @@ class PatientRequest extends FormRequest
             'born_place.required' => 'Kolom tempat lahir wajib diisi!',
 
             'born_date.required' => 'Kolom tanggal lahir wajib diisi!',
+            'born_date.date' => 'Kolom tanggal lahir harus tanggal yang benar!',
 
             'address.required' => 'Kolom alamat wajib diisi!',
 
