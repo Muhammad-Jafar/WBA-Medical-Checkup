@@ -49,24 +49,25 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\AppliicationRequest  $request
+     * @param  App\Http\Requests\ApplicationRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ApplicationRequest $request): RedirectResponse
     {
 
-        // Implode the purposes array into a string
-        // $purposes = implode(', ', $request->purposes);
+        // // Implode the purposes array into a string
+        // // $purposes = implode(', ', $request->purposes);
 
-        foreach ($request->patient_id as $patient_id) {
-            Auth::user()->applications()->create([
-                'patient_id' => $patient_id,
-                'purposes' => $request->purposes,
-                'doctor_id' => $request->doctor_id,
-                'requested_at' => now(),
-            ]);
-        }
+        // foreach ($request->patient_id as $patient_id) {
+        //     Auth::user()->applications()->create([
+        //         'patient_id' => $patient_id,
+        //         'purposes' => $request->purposes,
+        //         'doctor_id' => $request->doctor_id,
+        //         'requested_at' => now(),
+        //     ]);
+        // }
 
+        Application::create($request->validated());
         return redirect()->route('applications.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
