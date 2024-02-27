@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Application;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -27,8 +28,18 @@ class Doctor extends Model
     protected $fillable = [
         'name',
         'sip',
-        'nip', 
+        'nip',
         'verified'
     ];
+
+    /**
+     * Get Doctor relation to application table.
+     *
+     * @return HasMany
+     */
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class);
+    }
 
 }

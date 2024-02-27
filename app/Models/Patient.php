@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Application;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -46,4 +47,15 @@ class Patient extends Model
             2 => 'Perempuan'
         };
     }
+
+    /**
+     * Get Doctor relation to application table.
+     *
+     * @return HasMany
+     */
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class);
+    }
+
 }

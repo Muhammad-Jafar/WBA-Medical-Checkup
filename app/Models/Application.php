@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -24,8 +27,9 @@ class Application extends Model
      * @var array
      */
     protected $fillable = [
-        'request_by',
-        'handle_by',
+        'user_id',
+        'patient_id',
+        'doctor_id',
         'purposes',
         'requested_at',
         'status',
@@ -33,6 +37,34 @@ class Application extends Model
         'rejected_at'
     ];
 
-    
+    /**
+     * Get patient class relationship
+     *
+     * @return BelongsTo
+     */
+    public function patients(): BelongsTo
+    {
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
+    /**
+     * Get doctor class relationship
+     *
+     * @return BelongsTo
+     */
+    public function doctors(): BelongsTo
+    {
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
+
+    /**
+     * Get user class relationship
+     *
+     * @return BelongsTo
+     */
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }
