@@ -25,7 +25,7 @@ class ApplicationRequest extends FormRequest
     {
         return [
             'patient_id'=> ['required'],
-            'purposes' => ['required', 'min:5', 'max:191'],
+            'purposes' => ['max:191'],
             'doctor_id' => ['required'],
         ];
     }
@@ -40,8 +40,6 @@ class ApplicationRequest extends FormRequest
         return [
             'patient_id.required' => 'Kolom Nama pasien wajib diisi!',
 
-            'purposes.required' => 'Kolom keperluan wajib diisi!',
-            'purposes.min' => 'Kolom keperluan minimal :min karakter!',
             'purposes.max' => 'Kolom keperluan maksimal :max karakter!!',
 
             'doctor_id.required' => 'Kolom Dokter pemeriksa wajib diisi!',

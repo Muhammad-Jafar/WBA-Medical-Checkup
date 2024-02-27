@@ -54,14 +54,16 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationRequest $request): RedirectResponse
     {
+
+        // Implode the purposes array into a string
+        // $purposes = implode(', ', $request->purposes);
+
         foreach ($request->patient_id as $patient_id) {
             Auth::user()->applications()->create([
-                'user_id' => $request->user_id,
                 'patient_id' => $patient_id,
+                'purposes' => $request->purposes,
                 'doctor_id' => $request->doctor_id,
-                'purposes' => $request->pusposes,
                 'requested_at' => now(),
-                'note' => $request->note
             ]);
         }
 
