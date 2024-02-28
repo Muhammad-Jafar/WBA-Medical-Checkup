@@ -8,10 +8,10 @@
             ajax: "{{ route('application.index') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                { data: 'patients', name: 'patients.name' },
+                { data: 'patients.name', name: 'patients.name' },
                 { data: 'purposes', name: 'purposes' },
-                { data: 'doctors', name: 'doctors.name' },
-                { data: 'users', name: 'users.name' },
+                { data: 'doctors.name', name: 'doctors.name' },
+                { data: 'users.name', name: 'users.name' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action' },
             ]
