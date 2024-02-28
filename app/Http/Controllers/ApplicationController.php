@@ -21,8 +21,8 @@ class ApplicationController extends Controller
      */
     public function index():View|JsonResponse
     {
-        $application = Application::select('id','user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
-        ->with('users:id,name', 'patients:id,name', 'doctors:id,name')
+        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
+        ->select('id','user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
         ->orderBy('created_at')
         ->get();
 
