@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
+use Illuminate\Support\Str;
 
 class ApplicationController extends Controller
 {
@@ -21,7 +22,8 @@ class ApplicationController extends Controller
      */
     public function index():View|JsonResponse
     {
-        $application = Application::select('user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
+        $application = Application::with('user:id,name', 'patient:id,name', 'doctor:id,name')
+        ->select('user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
         ->orderBy('created_at')
         ->get();
 
@@ -31,6 +33,9 @@ class ApplicationController extends Controller
         if(request()->ajax()) {
             return datatables()->of($application)
             ->addIndexColumn()
+            ->addColumn('user_id', fn ($model) => $model->user->name)
+            ->addColumn('patient_id', fn ($model) => $model->patient->name)
+            ->addColumn('doctor_id', fn ($model) => $model->doctor->name)
             ->addColumn('status', 'applications.datatable.status')
             ->addColumn('action', 'applications.datatable.action')
             ->rawColumns(['status', 'action'])
@@ -54,21 +59,42 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationRequest $request): RedirectResponse
     {
+        // $validatedData = $request->validated();
+        // $application = [
+        //     // 'id' => Str::uuid(),
+        //     'user_id' => Auth::id(),
+        //     'patient_id' => $validatedData['patient_id'],
+        //     'doctor_id' => $validatedData['doctor_id'],
+        //     'purposes' => $validatedData['purposes'],
+        //     'requested_at' => now(),
+        // ];
 
-        // // Implode the purposes array into a string
-        // // $purposes = implode(', ', $request->purposes);
+        // logger()->info(['ID UUID', Str::uuid()]);
 
-        // foreach ($request->patient_id as $patient_id) {
-        //     Auth::user()->applications()->create([
-        //         'patient_id' => $patient_id,
-        //         'purposes' => $request->purposes,
-        //         'doctor_id' => $request->doctor_id,
-        //         'requested_at' => now(),
-        //     ]);
+        // foreach($request->patient_id as $patient_id)
+        // {
+            // Application::create([
+            //     'id' => Str::uuid(),
+            //     'user_id' => Auth::id(),
+            //     'patient_id' => $validatedData['patient_id'],
+            //     'doctor_id' => $validatedData['doctor_id'],
+            //     'purposes' => $validatedData['purposes'],
+            //     'requested_at' => now(),
+            // ]);
         // }
 
-        Application::create($request->validated());
+        Application::create([
+            // 'id' => Str::uuid(),
+            'user_id' => Auth::id(),
+            'patient_id' => $request->patient_id,
+            'doctor_id' => $request->doctor_id,
+            'purposes' => $request->purposes,
+            'requested_at' => now(),
+        ]);
+
+        // Application::create($application);
         return redirect()->route('applications.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
 }
+
