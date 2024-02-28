@@ -5,13 +5,12 @@ namespace App\Models;
 use App\Models\Application;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Patient extends Model
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that should be protected.
@@ -27,13 +26,6 @@ class Patient extends Model
         'address',
         'occupation'
     ];
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $guarded = [];
 
     /**
      * Get student gender name.

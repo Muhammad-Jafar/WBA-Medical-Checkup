@@ -2,7 +2,7 @@
     <div class="mx-1">
         <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success doctor-edit"
                 data-bs-toggle="modal" data-bs-target="#editDoctorModal">
-                <i class="bi bi-pencil-square"></i> Terima
+                <i class="bi bi-plus-circle"></i> Terima
         </button>
     </div>
 
@@ -10,7 +10,7 @@
         <form action="#" method="POST">
             {{-- @csrf @method('DELETE') --}}
             <button type="submit" class="btn btn-sm btn-danger delete-dialog">
-                <i class="bi bi-trash-fill"></i> Tolak
+                <i class="bi bi-dash-circle"></i> Tolak
             </button>
         </form>
     </div>

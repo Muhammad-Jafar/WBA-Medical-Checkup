@@ -10,7 +10,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
-use Illuminate\Support\Str;
 
 class ApplicationController extends Controller
 {
@@ -22,8 +21,8 @@ class ApplicationController extends Controller
      */
     public function index():View|JsonResponse
     {
-        $application = Application::with('user:id,name', 'patient:id,name', 'doctor:id,name')
-        ->select('user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
+        $application = Application::select('id','user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
+        ->with('users:id,name', 'patients:id,name', 'doctors:id,name')
         ->orderBy('created_at')
         ->get();
 
@@ -33,18 +32,15 @@ class ApplicationController extends Controller
         if(request()->ajax()) {
             return datatables()->of($application)
             ->addIndexColumn()
-            ->addColumn('user_id', fn ($model) => $model->user->name)
-            ->addColumn('patient_id', fn ($model) => $model->patient->name)
-            ->addColumn('doctor_id', fn ($model) => $model->doctor->name)
-            ->addColumn('status', 'applications.datatable.status')
-            ->addColumn('action', 'applications.datatable.action')
+            ->addColumn('status', 'application.datatable.status')
+            ->addColumn('action', 'application.datatable.action')
             ->rawColumns(['status', 'action'])
             ->toJson();
         }
 
         $applicationTrashedCount = Application::onlyTrashed()->count();
 
-        return view('applications.index', [
+        return view('application.index', [
             'patients' => $patients,
             'doctors' => $doctors,
             'applicationTrashedCount' => $applicationTrashedCount,
@@ -59,42 +55,40 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationRequest $request): RedirectResponse
     {
-        // $validatedData = $request->validated();
-        // $application = [
-        //     // 'id' => Str::uuid(),
-        //     'user_id' => Auth::id(),
-        //     'patient_id' => $validatedData['patient_id'],
-        //     'doctor_id' => $validatedData['doctor_id'],
-        //     'purposes' => $validatedData['purposes'],
-        //     'requested_at' => now(),
-        // ];
-
-        // logger()->info(['ID UUID', Str::uuid()]);
-
-        // foreach($request->patient_id as $patient_id)
-        // {
-            // Application::create([
-            //     'id' => Str::uuid(),
-            //     'user_id' => Auth::id(),
-            //     'patient_id' => $validatedData['patient_id'],
-            //     'doctor_id' => $validatedData['doctor_id'],
-            //     'purposes' => $validatedData['purposes'],
-            //     'requested_at' => now(),
-            // ]);
-        // }
-
+        $validatedData = $request->validated();
         Application::create([
-            // 'id' => Str::uuid(),
             'user_id' => Auth::id(),
-            'patient_id' => $request->patient_id,
-            'doctor_id' => $request->doctor_id,
-            'purposes' => $request->purposes,
+            'patient_id' => $validatedData['patient_id'],
+            'doctor_id' => $validatedData['doctor_id'],
+            'purposes' => $validatedData['purposes'],
             'requested_at' => now(),
         ]);
 
-        // Application::create($application);
-        return redirect()->route('applications.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
-}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Request\ApplicationRequest $request
+     * @param  \App\Models\Application $application
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(ApplicationRequest $request, Application $application): RedirectResponse
+    {
+        $application->update($request->validated());
+        return redirect()->route('application.index')->with('success', 'Data berhasil diubah!');
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Application $application
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Application $application): RedirectResponse
+    {
+        $application->delete();
+        return redirect()->route('application.index')->with('success', 'Data berhasil dihapus!');
+    }
+}

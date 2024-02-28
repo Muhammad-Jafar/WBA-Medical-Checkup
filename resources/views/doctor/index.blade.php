@@ -35,7 +35,7 @@
                                     Export ke Excel
                                 </a>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDoctorModal">
-                                    <i class="bi bi-plus-circle"></i> Tambah dokter
+                                    <i class="bi bi-person-plus-fill"></i> Tambah dokter
                                 </button>
                                 <a href="{{ route('doctor.index.history') }}" class="btn btn-light-secondary">
                                     <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Riwayat data dokter

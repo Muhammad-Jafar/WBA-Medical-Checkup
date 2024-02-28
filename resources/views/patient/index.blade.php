@@ -36,7 +36,7 @@
                                         Export Excel
                                     </a>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPatientModal">
-                                        <i class="bi bi-plus-circle"></i> Tambah Pasien
+                                        <i class="bi bi-person-plus-fill"></i> Tambah Pasien
                                     </button>
                                     <a href="{{ route('patient.index.history') }}" class="btn btn-light-secondary">
                                         <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Riwayat data pasien

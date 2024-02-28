@@ -15,7 +15,7 @@
         </div>
     </x-slot>
 
-    @include('applications.statistic')
+    @include('application.statistic')
 
     <div class="card">
         <div class="card-header">
@@ -35,7 +35,7 @@
                                 Export ke Excel
                             </a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
-                                <i class="bi bi-plus-circle"></i> Ajukan permintaan
+                                <i class="bi bi-file-earmark-plus-fill"></i> Ajukan permintaan
                             </button>
                             {{-- {{ route('application.index.history') }} --}}
                             <a href="" class="btn btn-light-secondary">
@@ -67,11 +67,11 @@
     </div>
 
     @push('modal')
-    @include('applications.model.create')
+    @include('application.model.create')
     @endpush
 
     @push('js')
-    @include('applications.script')
+    @include('application.script')
     @endpush
 
 </x-app-layout>
