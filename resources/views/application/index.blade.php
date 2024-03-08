@@ -55,7 +55,7 @@
                             <th scope=" col">#</th>
                             <th scope="col">Pasien</th>
                             <th scope="col">Keperluan</th>
-                            <th scope="col">Pemeriksa</th>
+                            <th scope="col">Dokter Pemeriksa</th>
                             <th scope="col">Oleh</th>
                             <th scope="col">Status</th>
                             <th scope="col">Aksi</th>

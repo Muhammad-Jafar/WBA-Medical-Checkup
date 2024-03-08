@@ -20,46 +20,22 @@
                     @forelse($getLatest as $latestApplication)
                         <tr>
                             <td class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <p class="font-bold ms-3 mb-0">
-                                        {{ $loop->iteration }}
-                                    </p>
-                                </div>
+                                {{ $loop->iteration }}
                             </td>
                             <td class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->patients->name }}
-                                    </p>
-                                </div>
+                                {{ $latestApplication->patients->name }}
                             </td>
                             <td class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->purposes }}
-                                    </p>
-                                </div>
+                                {{ $latestApplication->purposes }}
                             </td>
                             <td class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->doctors->name }}
-                                    </p>
-                                </div>
+                                dr. {{ $latestApplication->doctors->name }}
                             </td>
                             <td class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <p class="font-bold ms-3 mb-0">
-                                        {{ date('d M Y - H:m T ', strtotime($latestApplication->created_at)) }}
-                                    </p>
-                                </div>
+                                {{ date('d M Y - H:m T ', strtotime($latestApplication->created_at)) }}
                             </td>
                             <td class="col-auto">
-                                <div class="d-flex align-items-center">
-                                    <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->users->name }}
-                                    </p>
-                                </div>
+                                {{ $latestApplication->users->name }}
                             </td>
                         </tr>
                         @empty
