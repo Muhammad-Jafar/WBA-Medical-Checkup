@@ -56,9 +56,7 @@ class ApplicationHistoryController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
-        $application = Application::onlyTrashed()->findOrFail($id);
-        $application->forceDelete();
-
+        Application::onlyTrashed()->findOrFail($id)->forceDelete();
         return redirect()->route('application.index.history')->with('success', 'Data berhasil dihapus permanen!');
     }
 
