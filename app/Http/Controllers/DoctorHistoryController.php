@@ -54,9 +54,7 @@ class DoctorHistoryController extends Controller implements HistoryInterface
      */
     public function destroy(int $id): RedirectResponse
     {
-        $doctor = Doctor::onlyTrashed()->findOrFail($id);
-        $doctor->forceDelete();
-
+        Doctor::onlyTrashed()->findOrFail($id)->forceDelete();
         return redirect()->route('doctor.index.history')->with('success', 'Data berhasil dihapus permanen!');
     }
 

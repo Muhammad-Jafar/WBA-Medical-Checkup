@@ -37,8 +37,8 @@
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
                                 <i class="bi bi-file-earmark-plus-fill"></i> Ajukan permintaan
                             </button>
-                            {{-- {{ route('application.index.history') }} --}}
-                            <a href="" class="btn btn-light-secondary">
+                            
+                            <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> Riwayat data permintaan
                             </a>
                         </div>

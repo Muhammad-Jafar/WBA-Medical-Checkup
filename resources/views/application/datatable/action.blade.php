@@ -9,8 +9,17 @@
     <div class="mx-1">
         <form action="#" method="POST">
             {{-- @csrf @method('DELETE') --}}
-            <button type="submit" class="btn btn-sm btn-danger delete-dialog">
+            <button type="submit" class="btn btn-sm btn-warning delete-dialog">
                 <i class="bi bi-dash-circle"></i> Tolak
+            </button>
+        </form>
+    </div>
+
+    <div class="mx-1">
+        <form action="{{ route('application.destroy', $model->id) }}" method="POST">
+            @csrf @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger delete-dialog">
+                <i class="bi bi-trash2-fill"></i> Hapus
             </button>
         </form>
     </div>

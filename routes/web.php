@@ -9,6 +9,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
     Route::resource('application', \App\Http\Controllers\ApplicationController::class)->except('create', 'show', 'edit');
+    
+    Route::controller(\App\Http\Controllers\ApplicationHistoryController::class)->prefix('/application/history')->name('application.')->group(function () {
+        Route::get('', 'index')->name('index.history');
+        Route::post('{id}', 'restore')->name('restore.history');
+        Route::delete('{id}', 'destroy')->name('destroy.history');
+    });
 
     Route::resource('patient', \App\Http\Controllers\PatientController::class)->except('create', 'show', 'edit');
 

@@ -56,9 +56,7 @@ class PatientHistoryController extends Controller implements HistoryInterface
      */
     public function destroy(int $id): RedirectResponse
     {
-        $patient = Patient::onlyTrashed()->findOrFail($id);
-        $patient->forceDelete();
-
+        Patient::onlyTrashed()->findOrFail($id)->forceDelete();
         return redirect()->route('patient.index.history')->with('success', 'Data berhasil dihapus permanen!');
     }
 }
