@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title">10 permintaan terakhir</h4>
+        <h4 class="card-title">5 permintaan terakhir</h4>
     </div>
     <div class="card-body">
 

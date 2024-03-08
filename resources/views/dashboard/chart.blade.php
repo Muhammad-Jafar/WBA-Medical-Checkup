@@ -7,7 +7,7 @@
             </div>
             <div class="card-body">
 
-                <div id="chart-last-request" style="min-height: 315px;">
+                {{-- <div id="chart-last-request">
                     <div id="chart-statistic" class="apexcharts-canvas apexcharts-theme-light" style="height:300px;">
                         <svg id="SvgjsSvg2998" width="auto" height="300" xmlns="http://www.w3.org/2000/svg"
                             version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
@@ -422,9 +422,9 @@
                             </g>
                         </svg>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-4">
                         <div class="row">
                             <div class="col-4 col-md-4">
@@ -545,7 +545,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
             </div>
         </div>
     </div>
@@ -557,6 +558,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    
                     <div class="col-7">
                         <div class="d-flex align-item-center">
                             <svg class="bi text-primary" width="32" height="32" fill="blue"
