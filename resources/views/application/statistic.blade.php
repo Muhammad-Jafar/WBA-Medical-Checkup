@@ -11,9 +11,7 @@
                         </div>
                         <div class="col-md-8">
                             <h6 class="text-muted font-semibold">Sisa Permintaan</h6>
-                            {{-- <h6 class="font-extrabold {{ $schoolMajorCount <= 0 ? 'text-danger' : '' }} mb-0">
-                                {{ $schoolMajorCount }}
-                            </h6> --}}
+                            <h5 class="font-extrabold mb-0"> {{ $repo['recentApplicant'] }} </h5>
                         </div>
                     </div>
                 </div>
@@ -30,7 +28,7 @@
                         </div>
                         <div class="col-md-8">
                             <h6 class="text-muted font-semibold">Hari ini</h6>
-                            {{-- <h6 class="font-extrabold mb-0">{{ $amountThisMonth }}</h6> --}}
+                            <h5 class="font-extrabold mb-0"> {{ $repo['todayApplicant'] }} </h5>
                         </div>
                     </div>
                 </div>
@@ -50,9 +48,7 @@
                         </div>
                         <div class="col-md-8">
                             <h6 class="text-muted font-semibold">Bulan ini</h6>
-                            {{-- <h6 class="font-extrabold {{ $schoolMajorCount <= 0 ? 'text-danger' : '' }} mb-0">
-                                {{ $schoolMajorCount }}
-                            </h6> --}}
+                            <h5 class="font-extrabold mb-0"> {{ $repo['currentMonthApplicant'] }} </h5>
                         </div>
                     </div>
                 </div>
@@ -68,8 +64,8 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <h6 class="text-muted font-semibold">SKBS 3 bulan terakhir</h6>
-                            {{-- <h6 class="font-extrabold mb-0">{{ $amountThisMonth }}</h6> --}}
+                            <h6 class="text-muted font-semibold">Tahun ini</h6>
+                            <h5 class="font-extrabold mb-0"> {{ $repo['currentYearApplicant'] }} </h5>
                         </div>
                     </div>
                 </div>

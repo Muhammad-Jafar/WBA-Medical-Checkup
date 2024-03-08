@@ -4,14 +4,14 @@
 
         $('#datatable').DataTable({
             processing: true,
-            serverside: true,
+            serverSide: true,
             ajax: "{{ route('application.index') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                { data: 'patients.name', name: 'patients.name' },
+                { data: 'patient', name: 'patients.name' },
                 { data: 'purposes', name: 'purposes' },
-                { data: 'doctors.name', name: 'doctors.name' },
-                { data: 'users.name', name: 'users.name' },
+                { data: 'doctor', name: 'doctors.name' },
+                { data: 'admin', name: 'users.name' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action' },
             ]

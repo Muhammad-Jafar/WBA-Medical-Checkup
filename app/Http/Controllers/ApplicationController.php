@@ -10,9 +10,19 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
+use App\Repositories\ApplicationRepository;
 
 class ApplicationController extends Controller
 {
+    private $applicationRepository, $startOfQuarter, $endOfQuarter;
+
+    public function __construct(ApplicationRepository $applicationRepository)
+    {
+        $this->applicationRepository = $applicationRepository;
+        $this->startOfQuarter = now()->startOfQuarter()->format('Y-m-d');
+        $this->endOfQuarter = now()->endOfQuarter()->format('Y-m-d');
+    }
+
 
      /**
      * Display a listing of the resource.
@@ -21,9 +31,9 @@ class ApplicationController extends Controller
      */
     public function index():View|JsonResponse
     {
-        $application = Application::with('patients:id,name', 'users:id,name', 'doctors:id,name')
-        ->select('id','user_id', 'doctor_id', 'patient_id', 'purposes', 'status')
-        ->orderBy('created_at')
+        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
+        ->select('id','user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+        ->latest()
         ->get();
 
         // $application = Application::select(
@@ -32,31 +42,33 @@ class ApplicationController extends Controller
         //     'patients.id', 'patients.name',
         //     'doctors.id', 'doctors.name',
         //     )
-        
         // ->join('users', 'applications.user_id', '=','users.id')
         // ->join('patients', 'applications.patient_id', '=','patients.id')
         // ->join('doctors', 'applications.doctor_id', '=','doctors.id')
         // ->orderBy('applications.created_at')
         // ->get();
 
-        $patients = Patient::select('id', 'nik', 'name')->get();
-        $doctors = Doctor::select('id', 'nip', 'name')->get();
+        $patient = Patient::select('id', 'nik', 'name')->get();
+        $doctor = Doctor::select('id', 'nip', 'name')->get();
+        $applicationTrashedCount = Application::onlyTrashed()->count();
 
         if(request()->ajax()) {
             return datatables()->of($application)
             ->addIndexColumn()
+            ->addColumn('patient', fn($model) => $model->patients ? $model->patients->name : 'No patient available')
+            ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : 'No doctor available')
+            ->addColumn('admin', fn($model) => $model->users ? $model->users->name : 'No admin available')
             ->addColumn('status', 'application.datatable.status')
             ->addColumn('action', 'application.datatable.action')
             ->rawColumns(['status', 'action'])
             ->toJson();
         }
 
-        $applicationTrashedCount = Application::onlyTrashed()->count();
-
         return view('application.index', [
-            'patients' => $patients,
-            'doctors' => $doctors,
+            'patients' => $patient,
+            'doctors' => $doctor,
             'applicationTrashedCount' => $applicationTrashedCount,
+            'repo' => $this->applicationRepository->results(),
         ]);
     }
 
