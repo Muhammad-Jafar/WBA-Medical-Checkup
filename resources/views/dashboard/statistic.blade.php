@@ -53,9 +53,7 @@
 							</div>
 							<div class="col-md-8">
 								<h6 class="text-muted font-semibold">Total SKBS</h6>
-								{{-- <h6 class="font-extrabold {{ $schoolMajorCount <= 0 ? 'text-danger' : '' }} mb-0">
-									{{ $schoolMajorCount }}
-								</h6> --}}
+								<h5 class="font-extrabold mb-0"> {{ $totalApplicantCount }} </h5>
 							</div>
 						</div>
 					</div>

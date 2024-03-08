@@ -4,23 +4,15 @@ namespace App\Repositories;
 
 use App\Contracts\ApplicationInterface;
 use App\Models\Application;
-use App\Models\Patient;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Builder;
 
 class ApplicationRepository extends Controller implements ApplicationInterface
 {
-    private $model, $patients, $startOfQuarter, $endOfQuarter;
+    private $model;
 
-    public function __construct(
-        Application $model, 
-        Patient $patients
-    )
+    public function __construct(Application $model)
     {
         $this->model = $model;
-        $this->patients = $patients;
-        $this->startOfQuarter = now()->startOfQuarter()->format('Y-m-d');
-        $this->endOfQuarter = now()->endOfQuarter()->format('Y-m-d');
     }
 
     /**

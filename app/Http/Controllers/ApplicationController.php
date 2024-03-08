@@ -14,13 +14,11 @@ use App\Repositories\ApplicationRepository;
 
 class ApplicationController extends Controller
 {
-    private $applicationRepository, $startOfQuarter, $endOfQuarter;
+    private $applicationRepository;
 
     public function __construct(ApplicationRepository $applicationRepository)
     {
         $this->applicationRepository = $applicationRepository;
-        $this->startOfQuarter = now()->startOfQuarter()->format('Y-m-d');
-        $this->endOfQuarter = now()->endOfQuarter()->format('Y-m-d');
     }
 
 
