@@ -32,6 +32,7 @@ class ApplicationController extends Controller
         //     'patients.id', 'patients.name',
         //     'doctors.id', 'doctors.name',
         //     )
+        
         // ->join('users', 'applications.user_id', '=','users.id')
         // ->join('patients', 'applications.patient_id', '=','patients.id')
         // ->join('doctors', 'applications.doctor_id', '=','doctors.id')
