@@ -37,7 +37,7 @@ class Application extends Model
      */
     public function users(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -47,7 +47,7 @@ class Application extends Model
      */
     public function patients(): BelongsTo
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class, 'patient_id');
     }
 
     /**
@@ -57,7 +57,7 @@ class Application extends Model
      */
     public function doctors(): BelongsTo
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'doctor_id');
     }
 
     /**

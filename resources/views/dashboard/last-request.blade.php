@@ -29,7 +29,7 @@
                             <td class="col-auto">
                                 <div class="d-flex align-items-center">
                                     <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->patients }}
+                                        {{ $latestApplication->patients->name }}
                                     </p>
                                 </div>
                             </td>
@@ -43,21 +43,21 @@
                             <td class="col-auto">
                                 <div class="d-flex align-items-center">
                                     <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->doctors }}
+                                        {{ $latestApplication->doctors->name }}
                                     </p>
                                 </div>
                             </td>
                             <td class="col-auto">
                                 <div class="d-flex align-items-center">
                                     <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->created_at }}
+                                        {{ date('d M Y - H:m T ', strtotime($latestApplication->created_at)) }}
                                     </p>
                                 </div>
                             </td>
                             <td class="col-auto">
                                 <div class="d-flex align-items-center">
                                     <p class="font-bold ms-3 mb-0">
-                                        {{ $latestApplication->users }}
+                                        {{ $latestApplication->users->name }}
                                     </p>
                                 </div>
                             </td>
