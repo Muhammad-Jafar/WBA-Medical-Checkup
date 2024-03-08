@@ -1,5 +1,5 @@
 <div class="modal fade" id="createDoctorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title">Tambah data dokter</h5>
@@ -8,7 +8,7 @@
 			<div class="modal-body">
 				<form action="{{ route('doctor.store') }}" method="POST">
 					@csrf
-					<div class="row">
+					<div class="row">	
 						<div class="col-md-12">
 							<div class="mb-3">
 								<label for="name" class="form-label">Nama dokter</label>
