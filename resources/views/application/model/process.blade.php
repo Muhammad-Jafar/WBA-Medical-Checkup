@@ -1,12 +1,12 @@
-<div class="modal fade" id="createApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-scrollable">
+<div class="modal fade" id="processApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Ajukan permintaan SKBS</h5>
+				<h5 class="modal-title">Proses permintaan SKBS</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form action="{{ route('application.store') }}" method="POST">
+				<form action="#" method="POST">
 					@csrf
 					<div class="row">
 						<div class="col-md-12">

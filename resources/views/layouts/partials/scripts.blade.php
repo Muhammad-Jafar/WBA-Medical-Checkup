@@ -93,6 +93,25 @@
 			});
 		});
 
+		$("#datatable").on('click', '.cancel-dialog', function (e) {
+			e.preventDefault();
+			Swal.fire({
+				title: "Batalkan?",
+				text: "Permintaan tersebut akan dibatalkan!",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				cancelButtonText: "Tidak",
+				confirmButtonText: "Ya!",
+				reverseButtons: true,
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$(this).parent().submit();
+				}
+			});
+		});
+
 		$("#datatable").on('click', '.delete-permanent-button', function (e) {
 			e.preventDefault();
 			Swal.fire({

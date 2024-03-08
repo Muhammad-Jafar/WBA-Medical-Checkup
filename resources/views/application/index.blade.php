@@ -67,7 +67,7 @@
     </div>
 
     @push('modal')
-    @include('application.model.create')
+    @include('application.model.process')
     @endpush
 
     @push('js')
