@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
 use App\Repositories\ApplicationRepository;
+use Illuminate\Support\Str;
 
 class ApplicationController extends Controller
 {
@@ -20,7 +21,6 @@ class ApplicationController extends Controller
     {
         $this->applicationRepository = $applicationRepository;
     }
-
 
      /**
      * Display a listing of the resource.
@@ -33,18 +33,6 @@ class ApplicationController extends Controller
         ->select('id','user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
         ->latest()
         ->get();
-
-        // $application = Application::select(
-        //     'applications.user_id', 'applications.doctor_id', 'applications.patient_id', 'applications.purposes', 'applications.status',
-        //     'users.id', 'users.name',
-        //     'patients.id', 'patients.name',
-        //     'doctors.id', 'doctors.name',
-        //     )
-        // ->join('users', 'applications.user_id', '=','users.id')
-        // ->join('patients', 'applications.patient_id', '=','patients.id')
-        // ->join('doctors', 'applications.doctor_id', '=','doctors.id')
-        // ->orderBy('applications.created_at')
-        // ->get();
 
         $patient = Patient::select('id', 'nik', 'name')->get();
         $doctor = Doctor::select('id', 'nip', 'name')->get();

@@ -74,7 +74,7 @@ class ApplicationRepository extends Controller implements ApplicationInterface
      */
     public function countApplicant(string $status, string $year = null, string $month = null): Int
     {
-        $model = $this->model->select('created_at', 'status')->where('status', 'PENDING');
+        $model = $this->model->select('created_at');
 
         return $status === 'year'
         ? $model->whereYear('created_at', $year)->count()
