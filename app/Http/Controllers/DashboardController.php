@@ -20,10 +20,13 @@ class DashboardController extends Controller
     {
         $getTotalApplication = $this->applicationRepository->countApplicant('year', month: date('Y'));
 
+        $getLatestApplication = $this->applicationRepository->latestApplications(['id', 'user_id', 'doctor_id', 'patient_id', 'purposes', 'status'], 5);
+
         return view('dashboard.index', [
             'patientCount' => Patient::count(),
             'doctorCount' => Doctor::count(),
             'totalApplicantCount' => $getTotalApplication,
+            'getLatest' => $getLatestApplication,
         ]);
     }
 }

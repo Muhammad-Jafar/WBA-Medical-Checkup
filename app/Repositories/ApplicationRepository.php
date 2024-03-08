@@ -4,15 +4,45 @@ namespace App\Repositories;
 
 use App\Contracts\ApplicationInterface;
 use App\Models\Application;
+use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Patient;
 use App\Http\Controllers\Controller;
 
 class ApplicationRepository extends Controller implements ApplicationInterface
 {
-    private $model;
+    private $model, $admin, $doctor, $patient;
 
-    public function __construct(Application $model)
+    public function __construct(
+        Application $model,
+        User $admin, 
+        Doctor $doctor, 
+        Patient $patient
+    )
     {
         $this->model = $model;
+        $this->admin = $admin;
+        $this->doctor = $doctor;
+        $this->patient = $patient;
+    }
+
+    /**
+     * Ambil seluruh data paling terbaru pada tabel applications pada database.
+     *
+     * Jika $limit === null maka tampilkan seluruh data applications tanpa limit.
+     * Jika $limit !== null maka tampilkan seluruh data applications dengan limit.
+     *
+     * @param array $columns kolom apa saja yang ingin difetch.
+     * @param int $limit limit data yang ingin ditampilkan.
+     * @return Object
+     */
+    public function latestApplications(array $columns, ?int $limit): Object
+    {
+        $model = $this->model->with('users', 'doctors','patients')->select($columns);
+
+        return is_null($limit)
+        ? $model->latest()->get()
+        : $model->take($limit)->latest()->get();
     }
 
     /**
