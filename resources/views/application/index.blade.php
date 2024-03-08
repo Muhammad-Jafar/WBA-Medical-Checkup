@@ -26,15 +26,15 @@
                 <div class="col-6 col-lg-6">
                     <div class="d-flex justify-content-end pb-3">
                         <div class="btn-group d-gap gap-2">
-                            <a href="#" class="btn btn-secondary">
+                            <a href="#" class="btn btn-light-info">
                                 <i class="bi bi-file-earmark-pdf-fill"></i>
                                 Export ke PDF
                             </a>
-                            <a href="#" class="btn btn-success">
+                            <a href="#" class="btn btn-light-success">
                                 <i class="bi bi-file-earmark-excel-fill"></i>
                                 Export ke Excel
                             </a>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
+                            <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
                                 <i class="bi bi-file-earmark-plus-fill"></i> Ajukan permintaan
                             </button>
                             
