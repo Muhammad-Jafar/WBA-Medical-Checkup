@@ -27,15 +27,15 @@
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
                                 <a href="#" class="btn btn-light-info">
-                                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    Export ke PDF
+                                    <i class="bi bi-upload"></i>
+                                    Ekspor data
                                 </a>
                                 <a href="#" class="btn btn-light-success">
-                                    <i class="bi bi-file-earmark-excel-fill"></i>
-                                    Export ke Excel
+                                    <i class="bi bi-download"></i>
+                                    Impor data
                                 </a>
                                 <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createDoctorModal">
-                                    <i class="bi bi-person-plus-fill"></i> Tambah dokter
+                                    <i class="bi bi-person-plus"></i> Tambah dokter
                                 </button>
                                 <a href="{{ route('doctor.index.history') }}" class="btn btn-light-secondary">
                                     <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Riwayat data dokter

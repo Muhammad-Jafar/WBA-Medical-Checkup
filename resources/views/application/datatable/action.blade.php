@@ -19,7 +19,7 @@
         <form action="{{ route('application.destroy', $model->id) }}" method="POST">
             @csrf @method('DELETE')
             <button type="submit" class="btn btn-sm btn-danger delete-dialog">
-                <i class="bi bi-trash2-fill"></i> Hapus
+                <i class="bi bi-trash3"></i> Hapus
             </button>
         </form>
     </div>
