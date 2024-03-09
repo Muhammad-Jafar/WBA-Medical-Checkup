@@ -7,10 +7,8 @@
 			</div>
 			<div class="modal-body">
                 @include('utilities.loading-alert')
-				<form action="{{ route('patient.store') }}" method="POST" id="edit-form-patient">
-					@csrf
-                    @method('PUT')
-					
+				<form action="#" method="POST" id="edit-patient-form">
+					@csrf @method('PUT')
 					<div class="row">
 						<div class="col-md-12">
 							<div class="mb-3">
