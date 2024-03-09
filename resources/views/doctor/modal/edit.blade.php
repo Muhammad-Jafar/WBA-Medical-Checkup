@@ -1,5 +1,4 @@
-<div class="modal fade" id="editDoctorModal" data-bs-backdrop="static" data-bs-keyboard="false"
-	aria-hidden="true">
+<div class="modal fade" id="editDoctorModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,7 +7,7 @@
 			</div>
 			<div class="modal-body">
 				@include('utilities.loading-alert')
-				<form action="#" method="post" id="edit-form-doctor">
+				<form action="#" method="post" id="edit-doctor-form">
 					@csrf @method('PUT')
 					<div class="row">
 						<div class="col-md-12">

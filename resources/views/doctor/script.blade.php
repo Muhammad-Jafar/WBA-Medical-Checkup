@@ -20,14 +20,13 @@
 			loadingAlert.show();
 
 			let id = $(this).data('id');
-			let url = "";
+			let url = "{{ route('api.doctor.edit', 'id') }}";
+			url = url.replace('id', id);
 
-			url = url.replace(':param', id);
+			let formActionURL = "{{ route('doctor.update', 'id') }}"
+			formActionURL = formActionURL.replace('id', id);
 
-			let formActionURL = "{{ route('doctor.update', ':param') }}"
-			formActionURL = formActionURL.replace(':param', id);
-
-			let editStudentModalEveryInput = $('#editStudentModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+			let editDoctorModalEveryInput = $('#editDoctorModal :input').not('button[type=button], input[name=_token], input[name=_method]')
 				.each(function () {
 					$(this).not('select').val('Sedang mengambil data..');
 					$(this).prop('disabled', true);
@@ -35,21 +34,16 @@
 
 			$.ajax({
 				url: url,
-				headers: {
-					'Authorization': 'Bearer ' + localStorage.getItem('token'),
-					'Accept': 'application/json',
-				},
-
 				success: function (response) {
 					loadingAlert.slideUp();
 
-					editStudentModalEveryInput.prop('disabled', false);
+					editDoctorModalEveryInput.prop('disabled', false);
 
-					$('#editStudentModal #edit-student-form').attr('action', formActionURL)
+					$('#editDoctorModal #edit-doctor-form').attr('action', formActionURL)
 
-					$('#editStudentModal #student_identification_number').val(response.data.student_identification_number);
-					$('#editStudentModal #name').val(response.data.name);
-					$('#editStudentModal #gender').val(response.data.gender);
+					$('#editDoctorModal #name').val(response.data.name);
+					$('#editDoctorModal #sip').val(response.data.sip);
+					$('#editDoctorModal #nip').val(response.data.nip);
 				}
 			});
 		});

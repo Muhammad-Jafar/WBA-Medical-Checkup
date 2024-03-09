@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\v1\PatientController;
+use App\Http\Controllers\API\v1\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,9 @@ Route::name('api.')->prefix('v1')->group( function () {
     
 
     Route::get('patient/{id}', [PatientController::class, 'show'])->name('patient.show');
+    Route::get('patient/{id}/edit', [PatientController::class, 'edit'])->name('patient.edit');
+
+    
+    Route::get('doctor/{id}/edit', [DoctorController::class, 'edit'])->name('doctor.edit');
 
 });
