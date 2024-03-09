@@ -28,19 +28,6 @@ class Patient extends Model
     ];
 
     /**
-     * Get student gender name.
-     *
-     * @return string
-     */
-    public function getGenderName(): string
-    {
-        return match ($this->gender) {
-            1 => 'Laki-laki',
-            2 => 'Perempuan'
-        };
-    }
-
-    /**
      * Get Doctor relation to application table.
      *
      * @return HasMany
@@ -59,5 +46,18 @@ class Patient extends Model
     public function setDateAttribute(string $value): void
     {
         $this->attributes['born_date'] = date('Y-m-d', strtotime($value));
+    }
+
+    /**
+     * Get patient gender name.
+     *
+     * @return string
+     */
+    public function getGenderName(): string
+    {
+        return match ($this->gender) {
+            1 => 'Laki-laki',
+            2 => 'Perempuan'
+        };
     }
 }

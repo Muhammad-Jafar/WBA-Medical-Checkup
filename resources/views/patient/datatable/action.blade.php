@@ -1,6 +1,6 @@
 <div class="btn-group" role="group">
     <div class="mx-1">
-        <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-primary patient-show"
+        <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-primary patient-detail"
             data-bs-toggle="modal" data-bs-target="#showPatientModal">
             <i class="bi bi-eye"></i> Lihat
         </button>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Http\Requests\PatientRequest;
+use App\Http\Resources\PatientShowResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class PatientController extends Controller
 {
