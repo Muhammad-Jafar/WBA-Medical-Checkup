@@ -26,10 +26,24 @@
                 <div class="col-6 col-lg-6">
                     <div class="d-flex justify-content-end pb-3">
                         <div class="btn-group d-gap gap-2">
-                            <a href="#" class="btn btn-light-info">
-                                <i class="bi bi-upload"></i>
-                                Ekspor data
-                            </a>
+                            <div class="btn-group mb-1">
+                                <div class="dropdown dropdown-color-icon">
+                                    <button class="btn btn-light-info dropdown-toggle me-1" type="button" id="dropdownExport" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-upload"></i>
+                                        Ekspor data 
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownExport">
+                                        <div class="dropdown-item">
+                                            <i class="bi bi-file-earmark-excel"></i>
+                                            ke Excel (.xls)
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                            ke PDF (.pdf)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <a href="#" class="btn btn-light-success">
                                 <i class="bi bi-download"></i>
                                 Impor data
