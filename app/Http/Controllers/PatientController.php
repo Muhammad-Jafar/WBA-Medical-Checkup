@@ -63,7 +63,9 @@ class PatientController extends Controller
      */
     public function update(PatientRequest $request, Patient $patient): RedirectResponse
     {
-        $patient->update($request->validated());
+        $data = $request->validated();
+        $data['born_date'] = reverseDate($data['born_date']);
+        $patient->update($data);
         return redirect()->route('patient.index')->with('success', 'Data berhasil diubah!');
     }
 

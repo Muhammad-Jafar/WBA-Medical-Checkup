@@ -112,7 +112,11 @@ class ApplicationController extends Controller
     public function cancel(string $id): RedirectResponse
     {
         Application::findOrFail($id)
-        ->update(['status' => 'REJECTED']);
+        ->update([
+            'status' => 'REJECTED',
+            'rejected_at' => now(),
+            
+    ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
 
