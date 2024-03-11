@@ -82,16 +82,6 @@ class ApplicationRepository extends Controller implements ApplicationInterface
     }
 
     /**
-     * 
-     * Get total application by status 'PENDING' of last 3 months
-     * @return Int
-     */
-    public function lastThreeMonthsApplicant(): Int
-    {
-        return $this->model->where('status', 'PENDING')->count();
-    }
-
-    /**
      * Mengembalikan seluruh data yang dibutuhkan
      *
      * @return array

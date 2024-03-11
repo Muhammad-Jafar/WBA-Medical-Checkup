@@ -11,7 +11,6 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
 use App\Repositories\ApplicationRepository;
-use Illuminate\Support\Str;
 
 class ApplicationController extends Controller
 {
@@ -32,6 +31,7 @@ class ApplicationController extends Controller
         $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
         ->select('id','user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
         ->latest()
+        ->whereDate('created_at', now()->toDateString())
         ->get();
 
         $patient = Patient::select('id', 'nik', 'name')->get();
@@ -57,6 +57,35 @@ class ApplicationController extends Controller
             'repo' => $this->applicationRepository->results(),
         ]);
     }
+
+    public function getTab($tab)
+    {
+        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
+        ->select('id','user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+        ->latest();
+        
+        if($tab == 'today') {
+            $application->whereDate('created_at', now()->toDateString())->get();
+        } elseif ($tab === 'pending') {
+            $application->where('status', 'pending')->get();
+        } else {
+            $application->get();
+        }
+
+        if(request()->ajax()) {
+            return datatables()->of($application)
+            ->addIndexColumn()
+            ->addColumn('patient', fn($model) => $model->patients ? $model->patients->name : 'No patient available')
+            ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : 'No doctor available')
+            ->addColumn('admin', fn($model) => $model->users ? $model->users->name : 'No admin available')
+            ->addColumn('status', 'application.datatable.status')
+            ->addColumn('action', 'application.datatable.action')
+            ->rawColumns(['status', 'action'])
+            ->toJson();
+        }
+
+        return response()->json($application);
+    }   
 
     /**
      * Store a newly created resource in storage.

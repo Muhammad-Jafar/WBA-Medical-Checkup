@@ -21,7 +21,29 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 col-lg-6">
-                    <h4>Daftar permintaan hari ini</h4>
+                    <ul class="nav nav-tabs" id="applicationTabs" role="tableList">
+                        <li class="nav-item" role="presentation">
+                            <a href="#todayTab" class="nav-link active " id="today-tab" data-bs-toggle="tab" role="tab" aria-controls="todayTab" aria-selected="true">Hari ini</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a href="#pendingTab" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab" aria-controls="pendingTab" aria-selected="true">Sisa</a> 
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a href="#allTab" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Semua</a> 
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="todayTab" role="tabpanel" aria-labelledby="today-tab">
+                            <h4 class="mt-4 my-2">Daftar permintaan hari ini</h4>
+                        </div>
+                        <div class="tab-pane fade" id="pendingTab" role="tabpanel" aria-labelledby="pending-tab">
+                            <h4 class="mt-4 my-2">Daftar sisa permintaan</h4>
+                        </div>
+                        <div class="tab-pane fade" id="allTab" role="tabpanel" aria-labelledby="all-tab">
+                            <h4 class="mt-4 my-2">Daftar semua permintaan</h4>
+                        </div>
+                    </div>
+                 
                 </div>
                 <div class="col-6 col-lg-6">
                     <div class="d-flex justify-content-end pb-3">
@@ -78,6 +100,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 
     @push('modal')
