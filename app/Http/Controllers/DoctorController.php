@@ -21,6 +21,8 @@ class DoctorController extends Controller
         ->orderBy('name')
         ->get();
 
+        $doctorTrashedCount = Doctor::onlyTrashed()->count();
+
         if(request()->ajax()) {
             return datatables()->of($doctors)
             ->addIndexColumn()
@@ -30,9 +32,7 @@ class DoctorController extends Controller
             ->toJson();
         }
 
-        $doctorTrashedCount = Doctor::onlyTrashed()->count();
-
-        return view('doctor.index', ['doctorTrashedCount' => $doctorTrashedCount]); //
+        return view('doctor.index', ['doctorTrashedCount' => $doctorTrashedCount]);
     }
 
     /**
