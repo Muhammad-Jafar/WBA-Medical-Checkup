@@ -143,5 +143,36 @@
 
         });
 
+        $('#datatable').on('click', '.processs-applicant-form', function () {
+            loadingAlert.show();
+
+            let id = $(this).data('id');
+            let url = "{{ route('application.update', 'id') }}";
+            url = url.replace('id', id);
+
+            let formActionURL = "{{ route('application.update', 'id') }}";
+			formActionURL = formActionURL.replace('id', id);
+
+            let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+				.each(function () {
+					$(this).not('select').val('Sedang mengambil data..');
+					$(this).prop('disabled', true);
+				});
+
+            $.ajax({
+                url: url,
+                success: function (data) {
+                    loadingAlert.slideUp();
+
+                    $('#processApplicantModal .modal-body #process-applicant-form').attr('action', formActionURL);
+					editSchoolClassModalEveryInput.prop('disabled', false);
+
+                    $('#processApplicantModal #name').val(response.data.students.name);
+					$('#processApplicantModal #purposes').val(response.data.student_id);
+					$('#processApplicantModal #doctor').val(response.data.bill);
+                }
+            });
+        });
+
     });
 </script>
