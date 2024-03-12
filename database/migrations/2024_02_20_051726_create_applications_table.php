@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('patient_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('purposes');
+            $table->string('height_body',8)->nullable();
+            $table->string('mass_body',8)->nullable();
             $table->date('requested_at');
             $table->enum('status', ['PENDING','APPROVED','REJECTED'])->default('PENDING');
             $table->date('approved_at')->nullable();
