@@ -1,7 +1,7 @@
 <div class="btn-group" role="group">
     @if ($model->status == 'PENDING')
         <div class="mx-1">
-            <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success doctor-edit"
+            <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success applicant-process"
                     data-bs-toggle="modal" data-bs-target="#processApplicantModal">
                     <i class="bi bi-arrow-right"></i> Proses
             </button>

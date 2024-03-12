@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\v1\PatientController;
 use App\Http\Controllers\API\v1\DoctorController;
 use App\Http\Controllers\API\V1\CheckupTypeController;
+use App\Http\Controllers\API\V1\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::name('api.')->prefix('v1')->group( function () {    
+
+    Route::get('application/{id}/process', [ApplicationController::class, 'process'])->name('application.process');
 
     Route::get('patient/{id}', [PatientController::class, 'show'])->name('patient.show');
     Route::get('patient/{id}/edit', [PatientController::class, 'edit'])->name('patient.edit');

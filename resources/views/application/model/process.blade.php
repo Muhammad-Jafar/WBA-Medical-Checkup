@@ -1,8 +1,8 @@
-<div class="modal fade" id="processApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="processApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Proses permintaan SKBS</h5>
+				<h5 class="modal-title">Memproses permintaan SKBS</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
@@ -13,7 +13,8 @@
 						<div class="col-md-12">
 							<div class="mb-3">
 								<label for="name">Nama pasien</label>
-								<input type="text" class="form-control" name="name" id="name" disabled>	
+								<input type="hidden" name="patient_id" id="patient_id">
+								<input type="text" class="form-control" name="patient" id="patient" readonly>	
 							</div>
 						</div>
 					</div>
@@ -21,7 +22,7 @@
 						<div class="col-md-12">
 							<div class="mb-3">
 								<label for="purposes">Keperluan</label>
-								<input type="text" class="form-control" name="purposes" id="purposes" disabled>	
+								<input type="text" class="form-control" name="purposes" id="purposes" readonly>	
 							</div>
 						</div>
 					</div>
@@ -29,7 +30,8 @@
 						<div class="col-md-12">
 							<div class="mb-3">
 								<label for="doctor">Dokter pemeriksa</label>
-								<input type="text" class="form-control" name="doctor" id="doctor" disabled>	
+								<input type="hidden" name="doctor_id" id="doctor_id">
+								<input type="text" class="form-control" name="doctor" id="doctor" readonly>	
 							</div>
 						</div>
 					</div>

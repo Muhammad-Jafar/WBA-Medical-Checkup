@@ -143,14 +143,14 @@
 
         });
 
-        $('#datatable').on('click', '.processs-applicant-form', function () {
+        $('#datatable').on('click', '.applicant-process', function () {
             loadingAlert.show();
 
             let id = $(this).data('id');
-            let url = "{{ route('application.update', 'id') }}";
+            let url = "{{ route('api.application.process', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('application.update', 'id') }}";
+            let formActionURL = "{{ route('application.update', 'id') }}"
 			formActionURL = formActionURL.replace('id', id);
 
             let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
@@ -161,15 +161,17 @@
 
             $.ajax({
                 url: url,
-                success: function (data) {
+                success: function (response) {
                     loadingAlert.slideUp();
 
-                    $('#processApplicantModal .modal-body #process-applicant-form').attr('action', formActionURL);
-					editSchoolClassModalEveryInput.prop('disabled', false);
+                    processApplicantModalEveryInput.prop('disabled', false);
+                    $('#processApplicantModal #process-applicant-form').attr('action', formActionURL)
 
-                    $('#processApplicantModal #name').val(response.data.students.name);
-					$('#processApplicantModal #purposes').val(response.data.student_id);
-					$('#processApplicantModal #doctor').val(response.data.bill);
+                    $('#processApplicantModal #patient').val(response.data.patients.name);
+                    $('#processApplicantModal #patient_id').val(response.data.patient_id);
+					$('#processApplicantModal #purposes').val(response.data.purposes);
+					$('#processApplicantModal #doctor').val(response.data.doctors.name);
+					$('#processApplicantModal #doctor_id').val(response.data.doctor_id);
                 }
             });
         });

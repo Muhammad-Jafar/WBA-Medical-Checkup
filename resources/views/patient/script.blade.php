@@ -66,7 +66,6 @@
 					loadingAlert.slideUp();
 
 					editPatientModalEveryInput.prop('disabled', false);
-
 					$('#editPatientModal #edit-patient-form').attr('action', formActionURL)
 
 					$('#editPatientModal #nik').val(response.data.nik);

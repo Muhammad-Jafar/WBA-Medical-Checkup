@@ -148,17 +148,4 @@ class ApplicationController extends Controller
     ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
-
-     /**
-     * Update specified field from table.
-     *
-     * @param  string $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function process(string $id): RedirectResponse
-    {
-        // Application::update(['status', 'CANCEL'])->findOrFail($id);
-        return redirect()->route('application.index')->with('success', 'Data berhasil dihapus!');
-    }
-
 }
