@@ -10,29 +10,25 @@
 				<form action="#" method="POST" id="process-applicant-form">
 					@csrf @method('PUT')
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="name">Nama pasien</label>
-								<input type="hidden" name="patient_id" id="patient_id">
-								<input type="text" class="form-control" name="patient" id="patient" readonly>	
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="patient">Nama pasien</label>
+							<input type="hidden" name="patient_id" id="patient_id">
+							<input type="text" class="form-control" id="patient" readonly>	
 						</div>
 					</div>
+
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="purposes">Keperluan</label>
-								<input type="text" class="form-control" name="purposes" id="purposes" readonly>	
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="purposes">Keperluan</label>
+							<input type="text" class="form-control" id="purposes" readonly>	
 						</div>
 					</div>
+					
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="doctor">Dokter pemeriksa</label>
-								<input type="hidden" name="doctor_id" id="doctor_id">
-								<input type="text" class="form-control" name="doctor" id="doctor" readonly>	
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="doctor">Dokter pemeriksa</label>
+							<input type="hidden" name="doctor_id" id="doctor_id">
+							<input type="text" class="form-control" id="doctor" readonly>	
 						</div>
 					</div>
 

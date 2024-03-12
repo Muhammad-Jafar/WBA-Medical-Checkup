@@ -9,50 +9,44 @@
 				<form action="{{ route('checkup-type.store') }}" method="POST">
 					@csrf
 					<div class="row">	
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="name" class="form-label">Nama Pemeriksaan</label>
-								<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-									value="{{ old('name') }}" placeholder="Masukkan nama pemeriksaan">
+						<div class="col-md-12 mb-3">
+							<label for="name" class="form-label">Nama Pemeriksaan</label>
+							<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+								value="{{ old('name') }}" placeholder="Masukkan nama pemeriksaan">
 
-								@error('name')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('name')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="abbreviated_word" class="form-label">Singkatan</label>
-								<input type="text" class="form-control @error('abbreviated_word') is-invalid @enderror" name="abbreviated_word" id="abbreviated_word"
-									value="{{ old('abbreviated_word') }}" placeholder="Masukkan singkatan">
+						<div class="col-md-12 mb-3">
+							<label for="abbreviated_word" class="form-label">Singkatan</label>
+							<input type="text" class="form-control @error('abbreviated_word') is-invalid @enderror" name="abbreviated_word" id="abbreviated_word"
+								value="{{ old('abbreviated_word') }}" placeholder="Masukkan singkatan">
 
-								@error('abbreviated_word')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('abbreviated_word')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="description" class="form-label">Deskripsi</label>
-								<input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"
-									value="{{ old('description') }}" placeholder="Masukkan deskripsi">
+						<div class="col-md-12 mb-3">
+							<label for="description" class="form-label">Deskripsi</label>
+							<input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+								value="{{ old('description') }}" placeholder="Masukkan deskripsi">
 
-								@error('description')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('description')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 

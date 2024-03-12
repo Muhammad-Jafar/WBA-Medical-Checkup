@@ -10,29 +10,23 @@
 				<form action="#" method="post" id="edit-doctor-form">
 					@csrf @method('PUT')
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="name" class="form-label">Nama dokter</label>
-								<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama lengkap..">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="name" class="form-label">Nama dokter</label>
+							<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama lengkap..">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="sip" class="form-label">SIP dokter</label>
-								<input type="number" class="form-control" name="sip" id="sip" placeholder="Masukkan nomor SIP">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="sip" class="form-label">SIP dokter</label>
+							<input type="number" class="form-control" name="sip" id="sip" placeholder="Masukkan nomor SIP">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="nip" class="form-label">NIP dokter</label>
-								<input type="number" class="form-control" name="nip" id="nip" placeholder="Masukkan nomor NIP">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="nip" class="form-label">NIP dokter</label>
+							<input type="number" class="form-control" name="nip" id="nip" placeholder="Masukkan nomor NIP">
 						</div>
 					</div>
 

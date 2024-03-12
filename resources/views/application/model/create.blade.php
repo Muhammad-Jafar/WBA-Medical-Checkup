@@ -9,60 +9,54 @@
 				<form action="#" method="POST">
 					@csrf
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="patient_id" class="form-label">Nama pasien</label>
-                                <select class="form-select select2 @error('patient_id') is-invalid @enderror" name="patient_id">
-									@foreach ($patients as $patient)
-                                        <option value="{{ $patient->id }}" {{ old('patient_id') == $patient->id ? 'selected' : '' }}>
-                                            {{ $patient->nik }} - {{ $patient->name }}
-                                        </option>
-									@endforeach
-								</select>
+						<div class="col-md-12 mb-3">
+							<label for="patient_id" class="form-label">Nama pasien</label>
+							<select class="form-select select2 @error('patient_id') is-invalid @enderror" name="patient_id">
+								@foreach ($patients as $patient)
+									<option value="{{ $patient->id }}" {{ old('patient_id') == $patient->id ? 'selected' : '' }}>
+										{{ $patient->nik }} - {{ $patient->name }}
+									</option>
+								@endforeach
+							</select>
 
-								@error('patient_id')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('patient_id')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="purposes" class="form-label">Keperluan</label>
-                                <input type="text" class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
-									value="{{ old('purposes') }}" placeholder="Untuk keperluan apa?">
+						<div class="col-md-12 mb-3">
+							<label for="purposes" class="form-label">Keperluan</label>
+							<input type="text" class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
+								value="{{ old('purposes') }}" placeholder="Untuk keperluan apa?">
 
-								@error('purposes')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('purposes')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-                                <label for="doctor_id" class="form-label">Dokter pemeriksa</label>
-                                <select class="form-select select2 @error('doctor_id') is-invalid @enderror" name="doctor_id">
-									@foreach ($doctors as $doctor)
-                                        <option value="{{ $doctor->id }}" {{ collect(old('doctor_id'))->contains($doctor->id) ? 'selected' : '' }}>
-                                            {{ $doctor->nip }} - {{ $doctor->name }}
-                                        </option>
-									@endforeach
-								</select>
+						<div class="col-md-12 mb-3">
+							<label for="doctor_id" class="form-label">Dokter pemeriksa</label>
+							<select class="form-select @error('doctor_id') is-invalid @enderror" name="doctor_id">
+								@foreach ($doctors as $doctor)
+									<option value="{{ $doctor->id }}" {{ collect(old('doctor_id'))->contains($doctor->id) ? 'selected' : '' }}>
+										{{ $doctor->name }}
+									</option>
+								@endforeach
+							</select>
 
-								@error('doctor_id')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('doctor_id')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 

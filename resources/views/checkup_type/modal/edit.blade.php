@@ -10,29 +10,23 @@
 				<form action="#" method="post" id="edit-checkup-type-form">
 					@csrf @method('PUT')
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="name" class="form-label">Nama Pemeriksaan</label>
-								<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama pemeriksaan">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="name" class="form-label">Nama Pemeriksaan</label>
+							<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama pemeriksaan">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="abbreviated_word" class="form-label">Singkatan</label>
-								<input type="text" class="form-control" name="abbreviated_word" id="abbreviated_word" placeholder="Masukkan singkatan">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="abbreviated_word" class="form-label">Singkatan</label>
+							<input type="text" class="form-control" name="abbreviated_word" id="abbreviated_word" placeholder="Masukkan singkatan">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="description" class="form-label">Deskripsi</label>
-								<input type="text" class="form-control" name="description" id="description" placeholder="Masukkan deskripsi">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="description" class="form-label">Deskripsi</label>
+							<input type="text" class="form-control" name="description" id="description" placeholder="Masukkan deskripsi">
 						</div>
 					</div>
 

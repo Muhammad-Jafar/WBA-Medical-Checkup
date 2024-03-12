@@ -10,64 +10,52 @@
 				<form action="#" method="POST" id="edit-patient-form">
 					@csrf @method('PUT')
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="nik" class="form-label">NIK pasien</label>
-								<input type="number" class="form-control" name="nik" id="nik" placeholder="Masukkan NIK pasien">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="nik" class="form-label">NIK pasien</label>
+							<input type="number" class="form-control" name="nik" id="nik" placeholder="Masukkan NIK pasien">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="name" class="form-label">Nama pasien</label>
-								<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama pasien">
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="name" class="form-label">Nama pasien</label>
+							<input type="text" class="form-control" name="name" id="name" placeholder="Masukkan nama pasien">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="gender" class="form-label">Jenis kelamin</label>
-								<select class="form-select" name="gender" id="gender">
-									<option selected>Pilih jenis kelamin</option>
-									<option value="1">Laki-laki</option>
-									<option value="2">Perempuan</option>
-								</select>
-							</div>
+						<div class="col-md-12 mb-3">
+							<label for="gender" class="form-label">Jenis kelamin</label>
+							<select class="form-select" name="gender" id="gender">
+								<option selected>Pilih jenis kelamin</option>
+								<option value="1">Laki-laki</option>
+								<option value="2">Perempuan</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="nip" class="form-label">TTL</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="born_place" id="born_place" placeholder="Tempat lahir">
-                                    <span class="input-group-text">, </span>
-                                    <input type="date" class="form-control" name="born_date" id="born_date" placeholder="Tanggal lahir">
-                                </div>
-                            </div>
+						<div class="col-md-12 mb-3">
+							<label for="ttl" class="form-label">TTL</label>
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" name="born_place" id="born_place" placeholder="Tempat lahir">
+								<span class="input-group-text">, </span>
+								<input type="date" class="form-control" name="born_date" id="born_date" placeholder="Tanggal lahir">
+							</div>
 						</div>
 					</div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat">
-                            </div>
+                        <div class="col-md-12 mb-3">
+							<label for="address" class="form-label">Alamat</label>
+							<input type="text" class="form-control" name="address" id="address" placeholder="Alamat">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="occupation" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" name="occupation" id="occupation" placeholder="Pekerjaan">
-                            </div>
+                        <div class="col-md-12 mb-3">
+							<label for="occupation" class="form-label">Pekerjaan</label>
+							<input type="text" class="form-control" name="occupation" id="occupation" placeholder="Pekerjaan">
                         </div>
                     </div>
 

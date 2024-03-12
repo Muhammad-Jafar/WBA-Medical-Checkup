@@ -9,50 +9,44 @@
 				<form action="{{ route('doctor.store') }}" method="POST">
 					@csrf
 					<div class="row">	
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="name" class="form-label">Nama dokter</label>
-								<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-									value="{{ old('name') }}" placeholder="Masukkan nama dokter..">
+						<div class="col-md-12  mb-3">
+							<label for="name" class="form-label">Nama dokter</label>
+							<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+								value="{{ old('name') }}" placeholder="Masukkan nama dokter..">
 
-								@error('name')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('name')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="sip" class="form-label">SIP dokter</label>
-								<input type="number" class="form-control @error('sip') is-invalid @enderror" name="sip" id="sip"
-									value="{{ old('sip') }}" placeholder="Masukkan nomor SIP">
+						<div class="col-md-12  mb-3">
+							<label for="sip" class="form-label">SIP dokter</label>
+							<input type="number" class="form-control @error('sip') is-invalid @enderror" name="sip" id="sip"
+								value="{{ old('sip') }}" placeholder="Masukkan nomor SIP">
 
-								@error('sip')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('sip')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12">
-							<div class="mb-3">
-								<label for="nip" class="form-label">NIP dokter</label>
-								<input type="number" class="form-control @error('nip') is-invalid @enderror" name="nip" id="nip"
-									value="{{ old('nip') }}" placeholder="Masukkan nomor NIP">
+						<div class="col-md-12 mb-3">
+							<label for="nip" class="form-label">NIP dokter</label>
+							<input type="number" class="form-control @error('nip') is-invalid @enderror" name="nip" id="nip"
+								value="{{ old('nip') }}" placeholder="Masukkan nomor NIP">
 
-								@error('nip')
-								<div class="d-block invalid-feedback">
-									{{ $message }}
-								</div>
-								@enderror
+							@error('nip')
+							<div class="d-block invalid-feedback">
+								{{ $message }}
 							</div>
+							@enderror
 						</div>
 					</div>
 

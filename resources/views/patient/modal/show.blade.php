@@ -8,57 +8,47 @@
 			<div class="modal-body">
 				@include('utilities.loading-alert')
 				<div class="row">
-					<div class="col-md-12">
-						<div class="mb-3">
-							<label for="nik" class="form-label">NIK pasien</label>
-							<input type="number" class="form-control" name="nik" id="nik" disabled>
-						</div>
+					<div class="col-md-12 mb-3">
+						<label for="nik" class="form-label">NIK pasien</label>
+						<input type="number" class="form-control" id="nik" disabled>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="mb-3">
-							<label for="name" class="form-label">Nama Pasien</label>
-							<input type="text" class="form-control" name="name" id="name" disabled>
-						</div>
+					<div class="col-md-12 mb-3">
+						<label for="name" class="form-label">Nama Pasien</label>
+						<input type="text" class="form-control" id="name" disabled>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-12">
-						<div class="mb-3">
-							<label for="gender" class="form-label">Jenis kelamin</label>
-							<input type="text" class="form-control" name="gender" id="gender" disabled>
-						</div>
+					<div class="col-md-12 mb-3">
+						<label for="gender" class="form-label">Jenis kelamin</label>
+						<input type="text" class="form-control" id="gender" disabled>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-12">
-						<label for="nip" class="form-label">TTL</label>
+					<div class="col-md-12 mb-3">
+						<label for="ttl" class="form-label">TTL</label>
 						<div class="input-group mb-3">
-							<input type="text" class="form-control" name="born_place" id="born_place" disabled>
+							<input type="text" class="form-control" id="born_place" disabled>
 							<span class="input-group-text">,</span>
-							<input type="date" class="form-control" name="born_date" id="born_date" disabled>
+							<input type="date" class="form-control" id="born_date" disabled>
 						</div>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-12">
-						<div class="mb-3">
-							<label for="address" class="form-label">Alamat</label>
-							<input type="text" class="form-control" name="address" id="address" disabled>
-						</div>
-						</div>
+					<div class="col-md-12 mb-3">
+						<label for="address" class="form-label">Alamat</label>
+						<input type="text" class="form-control" id="address" disabled>
+					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-12">
-						<div class="mb-3">
-							<label for="occupation" class="form-label">Pekerjaan</label>
-							<input type="text" class="form-control" name="occupation" id="occupation" disabled>
-						</div>
+					<div class="col-md-12 mb-3">
+						<label for="occupation" class="form-label">Pekerjaan</label>
+						<input type="text" class="form-control" id="occupation" disabled>
 					</div>
 				</div>
 
