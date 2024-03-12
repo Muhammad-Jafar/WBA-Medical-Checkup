@@ -10,6 +10,8 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorHistoryController;
 use App\Http\Controllers\CheckupTypeController;
 use App\Http\Controllers\CheckTypeHistoryController;
+use App\Http\Controllers\AdministratorController;
+
 
 require __DIR__ . '/auth.php';
 
@@ -56,6 +58,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
+
+    Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
 
     Route::get('settings', function () {
         return view('settings.settings');

@@ -22,7 +22,7 @@ class ApplicationController extends Controller
         $this->applicationRepository = $applicationRepository;
     }
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
