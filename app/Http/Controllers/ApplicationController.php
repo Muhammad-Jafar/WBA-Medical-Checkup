@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Application;
+use App\Models\CheckupType;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
@@ -37,6 +38,7 @@ class ApplicationController extends Controller
         $patient = Patient::select('id', 'nik', 'name')->get();
         $doctor = Doctor::select('id', 'nip', 'name')->get();
         $applicationTrashedCount = Application::onlyTrashed()->count();
+        $checkupType = CheckupType::select('id','name','abbreviated_word')->get();
 
         if(request()->ajax()) {
             return datatables()->of($application)
@@ -54,6 +56,7 @@ class ApplicationController extends Controller
             'patients' => $patient,
             'doctors' => $doctor,
             'applicationTrashedCount' => $applicationTrashedCount,
+            'checkupType' => $checkupType,
             'repo' => $this->applicationRepository->results(),
         ]);
     }
