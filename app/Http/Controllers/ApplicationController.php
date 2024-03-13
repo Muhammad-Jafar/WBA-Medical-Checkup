@@ -105,6 +105,10 @@ class ApplicationController extends Controller
             'doctor_id' => $validatedData['doctor_id'],
             'purposes' => $validatedData['purposes'],
             'requested_at' => now(),
+            // 'height_body' => $validatedData['height_body'],
+            // 'mass_body' => $validatedData['mass_body'],
+            // 'blod_type' => $validatedData['blod_type'],
+            // 'blod_pressure' => $validatedData['blod_pressure'],
         ]);
 
         return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');
@@ -146,8 +150,7 @@ class ApplicationController extends Controller
         Application::findOrFail($id)
         ->update([
             'status' => 'REJECTED',
-            'rejected_at' => now(),
-            
+            'rejected_at' => now(),     
     ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }

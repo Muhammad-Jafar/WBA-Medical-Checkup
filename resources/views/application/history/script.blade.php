@@ -16,5 +16,6 @@
                 { data: 'action', name: 'action' },
             ]
         });
+        
     });
 </script>
