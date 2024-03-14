@@ -40,7 +40,7 @@
 									<label class="col-form-label" for="purposes">Keperluan</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<input type="text" class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
+									<textarea rows="2" class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
 										value="{{ old('purposes') }}" placeholder="Untuk keperluan apa?">
 		
 									@error('purposes')

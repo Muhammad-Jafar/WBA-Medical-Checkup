@@ -150,7 +150,7 @@ class ApplicationController extends Controller
         Application::findOrFail($id)
         ->update([
             'status' => 'REJECTED',
-            'rejected_at' => now(),     
+            'rejected_at' => now(),
     ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
