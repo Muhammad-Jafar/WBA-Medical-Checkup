@@ -143,38 +143,38 @@
 
         });
 
-        $('#datatable').on('click', '.applicant-process', function () {
-            loadingAlert.show();
+        // $('#datatable').on('click', '.applicant-process', function () {
+        //     loadingAlert.show();
 
-            let id = $(this).data('id');
-            let url = "{{ route('api.application.process', 'id') }}";
-            url = url.replace('id', id);
+        //     let id = $(this).data('id');
+        //     let url = "{{ route('api.application.process', 'id') }}";
+        //     url = url.replace('id', id);
 
-            let formActionURL = "{{ route('application.update', 'id') }}"
-			formActionURL = formActionURL.replace('id', id);
+        //     let formActionURL = "{{ route('application.update', 'id') }}"
+		// 	formActionURL = formActionURL.replace('id', id);
 
-            let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
-				.each(function () {
-					$(this).not('select').val('Sedang mengambil data..');
-					$(this).prop('disabled', true);
-				});
+        //     let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+		// 		.each(function () {
+		// 			$(this).not('select').val('Sedang mengambil data..');
+		// 			$(this).prop('disabled', true);
+		// 		});
 
-            $.ajax({
-                url: url,
-                success: function (response) {
-                    loadingAlert.slideUp();
+        //     $.ajax({
+        //         url: url,
+        //         success: function (response) {
+        //             loadingAlert.slideUp();
 
-                    processApplicantModalEveryInput.prop('disabled', false);
-                    $('#processApplicantModal #process-applicant-form').attr('action', formActionURL)
+        //             processApplicantModalEveryInput.prop('disabled', false);
+        //             $('#processApplicantModal #process-applicant-form').attr('action', formActionURL)
 
-                    $('#processApplicantModal #patient').val(response.data.patients.name);
-                    $('#processApplicantModal #patient_id').val(response.data.patient_id);
-					$('#processApplicantModal #purposes').val(response.data.purposes);
-					$('#processApplicantModal #doctor').val(response.data.doctors.name);
-					$('#processApplicantModal #doctor_id').val(response.data.doctor_id);
-                }
-            });
-        });
+        //             $('#processApplicantModal #patient').val(response.data.patients.name);
+        //             $('#processApplicantModal #patient_id').val(response.data.patient_id);
+		// 			$('#processApplicantModal #purposes').val(response.data.purposes);
+		// 			$('#processApplicantModal #doctor').val(response.data.doctors.name);
+		// 			$('#processApplicantModal #doctor_id').val(response.data.doctor_id);
+        //         }
+        //     });
+        // });
 
     });
 </script>
