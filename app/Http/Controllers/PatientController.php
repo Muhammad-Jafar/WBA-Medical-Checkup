@@ -19,11 +19,11 @@ class PatientController extends Controller
      */
     public function index(): View|JsonResponse
     {
-        $patients = Patient::select(
-            'id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation'
-        )
+        $patients = Patient::select('id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation')
         ->orderBy('name')
         ->get();
+
+        $patientTrashedCount = Patient::onlyTrashed()->count();
 
         if(request()->ajax()) {
             return datatables()->of($patients)
@@ -33,8 +33,6 @@ class PatientController extends Controller
             ->rawColumns(['born_place', 'action'])
             ->toJson();
         }
-
-        $patientTrashedCount = Patient::onlyTrashed()->count();
 
         return view('patient.index', ['patientTrashedCount' => $patientTrashedCount]);
     }
@@ -66,6 +64,7 @@ class PatientController extends Controller
         $data = $request->validated();
         $data['born_date'] = reverseDate($data['born_date']);
         $patient->update($data);
+
         return redirect()->route('patient.index')->with('success', 'Data berhasil diubah!');
     }
 

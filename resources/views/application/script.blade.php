@@ -5,7 +5,7 @@
         $('#datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('applicant.index') }}",
+            ajax: "{{ route('application.index') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'patient', name: 'patients.name' },
@@ -19,7 +19,7 @@
 
         $('#today-tab').click(function () {
             $.ajax({
-                url: "{{ route('applicant.getTab', 'today') }}",
+                url: "{{ route('application.getTab', 'today') }}",
                 data: { tab: "today" },
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
@@ -61,7 +61,7 @@
 
         $('#pending-tab').click(function () {
             $.ajax({
-                url: "{{ route('applicant.getTab', 'pending') }}",
+                url: "{{ route('application.getTab', 'pending') }}",
                 data: { tab: "pending" },
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
@@ -103,7 +103,7 @@
 
         $('#all-tab').click(function () {
             $.ajax({
-                url: "{{ route('applicant.getTab', 'all') }}",
+                url: "{{ route('application.getTab', 'all') }}",
                 data: { tab: "pending" },
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
@@ -147,10 +147,10 @@
             loadingAlert.show();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.applicant.process', 'id') }}";
+            let url = "{{ route('api.application.process', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('applicant.update', 'id') }}"
+            let formActionURL = "{{ route('application.update', 'id') }}"
 			formActionURL = formActionURL.replace('id', id);
 
             let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')

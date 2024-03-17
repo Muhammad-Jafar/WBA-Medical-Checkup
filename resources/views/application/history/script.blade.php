@@ -5,7 +5,7 @@
         $('#datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('applicant.index.history') }}",
+            ajax: "{{ route('application.index.history') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'patient', name: 'patients.name' },

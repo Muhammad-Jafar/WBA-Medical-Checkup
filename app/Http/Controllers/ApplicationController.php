@@ -111,7 +111,7 @@ class ApplicationController extends Controller
             // 'blod_pressure' => $validatedData['blod_pressure'],
         ]);
 
-        return redirect()->route('applicant.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -124,7 +124,7 @@ class ApplicationController extends Controller
     public function update(ApplicationRequest $request, Application $application): RedirectResponse
     {
         $application->update($request->validated());
-        return redirect()->route('applicant.index')->with('success', 'Data berhasil diubah!');
+        return redirect()->route('application.index')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -136,7 +136,7 @@ class ApplicationController extends Controller
     public function destroy(Application $application): RedirectResponse
     {
         $application->delete();
-        return redirect()->route('applicant.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('application.index')->with('success', 'Data berhasil dihapus!');
     }
 
     /**
@@ -152,6 +152,6 @@ class ApplicationController extends Controller
             'status' => 'REJECTED',
             'rejected_at' => now(),
     ]);
-        return redirect()->route('applicant.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
 }

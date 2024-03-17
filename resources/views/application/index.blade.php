@@ -74,7 +74,7 @@
                                 <i class="bi bi-file-earmark-plus"></i> Ajukan permintaan
                             </button>
                             
-                            <a href="{{ route('applicant.index.history') }}" class="btn btn-light-secondary">
+                            <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> Riwayat data permintaan
                             </a>
                         </div>
