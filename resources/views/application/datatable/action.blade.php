@@ -8,7 +8,7 @@
         </div>
 
         <div class="mx-1">
-            <form action="{{ route('application.cancel', $model->id) }}" method="POST">
+            <form action="{{ route('applicant.cancel', $model->id) }}" method="POST">
                 @csrf @method('PUT')
                 <button type="submit" class="btn btn-sm btn-warning cancel-dialog">
                     <i class="bi bi-x-circle"></i> Batalkan
@@ -17,7 +17,7 @@
         </div>
     @elseif ($model->status == 'REJECTED')
         <div class="mx-1">
-            <form action="{{ route('application.destroy', $model->id) }}" method="POST">
+            <form action="{{ route('applicant.destroy', $model->id) }}" method="POST">
                 @csrf @method('DELETE')
                 <button type="submit" class="btn btn-sm btn-danger delete-dialog">
                     <i class="bi bi-trash3"></i> Hapus

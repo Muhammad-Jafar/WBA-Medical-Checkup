@@ -44,6 +44,7 @@ class ApplicationRequest extends FormRequest
             'purposes.max' => 'Kolom keperluan maksimal :max karakter!!',
 
             'doctor_id.required' => 'Kolom Dokter pemeriksa wajib diisi!',
+            
         ];
     }
 

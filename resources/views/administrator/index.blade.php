@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Permintaan</h3>
+                <h3>Administrator</h3>
                 {{-- <p class="text-subtitle text-muted">Daftar dokter.</p> --}}
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('applicant.index') }}">Permintaan</a></li>
-                        <li class="breadcrumb-item active">Riwayat</li>
+                        <li class="breadcrumb-item"><a href="{{ route('settings') }}">Setelan</a></li>
+                        <li class="breadcrumb-item active">Administrator</li>
                     </ol>
                 </nav>
             </div>
@@ -21,14 +21,14 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6 col-lg-6">
-                        <h4>Daftar permintaan yang dihapus</h4>
+                        <h4>Daftar administrator</h4>
                     </div>
                     <div class="col-6 col-lg-6">
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
-                                <a href="{{ route('applicant.index') }}" class="btn btn-primary float-end mx-2">
-                                    <i class="bi bi-caret-left-square"></i> Kembali
-                                </a>
+                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createAdministratorModal">
+                                    <i class="bi bi-person-plus"></i> Tambah admin
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -37,15 +37,14 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-hover w-100">
+                    <table id="datatable" class="table table-hover table-sm w-100">
                         <thead>
                             <tr>
                                 <th scope=" col">#</th>
-                                <th scope="col">Pasien</th>
-                                <th scope="col">Keperluan</th>
-                                <th scope="col">Dokter Pemeriksa</th>
-                                <th scope="col">Oleh</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Dibuat pada</th>
+                                <th scope="col">Tim</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -55,8 +54,13 @@
         </div>
     </div>
 
+    @push('modal')
+    @include('administrator.modal.create')
+    @include('administrator.modal.edit')
+    @endpush
+
     @push('js')
-    @include('application.history.script')
+    @include('administrator.script')
     @endpush
 
 </x-app-layout>

@@ -21,28 +21,28 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 col-lg-6">
-                    <ul class="nav nav-tabs" id="applicationTabs" role="tableList">
+                    {{-- <ul class="nav nav-tabs" id="applicationTabs" role="tableList">
                         <li class="nav-item" role="presentation">
-                            <a href="#todayTab" class="nav-link active " id="today-tab" data-bs-toggle="tab" role="tab" aria-controls="todayTab" aria-selected="true">Hari ini</a>
+                            <a href="#today" class="nav-link active" id="today-tab" data-bs-toggle="tab" role="tab" aria-controls="today" aria-selected="true">Hari ini</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a href="#pendingTab" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab" aria-controls="pendingTab" aria-selected="true">Sisa</a> 
+                            <a href="#pending" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab" aria-controls="pending" aria-selected="false" tabindex="-1">Sisa</a> 
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a href="#allTab" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Semua</a> 
+                            <a href="#all" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab" aria-controls="all" aria-selected="false" tabindex="-1">Semua</a> 
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="todayTab" role="tabpanel" aria-labelledby="today-tab">
+                        <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today">
                             <h4 class="mt-4 my-2">Daftar permintaan hari ini</h4>
                         </div>
-                        <div class="tab-pane fade" id="pendingTab" role="tabpanel" aria-labelledby="pending-tab">
+                        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending">
                             <h4 class="mt-4 my-2">Daftar sisa permintaan</h4>
                         </div>
-                        <div class="tab-pane fade" id="allTab" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all">
                             <h4 class="mt-4 my-2">Daftar semua permintaan</h4>
                         </div>
-                    </div>
+                    </div> --}}
                  
                 </div>
                 <div class="col-6 col-lg-6">
@@ -74,7 +74,7 @@
                                 <i class="bi bi-file-earmark-plus"></i> Ajukan permintaan
                             </button>
                             
-                            <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
+                            <a href="{{ route('applicant.index.history') }}" class="btn btn-light-secondary">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> Riwayat data permintaan
                             </a>
                         </div>
@@ -105,7 +105,7 @@
 
     @push('modal')
     @include('application.model.create')
-    @include('application.model.process')
+    @include('application.model.process') 
     @endpush
 
     @push('js')

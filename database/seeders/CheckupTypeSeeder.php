@@ -18,7 +18,7 @@ class CheckupTypeSeeder extends Seeder
         CheckupType::create([
             'name' => 'SKBS Biasa',
             'abbreviated_word' => 'Regular',
-            'description' => 'Pembuatan SKBS untuk jenis umum'
+            'description' => 'Pembuatan SKBS umum (hanya TB dan BB)'
         ]);
     }
 }

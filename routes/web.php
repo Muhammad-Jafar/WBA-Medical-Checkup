@@ -10,6 +10,8 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorHistoryController;
 use App\Http\Controllers\CheckupTypeController;
 use App\Http\Controllers\CheckTypeHistoryController;
+use App\Http\Controllers\AdministratorController;
+
 
 require __DIR__ . '/auth.php';
 
@@ -17,14 +19,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    Route::resource('application', ApplicationController::class)->except('create', 'show', 'edit');
-    Route::get('application/{tab}', [ApplicationController::class, 'getTab'])->name('application.getTab');
-    Route::put('application/cancel/{id}', [ApplicationController::class, 'cancel'])->name('application.cancel');
-    Route::controller(ApplicationHistoryController::class)->prefix('/application/history')->name('application.')->group(function () {
+    Route::resource('applicant', ApplicationController::class)->except('create', 'show', 'edit');
+    Route::controller(ApplicationHistoryController::class)->prefix('/applicant/history')->name('applicant.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
+    Route::get('applicant/{tab}', [ApplicationController::class, 'getTab'])->name('applicant.getTab');
+    Route::put('applicant/cancel/{id}', [ApplicationController::class, 'cancel'])->name('applicant.cancel');
 
     Route::resource('patient', PatientController::class)->except('create', 'show', 'edit');
     Route::controller(PatientHistoryController::class)->prefix('/patient/history')->name('patient.')->group(function () {
@@ -34,7 +36,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     });
 
     Route::resource('doctor', DoctorController::class)->except('create', 'show', 'edit');
-
     Route::controller(DoctorHistoryController::class)->prefix('/doctor/history')->name('doctor.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
@@ -56,6 +57,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
+
+    Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
 
     Route::get('settings', function () {
         return view('settings.settings');

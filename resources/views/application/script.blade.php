@@ -5,7 +5,7 @@
         $('#datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('application.index') }}",
+            ajax: "{{ route('applicant.index') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'patient', name: 'patients.name' },
@@ -17,132 +17,6 @@
             ]
         });
 
-        $('#today-tab').click(function () {
-            $.ajax({
-                url: "{{ route('application.getTab', 'today') }}",
-                data: { tab: "today" },
-                success: function (data) {
-                    $('#datatable-wrap').removeAttr('style');
-
-                    Toastify({
-                        text: "Berhasil mengambil data",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#4fbe87",
-                    }).showToast();
-
-                    $('#datatable').DataTable({
-                        data: data.data,
-                        destroy: true,
-                        columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                        { data: 'patient', name: 'patients.name' },
-                        { data: 'purposes', name: 'purposes' },
-                        { data: 'doctor', name: 'doctors.name' },
-                        { data: 'admin', name: 'users.name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'action', name: 'action' },
-                    ]
-                    });
-                },
-                error: function () {
-                    $('#datatable-wrap').css('display', 'none');
-
-                    Toastify({
-                        text: "Kesalahan internal!",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#f3616d",
-                    }).showToast()
-                }
-            });
-
-        });
-
-        $('#pending-tab').click(function () {
-            $.ajax({
-                url: "{{ route('application.getTab', 'pending') }}",
-                data: { tab: "pending" },
-                success: function (data) {
-                    $('#datatable-wrap').removeAttr('style');
-
-                    Toastify({
-                        text: "Berhasil mengambil data",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#4fbe87",
-                    }).showToast();
-
-                    $('#datatable').DataTable({
-                        data: data.data,
-                        destroy: true,
-                        columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                        { data: 'patient', name: 'patients.name' },
-                        { data: 'purposes', name: 'purposes' },
-                        { data: 'doctor', name: 'doctors.name' },
-                        { data: 'admin', name: 'users.name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'action', name: 'action' },
-                    ]
-                    });
-                },
-                error: function () {
-                    $('#datatable-wrap').css('display', 'none');
-
-                    Toastify({
-                        text: "Kesalahan internal!",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#f3616d",
-                    }).showToast()
-                }
-            });
-
-        });
-
-        $('#all-tab').click(function () {
-            $.ajax({
-                url: "{{ route('application.getTab', 'all') }}",
-                data: { tab: "pending" },
-                success: function (data) {
-                    $('#datatable-wrap').removeAttr('style');
-
-                    Toastify({
-                        text: "Berhasil mengambil data",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#4fbe87",
-                    }).showToast();
-
-                    $('#datatable').DataTable({
-                        data: data.data,
-                        destroy: true,
-                        columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                        { data: 'patient', name: 'patients.name' },
-                        { data: 'purposes', name: 'purposes' },
-                        { data: 'doctor', name: 'doctors.name' },
-                        { data: 'admin', name: 'users.name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'action', name: 'action' },
-                    ]
-                    });
-                },
-                error: function () {
-                    $('#datatable-wrap').css('display', 'none');
-
-                    Toastify({
-                        text: "Kesalahan internal!",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#f3616d",
-                    }).showToast()
-                }
-            });
-
-        });
-
         $('#datatable').on('click', '.applicant-process', function () {
             loadingAlert.show();
 
@@ -150,7 +24,7 @@
             let url = "{{ route('api.application.process', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('application.update', 'id') }}"
+            let formActionURL = "{{ route('applicant.update', 'id') }}"
 			formActionURL = formActionURL.replace('id', id);
 
             let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
@@ -178,3 +52,5 @@
 
     });
 </script>
+
+
