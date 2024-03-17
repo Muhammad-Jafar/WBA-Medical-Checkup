@@ -147,7 +147,7 @@
             loadingAlert.show();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.application.process', 'id') }}";
+            let url = "{{ route('api.applicant.process', 'id') }}";
             url = url.replace('id', id);
 
             let formActionURL = "{{ route('applicant.update', 'id') }}"
