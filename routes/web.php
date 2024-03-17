@@ -19,24 +19,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-<<<<<<< HEAD
     Route::resource('applicant', ApplicationController::class)->except('create', 'show', 'edit');
     Route::controller(ApplicationHistoryController::class)->prefix('/applicant/history')->name('applicant.')->group(function () {
-=======
-    Route::resource('application', ApplicationController::class)->except('create', 'show', 'edit');
-    Route::controller(ApplicationHistoryController::class)->prefix('/application/history')->name('application.')->group(function () {
->>>>>>> 0e0ba77534c9cc3cef9be5df9ff9c408cc80c902
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
-<<<<<<< HEAD
     Route::get('applicant/{tab}', [ApplicationController::class, 'getTab'])->name('applicant.getTab');
     Route::put('applicant/cancel/{id}', [ApplicationController::class, 'cancel'])->name('applicant.cancel');
-=======
-    Route::get('application/{tab}', [ApplicationController::class, 'getTab'])->name('application.getTab');
-    Route::put('application/cancel/{id}', [ApplicationController::class, 'cancel'])->name('application.cancel');
->>>>>>> 0e0ba77534c9cc3cef9be5df9ff9c408cc80c902
 
     Route::resource('patient', PatientController::class)->except('create', 'show', 'edit');
     Route::controller(PatientHistoryController::class)->prefix('/patient/history')->name('patient.')->group(function () {

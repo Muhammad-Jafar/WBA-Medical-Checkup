@@ -6,11 +6,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-<<<<<<< HEAD
 				<form action="{{ route('applicant.store') }}" method="POST">
-=======
-				<form action="{{ route('application.store') }}" method="POST">
->>>>>>> 0e0ba77534c9cc3cef9be5df9ff9c408cc80c902
 					@csrf
 					<div class="row">
 						<div class="col-md-12 mb-3">
@@ -44,11 +40,7 @@
 									<label class="col-form-label" for="purposes">Keperluan</label>
 								</div>
 								<div class="col-lg-9 col-9">
-<<<<<<< HEAD
 									<input class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
-=======
-									<textarea rows="2" class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
->>>>>>> 0e0ba77534c9cc3cef9be5df9ff9c408cc80c902
 										value="{{ old('purposes') }}" placeholder="Untuk keperluan apa?">
 		
 									@error('purposes')
