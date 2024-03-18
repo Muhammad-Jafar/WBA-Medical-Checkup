@@ -25,8 +25,12 @@ class ApplicationRequest extends FormRequest
     {
         return [
             'patient_id'=> ['required'],
-            'purposes' => ['required','max:191'],
+            'purposes' => ['required', 'max:191'],
             'doctor_id' => ['required'],
+            'height_body' => ['required', 'max:191'],
+            'mass_body' => ['required', 'max:191'],
+            'blod_type' => ['required', 'max:191'],
+            'blod_pressure' => ['required', 'max:191'],
         ];
     }
 
@@ -44,7 +48,14 @@ class ApplicationRequest extends FormRequest
             'purposes.max' => 'Kolom keperluan maksimal :max karakter!!',
 
             'doctor_id.required' => 'Kolom Dokter pemeriksa wajib diisi!',
-            
+
+            'height_body.max' => 'Kolom keperluan maksimal :max karakter!!',
+
+            'mass_body.max' => 'Kolom keperluan maksimal :max karakter!!',
+
+            'blod_type.max' => 'Kolom keperluan maksimal :max karakter!!',
+
+            'blod_pressure.max' => 'Kolom keperluan maksimal :max karakter!!',
         ];
     }
 

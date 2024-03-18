@@ -66,7 +66,7 @@ class ApplicationController extends Controller
         $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
         ->select('id','user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
         ->latest();
-        
+
         if($tab == 'today') {
             $application->whereDate('created_at', now()->toDateString())->get();
         } elseif ($tab === 'pending') {
@@ -88,7 +88,7 @@ class ApplicationController extends Controller
         }
 
         return response()->json($application);
-    }   
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -105,10 +105,10 @@ class ApplicationController extends Controller
             'doctor_id' => $validatedData['doctor_id'],
             'purposes' => $validatedData['purposes'],
             'requested_at' => now(),
-            // 'height_body' => $validatedData['height_body'],
-            // 'mass_body' => $validatedData['mass_body'],
-            // 'blod_type' => $validatedData['blod_type'],
-            // 'blod_pressure' => $validatedData['blod_pressure'],
+            'height_body' => $validatedData['height_body'],
+            'mass_body' => $validatedData['mass_body'],
+            'blod_type' => $validatedData['blod_type'],
+            'blod_pressure' => $validatedData['blod_pressure'],
         ]);
 
         return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');

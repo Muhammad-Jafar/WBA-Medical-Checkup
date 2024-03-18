@@ -22,7 +22,7 @@
 											</option>
 										@endforeach
 									</select>
-		
+
 									@error('patient_id')
 									<div class="d-block invalid-feedback">
 										{{ $message }}
@@ -42,7 +42,7 @@
 								<div class="col-lg-9 col-9">
 									<input class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
 										value="{{ old('purposes') }}" placeholder="Untuk keperluan apa?">
-		
+
 									@error('purposes')
 									<div class="d-block invalid-feedback">
 										{{ $message }}
@@ -67,7 +67,7 @@
 											</option>
 										@endforeach
 									</select>
-		
+
 									@error('doctor_id')
 									<div class="d-block invalid-feedback">
 										{{ $message }}
@@ -81,7 +81,7 @@
 					{{-- <div class="divider divider-left">
 						<div class="divider-text">Jenis pemeriksaan</div>
 					</div> --}}
-					
+
 					<div class="row">
 						<div class="col-md-12 mb-3">
 							<div class="form-group row align-item-center">
@@ -96,7 +96,7 @@
 											</option>
 										@endforeach
 									</select>
-		
+
 									@error('checkup-type')
 									<div class="d-block invalid-feedback">
 										{{ $message }}
