@@ -113,26 +113,32 @@
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label class="col-form-label" for="height_body">Tinggi Badan (cm)</label>
-							<input class="form-control @error('height_body') is-invalid @enderror" name="height_body"
-								value="{{ old('height_body') }}" placeholder="Tinggi badan pasien" type="number">
+							<label class="col-form-label" for="height_body">Tinggi Badan</label>
+							<div class="input-group">
+								<input class="form-control @error('height_body') is-invalid @enderror" name="height_body"
+								value="{{ old('height_body') }}" placeholder="Tinggi badan pasien" type="text" aria-describedby="basic-addon2">
+								<span class="input-group-text" id="basic-addon2">cm</span>
 
-							@error('height_body')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
+								@error('height_body')
+								<div class="d-block invalid-feedback">
+									{{ $message }}
+								</div>
+								@enderror
 							</div>
-							@enderror
 						</div>
 						<div class="col-md-6 mb-3">
-							<label class="col-form-label" for="mass_body">Berat Badan (Kg)</label>
-							<input class="form-control @error('mass_body') is-invalid @enderror" name="mass_body"
-								value="{{ old('mass_body') }}" placeholder="Berat badan pasien" type="number">
+							<label class="col-form-label" for="mass_body">Berat Badan</label>
+							<div class="input-group">
+								<input class="form-control @error('mass_body') is-invalid @enderror" name="mass_body"
+								value="{{ old('mass_body') }}" placeholder="Berat badan pasien" type="text" aria-describedby="basic-addon2">
+								<span class="input-group-text" id="basic-addon2">Kg</span>
 
-							@error('mass_body')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
+								@error('mass_body')
+								<div class="d-block invalid-feedback">
+									{{ $message }}
+								</div>
+								@enderror
 							</div>
-							@enderror
 						</div>
 					</div>
 
@@ -160,14 +166,17 @@
 						</div>
 						<div class="col-md-6 mb-3">
 							<label class="col-form-label" for="blod_pressure">Tekanan darah</label>
-							<input class="form-control @error('blod_pressure') is-invalid @enderror" name="blod_pressure"
-								value="{{ old('blod_pressure') }}" placeholder="tekanan darah pasien" type="text">
+							<div class="input-group">
+								<input class="form-control @error('blod_pressure') is-invalid @enderror" name="blod_pressure"
+								value="{{ old('blod_pressure') }}" placeholder="tekanan darah pasien" type="text" aria-describedby="basic-addon2">
+								<span class="input-group-text" id="basic-addon2">MmHg</span>
 
-							@error('blod_pressure')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
+								@error('blod_pressure')
+								<div class="d-block invalid-feedback">
+									{{ $message }}
+								</div>
+								@enderror
 							</div>
-							@enderror
 						</div>
 					</div>
 
@@ -178,62 +187,37 @@
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label class="col-form-label" for="colesterol">Kolesterol</label>
-							<input class="form-control @error('colesterol') is-invalid @enderror" name="colesterol"
-							value="{{ old('colesterol') }}" placeholder="tekanan darah pasien" type="text">
+							<div class="input-group">
+								<input class="form-control @error('colesterol') is-invalid @enderror" name="colesterol"
+								value="{{ old('colesterol') }}" placeholder="tekanan darah pasien" type="text" aria-describedby="basic-addon2">
+								<span class="input-group-text" id="basic-addon2">mg/dL</span>
 
-							@error('colesterol')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
+									@error('colesterol')
+									<div class="d-block invalid-feedback">
+										{{ $message }}
+									</div>
+									@enderror
 							</div>
-							@enderror
 						</div>
 						<div class="col-md-6 mb-3">
-							<label class="col-form-label" for="blod_pressure">Tekanan darah</label>
-							<input class="form-control @error('blod_pressure') is-invalid @enderror" name="blod_pressure"
-								value="{{ old('blod_pressure') }}" placeholder="tekanan darah pasien" type="text">
+							<label class="col-form-label" for="blod_sugar">Gula darah</label>
+							<div class="input-group">
+								<input class="form-control @error('blod_sugar') is-invalid @enderror" name="blod_sugar"
+								value="{{ old('blod_sugar') }}" placeholder="tekanan darah pasien" type="text" aria-describedby="basic-addon2">
+								<span class="input-group-text" id="basic-addon2">mg/dL</span>
 
-							@error('blod_pressure')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
+								@error('blod_sugar')
+								<div class="d-block invalid-feedback">
+									{{ $message }}
+								</div>
+								@enderror
 							</div>
-							@enderror
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label class="col-form-label" for="blod_type">Golongan darah</label>
-							<select class="form-select @error('blod_type') is-invalid @enderror" name="blod_type"
-								value="{{ old('blod_type') }}" placeholder="goldar pasien">
-								<option selected>-- Pilih --</option>
-								<option value="A" {{ old('blod_type')==='A' ? 'selected' : '' }}>Darah A</option>
-								<option value="B" {{ old('blod_type')==='B' ? 'selected' : '' }}>Darah B</option>
-								<option value="AB" {{ old('blod_type')==='AB' ? 'selected' : '' }}>Darah AB</option>
-								<option value="O" {{ old('blod_type')==='O' ? 'selected' : '' }}>Darah O</option>
-							</select>
-
-							@error('blod_type')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
-							</div>
-							@enderror
-						</div>
-						<div class="col-md-6 mb-3">
-							<label class="col-form-label" for="blod_pressure">Tekanan darah</label>
-							<input class="form-control @error('blod_pressure') is-invalid @enderror" name="blod_pressure"
-								value="{{ old('blod_pressure') }}" placeholder="tekanan darah pasien" type="text">
-
-							@error('blod_pressure')
-							<div class="d-block invalid-feedback">
-								{{ $message }}
-							</div>
-							@enderror
 						</div>
 					</div>
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-						<button type="submit" class="btn btn-primary">Ajukan</button>
+						<button type="submit" class="btn btn-primary">Simpan & Ajukan</button>
 					</div>
 				</form>
 			</div>

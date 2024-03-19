@@ -27,10 +27,12 @@ class ApplicationRequest extends FormRequest
             'patient_id'=> ['required'],
             'purposes' => ['required', 'max:191'],
             'doctor_id' => ['required'],
-            'height_body' => ['required', 'max:191'],
-            'mass_body' => ['required', 'max:191'],
-            'blod_type' => ['required', 'max:191'],
-            'blod_pressure' => ['required', 'max:191'],
+            'height_body' => ['max:191'],
+            'mass_body' => ['max:191'],
+            'blod_type' => ['max:191'],
+            'blod_pressure' => ['max:191'],
+            'colesterol' => ['max:191'],
+            'blod_sugar' => ['max:191'],
         ];
     }
 

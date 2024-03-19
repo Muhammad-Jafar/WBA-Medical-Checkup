@@ -99,16 +99,32 @@ class ApplicationController extends Controller
     public function store(ApplicationRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
+
+        // Application::create([
+        //     'user_id' => Auth::id(),
+        //     'patient_id' => $validatedData['patient_id'],
+        //     'doctor_id' => $validatedData['doctor_id'],
+        //     'purposes' => $validatedData['purposes'],
+        //     'requested_at' => now(),
+        //     'height_body' => $validatedData['height_body'],
+        //     'mass_body' => $validatedData['mass_body'],
+        //     'blod_type' => $validatedData['blod_type'],
+        //     'blod_pressure' => $validatedData['blod_pressure'],
+        // ]);
+
         Application::create([
             'user_id' => Auth::id(),
-            'patient_id' => $validatedData['patient_id'],
-            'doctor_id' => $validatedData['doctor_id'],
-            'purposes' => $validatedData['purposes'],
+            'patient_id' => $request->patient_id,
+            'doctor_id' => $request->doctor_id,
+            'purposes' => $request->purposes,
             'requested_at' => now(),
-            'height_body' => $validatedData['height_body'],
-            'mass_body' => $validatedData['mass_body'],
-            'blod_type' => $validatedData['blod_type'],
-            'blod_pressure' => $validatedData['blod_pressure'],
+            'height_body' => $request->height_body,
+            'mass_body' => $request->mass_body,
+            'blod_type' => $request->blod_type,
+            'blod_pressure' => $request->blod_pressure,
+            'colesterol' => $request->colesterol,
+            'blod_sugar' => $request->blod_sugar,
+            'approved_at' => now(),
         ]);
 
         return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('mass_body', 8)->nullable();
             $table->string('blod_type', 2)->nullable();
             $table->string('blod_pressure', 10)->nullable();
+            $table->string('colesterol', 5)->nullable();
+            $table->string('blod_sugar', 5)->nullable();
             $table->date('requested_at');
             $table->enum('status', ['PENDING','APPROVED','REJECTED'])->default('PENDING');
             $table->date('approved_at')->nullable();
