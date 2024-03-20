@@ -13,6 +13,8 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
 use App\Repositories\ApplicationRepository;
 
+use Illuminate\Support\Facades\Log;
+
 class ApplicationController extends Controller
 {
     private $applicationRepository;
@@ -93,25 +95,11 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\ApplicationRequest  $request
+     * @param  \App\Http\Requests\ApplicationRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ApplicationRequest $request): RedirectResponse
     {
-        $validatedData = $request->validated();
-
-        // Application::create([
-        //     'user_id' => Auth::id(),
-        //     'patient_id' => $validatedData['patient_id'],
-        //     'doctor_id' => $validatedData['doctor_id'],
-        //     'purposes' => $validatedData['purposes'],
-        //     'requested_at' => now(),
-        //     'height_body' => $validatedData['height_body'],
-        //     'mass_body' => $validatedData['mass_body'],
-        //     'blod_type' => $validatedData['blod_type'],
-        //     'blod_pressure' => $validatedData['blod_pressure'],
-        // ]);
-
         Application::create([
             'user_id' => Auth::id(),
             'patient_id' => $request->patient_id,

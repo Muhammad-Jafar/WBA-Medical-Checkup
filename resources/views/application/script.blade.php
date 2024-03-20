@@ -1,5 +1,5 @@
 <script>
-    $(function() {
+    $(function () {
         let loadingAlert = $('.modal-body #loading-alert');
 
         $('#datatable').DataTable({
@@ -7,20 +7,20 @@
             serverSide: true,
             ajax: "{{ route('application.index') }}",
             columns: [
-                { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                { data: 'patient', name: 'patients.name' },
-                { data: 'purposes', name: 'purposes' },
-                { data: 'doctor', name: 'doctors.name' },
-                { data: 'admin', name: 'users.name' },
-                { data: 'status', name: 'status' },
-                { data: 'action', name: 'action' },
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'patient', name: 'patients.name'},
+                {data: 'purposes', name: 'purposes'},
+                {data: 'doctor', name: 'doctors.name'},
+                {data: 'admin', name: 'users.name'},
+                {data: 'status', name: 'status'},
+                {data: 'action', name: 'action'},
             ]
         });
 
         $('#today-tab').click(function () {
             $.ajax({
                 url: "{{ route('application.getTab', 'today') }}",
-                data: { tab: "today" },
+                data: {tab: "today"},
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
 
@@ -35,14 +35,14 @@
                         data: data.data,
                         destroy: true,
                         columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                        { data: 'patient', name: 'patients.name' },
-                        { data: 'purposes', name: 'purposes' },
-                        { data: 'doctor', name: 'doctors.name' },
-                        { data: 'admin', name: 'users.name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'action', name: 'action' },
-                    ]
+                            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                            {data: 'patient', name: 'patients.name'},
+                            {data: 'purposes', name: 'purposes'},
+                            {data: 'doctor', name: 'doctors.name'},
+                            {data: 'admin', name: 'users.name'},
+                            {data: 'status', name: 'status'},
+                            {data: 'action', name: 'action'},
+                        ]
                     });
                 },
                 error: function () {
@@ -62,7 +62,7 @@
         $('#pending-tab').click(function () {
             $.ajax({
                 url: "{{ route('application.getTab', 'pending') }}",
-                data: { tab: "pending" },
+                data: {tab: "pending"},
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
 
@@ -77,14 +77,14 @@
                         data: data.data,
                         destroy: true,
                         columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                        { data: 'patient', name: 'patients.name' },
-                        { data: 'purposes', name: 'purposes' },
-                        { data: 'doctor', name: 'doctors.name' },
-                        { data: 'admin', name: 'users.name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'action', name: 'action' },
-                    ]
+                            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                            {data: 'patient', name: 'patients.name'},
+                            {data: 'purposes', name: 'purposes'},
+                            {data: 'doctor', name: 'doctors.name'},
+                            {data: 'admin', name: 'users.name'},
+                            {data: 'status', name: 'status'},
+                            {data: 'action', name: 'action'},
+                        ]
                     });
                 },
                 error: function () {
@@ -104,7 +104,7 @@
         $('#all-tab').click(function () {
             $.ajax({
                 url: "{{ route('application.getTab', 'all') }}",
-                data: { tab: "pending" },
+                data: {tab: "pending"},
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
 
@@ -119,14 +119,14 @@
                         data: data.data,
                         destroy: true,
                         columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                        { data: 'patient', name: 'patients.name' },
-                        { data: 'purposes', name: 'purposes' },
-                        { data: 'doctor', name: 'doctors.name' },
-                        { data: 'admin', name: 'users.name' },
-                        { data: 'status', name: 'status' },
-                        { data: 'action', name: 'action' },
-                    ]
+                            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                            {data: 'patient', name: 'patients.name'},
+                            {data: 'purposes', name: 'purposes'},
+                            {data: 'doctor', name: 'doctors.name'},
+                            {data: 'admin', name: 'users.name'},
+                            {data: 'status', name: 'status'},
+                            {data: 'action', name: 'action'},
+                        ]
                     });
                 },
                 error: function () {
@@ -151,13 +151,13 @@
             url = url.replace('id', id);
 
             let formActionURL = "{{ route('application.update', 'id') }}"
-			formActionURL = formActionURL.replace('id', id);
+            formActionURL = formActionURL.replace('id', id);
 
             let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
-				.each(function () {
-					$(this).not('select').val('Sedang mengambil data..');
-					$(this).prop('disabled', true);
-				});
+                .each(function () {
+                    $(this).not('select').val('Sedang mengambil data..');
+                    $(this).prop('disabled', true);
+                });
 
             $.ajax({
                 url: url,
@@ -169,9 +169,9 @@
 
                     $('#processApplicantModal #patient').val(response.data.patients.name);
                     $('#processApplicantModal #patient_id').val(response.data.patient_id);
-					$('#processApplicantModal #purposes').val(response.data.purposes);
-					$('#processApplicantModal #doctor').val(response.data.doctors.name);
-					$('#processApplicantModal #doctor_id').val(response.data.doctor_id);
+                    $('#processApplicantModal #purposes').val(response.data.purposes);
+                    $('#processApplicantModal #doctor').val(response.data.doctors.name);
+                    $('#processApplicantModal #doctor_id').val(response.data.doctor_id);
                 }
             });
         });

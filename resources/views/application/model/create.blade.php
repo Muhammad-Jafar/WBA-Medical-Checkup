@@ -151,11 +151,11 @@
 							<label class="col-form-label" for="blod_type">Golongan darah</label>
 							<select class="form-select @error('blod_type') is-invalid @enderror" name="blod_type"
 								value="{{ old('blod_type') }}" placeholder="goldar pasien">
-								<option selected>-- Pilih --</option>
-								<option value="A" {{ old('gender')==='A' ? 'selected' : '' }}>Darah A</option>
-								<option value="B" {{ old('gender')==='B' ? 'selected' : '' }}>Darah B</option>
-								<option value="AB" {{ old('gender')==='AB' ? 'selected' : '' }}>Darah AB</option>
-								<option value="O" {{ old('gender')==='O' ? 'selected' : '' }}>Darah O</option>
+								<option disabled selected>-- Pilih --</option>
+								<option value="A" {{ old('blod_type')==='A' ? 'selected' : '' }}>Darah A</option>
+								<option value="B" {{ old('blod_type')==='B' ? 'selected' : '' }}>Darah B</option>
+								<option value="AB" {{ old('blod_type')==='AB' ? 'selected' : '' }}>Darah AB</option>
+								<option value="O" {{ old('blod_type')==='O' ? 'selected' : '' }}>Darah O</option>
 							</select>
 
 							@error('blod_type')
@@ -203,7 +203,7 @@
 							<label class="col-form-label" for="blod_sugar">Gula darah</label>
 							<div class="input-group">
 								<input class="form-control @error('blod_sugar') is-invalid @enderror" name="blod_sugar"
-								value="{{ old('blod_sugar') }}" placeholder="tekanan darah pasien" type="text" aria-describedby="basic-addon2">
+								value="{{ old('blod_sugar') }}" placeholder="gula darah pasien" type="text" aria-describedby="basic-addon2">
 								<span class="input-group-text" id="basic-addon2">mg/dL</span>
 
 								@error('blod_sugar')
