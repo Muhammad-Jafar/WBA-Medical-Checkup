@@ -65,3 +65,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     })->name('settings');
 
 });
+
+require __DIR__ . '/export.php';
+require __DIR__ . '/print.php';

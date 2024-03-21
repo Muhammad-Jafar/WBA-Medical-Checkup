@@ -19,6 +19,8 @@
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 {{-- <script src="{{ asset('/vendors/simple-datatables/simple-datatables.js') }}"></script> --}}
 
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
 <script>
     $(function() {
 		$(".select2").select2();

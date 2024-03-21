@@ -41,7 +41,7 @@
 								</div>
 								<div class="col-lg-9 col-9">
 									<textarea class="form-control @error('purposes') is-invalid @enderror" name="purposes" id="purposes"
-										rows="2" placeholder="Untuk keperluan apa?">{{ old('purposes') }}</textarea>
+										rows="2" placeholder="Untuk keperluan apa?" style="resize: none;">{{ old('purposes') }}</textarea>
 
 									@error('purposes')
 									<div class="d-block invalid-feedback">

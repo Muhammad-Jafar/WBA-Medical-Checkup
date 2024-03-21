@@ -2,12 +2,12 @@
 <head>
 <meta charset="UTF-8">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<?=assets_url('css/style.css', false);?>">
+
 <title> <?= $title; ?> </title> 
 <style>
   @media print{.no-print,.no-print *{display:none!important}}
   @font-face {
-    font-family: 'Tim New Roman';
+    font-family: 'Tim News Roman';
     font-style: normal;
     font-weight: 400;
     src: url('https://s3-us-west-2.amazonaws.com/lob-assets/timesnewroman.ttf') format('truetype');
@@ -93,7 +93,7 @@
         <tbody>
           <tr>
             <td width="10%" class="center">
-              <img src="<?=assets_url('logo.png', false);?>" style="width:60px"/>
+              <img src="#" style="width:60px"/>
             </td>
             <td class="center">
               <h3 style="text-align:center; font-family: 'Times New Roman', Times, serif;">
@@ -114,7 +114,6 @@
     <hr height="2" width="40%" color="#000000" border-style="inset" border-width="3px"/>
 
     <div class="page-content">
-      <!-- <p><a href="<?php echo base_url('laporan/exportk_excel') ?>"> <b>Export ke Excel</b></a></p> -->
       <h5>Data Peminjaman Buku Teks Pelajaran</h5>
         <table border="1" width="100%">
           <thead>
@@ -132,20 +131,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php $i=1; foreach($teks_pelajaran as $tp) { ?>
-              <tr>
-                <td><?php echo $tp->kategori_buku; ?></td>
-                <td><?php echo $tp->jenis_buku; ?></td>
-                <td><?php echo $tp->judul_buku; ?></td>
-                <td><?php echo $tp->nama_anggota; ?></td>
-                <td><?php echo $tp->nomor_induk; ?></td>
-                <td><?php echo $tp->tgl_pinjam; ?></td>
-                <td><?php echo $tp->tgl_kembali; ?></td>
-                <td><?php echo $tp->status; ?></td>
-                <td><?php echo $tp->telat; ?> hari</td>
-                <td>Rp. <?php echo $tp->denda; ?></td>
-              </tr>
-            <?php $i++; } ?>
+           
           </tbody>
         </table>
         <br>
@@ -166,20 +152,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php $i=1; foreach($non_teks_pelajaran as $ntp) { ?>
-              <tr>
-                <td><?php echo $ntp->kategori_buku; ?></td>
-                <td><?php echo $ntp->jenis_buku; ?></td>
-                <td><?php echo $ntp->judul_buku; ?></td>
-                <td><?php echo $ntp->nama_anggota; ?></td>
-                <td><?php echo $ntp->nomor_induk; ?></td>
-                <td><?php echo $ntp->tgl_pinjam; ?></td>
-                <td><?php echo $ntp->tgl_kembali; ?></td>
-                <td><?php echo $ntp->status; ?></td>
-                <td><?php echo $tp->telat; ?> hari</td>
-                <td>Rp. <?php echo $tp->denda; ?></td>
-              </tr>
-            <?php $i++; } ?>
+          
           </tbody>
         </table>
         <br>

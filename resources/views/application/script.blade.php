@@ -172,6 +172,13 @@
                     $('#processApplicantModal #purposes').val(response.data.purposes);
                     $('#processApplicantModal #doctor').val(response.data.doctors.name);
                     $('#processApplicantModal #doctor_id').val(response.data.doctor_id);
+                    $('#processApplicantModal #height_body').val(response.data.height_body);
+                    $('#processApplicantModal #mass_body').val(response.data.mass_body);
+                    $('#processApplicantModal #blod_type').val(response.data.blod_type);
+                    $('#processApplicantModal #blod_pressure').val(response.data.blod_pressure);
+                    $('#processApplicantModal #colesterol').val(response.data.colesterol);
+                    $('#processApplicantModal #blod_sugar').val(response.data.blod_sugar);
+                    
                 }
             });
         });
