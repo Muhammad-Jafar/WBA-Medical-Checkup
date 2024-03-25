@@ -150,7 +150,7 @@
             let url = "{{ route('api.application.process', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('application.update', 'id') }}"
+            let formActionURL = "{{ route('application.generate') }}"
             formActionURL = formActionURL.replace('id', id);
 
             let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
@@ -181,6 +181,10 @@
                     
                 }
             });
+        });
+
+        $('.print-window').click(function() {
+            window.print();
         });
 
     });
