@@ -15,10 +15,26 @@ class CheckupTypeSeeder extends Seeder
      */
     public function run()
     {
-        CheckupType::create([
-            'name' => 'SKBS Biasa',
-            'abbreviated_word' => 'Regular',
-            'description' => 'Pembuatan SKBS umum (hanya TB dan BB)'
-        ]);
+
+        $data = [
+            0 => [
+                'name' => 'SKBS Umum',
+                'abbreviated_word' => 'Regular',
+                'description' => 'Pembuatan SKBS biasa oleh dan/atau untuk pasien'
+            ],
+            2 => [
+                'name' => 'SKBS Internal',
+                'abbreviated_word' => 'Internal',
+                'description' => 'Pembuatan SKBS umum oleh dan/atau untuk orang dalam'
+            ],
+        ];
+
+        foreach ($data as $write) {
+            CheckupType::create([
+                'name' => $write['name'],
+                'abbreviated_word' => $write['abbreviated_word'],
+                'description' => $write['description']
+            ]);
+        }
     }
 }
