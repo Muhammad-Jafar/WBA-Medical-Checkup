@@ -22,7 +22,7 @@ class CheckupTypeSeeder extends Seeder
                 'abbreviated_word' => 'Regular',
                 'description' => 'Pembuatan SKBS biasa oleh dan/atau untuk pasien'
             ],
-            2 => [
+            1 => [
                 'name' => 'SKBS Internal',
                 'abbreviated_word' => 'Internal',
                 'description' => 'Pembuatan SKBS umum oleh dan/atau untuk orang dalam'
