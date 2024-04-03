@@ -19,7 +19,7 @@ class CheckupTypeSeeder extends Seeder
         $data = [
             0 => [
                 'name' => 'SKBS Umum',
-                'abbreviated_word' => 'Regular',
+                'abbreviated_word' => 'Eksternal',
                 'description' => 'Pembuatan SKBS biasa oleh dan/atau untuk pasien'
             ],
             1 => [
