@@ -65,7 +65,7 @@
                                             ke Excel (.xls)
                                         </div>
                                         <div class="dropdown-item">
-                                            <a href="{{ route('application.generate') }}">
+                                            <a href="{{ route('application.export') }}">
                                                 <i class="bi bi-file-earmark-pdf"></i>
                                                 ke PDF (.pdf)
                                             </a>

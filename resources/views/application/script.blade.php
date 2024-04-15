@@ -150,7 +150,7 @@
             let url = "{{ route('api.application.process', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('application.generate') }}"
+            let formActionURL = "{{ route('application.print', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
             let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')

@@ -1,10 +1,15 @@
 <div class="btn-group" role="group">
     @if ($model->status == 'PENDING')
         <div class="mx-1">
-            <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success applicant-process"
+            <form action="{{ route('application.print', $model->id) }}"> 
+                <button type="submit" class="btn btn-sm btn-success">
+                    <i class="bi bi-arrow-right"></i> Proses
+                </button>
+            </form>
+            {{-- <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success applicant-process"
                     data-bs-toggle="modal" data-bs-target="#processApplicantModal">
                     <i class="bi bi-arrow-right"></i> Proses
-            </button>
+            </button> --}}
         </div>
 
         <div class="mx-1">
