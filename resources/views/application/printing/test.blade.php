@@ -8,20 +8,20 @@
         font-weight: 400;
         src: url('https://s3-us-west-2.amazonaws.com/lob-assets/timesnewroman.ttf') format('truetype');
     }
-    
+
     *, *:before, *:after {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    
+
     ::selection { background-color: #E13300; color: white; }
     ::-moz-selection { background-color: #E13300; color: white; }
-    
+
     body {
         /* width: 11.7in; */
         /* height: 8.27in; */
-        margin: auto;  
+        margin: auto;
         padding: 0;
         font-family: 'Arial';
         background-color: #fff;
@@ -29,32 +29,32 @@
         font: 13px/20px normal Helvetica, Arial, sans-serif;
         color: #4F5155;
     }
-    
+
     .page-portrait {
         page-break-after: always;
         visibility: visible;
         padding: .5rem;
     }
-    
-    
+
+
     .page-content {
         margin-left: 5rem;
         margin-right: 5rem;
-        
+
     }
-    
+
     .wrapper {
         position: absolute;
         top: 0in;
     }
-    
+
     .signature {
         font-family: 'Times New Roman';
         font-weight: bold;
         font-size: 1rem;
         text-align: left;
     }
-    
+
     main {
     width: 70%;
     padding: 20px;
@@ -72,12 +72,12 @@
     border-top: solid thin #000;
     padding: 6px 12px;
     }
-    
+
         a {
     color: #003399;
     background-color: transparent;
     font-weight: normal;
-    }    
+    }
 </style>  --}}
 <head>
     <meta charset="UTF-8">
@@ -106,25 +106,25 @@
                 </td>
             </tr>
         </tbody>
-    </table>        
-        
-            
+    </table>
+
+
     <hr height="2" color="#000000" border-style="outset" border-width="3px"
         style="line-height:normal; margin-top:-12.0pt;"/>
-    <h4 style="text-align:center; 
-        font-family: 'Arial', sans-serif; 
+    <h4 style="text-align:center;
+        font-family: 'Arial', sans-serif;
         margin-top:12.0pt;
         text-align:center;
         line-height:normal"> <u>SURAT KETERANGAN BERBADAN SEHAT</u></h4>
-    <h4 style="text-align:center; 
-        font-family: 'Arial', sans-serif; 
+    <h4 style="text-align:center;
+        font-family: 'Arial', sans-serif;
         margin-top:-14pt;
         text-align:center;
         line-height:normal">No. 400.7 / <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> / II / {{ date("Y") }}</h4>
 
     <o:p>
     <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify">
-        &nbsp; &nbsp; &nbsp; 
+        &nbsp; &nbsp; &nbsp;
         Yang bertanda tangan di bawah ini <b> dr. {{ $applicant->doctors->name }}.</b>
         Dokter Pemeriksa Badan Layanan Umum Daerah (BLUD) Rumah Sakit Umum Daerah Kabupaten Buton, yang dalam
         Hal ini menjalankan tugasnya dengan mengingat sumpah yang telah diucapkan waktu menerima jabatan, menerangkan bahwa telah
@@ -156,7 +156,7 @@
                         LAKI-LAKI
                     @else
                         PEREMPUAN
-                    @endif 
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -177,14 +177,14 @@
                 <td>:</td>
                 <td> SENDIRI </td>
             </tr>
-            
+
         </tbody>
     </table>
 
     <o:p>
-    <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify">
-        &nbsp; &nbsp; &nbsp; 
-        Dari hasil pemeriksaan fisik yang dilakukan, maka yang bersangkutan dinyatakan 
+    <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify; ">
+        &nbsp; &nbsp; &nbsp;
+        Dari hasil pemeriksaan fisik yang dilakukan, maka yang bersangkutan dinyatakan
         <i> <b> Sehat / Tidak sehat </b></i> Kesehatan Fisiknya, dan tidak menjamin yang bersangkutan
         <i><b>BEBAS infeksi COVID-19</b></i>. Surat keterangan ini dipergunakan untuk keperluan :
     </p>
@@ -196,7 +196,7 @@
 
     <o:p>
     <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify">
-        &nbsp; &nbsp; &nbsp; 
+        &nbsp; &nbsp; &nbsp;
         Demikian surat keterangan ini diberikan untuk dipergunakan sebagaimana mestinya.
     </p>
     <o:p>
@@ -206,19 +206,21 @@
         <tbody style="font-family: 'Arial', sans-serif;">
             <tr>
                 <td width="70%"></td>
-                <td width="30%">Pasarwajo, {{ date('d M Y') }}</td>
+                <td width="30%" align="center">Pasarwajo, {{ date('d M Y') }}</td>
             </tr>
             <tr>
                 <td width="70%"></td>
                 <td width="30%" align="center">Dokter Pemeriksa</td>
             </tr>
-            
-            <tr style="margin-top: 20px;">
-                <td width="70%"></td>
-                <td width="30%" align="center"> <b><u> dr. {{ strtoupper($applicant->doctors->name) }} </u></b> </td>
+            <tr>
+                <td height="70px"></td>
             </tr>
             <tr>
-                <td width="70%"></td>
+                <td width="60%"></td>
+                <td width="40%" align="center"> <b><u> dr. {{ strtoupper($applicant->doctors->name) }} </u></b> </td>
+            </tr>
+            <tr>
+                <td width="60%"></td>
                 <td width="30%" align="center"> NIP. {{ $applicant->doctors->nip }} </td>
             </tr>
         </tbody>
