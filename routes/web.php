@@ -12,6 +12,8 @@ use App\Http\Controllers\CheckupTypeController;
 use App\Http\Controllers\CheckTypeHistoryController;
 use App\Http\Controllers\AdministratorController;
 
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+
 
 require __DIR__ . '/auth.php';
 
@@ -20,51 +22,54 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::resource('application', ApplicationController::class)->except('create', 'show', 'edit');
+    Route::resource('patient', PatientController::class)->except('create', 'show', 'edit');
+    Route::resource('doctor', DoctorController::class)->except('create', 'show', 'edit');
+    Route::resource('checkup-type', CheckupTypeController::class)->except('create', 'show', 'edit');
+    Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
+
     Route::controller(ApplicationHistoryController::class)->prefix('/application/history')->name('application.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
-    Route::get('application/{tab}', [ApplicationController::class, 'getTab'])->name('application.getTab');
-    Route::put('application/cancel/{id}', [ApplicationController::class, 'cancel'])->name('application.cancel');
 
-    Route::resource('patient', PatientController::class)->except('create', 'show', 'edit');
+    Route::group(['namespace' => 'App\Http\Controllers'], function () {
+        Route::group(['prefix' => 'application', 'as' => 'application.'], function () {
+
+            Route::get('/{tab}', [
+                'as' => 'getTab',
+                'uses' => 'ApplicationController@getTab',
+            ]);
+            Route::put('/cancel/{id}', [
+                'as' => 'cancel',
+                'uses' => 'ApplicationController@cancel',
+            ]);
+        });
+    });
+
     Route::controller(PatientHistoryController::class)->prefix('/patient/history')->name('patient.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
 
-    Route::resource('doctor', DoctorController::class)->except('create', 'show', 'edit');
     Route::controller(DoctorHistoryController::class)->prefix('/doctor/history')->name('doctor.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
 
-    // Route::group(['prefix' => 'components', 'as' => 'components.'], function() {
-    //     Route::get('/alert', function () {
-    //         return view('admin.component.alert');
-    //     })->name('alert');
-    //     Route::get('/accordion', function () {
-    //         return view('admin.component.accordion');
-    //     })->name('accordion');
-    // });
-
-    Route::resource('checkup-type', CheckupTypeController::class)->except('create', 'show', 'edit');
     Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')->name('checkup-type.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
 
-    Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
 
     Route::get('settings', function () {
         return view('settings.settings');
     })->name('settings');
 
+    require __DIR__ . '/export.php';
+    require __DIR__ . '/print.php';
 });
-
-require __DIR__ . '/export.php';
-require __DIR__ . '/print.php';

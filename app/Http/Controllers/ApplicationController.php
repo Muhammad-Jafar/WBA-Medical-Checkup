@@ -12,7 +12,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
 use App\Repositories\ApplicationRepository;
-
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\Log;
 
 class ApplicationController extends Controller
@@ -155,7 +155,7 @@ class ApplicationController extends Controller
         ->update([
             'status' => 'REJECTED',
             'rejected_at' => now(),
-    ]);
+        ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
 }

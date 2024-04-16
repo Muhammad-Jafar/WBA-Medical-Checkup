@@ -1,4 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Export\ApplicationController;
 
-// Route::get('/generate-pdf', [PdfController::class, 'generatePDF']);
+Route::get('application/export', ApplicationController::class)->name('application.export');
