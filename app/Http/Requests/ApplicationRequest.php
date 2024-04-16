@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ApplicationRequest extends FormRequest
 {
-    
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -52,13 +52,17 @@ class ApplicationRequest extends FormRequest
 
             'doctor_id.required' => 'Kolom Dokter pemeriksa wajib diisi!',
 
-            'height_body.max' => 'Kolom keperluan maksimal :max karakter!!',
+            'height_body.max' => 'Kolom tinggi badan maksimal :max karakter!!',
 
             'mass_body.max' => 'Kolom keperluan maksimal :max karakter!!',
 
             'blod_type.max' => 'Kolom keperluan maksimal :max karakter!!',
 
             'blod_pressure.max' => 'Kolom keperluan maksimal :max karakter!!',
+
+            'colesterol.max' => 'Kolom keperluan maksimal :max karakter!!',
+
+            'blod_sugar.max' => 'Kolom keperluan maksimal :max karakter!!',
         ];
     }
 
