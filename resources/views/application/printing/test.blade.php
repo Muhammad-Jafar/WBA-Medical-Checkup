@@ -2,15 +2,6 @@
 <html lang="en">
 <style>
     @media print{.no-print,.no-print *{display:none!important}}
-  
-    *, *:before, *:after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    ::selection { background-color: #E13300; color: white; }
-    ::-moz-selection { background-color: #E13300; color: white; }
 
     body {
         /* width: 21.5cm;
@@ -18,13 +9,8 @@
         margin: auto;
         padding: 0;
         font-family: 'Arial', sans-serif;
-        background: blanchedalmond
+        /* background: blanchedalmond */
     }
-
-    /* .page-content {
-        margin-left: 5rem;
-        margin-right: 5rem;
-    } */
 
     table {
     width: 100%;
@@ -36,6 +22,8 @@
 
     h3 {
         text-align: center;
+        padding-top: 0;
+        margin-top: 0;
         font-family: 'Arial', sans-serif;
     }
 
@@ -51,7 +39,7 @@
         font-size: 10pt;
         font-weight: normal;
     }
-</style> 
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,10 +70,10 @@
                 </tr>
             </tbody>
         </table>
-    
-    
+
+
         <hr height="2" color="#000000" border-style="outset" border-width="3px"
-            style="line-height:normal; margin-top:-12.0pt;"/>
+            style="line-height:normal; margin-top:-12pt;"/>
         <h4 style="text-align:center;
             font-family: 'Arial', sans-serif;
             margin-top:12.0pt;
@@ -96,20 +84,20 @@
             margin-top:-14pt;
             text-align:center;
             line-height:normal">No. 400.7 / <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> <bnsp> / {{ monthToBulanRomawi(date('m')) }} / {{ date("Y") }}</h4>
-    
+
         <o:p>
         <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify; line-height:1.5">
             &nbsp; &nbsp; &nbsp;
-            Yang bertanda tangan di bawah ini <b> dr. {{ $applicant->doctors->name }}.</b>
+            Yang bertanda tangan di bawah ini <b> dr. {{ strtoupper($applicant->doctors->name) }}.</b>
             Dokter Pemeriksa Badan Layanan Umum Daerah (BLUD) Rumah Sakit Umum Daerah Kabupaten Buton, yang dalam
             Hal ini menjalankan tugasnya dengan mengingat sumpah yang telah diucapkan waktu menerima jabatan, menerangkan bahwa telah
             memeriksa dengan teliti seorang:
         </p>
         <o:p>
-    
+
         <o:p>
         <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
-            <tbody style="font-family: 'Arial', sans-serif; line-height:1.5">
+            <tbody style="font-family: 'Arial', sans-serif; line-height:2">
                 <tr>
                     <td width="5%">1.</td>
                     <td width="30%">Nama</td>
@@ -144,7 +132,7 @@
                     <td>5.</td>
                     <td>Alamat</td>
                     <td>:</td>
-                    <td vertical-align="top" text-align="left" word-wrap="break-word" style="vertical-align:top; text-align:left; word-wrap:break-word"> {{ strtoupper($applicant->patients->address) }} </td>
+                    <td> {{ strtoupper($applicant->patients->address) }} </td>
                 </tr>
                 <tr>
                     <td>4.</td>
@@ -152,10 +140,10 @@
                     <td>:</td>
                     <td> SENDIRI </td>
                 </tr>
-    
+
             </tbody>
         </table>
-    
+
         <o:p>
         <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify; line-height:1.5">
             &nbsp; &nbsp; &nbsp;
@@ -163,17 +151,17 @@
             <i> <b> Sehat / Tidak sehat </b></i> Kesehatan Fisiknya, dan tidak menjamin yang bersangkutan
             <i><b>BEBAS infeksi COVID-19</b></i>. Surat keterangan ini dipergunakan untuk keperluan :
         </p>
-    
+
         <h3 style="font-family: 'Arial', sans-serif; text-align: center; line-height:1.5">
             " {{ strtoupper($applicant->purposes) }} "
         </h3>
-    
+
         <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify; line-height:1.5">
             &nbsp; &nbsp; &nbsp;
             Demikian surat keterangan ini diberikan untuk dipergunakan sebagaimana mestinya.
         </p>
         <o:p>
-    
+
         <o:p>
         <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
             <tbody style="font-family: 'Arial', sans-serif; ">
