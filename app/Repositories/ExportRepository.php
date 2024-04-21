@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Contracts\ToExcelInterface;
+use App\Contracts\ExportInterface;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
-class ExcelExportRepository implements ToExcelInterface
+class ExportRepository implements ExportInterface
 {
-     /**
+    /**
      * Kustomisasi untuk style excelnya.
      *
      * @return array

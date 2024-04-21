@@ -95,8 +95,7 @@
         </p>
         <o:p>
 
-        <o:p>
-        <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+        <table>
             <tbody style="font-family: 'Arial', sans-serif; line-height:2">
                 <tr>
                     <td width="5%">1.</td>
@@ -162,8 +161,7 @@
         </p>
         <o:p>
 
-        <o:p>
-        <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+        <table>
             <tbody style="font-family: 'Arial', sans-serif; ">
                 <tr>
                     <td width="70%"></td>
