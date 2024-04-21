@@ -27,7 +27,7 @@
                         <div class="col-6 col-lg-6">
                             <div class="d-flex justify-content-end pb-3">
                                 <div class="btn-group d-gap gap-2">
-                                    <a href="#" class="btn btn-light-success">
+                                    <a href="{{ route('patient.export') }}" class="btn btn-light-success">
                                         <i class="bi bi-upload"></i>
                                         Ekspor data
                                     </a>
