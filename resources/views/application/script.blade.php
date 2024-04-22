@@ -163,23 +163,23 @@
             let formActionURL = "{{ route('application.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
-            let editApplicantModalEveryInput = $('#editApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
-                .each(function () {
-                    $(this).not('select').val('Sedang mengambil data..');
-                    $(this).prop('disabled', true);
-                });
+            // let editApplicantModalEveryInput = $('#editApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+            //     .each(function () {
+            //         $(this).not('select').val('Sedang mengambil data..');
+            //         $(this).prop('disabled', true);
+            //     });
 
             $.ajax({
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
 
-                    editApplicantModalEveryInput.prop('disabled', false);
+                    // editApplicantModalEveryInput.prop('disabled', false);
                     $('#editApplicantModal #edit-applicant-form').attr('action', formActionURL)
 
-                    $('#editApplicantModal #patient_id').val(response.data.patient_id).select2();
+                    $('#editApplicantModal #patient_id').val(response.data.patient_id);
                     $('#editApplicantModal #purposes').val(response.data.purposes);
-                    $('#editApplicantModal #doctor_id').val(response.data.doctor_id).select2();
+                    $('#editApplicantModal #doctor_id').val(response.data.doctor_id);
                     $('#editApplicantModal #height_body').val(response.data.height_body);
                     $('#editApplicantModal #mass_body').val(response.data.mass_body);
                     $('#editApplicantModal #blod_type').val(response.data.blod_type);

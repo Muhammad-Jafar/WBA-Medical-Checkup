@@ -20,10 +20,10 @@
         <section>
             <div class="card">
                 <div class="card-header">
-                    <h4>Setelan 1</h4>
+                    <h4>Batasan permintaan SKBS</h4>
                 </div>
                 <div class="card-body">
-
+                        
                 </div>
             </div>
         </section>

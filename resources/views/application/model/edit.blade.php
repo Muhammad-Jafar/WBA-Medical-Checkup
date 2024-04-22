@@ -17,8 +17,7 @@
 									<label class="col-form-label" for="patient">Nama pasien</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<select name="patient_id" id="patient_id">
-										<option selected>Pilih pasien</option>
+									<select class="form-control choices" name="patient_id" id="patient_id">
 										@foreach ($patients as $patient)
 											<option value="{{ $patient->id }}"> {{ $patient->name }} </option>
 										@endforeach
@@ -49,8 +48,7 @@
 									<label class="col-form-label" for="doctor">Dokter pemeriksa</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<select name="doctor_id" id="doctor_id">
-										<option selected>Pilih Dokter pemeriksa</option>
+									<select class="form-select choices" name="doctor_id" id="doctor_id">
 										@foreach ($doctors as $doctor)
 											<option value="{{ $doctor->id }}"> {{ $doctor->name }} </option>
 										@endforeach

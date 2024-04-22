@@ -15,9 +15,9 @@
 									<label for="patient_id" class="form-label">Nama pasien</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<select class="form-select select2 @error('patient_id') is-invalid @enderror" name="patient_id">
+									<select class="choices" name="patient_id" id="patient_id">
 										@foreach ($patients as $patient)
-											<option value="{{ $patient->id }}" {{ old('patient_id') == $patient->id ? 'selected' : '' }}>
+											<option value="{{ $patient->id }}" {{ old('patient_id')==="$patient->id" ? 'selected' : '' }}>
 												{{ $patient->nik }} - {{ $patient->name }}
 											</option>
 										@endforeach
@@ -60,7 +60,7 @@
 									<label class="col-form-label" for="doctor">Dokter pemeriksa</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<select class="form-select @error('doctor_id') is-invalid @enderror" name="doctor_id">
+									<select class="form-select choices" name="doctor_id" id="doctor_id">
 										@foreach ($doctors as $doctor)
 											<option value="{{ $doctor->id }}" {{ collect(old('doctor_id'))->contains($doctor->id) ? 'selected' : '' }}>
 												{{ $doctor->name }}

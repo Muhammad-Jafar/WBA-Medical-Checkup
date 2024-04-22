@@ -11,8 +11,7 @@ use App\Http\Controllers\DoctorHistoryController;
 use App\Http\Controllers\CheckupTypeController;
 use App\Http\Controllers\CheckTypeHistoryController;
 use App\Http\Controllers\AdministratorController;
-
-use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use App\Http\Controllers\SettingController;
 
 
 require __DIR__ . '/auth.php';
@@ -65,10 +64,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
 
-
-    Route::get('settings', function () {
-        return view('settings.settings');
-    })->name('settings');
+    Route::get('/settings', SettingController::class)->name('settings');
 
     require __DIR__ . '/export.php';
     require __DIR__ . '/print.php';

@@ -44,10 +44,10 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                <a href="#" class="btn btn-light-success">
+                                {{-- <a href="#" class="btn btn-light-success">
                                     <i class="bi bi-download"></i>
                                     Impor data
-                                </a>
+                                </a> --}}
                                 <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createCheckupTypeModal">
                                     <i class="bi bi-person-plus"></i> Tambah pemeriksaan
                                 </button>
