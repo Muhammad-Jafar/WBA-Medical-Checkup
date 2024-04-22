@@ -46,7 +46,7 @@
     <title>Cetak SKBS</title>
 </head>
 <body>
-
+    
     <div class="page-portrait">
         <table>
             <tbody>
@@ -185,6 +185,10 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        window.open('{{ route("application.export") }}', '_blank');
+    </script>
 
 </body>
 </html>

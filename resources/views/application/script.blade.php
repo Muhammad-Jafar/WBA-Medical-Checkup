@@ -143,17 +143,27 @@
 
         });
 
-        $('#datatable').on('click', '.applicant-process', function () {
+        $('#datatable').on('click', '.print-window', function() {
             loadingAlert.show();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.application.process', 'id') }}";
+            let url = "{{ route('application.print', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('application.print', 'id') }}"
+            window.open(url, '_blank');
+        });
+
+        $('#datatable').on('click', '.applicant-edit', function () {
+            loadingAlert.show();
+
+            let id = $(this).data('id');
+            let url = "{{ route('api.application.edit', 'id') }}";
+            url = url.replace('id', id);
+
+            let formActionURL = "{{ route('application.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
-            let processApplicantModalEveryInput = $('#processApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+            let editApplicantModalEveryInput = $('#editApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
                 .each(function () {
                     $(this).not('select').val('Sedang mengambil data..');
                     $(this).prop('disabled', true);
@@ -164,27 +174,20 @@
                 success: function (response) {
                     loadingAlert.slideUp();
 
-                    processApplicantModalEveryInput.prop('disabled', false);
-                    $('#processApplicantModal #process-applicant-form').attr('action', formActionURL)
+                    editApplicantModalEveryInput.prop('disabled', false);
+                    $('#editApplicantModal #edit-applicant-form').attr('action', formActionURL)
 
-                    $('#processApplicantModal #patient').val(response.data.patients.name);
-                    $('#processApplicantModal #patient_id').val(response.data.patient_id);
-                    $('#processApplicantModal #purposes').val(response.data.purposes);
-                    $('#processApplicantModal #doctor').val(response.data.doctors.name);
-                    $('#processApplicantModal #doctor_id').val(response.data.doctor_id);
-                    $('#processApplicantModal #height_body').val(response.data.height_body);
-                    $('#processApplicantModal #mass_body').val(response.data.mass_body);
-                    $('#processApplicantModal #blod_type').val(response.data.blod_type);
-                    $('#processApplicantModal #blod_pressure').val(response.data.blod_pressure);
-                    $('#processApplicantModal #colesterol').val(response.data.colesterol);
-                    $('#processApplicantModal #blod_sugar').val(response.data.blod_sugar);
-                    
+                    $('#editApplicantModal #patient_id').val(response.data.patient_id).select2();
+                    $('#editApplicantModal #purposes').val(response.data.purposes);
+                    $('#editApplicantModal #doctor_id').val(response.data.doctor_id).select2();
+                    $('#editApplicantModal #height_body').val(response.data.height_body);
+                    $('#editApplicantModal #mass_body').val(response.data.mass_body);
+                    $('#editApplicantModal #blod_type').val(response.data.blod_type);
+                    $('#editApplicantModal #blod_pressure').val(response.data.blod_pressure);
+                    $('#editApplicantModal #colesterol').val(response.data.colesterol);
+                    $('#editApplicantModal #blod_sugar').val(response.data.blod_sugar);
                 }
             });
-        });
-
-        $('.print-window').click(function() {
-            window.print();
         });
 
     });

@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::name('api.')->prefix('v1')->group( function () {    
 
-    Route::get('application/{id}/process', [ApplicationController::class, 'process'])->name('application.process');
+    Route::get('application/{id}/edit', [ApplicationController::class, 'edit'])->name('application.edit');
 
     Route::get('patient/{id}', [PatientController::class, 'show'])->name('patient.show');
     Route::get('patient/{id}/edit', [PatientController::class, 'edit'])->name('patient.edit');

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApplicationController extends Controller 
 {
-    public function process(string $id): JsonResponse
+    public function edit(string $id): JsonResponse
     {
         $application = new ApplicationEditResource(
             Application::with('users:id,name','patients:id,name', 'doctors:id,name')

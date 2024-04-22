@@ -7,6 +7,7 @@
 			</div>
 			<div class="modal-body">
 				@include('utilities.loading-alert')
+				
 				<form action="#" method="post" id="edit-doctor-form">
 					@csrf @method('PUT')
 					<div class="row">

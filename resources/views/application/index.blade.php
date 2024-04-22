@@ -51,22 +51,22 @@
                 <div class="col-6 col-lg-6">
                     <div class="d-flex justify-content-end pb-3">
                         <div class="btn-group d-gap gap-2">
-                            <a href="#" class="btn btn-light-success">
+                            <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exportApplication">
                                 <i class="bi bi-upload"></i>
                                 Ekspor data
-                            </a>
+                            </button>
                             {{-- <a href="#" class="btn btn-light-success">
                                 <i class="bi bi-download"></i>
                                 Impor data
                             </a> --}}
-                            <button type="button" class="btn btn-light-primary" data-bs-toggle="modal"
-                                    data-bs-target="#createApplicantModal">
-                                <i class="bi bi-file-earmark-plus"></i> Ajukan permintaan
+                            <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
+                                <i class="bi bi-file-earmark-plus"></i> 
+                                Ajukan permintaan
                             </button>
 
                             <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
-                                <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> Riwayat data
-                                permintaan
+                                <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> 
+                                Riwayat data permintaan
                             </a>
                         </div>
                     </div>
@@ -97,6 +97,8 @@
     @push('modal')
     @include('application.model.create')
     @include('application.model.process')
+    @include('application.model.edit')
+    @include('application.model.export')
     @endpush
 
     @push('js')
