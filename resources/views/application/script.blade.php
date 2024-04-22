@@ -163,18 +163,18 @@
             let formActionURL = "{{ route('application.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
-            // let editApplicantModalEveryInput = $('#editApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
-            //     .each(function () {
-            //         $(this).not('select').val('Sedang mengambil data..');
-            //         $(this).prop('disabled', true);
-            //     });
+            let editApplicantModalEveryInput = $('#editApplicantModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+                .each(function () {
+                    $(this).not('select').val('Sedang mengambil data..');
+                    $(this).prop('disabled', true);
+                });
 
             $.ajax({
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
 
-                    // editApplicantModalEveryInput.prop('disabled', false);
+                    editApplicantModalEveryInput.prop('disabled', false);
                     $('#editApplicantModal #edit-applicant-form').attr('action', formActionURL)
 
                     $('#editApplicantModal #patient_id').val(response.data.patient_id);
@@ -192,5 +192,3 @@
 
     });
 </script>
-
-

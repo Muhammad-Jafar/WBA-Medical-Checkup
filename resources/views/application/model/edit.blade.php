@@ -65,7 +65,11 @@
 									<label class="col-form-label" for="doctor">Pemeriksaan</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<input class="form-control" name="checkup-type" placeholder="Jenis pemeriksaan">
+									<select class="form-select choices" name="check-type" id="check-type">
+										@foreach ($checkupType as $ct)
+											<option value="{{ $ct->id }}"> {{ $ct->name }} </option>
+										@endforeach
+									</select>
 								</div>
 							</div>
 						</div>

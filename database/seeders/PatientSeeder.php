@@ -19,7 +19,7 @@ class PatientSeeder extends Seeder
         $fake = Faker::create();
         $fake->locale('id_ID');
 
-        for($i=1; $i<21; $i++) {
+        for($i=1; $i<101; $i++) {
             Patient::create([
                 'id' => $i,
                 'nik' => '7404' . $fake->numberBetween(100000000000, 999999999999),
