@@ -40,7 +40,7 @@
                     <table id="datatable" class="table table-hover w-100">
                         <thead>
                             <tr>
-                                <th scope=" col">#</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Pasien</th>
                                 <th scope="col">Keperluan</th>
                                 <th scope="col">Dokter Pemeriksa</th>

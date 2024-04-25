@@ -50,6 +50,9 @@
                 </div>
                 <div class="col-6 col-lg-6">
                     <div class="d-flex justify-content-end pb-3">
+                        {{-- {{ $applicant }}
+                        {{ $preference }} --}}
+
                         <div class="btn-group d-gap gap-2">
                             <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exportApplication">
                                 <i class="bi bi-upload"></i>
@@ -59,10 +62,19 @@
                                 <i class="bi bi-download"></i>
                                 Impor data
                             </a> --}}
-                            <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createApplicantModal">
-                                <i class="bi bi-file-earmark-plus"></i> 
-                                Ajukan permintaan
-                            </button>
+                            
+                            @if ($repo['checkLimitApplicant'])
+                                <button type="button" class="btn btn-light-primary warning-limit" id="showLimitApplicant">
+                                    <i class="bi bi-file-earmark-plus"></i> 
+                                    Ajukan permintaan
+                                </button>
+                            @else
+                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" 
+                                    data-bs-target="#createApplicantModal">
+                                    <i class="bi bi-file-earmark-plus"></i> 
+                                    Ajukan permintaan
+                                </button>
+                            @endif
 
                             <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> 

@@ -7,23 +7,27 @@ use App\Models\Application;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Preference;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class ApplicationRepository extends Controller implements ApplicationInterface
 {
-    private $model, $admin, $doctor, $patient;
+    private $model, $admin, $doctor, $patient, $preference;
 
     public function __construct(
         Application $model,
         User $admin, 
         Doctor $doctor, 
-        Patient $patient
+        Patient $patient,
+        Preference $preference,
     )
     {
         $this->model = $model;
         $this->admin = $admin;
         $this->doctor = $doctor;
         $this->patient = $patient;
+        $this->preference = $preference;
     }
 
     /**
@@ -82,7 +86,21 @@ class ApplicationRepository extends Controller implements ApplicationInterface
     }
 
     /**
-     * Mengembalikan seluruh data yang dibutuhkan
+     * 
+     * Get limit application by input from references table
+     * @return Int
+     */
+    public function checkLimitApplicant(): bool
+    {
+        $pref = $this->preference->select('input')->where('id_preferences','1')->value('input');
+        $countApplicantToday = $this->model->where('status', 'PENDING')
+        ->whereDate('requested_at', now()->toDateString())->count();
+
+        return $countApplicantToday == $pref;
+    }
+
+    /**
+     * Return results as expected
      *
      * @return array
      */
@@ -93,6 +111,7 @@ class ApplicationRepository extends Controller implements ApplicationInterface
             'todayApplicant' => $this->countTodayApplicant(),
             'currentMonthApplicant' => $this->countApplicant('month', month: date('m')),
             'currentYearApplicant' => $this->countApplicant('year', month: date('Y')),
+            'checkLimitApplicant' => $this->checkLimitApplicant()
         ];
     }
 }

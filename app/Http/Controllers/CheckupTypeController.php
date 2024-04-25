@@ -17,7 +17,7 @@ class CheckupTypeController extends Controller
      */
     public function index(): View|JsonResponse
     {
-        $checkupType = CheckupType::select('id', 'name', 'abbreviated_word', 'description')
+        $checkupType = CheckupType::select('*')
         ->orderBy('name')
         ->get();
 

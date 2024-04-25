@@ -12,8 +12,8 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ApplicationRequest;
 use App\Repositories\ApplicationRepository;
-use Barryvdh\DomPDF\Facade\Pdf as PDF;
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {

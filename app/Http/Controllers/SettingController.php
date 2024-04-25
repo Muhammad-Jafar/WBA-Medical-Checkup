@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Preference;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class SettingController extends Controller
 {
     public function __invoke(): View
     {
-        return view('settings.index');
+        $preference = Preference::select('id_preferences', 'name', 'desc', 'status', 'input')->get();
+        Log::info($preference);
+
+        return view('settings.index', [
+            'preference' => $preference,
+        ]);
     }
 }

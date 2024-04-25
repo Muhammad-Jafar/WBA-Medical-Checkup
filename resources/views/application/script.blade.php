@@ -1,5 +1,5 @@
 <script>
-    $(function () {
+    $(function() {
         let loadingAlert = $('.modal-body #loading-alert');
 
         $('#datatable').DataTable({
@@ -17,7 +17,7 @@
             ]
         });
 
-        $('#today-tab').click(function () {
+        $('#today-tab').click(function() {
             $.ajax({
                 url: "{{ route('application.getTab', 'today') }}",
                 data: {tab: "today"},
@@ -59,7 +59,7 @@
 
         });
 
-        $('#pending-tab').click(function () {
+        $('#pending-tab').click(function() {
             $.ajax({
                 url: "{{ route('application.getTab', 'pending') }}",
                 data: {tab: "pending"},
@@ -101,7 +101,7 @@
 
         });
 
-        $('#all-tab').click(function () {
+        $('#all-tab').click(function() {
             $.ajax({
                 url: "{{ route('application.getTab', 'all') }}",
                 data: {tab: "pending"},
@@ -153,7 +153,7 @@
             window.open(url, '_blank');
         });
 
-        $('#datatable').on('click', '.applicant-edit', function () {
+        $('#datatable').on('click', '.applicant-edit', function() {
             loadingAlert.show();
 
             let id = $(this).data('id');
@@ -188,6 +188,23 @@
                     $('#editApplicantModal #blod_sugar').val(response.data.blod_sugar);
                 }
             });
+        });
+
+        $('#showLimitApplicant').click(function(e) {
+            e.preventDefault();
+			Swal.fire({
+				title: "Perhatian!",
+				text: "Permintaan SKBS telah melewati batas harian, silahkan hubungi administrator.",
+				icon: "warning",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Ya!",
+				reverseButtons: true,
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$(this).parent().submit();  
+				}
+			});
+
         });
 
     });
