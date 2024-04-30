@@ -11,7 +11,7 @@ use App\Http\Controllers\DoctorHistoryController;
 use App\Http\Controllers\CheckupTypeController;
 use App\Http\Controllers\CheckTypeHistoryController;
 use App\Http\Controllers\AdministratorController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PreferenceController;
 
 
 require __DIR__ . '/auth.php';
@@ -25,25 +25,17 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::resource('doctor', DoctorController::class)->except('create', 'show', 'edit');
     Route::resource('checkup-type', CheckupTypeController::class)->except('create', 'show', 'edit');
     Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
+    // Route::resource('preference', PreferenceController::class)->except('create', 'store', 'show', 'update', 'destroy');
 
     Route::controller(ApplicationHistoryController::class)->prefix('/application/history')->name('application.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
-
-    Route::group(['namespace' => 'App\Http\Controllers'], function () {
-        Route::group(['prefix' => 'application', 'as' => 'application.'], function () {
-
-            Route::get('/{tab}', [
-                'as' => 'getTab',
-                'uses' => 'ApplicationController@getTab',
-            ]);
-            Route::put('/cancel/{id}', [
-                'as' => 'cancel',
-                'uses' => 'ApplicationController@cancel',
-            ]);
-        });
+    
+    Route::controller(ApplicationController::class)->prefix('/application')->name('application.')->group(function () {
+        Route::get('/{tab}', 'getTab')->name('getTab');
+        Route::put('/cancel/{id}', 'cancel')->name('cancel');
     });
 
     Route::controller(PatientHistoryController::class)->prefix('/patient/history')->name('patient.')->group(function () {
@@ -64,7 +56,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
 
-    Route::get('/settings', SettingController::class)->name('settings');
+    Route::controller(PreferenceController::class)->prefix('/preference')->name('preference.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::put('editDailyLimit/{preference}', 'editDailyLimit')->name('editDailyLimit');
+    });
 
     require __DIR__ . '/export.php';
     require __DIR__ . '/print.php';

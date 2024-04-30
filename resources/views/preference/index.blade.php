@@ -5,14 +5,14 @@
                 <h3>Setelan</h3>
                 <p class="text-subtitle text-muted">Setelan dapat disesuaikan dengan kebutuhan</p>
             </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
+            {{-- <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('settings') }}">Setelan</a></li>
-                        {{-- <li class="breadcrumb-item active"></li> --}}
+                        <li class="breadcrumb-item"><a href="{{ route('preference.index') }}">Setelan</a></li>
+                        <li class="breadcrumb-item active"></li>
                     </ol>
                 </nav>
-            </div>
+            </div> --}}
         </div>
     </x-slot>
 
@@ -57,12 +57,11 @@
                                             </h5>
                                         </td>
                                         <td class="col-auto">
-                                            <div class="mb-0">
-                                                <button class="btn btn-primary btn-sm">
-                                                    <i class="bi bi-pencil"></i>
-                                                    Edit
-                                                </button>
-                                            </div>
+                                            <button type="button" data-id="{{ $pref->id }}" data-bs-toggle="modal" 
+                                                data-bs-target="#editDailyLimitModal" class="btn btn-primary btn-sm applicant-daily-limit">
+                                                <i class="bi bi-pencil"></i>
+                                                Edit
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -89,6 +88,14 @@
             </div>
         </section>
     </div>
+
+    @push('modal')
+        @include('preference.modal.edit')
+    @endpush
+
+    @push('js')
+        @include('preference.script')
+    @endpush
 
 </x-app-layout>
 

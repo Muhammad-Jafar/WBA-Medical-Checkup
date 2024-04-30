@@ -19,7 +19,7 @@
     <x-maz-sidebar-item name="Setelan" icon="bi bi-gear-fill">
         <x-maz-sidebar-sub-item name="Administrator" :link="route('administrator.index')"></x-maz-sidebar-sub-item>
         <x-maz-sidebar-sub-item name="Jenis Pemeriksaan" :link="route('checkup-type.index')"></x-maz-sidebar-sub-item>
-        <x-maz-sidebar-sub-item name="Setelan umum" :link="route('settings')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Setelan umum" :link="route('preference.index')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
 
 </x-maz-sidebar>

@@ -5,14 +5,14 @@
                 <h3>Jenis pemeriksaan</h3>
                 {{-- <p class="text-subtitle text-muted">Daftar dokter.</p> --}}
             </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
+            {{-- <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('settings') }}">Setelan</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('preference.index') }}">Setelan</a></li>
                         <li class="breadcrumb-item active">Jenis pemeriksaan</li>
                     </ol>
                 </nav>
-            </div>
+            </div> --}}
         </div>
     </x-slot>
 

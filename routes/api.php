@@ -6,6 +6,7 @@ use App\Http\Controllers\API\v1\PatientController;
 use App\Http\Controllers\API\v1\DoctorController;
 use App\Http\Controllers\API\V1\CheckupTypeController;
 use App\Http\Controllers\API\V1\ApplicationController;
+use App\Http\Controllers\API\V1\PreferenceControlller;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,6 @@ Route::name('api.')->prefix('v1')->group( function () {
     Route::get('doctor/{id}/edit', [DoctorController::class, 'edit'])->name('doctor.edit');
 
     Route::get('checkup-type/{id}/edit', [CheckupTypeController::class, 'edit'])->name('checkup-type.edit');
+
+    Route::get('preference/{id}/edit', [PreferenceControlller::class, 'edit'])->name('preference.edit');
 });
