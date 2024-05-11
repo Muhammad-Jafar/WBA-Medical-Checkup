@@ -26,10 +26,10 @@ class AdministratorController extends Controller
                 ->addIndexColumn()
                 ->addColumn('created_at', fn($model) => monthToFullBulan($model->created_at))
                 ->addColumn('last_login', fn($model) => timeAgo($model->last_login))
-                ->addColumn('active', 'administrator.datatable.active')
+                ->addColumn('is_active', 'administrator.datatable.active')
                 ->addColumn('position', 'administrator.datatable.position')
                 ->addColumn('action', 'administrator.datatable.action')
-                ->rawColumns(['active','position', 'action'])
+                ->rawColumns(['position', 'action'])
                 ->toJson();
         }
 

@@ -9,12 +9,14 @@ use App\Repositories\ApplicationRepository;
 
 class DashboardController extends Controller
 {
-    public function __construct(private ApplicationRepository $applicationRepository) {}
+    public function __construct(private ApplicationRepository $applicationRepository)
+    {
+    }
 
     /**
      * Display data for given value.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function __invoke(): View
     {

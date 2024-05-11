@@ -15,7 +15,7 @@ class PatientController extends Controller
      *
      * @return View|JsonResponse
      */
-    public function index(): View
+    public function index()
     {
         $patients = Patient::select('id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation')
             ->orderBy('name')

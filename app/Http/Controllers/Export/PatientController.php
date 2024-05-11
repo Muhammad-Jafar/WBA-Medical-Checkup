@@ -6,8 +6,8 @@ use App\Contracts\ExcelExportInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Repositories\ExportRepository;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Illuminate\Database\Eloquent\Collection;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class PatientController extends Controller implements ExcelExportInterface
@@ -29,8 +29,8 @@ class PatientController extends Controller implements ExcelExportInterface
     /**
      * Menyiapkan isi header untuk excelnya.
      *
-     * @param \PhpOffice\PhpSpreadsheet\Spreadsheet $spreadsheet
-     * @return \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+     * @param Spreadsheet $spreadsheet
+     * @return Worksheet
      */
     public function setExcelHeader(Spreadsheet $spreadsheet): Worksheet
     {
@@ -54,9 +54,9 @@ class PatientController extends Controller implements ExcelExportInterface
     /**
      * Mengisi konten untuk excel.
      *
-     * @param \Illuminate\Database\Eloquent\Collection adalah data yang didapat dari eloquent/query builder.
-     * @param \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet adalah instansiasi dari class Spreadsheet phpoffice.
-     * @return \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+     * @param Collection $administrators adalah data yang didapat dari eloquent/query builder.
+     * @param Worksheet $sheet adalah instansiasi dari class Spreadsheet phpoffice.
+     * @return Worksheet
      */
     public function setExcelContent(Collection $administrators, Worksheet $sheet): Worksheet
     {
@@ -65,7 +65,7 @@ class PatientController extends Controller implements ExcelExportInterface
             $sheet->setCellValue('A' . $cell, $key + 1);
             $sheet->setCellValue('B' . $cell, $row->nik);
             $sheet->setCellValue('C' . $cell, $row->name);
-            $sheet->setCellValue('D' . $cell, $row->gender === 1 ? 'Laki-laki' : 'Perempuan' );
+            $sheet->setCellValue('D' . $cell, $row->gender === 1 ? 'Laki-laki' : 'Perempuan');
             $sheet->setCellValue('E' . $cell, $row->born_place . ', ' . monthToFullBulan($row->born_date));
             $sheet->setCellValue('F' . $cell, $row->address);
             $sheet->setCellValue('G' . $cell, $row->occupation);

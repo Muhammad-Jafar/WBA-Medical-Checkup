@@ -11,7 +11,7 @@ class CheckupTypeRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,10 +21,10 @@ class CheckupTypeRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'name'=> 'required|min:5|max:191',
+            'name' => 'required|min:5|max:191',
             'abbreviated_word' => 'required|min:3|max:191',
             'description' => 'required|min:5|max:255',
         ];
@@ -35,7 +35,7 @@ class CheckupTypeRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required' => 'Kolom nama lengkap wajib diisi!',

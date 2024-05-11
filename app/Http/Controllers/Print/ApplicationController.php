@@ -11,10 +11,11 @@ class ApplicationController extends Controller
     public function generate($id = null)
     {
         $applicant = Application::with(
-            'users:id,name', 
-            'patients:id,name,born_date,born_place,gender,occupation,address', 
+            'users:id,name',
+            'patients:id,name,born_date,born_place,gender,occupation,address',
             'doctors:id,name,nip'
-            )->findOrFail($id);
+        )->findOrFail($id);
+
         return PDF::loadView('application.printing.test', compact('applicant'))->stream();
     }
 }

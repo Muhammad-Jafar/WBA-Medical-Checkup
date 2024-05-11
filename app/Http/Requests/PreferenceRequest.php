@@ -11,7 +11,7 @@ class PreferenceRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class PreferenceRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'inputan' => 'required||max:2',
@@ -33,7 +33,7 @@ class PreferenceRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'inputan.required' => 'Kolom input wajib diisi!',

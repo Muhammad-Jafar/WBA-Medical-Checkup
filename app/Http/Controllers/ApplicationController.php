@@ -11,6 +11,7 @@ use App\Repositories\ApplicationRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ApplicationController extends Controller
 {
@@ -24,7 +25,7 @@ class ApplicationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View|JsonResponse
+     * @return View|JsonResponse
      */
     public function index()
     {
@@ -77,9 +78,9 @@ class ApplicationController extends Controller
         if (request()->ajax()) {
             return datatables()->of($application)
                 ->addIndexColumn()
-                ->addColumn('patient', fn($model) => $model->patients ? $model->patients->name : 'No patient available')
-                ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : 'No doctor available')
-                ->addColumn('admin', fn($model) => $model->users ? $model->users->name : 'No admin available')
+                ->addColumn('patient', fn($model) => $model->patients->name)
+                ->addColumn('doctor', fn($model) => $model->doctors->name)
+                ->addColumn('admin', fn($model) => $model->users->name)
                 ->addColumn('status', 'application.datatable.status')
                 ->addColumn('action', 'application.datatable.action')
                 ->rawColumns(['status', 'action'])
@@ -92,7 +93,7 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\ApplicationRequest $request
+     * @param ApplicationRequest $request
      * @return RedirectResponse
      */
     public function store(ApplicationRequest $request): RedirectResponse

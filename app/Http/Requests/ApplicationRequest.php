@@ -12,7 +12,7 @@ class ApplicationRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,10 +22,10 @@ class ApplicationRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'patient_id'=> ['required'],
+            'patient_id' => ['required'],
             'purposes' => ['required', 'max:191'],
             'doctor_id' => ['required'],
             'height_body' => ['max:191'],
@@ -42,7 +42,7 @@ class ApplicationRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'patient_id.required' => 'Kolom Nama pasien wajib diisi!',

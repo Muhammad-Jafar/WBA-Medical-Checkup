@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\HistoryInterface;
 use App\Models\Patient;
 use Illuminate\Http\JsonResponse;
-use Illuminate\View\View;
-use App\Contracts\HistoryInterface;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class PatientHistoryController extends Controller implements HistoryInterface
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
+     * @return View|JsonResponse
      */
     public function index(): View|JsonResponse
     {
         $patients = Patient::select(
             'id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation'
         )
-        ->orderBy('name')
-        ->onlyTrashed()
-        ->get();
+            ->orderBy('name')
+            ->onlyTrashed()
+            ->get();
 
-        if(request()->ajax()) {
+        if (request()->ajax()) {
             return datatables()->of($patients)
-            ->addIndexColumn()
-            ->addColumn('born_place', fn($model) => $model->born_place . ', ' . date('d M Y', strtotime($model->born_date)))
-            ->addColumn('action', 'patient.history.datatable.action')
-            ->rawColumns(['born_place', 'action'])
-            ->toJson();
+                ->addIndexColumn()
+                ->addColumn('born_place', fn($model) => $model->born_place . ', ' . date('d M Y', strtotime($model->born_date)))
+                ->addColumn('action', 'patient.history.datatable.action')
+                ->rawColumns(['born_place', 'action'])
+                ->toJson();
         }
 
         return view('patient.history.index');
@@ -39,8 +39,8 @@ class PatientHistoryController extends Controller implements HistoryInterface
     /**
      * Restore the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id
+     * @return RedirectResponse
      */
     public function restore(int $id): RedirectResponse
     {
@@ -51,8 +51,8 @@ class PatientHistoryController extends Controller implements HistoryInterface
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id
+     * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse
     {

@@ -13,23 +13,23 @@ class DoctorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
+     * @return View|JsonResponse
      */
-        public function index(): View|JsonResponse
+    public function index()
     {
         $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')
-        ->orderBy('name')
-        ->get();
+            ->orderBy('name')
+            ->get();
 
         $doctorTrashedCount = Doctor::onlyTrashed()->count();
 
-        if(request()->ajax()) {
+        if (request()->ajax()) {
             return datatables()->of($doctors)
-            ->addIndexColumn()
-            ->addColumn('verified', 'doctor.datatable.verified')
-            ->addColumn('action', 'doctor.datatable.action')
-            ->rawColumns(['verified', 'action'])
-            ->toJson();
+                ->addIndexColumn()
+                ->addColumn('verified', 'doctor.datatable.verified')
+                ->addColumn('action', 'doctor.datatable.action')
+                ->rawColumns(['verified', 'action'])
+                ->toJson();
         }
 
         return view('doctor.index', ['doctorTrashedCount' => $doctorTrashedCount]);
@@ -38,8 +38,8 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\DoctorRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param DoctorRequest $request
+     * @return RedirectResponse
      */
     public function store(DoctorRequest $request): RedirectResponse
     {
@@ -50,9 +50,9 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Request\DoctorRequest $request
-     * @param  \App\Models\Doctor $doctor
-     * @return \Illuminate\Http\RedirectResponse
+     * @param DoctorRequest $request
+     * @param Doctor $doctor
+     * @return RedirectResponse
      */
     public function update(DoctorRequest $request, Doctor $doctor): RedirectResponse
     {
@@ -63,8 +63,8 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Doctor $doctor
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Doctor $doctor
+     * @return RedirectResponse
      */
     public function destroy(Doctor $doctor): RedirectResponse
     {

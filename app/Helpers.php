@@ -11,7 +11,7 @@ if (!function_exists('indonesianCurrency')) {
      */
     function indonesianCurrency(int $number): string
     {
-        return 'Rp. ' . number_format((int)$number, 2, ',',);
+        return 'Rp. ' . number_format($number, 2, ',');
     }
 }
 
@@ -33,7 +33,7 @@ if (!function_exists('monthToBulan')) {
     /**
      * Convert the month to a string with indonesian format.
      *
-     * @param string $month
+     * @param $input
      * @return string | null
      */
     function monthToBulan($input): string
@@ -61,7 +61,7 @@ if (!function_exists('monthToFullBulan')) {
     /**
      * Convert the month to a string with indonesian format.
      *
-     * @param string $month
+     * @param $input
      * @return string | null
      */
     function monthToFullBulan($input): string
@@ -98,7 +98,7 @@ if (!function_exists('monthToBulanRomawi')) {
     /**
      * Convert the month to a string with indonesian format.
      *
-     * @param string $month
+     * @param $input
      * @return string | null
      */
     function monthToBulanRomawi($input): string

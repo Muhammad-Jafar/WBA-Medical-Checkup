@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Export;
 use App\Contracts\ExcelExportInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
-use Illuminate\Support\Collection;
 use App\Repositories\ExcelExportRepository;
+use Illuminate\Database\Eloquent\Collection;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ApplicationController extends Controller  implements ExcelExportInterface
+class ApplicationController extends Controller implements ExcelExportInterface
 {
     const FILE_NAME = 'laporan SKBS';
 
@@ -27,8 +27,8 @@ class ApplicationController extends Controller  implements ExcelExportInterface
     /**
      * Menyiapkan isi header untuk excelnya.
      *
-     * @param \PhpOffice\PhpSpreadsheet\Spreadsheet $spreadsheet
-     * @return \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+     * @param Spreadsheet $spreadsheet
+     * @return Worksheet
      */
     public function setExcelHeader(Spreadsheet $spreadsheet): Worksheet
     {
@@ -51,9 +51,9 @@ class ApplicationController extends Controller  implements ExcelExportInterface
     /**
      * Mengisi konten untuk excel.
      *
-     * @param \Illuminate\Database\Eloquent\Collection adalah data yang didapat dari eloquent/query builder.
-     * @param \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet adalah instansiasi dari class Spreadsheet phpoffice.
-     * @return \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+     * @param Collection $students adalah data yang didapat dari eloquent/query builder.
+     * @param Worksheet $sheet adalah instansiasi dari class Spreadsheet phpoffice.
+     * @return Worksheet
      */
     public function setExcelContent(Collection $students, Worksheet $sheet): Worksheet
     {

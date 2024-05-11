@@ -12,7 +12,7 @@ class PatientRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,11 +22,11 @@ class PatientRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'nik' => ['required', 'min:16', 'max:16'],
-            'name'=> ['required', 'min:3', 'max:191'],
+            'name' => ['required', 'min:3', 'max:191'],
             'gender' => ['required'],
             'born_place' => ['required', 'min:3', 'max:191'],
             'born_date' => ['required', 'date'],
@@ -40,7 +40,7 @@ class PatientRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'nik.required' => 'Kolom NIK wajib diisi!',

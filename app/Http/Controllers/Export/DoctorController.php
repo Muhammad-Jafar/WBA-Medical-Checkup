@@ -6,8 +6,8 @@ use App\Contracts\ExcelExportInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Repositories\ExportRepository;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Illuminate\Database\Eloquent\Collection;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class DoctorController extends Controller implements ExcelExportInterface
@@ -19,7 +19,7 @@ class DoctorController extends Controller implements ExcelExportInterface
         $spreadsheet = new Spreadsheet();
         $sheet = $this->setExcelHeader($spreadsheet);
 
-        $administrators = Doctor::select('name', 'sip', 'nip','created_at')->orderBy('name')->get();
+        $administrators = Doctor::select('name', 'sip', 'nip', 'created_at')->orderBy('name')->get();
 
         $this->setExcelContent($administrators, $sheet);
 
@@ -29,8 +29,8 @@ class DoctorController extends Controller implements ExcelExportInterface
     /**
      * Menyiapkan isi header untuk excelnya.
      *
-     * @param \PhpOffice\PhpSpreadsheet\Spreadsheet $spreadsheet
-     * @return \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+     * @param Spreadsheet $spreadsheet
+     * @return Worksheet
      */
     public function setExcelHeader(Spreadsheet $spreadsheet): Worksheet
     {
@@ -51,9 +51,9 @@ class DoctorController extends Controller implements ExcelExportInterface
     /**
      * Mengisi konten untuk excel.
      *
-     * @param \Illuminate\Database\Eloquent\Collection adalah data yang didapat dari eloquent/query builder.
-     * @param \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet adalah instansiasi dari class Spreadsheet phpoffice.
-     * @return \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+     * @param Collection $administrators adalah data yang didapat dari eloquent/query builder.
+     * @param Worksheet $sheet adalah instansiasi dari class Spreadsheet phpoffice.
+     * @return Worksheet
      */
     public function setExcelContent(Collection $administrators, Worksheet $sheet): Worksheet
     {

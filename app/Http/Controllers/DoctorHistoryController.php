@@ -13,22 +13,22 @@ class DoctorHistoryController extends Controller implements HistoryInterface
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
+     * @return View|JsonResponse
      */
     public function index(): View|JsonResponse
     {
         $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')
-        ->orderBy('name')
-        ->onlyTrashed()
-        ->get();
+            ->orderBy('name')
+            ->onlyTrashed()
+            ->get();
 
-        if(request()->ajax()) {
+        if (request()->ajax()) {
             return datatables()->of($doctors)
-            ->addIndexColumn()
-            ->addColumn('verified', 'doctor.history.datatable.verified')
-            ->addColumn('action', 'doctor.history.datatable.action')
-            ->rawColumns(['verified', 'action'])
-            ->toJson();
+                ->addIndexColumn()
+                ->addColumn('verified', 'doctor.history.datatable.verified')
+                ->addColumn('action', 'doctor.history.datatable.action')
+                ->rawColumns(['verified', 'action'])
+                ->toJson();
         }
 
         return view('doctor.history.index');
@@ -37,8 +37,8 @@ class DoctorHistoryController extends Controller implements HistoryInterface
     /**
      * Restore the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id
+     * @return RedirectResponse
      */
     public function restore(int $id): RedirectResponse
     {
@@ -49,8 +49,8 @@ class DoctorHistoryController extends Controller implements HistoryInterface
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id
+     * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse
     {

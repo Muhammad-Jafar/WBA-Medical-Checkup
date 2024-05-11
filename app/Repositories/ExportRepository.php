@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Contracts\ExportInterface;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ExportRepository implements ExportInterface
 {

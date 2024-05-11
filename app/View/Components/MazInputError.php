@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class MazInputError extends Component
@@ -21,9 +22,9 @@ class MazInputError extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return View
      */
-    public function render()
+    public function render(): View
     {
         return view('components.maz-input-error');
     }
