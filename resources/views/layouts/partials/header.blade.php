@@ -6,8 +6,8 @@
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,7 +42,7 @@
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
                                 <h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>
-                                <p class="mb-0 text-sm text-success"> <b>Online</b> </p>
+                                <p class="mb-0 text-sm text-success"><b>Online</b></p>
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
@@ -57,18 +57,20 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('profile.show') }}">
-                                <i class="icon-mid bi bi-person me-2"></i> 
+                                <i class="icon-mid bi bi-person me-2"></i>
                                 Lihat profil
                             </a>
                         </li>
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                        <li>
-                            <a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
-                            {{ __('API Tokens') }}
-                            </a>
-                        </li>
+                            <li>
+                                <a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
+                                    {{ __('API Tokens') }}
+                                </a>
+                            </li>
                         @endif
-                        <li> <hr class="dropdown-divider"> </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
@@ -78,20 +80,9 @@
                                 </a>
                             </form>
                         </li>
-                        {{-- <li class="dropdown-item">
-                            <a class="dropdown-item" href="{{ route('logout') }}">
-                                <i class="icon-mid bi bi-box-arrow-left me-2"></i>
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 </header>
-
-{{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}

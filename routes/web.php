@@ -11,12 +11,13 @@ use App\Http\Controllers\DoctorHistoryController;
 use App\Http\Controllers\CheckupTypeController;
 use App\Http\Controllers\CheckTypeHistoryController;
 use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\AdministratorHistoryController;
 use App\Http\Controllers\PreferenceController;
 
 
 require __DIR__ . '/auth.php';
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
@@ -25,14 +26,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::resource('doctor', DoctorController::class)->except('create', 'show', 'edit');
     Route::resource('checkup-type', CheckupTypeController::class)->except('create', 'show', 'edit');
     Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
-    // Route::resource('preference', PreferenceController::class)->except('create', 'store', 'show', 'update', 'destroy');
 
     Route::controller(ApplicationHistoryController::class)->prefix('/application/history')->name('application.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');
     });
-    
+
     Route::controller(ApplicationController::class)->prefix('/application')->name('application.')->group(function () {
         Route::get('/{tab}', 'getTab')->name('getTab');
         Route::put('/cancel/{id}', 'cancel')->name('cancel');
@@ -51,6 +51,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     });
 
     Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')->name('checkup-type.')->group(function () {
+        Route::get('', 'index')->name('index.history');
+        Route::post('{id}', 'restore')->name('restore.history');
+        Route::delete('{id}', 'destroy')->name('destroy.history');
+    });
+
+    Route::controller(AdministratorHistoryController::class)->prefix('/administrator/history')->name('administrator.')->group(function () {
         Route::get('', 'index')->name('index.history');
         Route::post('{id}', 'restore')->name('restore.history');
         Route::delete('{id}', 'destroy')->name('destroy.history');

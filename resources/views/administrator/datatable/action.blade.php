@@ -1,12 +1,10 @@
 <div class="btn-group" role="group">
     @if (auth()->id() === $model->id)
-        <div class="badge bg-light-secondary">
-            Anda sedang login
-        </div>
+        <div class="badge bg-light-secondary">Anda sedang login</div>
     @else
         <div class="mx-1">
             <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success admin-edit"
-                    data-bs-toggle="modal" data-bs-target="#editAdminModal">
+                    data-bs-toggle="modal" data-bs-target="#editAdministratorModal">
                 <i class="bi bi-pencil-square"></i> Edit
             </button>
         </div>
@@ -20,4 +18,5 @@
             </form>
         </div>
     @endif
+
 </div>

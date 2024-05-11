@@ -27,7 +27,8 @@ class AdministratorRequest extends FormRequest
             'name' => 'required|min:3|max:191',
             'email' => 'required|email|unique:users,email|max:191',
             'password' => 'required|min:3|max:191',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            'position' => 'required',
         ];
     }
 
@@ -54,6 +55,8 @@ class AdministratorRequest extends FormRequest
 
             'password_confirmation.required' => 'Kolom ulangi password wajib diisi!',
             'password_confirmation.same' => 'Kolom ulangi password harus sama dengan kolom password!',
+
+            'position.required' => 'Kolom posisi wajib diisi!',
         ];
     }
 }

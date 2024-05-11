@@ -67,12 +67,10 @@ class Application extends Model
     /**
      * Set date attribute when storing data.
      *
-     * @param string $value
-     * @return void
+     * @var array
      */
-//    public function setDateAttribute(string $value): void
-//    {
-//        $this->attributes['requested_at'] = date('Y-m-d', strtotime($value));
-//    }
+    protected $casts = [
+        'requested_at' => 'datetime',
+    ];
 
 }

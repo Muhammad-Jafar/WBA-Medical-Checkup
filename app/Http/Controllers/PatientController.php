@@ -43,10 +43,7 @@ class PatientController extends Controller
      */
     public function store(PatientRequest $request): RedirectResponse
     {
-        $patient = $request->validated();
-        $patient['born_date'] = reverseDate($patient['born_date']);
-        Patient::create($patient);
-
+        Patient::create($request->validated());
         return redirect()->route('patient.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
@@ -59,10 +56,7 @@ class PatientController extends Controller
      */
     public function update(PatientRequest $request, Patient $patient): RedirectResponse
     {
-        $data = $request->validated();
-        $data['born_date'] = reverseDate($data['born_date']);
-        $patient->update($data);
-
+        $patient->update($request->validated());
         return redirect()->route('patient.index')->with('success', 'Data berhasil diubah!');
     }
 

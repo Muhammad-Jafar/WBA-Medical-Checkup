@@ -3,7 +3,7 @@
         $('#datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('administrator.index') }}",
+            ajax: "{{ route('administrator.index.history') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'email', name: 'email'},

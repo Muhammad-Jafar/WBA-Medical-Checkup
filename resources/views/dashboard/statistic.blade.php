@@ -1,9 +1,9 @@
 	<div class="col-12 col-lg-12">
         <div class="row mt-2">
-            <div class="col-11 col-md-11">
+            <div class="col-12 col-lg-11 col-md-10 col-sm-9">
                 <input class="form-control" type="search" name="findUser" id="findUser" placeholder="Cari nama / nik pasien">
             </div>
-            <div class="col-1 col-md-1">
+            <div class="col-2 col-lg-1 col-md-2 col-sm-3">
                 <a href="#" class="btn btn-primary btn-block">
                     <i class="bi bi-search"></i>
                     Cari

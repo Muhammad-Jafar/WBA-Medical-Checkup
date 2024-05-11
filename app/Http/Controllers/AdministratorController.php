@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\AdministratorRequest;
@@ -21,6 +22,8 @@ class AdministratorController extends Controller
             ->orderBy('position')
             ->get();
 
+        $adminTrashed = User::onlyTrashed()->count();
+
         if (request()->ajax()) {
             return datatables()->of($user)
                 ->addIndexColumn()
@@ -29,11 +32,13 @@ class AdministratorController extends Controller
                 ->addColumn('is_active', 'administrator.datatable.active')
                 ->addColumn('position', 'administrator.datatable.position')
                 ->addColumn('action', 'administrator.datatable.action')
-                ->rawColumns(['position', 'action'])
+                ->rawColumns(['is_active', 'position', 'action'])
                 ->toJson();
         }
 
-        return view('administrator.index');
+        return view('administrator.index', [
+            'adminTrashed' => $adminTrashed,
+        ]);
     }
 
     /**
@@ -47,7 +52,10 @@ class AdministratorController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'position' => $request->position,
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(20)
         ]);
         return redirect()->route('administrator.index')->with('success', 'Data berhasil ditambahkan!');
     }
@@ -61,7 +69,12 @@ class AdministratorController extends Controller
      */
     public function update(AdministratorRequest $request, User $user): RedirectResponse
     {
-        $user->update($request->validated());
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => is_null($request->password) ? $user->password : bcrypt($request->password),
+            'position' => $request->position,
+        ]);
         return redirect()->route('administrator.index')->with('success', 'Data berhasil diubah!');
     }
 

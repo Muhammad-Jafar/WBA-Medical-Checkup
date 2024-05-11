@@ -30,6 +30,13 @@
                                         data-bs-target="#createAdministratorModal">
                                     <i class="bi bi-person-plus"></i> Tambah admin
                                 </button>
+
+                                @hasrole('admin')
+                                <a href="{{ route('administrator.index.history') }}" class="btn btn-light-secondary">
+                                    <span class="badge bg-danger">{{ $adminTrashed }}</span>
+                                    Riwayat data admin
+                                </a>
+                                @endrole
                             </div>
                         </div>
                     </div>

@@ -10,12 +10,14 @@
         </button>
     </div>
 
-    <div class="mx-1">
-        <form action="{{ route('patient.destroy', $model->id) }}" method="POST">
-            @csrf @method('DELETE')
-            <button type="submit" class="btn btn-sm btn-danger delete-dialog">
-                <i class="bi bi-trash3"></i> Hapus
-            </button>
-        </form>
-    </div>
+    @hasrole('admin')
+        <div class="mx-1">
+            <form action="{{ route('patient.destroy', $model->id) }}" method="POST">
+                @csrf @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger delete-dialog">
+                    <i class="bi bi-trash3"></i> Hapus
+                </button>
+            </form>
+        </div>
+    @endrole
 </div>

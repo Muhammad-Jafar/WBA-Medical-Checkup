@@ -15,20 +15,6 @@ if (!function_exists('indonesianCurrency')) {
     }
 }
 
-
-if (!function_exists('reverseDate')) {
-    /**
-     * Format the date from d-m-Y format to Y-m-d format.
-     *
-     * @param string $date
-     * @return string
-     */
-    function reverseDate(string $date): string
-    {
-        return Carbon::createFromFormat('d-m-Y', $date)->format('Y-m-d');
-    }
-}
-
 if (!function_exists('monthToBulan')) {
     /**
      * Convert the month to a string with indonesian format.
@@ -123,8 +109,12 @@ if (!function_exists('monthToBulanRomawi')) {
 }
 
 if (!function_exists('timeAgo')) {
-    function timeAgo($timestamp): string
+    function timeAgo($timestamp = null): string
     {
+        if ($timestamp === null) {
+            return "Tidak pernah";
+        }
+
         $current = new DateTime();
         $ago = new DateTime($timestamp);
         $interval = $current->diff($ago);

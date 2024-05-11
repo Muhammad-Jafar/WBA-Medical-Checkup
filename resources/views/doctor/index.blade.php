@@ -37,9 +37,12 @@
                                 <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createDoctorModal">
                                     <i class="bi bi-person-plus"></i> Tambah dokter
                                 </button>
-                                <a href="{{ route('doctor.index.history') }}" class="btn btn-light-secondary">
-                                    <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Riwayat data dokter
-                                </a>
+
+                                @hasrole('admin')
+                                    <a href="{{ route('doctor.index.history') }}" class="btn btn-light-secondary">
+                                        <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Riwayat data dokter
+                                    </a>
+                                @endrole
                             </div>
                         </div>
                     </div>

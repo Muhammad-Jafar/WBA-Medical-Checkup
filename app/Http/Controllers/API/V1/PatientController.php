@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\v1;
+namespace App\Http\Controllers\API\V1;
 
 use App\Models\Patient;
 use App\Contracts\ApiInterface;
@@ -15,7 +15,7 @@ class PatientController extends Controller implements ApiInterface
     public function show(int $id): JsonResponse
     {
         $patient = new PatientShowResource(Patient::findOrFail($id));
-        
+
         return response()->json([
             'code' => Response::HTTP_OK,
             'data' => $patient
@@ -25,7 +25,7 @@ class PatientController extends Controller implements ApiInterface
     public function edit(int $id): JsonResponse
     {
         $patient = new PatientEditResource(Patient::findOrFail($id));
-        
+
         return response()->json([
             'code' => Response::HTTP_OK,
             'data' => $patient

@@ -52,11 +52,9 @@ class Patient extends Model
     /**
      * Set date attribute when storing data.
      *
-     * @param string $value
-     * @return void
+     * @var array
      */
-    public function setDateAttribute(string $value): void
-    {
-        $this->attributes['born_date'] = date('Y-m-d', strtotime($value));
-    }
+    protected $casts = [
+        'born_date' => 'datetime',
+    ];
 }

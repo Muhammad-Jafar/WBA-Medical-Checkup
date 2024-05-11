@@ -78,10 +78,12 @@
                                 </button>
                             @endif
 
+                            @hasrole('admin')
                             <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span>
                                 Riwayat data permintaan
                             </a>
+                            @endrole
                         </div>
                     </div>
                 </div>

@@ -22,10 +22,9 @@ class UserSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('sandi'), // password
+            'password' => bcrypt('sandi'), // password
             'position' => 'ADMIN',
-            'last_login' => now(),
-            'remember_token' => Str::random(10),
+            'remember_token' => Str::random(20),
         ])->assignRole('admin')->givePermissionTo(['create', 'read', 'update', 'delete']);
 
         // Member
@@ -35,8 +34,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('sandi'),
             'position' => 'MEMBER',
-            'last_login' => now(),
-            'remember_token' => Str::random(5),
+            'remember_token' => Str::random(20),
         ])->assignRole('member')->givePermissionTo(['create', 'read']);
     }
 }
