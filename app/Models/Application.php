@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Doctor;
-use App\Models\Patient;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Application extends Model
 {
@@ -25,13 +22,13 @@ class Application extends Model
         'patient_id',
         'doctor_id',
         'purposes',
-        'height_body', 
-        'mass_body', 
-        'blod_type', 
-        'blod_pressure', 
-        'colesterol', 
+        'height_body',
+        'mass_body',
+        'blod_type',
+        'blod_pressure',
+        'colesterol',
         'blod_sugar',
-        'requested_at', 
+        'requested_at',
         'status',
         'approved_at',
         'rejected_at'
@@ -73,9 +70,9 @@ class Application extends Model
      * @param string $value
      * @return void
      */
-    public function setDateAttribute(string $value): void
-    {
-        $this->attributes['requested_at'] = date('Y-m-d', strtotime($value));
-    }
+//    public function setDateAttribute(string $value): void
+//    {
+//        $this->attributes['requested_at'] = date('Y-m-d', strtotime($value));
+//    }
 
 }

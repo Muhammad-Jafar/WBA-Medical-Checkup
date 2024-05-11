@@ -21,7 +21,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 col-lg-6">
-                    <ul class="nav nav-tabs" id="applicationTabs" role="tableList">
+                    <ul class="nav nav-tabs" id="applicationTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a href="#today" class="nav-link active" id="today-tab" data-bs-toggle="tab" role="tab"
                                aria-controls="today" aria-selected="true">Hari ini</a>
@@ -54,7 +54,8 @@
                         {{ $preference }} --}}
 
                         <div class="btn-group d-gap gap-2">
-                            <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exportApplication">
+                            <button type="button" class="btn btn-light-success" data-bs-toggle="modal"
+                                    data-bs-target="#exportApplication">
                                 <i class="bi bi-upload"></i>
                                 Ekspor data
                             </button>
@@ -62,22 +63,23 @@
                                 <i class="bi bi-download"></i>
                                 Impor data
                             </a> --}}
-                            
+
                             @if ($repo['checkLimitApplicant'])
-                                <button type="button" class="btn btn-light-primary warning-limit" id="showLimitApplicant">
-                                    <i class="bi bi-file-earmark-plus"></i> 
+                                <button type="button" class="btn btn-light-primary warning-limit"
+                                        id="showLimitApplicant">
+                                    <i class="bi bi-file-earmark-plus"></i>
                                     Ajukan permintaan
                                 </button>
                             @else
-                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" 
-                                    data-bs-target="#createApplicantModal">
-                                    <i class="bi bi-file-earmark-plus"></i> 
+                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal"
+                                        data-bs-target="#createApplicantModal">
+                                    <i class="bi bi-file-earmark-plus"></i>
                                     Ajukan permintaan
                                 </button>
                             @endif
 
                             <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary">
-                                <span class="badge bg-danger">{{ $applicationTrashedCount }}</span> 
+                                <span class="badge bg-danger">{{ $applicationTrashedCount }}</span>
                                 Riwayat data permintaan
                             </a>
                         </div>
@@ -91,7 +93,7 @@
                 <table id="datatable" class="table table-hover table-sm w-100">
                     <thead>
                     <tr>
-                        <th scope=" col">#</th>
+                        <th scope="col">#</th>
                         <th scope="col">Pasien</th>
                         <th scope="col">Keperluan</th>
                         <th scope="col">Dokter Pemeriksa</th>
@@ -107,14 +109,14 @@
     </div>
 
     @push('modal')
-    @include('application.model.create')
-    @include('application.model.process')
-    @include('application.model.edit')
-    @include('application.model.export')
+        @include('application.model.create')
+        @include('application.model.process')
+        @include('application.model.edit')
+        @include('application.model.export')
     @endpush
 
     @push('js')
-    @include('application.script')
+        @include('application.script')
     @endpush
 
 </x-app-layout>

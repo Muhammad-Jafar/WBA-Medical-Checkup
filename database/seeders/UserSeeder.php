@@ -17,12 +17,22 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // Administrator
         User::create([
             'name' => 'User',
             'email' => 'user@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('sandi'), // password
             'remember_token' => Str::random(10),
-        ]);
+        ])->assignRole('admin')->givePermissionTo(['create', 'read', 'update', 'delete']);
+
+        // Member
+        User::create([
+            'name' => 'Member',
+            'email' => 'member@mail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('sandi'),
+            'remember_token' => Str::random(5),
+        ])->assignRole('member')->givePermissionTo(['create', 'read']);
     }
 }
