@@ -13,22 +13,24 @@ class AdministratorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View|\Illuminate\Http\JsonResponse
+     * @return View|JsonResponse
      */
-    public function index():View|JsonResponse
+    public function index()
     {
-        $user = User::select('id','name','email', 'created_at', 'current_team_id')
-        ->orderBy('name')
-        ->get();
+        $user = User::select('id', 'email', 'name', 'position', 'created_at', 'last_login', 'is_active')
+            ->orderBy('position')
+            ->get();
 
-        if(request()->ajax()) {
+        if (request()->ajax()) {
             return datatables()->of($user)
-            ->addIndexColumn()
-            ->addColumn('created_at', fn($model) => date('d M Y H:i', strtotime($model->created_at)))
-            ->addColumn('team', 'administrator.datatable.team')
-            ->addColumn('action', 'administrator.datatable.action')
-            ->rawColumns(['team','action'])
-            ->toJson();
+                ->addIndexColumn()
+                ->addColumn('created_at', fn($model) => monthToFullBulan($model->created_at))
+                ->addColumn('last_login', fn($model) => timeAgo($model->last_login))
+                ->addColumn('active', 'administrator.datatable.active')
+                ->addColumn('position', 'administrator.datatable.position')
+                ->addColumn('action', 'administrator.datatable.action')
+                ->rawColumns(['active','position', 'action'])
+                ->toJson();
         }
 
         return view('administrator.index');
@@ -37,8 +39,8 @@ class AdministratorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\AdministratorRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param AdministratorRequest $request
+     * @return RedirectResponse
      */
     public function store(AdministratorRequest $request): RedirectResponse
     {
@@ -53,9 +55,9 @@ class AdministratorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\AdministratorRequest $request
-     * @param  \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param AdministratorRequest $request
+     * @param User $user
+     * @return RedirectResponse
      */
     public function update(AdministratorRequest $request, User $user): RedirectResponse
     {
@@ -66,8 +68,8 @@ class AdministratorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param User $user
+     * @return RedirectResponse
      */
     public function destroy(User $user): RedirectResponse
     {

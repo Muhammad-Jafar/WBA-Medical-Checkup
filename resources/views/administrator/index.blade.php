@@ -26,7 +26,8 @@
                     <div class="col-6 col-lg-6">
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
-                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createAdministratorModal">
+                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal"
+                                        data-bs-target="#createAdministratorModal">
                                     <i class="bi bi-person-plus"></i> Tambah admin
                                 </button>
                             </div>
@@ -39,14 +40,16 @@
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-sm w-100">
                         <thead>
-                            <tr>
-                                <th scope=" col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Dibuat pada</th>
-                                <th scope="col">Tim</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Posisi</th>
+                            <th scope="col">Bergabung pada</th>
+                            <th scope="col">Terlihat</th>
+                            <th scope="col">Aktif</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
                         </thead>
                     </table>
                 </div>
@@ -55,12 +58,12 @@
     </div>
 
     @push('modal')
-    @include('administrator.modal.create')
-    @include('administrator.modal.edit')
+        @include('administrator.modal.create')
+        @include('administrator.modal.edit')
     @endpush
 
     @push('js')
-    @include('administrator.script')
+        @include('administrator.script')
     @endpush
 
 </x-app-layout>

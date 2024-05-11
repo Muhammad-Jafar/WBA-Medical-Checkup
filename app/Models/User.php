@@ -20,6 +20,20 @@ class User extends Authenticate
     use TwoFactorAuthenticatable;
     use HasRoles;
 
+
+    /**
+     * Fiil the colom of users talbe
+     *
+     * @array
+     */
+    protected $fillable = [
+        'email',
+        'name',
+        'password',
+        'position',
+        'last_login'
+    ];
+
     /**
      * Set the guard attribute
      *
