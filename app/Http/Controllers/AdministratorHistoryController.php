@@ -26,9 +26,9 @@ class AdministratorHistoryController extends Controller
                 ->addIndexColumn()
                 ->addColumn('created_at', fn($model) => monthToFullBulan($model->created_at))
                 ->addColumn('last_login', fn($model) => timeAgo($model->last_login))
-                ->addColumn('is_active', 'administrator.datatable.active')
-                ->addColumn('position', 'administrator.datatable.position')
-                ->addColumn('action', 'administrator.datatable.action')
+                ->addColumn('is_active', 'administrator.history.datatable.active')
+                ->addColumn('position', 'administrator.history.datatable.position')
+                ->addColumn('action', 'administrator.history.datatable.action')
                 ->rawColumns(['is_active', 'position', 'action'])
                 ->toJson();
         }

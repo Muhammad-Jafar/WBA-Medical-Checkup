@@ -1,5 +1,5 @@
-<header class='mb-3'>
-    <nav class="navbar navbar-expand navbar-light ">
+<header>
+    <nav class="navbar navbar-expand navbar-light">
         <div class="container-fluid">
             <a href="#" class="burger-btn d-block">
                 <i class="bi bi-justify fs-3"></i>
@@ -10,11 +10,20 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="col-8 ms-4">
+                    <div class="input-group">
+                        <input class="form-control" type="search" name="findUser" id="findUser"
+                               placeholder="Cari nama / nik pasien">
+                        <button class="btn btn-outline-primary">Carikan</button>
+                    </div>
+                </div>
+
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    {{-- <li class="nav-item dropdown me-1">
+                    <li class="nav-item dropdown me-1">
                         <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                           aria-expanded="false">
                             <i class='bi bi-envelope bi-sub fs-4 text-gray-600'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
@@ -26,7 +35,7 @@
                     </li>
                     <li class="nav-item dropdown me-3">
                         <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                           aria-expanded="false">
                             <i class='bi bi-bell bi-sub fs-4 text-gray-600'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
@@ -35,17 +44,18 @@
                             </li>
                             <li><a class="dropdown-item">No notification available</a></li>
                         </ul>
-                    </li> --}}
+                    </li>
                 </ul>
+
                 <div class="dropdown">
                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
-                                <h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>
+                                <h6 class="mb-0 text-lg text-gray-600">{{ Auth::user()->name }}</h6>
                                 <p class="mb-0 text-sm text-success"><b>Online</b></p>
                             </div>
                             <div class="user-img d-flex align-items-center">
-                                <div class="avatar avatar-md">
+                                <div class="avatar avatar-lg">
                                     <img src="{{ Auth::user()->profile_photo_url }}">
                                 </div>
                             </div>

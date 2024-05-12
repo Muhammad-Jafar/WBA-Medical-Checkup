@@ -3,7 +3,33 @@
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
 
+{{--        <div class="user-menu row d-flex m-4">--}}
+{{--            <a href="{{ route('dashboard') }}">--}}
+{{--                <div class="user-img d-flex justify-content-center">--}}
+{{--                    <div class="avatar avatar-xl">--}}
+{{--                        <img src="{{ Auth::user()->profile_photo_url }}" alt="profile picture">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
+{{--                <div class="user-name text-center mt-2">--}}
+{{--                    <h4 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h4>--}}
+{{--                    <p class="mb-0 text-sm text-gray-500"><b>{{ Auth::user()->position }}</b></p>--}}
+{{--                </div>--}}
+{{--            </a>--}}
+
+{{--            <div class="d-flex justify-content-center mt-2">--}}
+{{--                <a href="{{ route('profile.show') }}" class="btn btn-light-primary d-flex">--}}
+{{--                    <i class="icon-mid bi bi-person me-2"></i>--}}
+{{--                    <p class="mb-0 text-gray-600">profil</p>--}}
+{{--                </a>--}}
+{{--                <form id="logout-form" action="{{ route('logout') }}" method="POST">--}}
+{{--                    @csrf--}}
+{{--                    <button href="{{ route('logout') }}" class="btn btn-light ms-4">--}}
+{{--                        <p class="mb-0 text-2xl text-gray-600"> {{ __('Logout') }} </p>--}}
+{{--                    </button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">

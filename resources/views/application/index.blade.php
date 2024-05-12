@@ -24,15 +24,21 @@
                     <ul class="nav nav-tabs" id="applicationTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a href="#today" class="nav-link active" id="today-tab" data-bs-toggle="tab" role="tab"
-                               aria-controls="today" aria-selected="true">Hari ini</a>
+                               aria-controls="today" aria-selected="true">
+                                <h6> Hari ini</h6>
+                            </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a href="#pending" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab"
-                               aria-controls="pending" aria-selected="false" tabindex="-1">Sisa</a>
+                               aria-controls="pending" aria-selected="false" tabindex="-1">
+                                <h6>Tertunda</h6>
+                            </a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a href="#all" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab"
-                               aria-controls="all" aria-selected="false" tabindex="-1">Semua</a>
+                               aria-controls="all" aria-selected="false" tabindex="-1">
+                                <h6>Semua</h6>
+                            </a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -40,7 +46,7 @@
                             <h4 class="mt-4 my-2">Daftar permintaan hari ini</h4>
                         </div>
                         <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending">
-                            <h4 class="mt-4 my-2">Daftar sisa permintaan</h4>
+                            <h4 class="mt-4 my-2">Daftar permintaan tertunda</h4>
                         </div>
                         <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all">
                             <h4 class="mt-4 my-2">Daftar semua permintaan</h4>
