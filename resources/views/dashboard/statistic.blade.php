@@ -1,5 +1,5 @@
 	<div class="col-12 col-lg-12">
-		<div class="row mt-4">
+		<div class="row">
 			<div class="col-6 col-lg-3 col-md-6">
                 <a href="{{ route('patient.index') }}">
 					<div class="card card-stat">

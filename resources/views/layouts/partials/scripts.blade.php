@@ -35,8 +35,8 @@
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.13.3/i18n/id.json",
             },
-            "pageLength": 10,
-            "lengthMenu": [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']]
+            "pageLength": 20,
+            "lengthMenu": [[20, 30, 40, -1], [20, 30, 40, 50, 'All']]
         });
 
         $('#logout-form').click(function (e) {
@@ -101,6 +101,25 @@
             Swal.fire({
                 title: "Batalkan?",
                 text: "Permintaan tersebut akan dibatalkan!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Tidak",
+                confirmButtonText: "Ya!",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+                }
+            });
+        });
+
+        $("#datatable").on('click', '.undo-dialog', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Kembalikan?",
+                text: "Permintaan tersebut akan dikembalikan ke status pending!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",

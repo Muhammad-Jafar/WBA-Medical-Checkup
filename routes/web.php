@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::controller(ApplicationController::class)->prefix('/application')->name('application.')->group(function () {
         Route::get('/{tab}', 'getTab')->name('getTab');
         Route::put('/cancel/{id}', 'cancel')->name('cancel');
+        Route::put('/undoReject/{id}', 'undoReject')->name('undoReject');
     });
 
     Route::controller(PatientHistoryController::class)->prefix('/patient/history')->name('patient.')->group(function () {

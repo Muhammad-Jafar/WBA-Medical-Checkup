@@ -1,3 +1,3 @@
-<span class="badge bg-light-secondary">
+<span class="font-bold">
     {{ $model->abbreviated_word }}
 </span>

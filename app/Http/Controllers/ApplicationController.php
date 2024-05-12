@@ -156,4 +156,20 @@ class ApplicationController extends Controller
             ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
+
+    /**
+     * Update specified field from table.
+     *
+     * @param string $id
+     * @return RedirectResponse
+     */
+    public function undoReject(string $id): RedirectResponse
+    {
+        Application::findOrFail($id)
+            ->update([
+                'status' => 'PENDING',
+                'rejected_at' => null,
+            ]);
+        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+    }
 }

@@ -56,9 +56,8 @@
                                         </td>
                                         <td class="col-auto">
                                             <button type="button" data-id="{{ $pref->id }}" data-bs-toggle="modal"
-                                                data-bs-target="#editDailyLimitModal" class="btn btn-primary btn-sm applicant-daily-limit">
+                                                data-bs-target="#editDailyLimitModal" class="btn btn-light-secondary applicant-daily-limit">
                                                 <i class="bi bi-pencil"></i>
-                                                Edit
                                             </button>
                                         </td>
                                     </tr>
