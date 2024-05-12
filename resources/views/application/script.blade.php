@@ -19,7 +19,7 @@
 
         $('#today-tab').click(function() {
             $.ajax({
-                url: "{{ route('application.getTab', 'today') }}",
+                url: "{{ route('application.tab', 'today') }}",
                 data: {tab: "today"},
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
@@ -61,7 +61,7 @@
 
         $('#pending-tab').click(function() {
             $.ajax({
-                url: "{{ route('application.getTab', 'pending') }}",
+                url: "{{ route('application.tab', 'pending') }}",
                 data: {tab: "pending"},
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
@@ -103,7 +103,7 @@
 
         $('#all-tab').click(function() {
             $.ajax({
-                url: "{{ route('application.getTab', 'all') }}",
+                url: "{{ route('application.tab', 'all') }}",
                 data: {tab: "pending"},
                 success: function (data) {
                     $('#datatable-wrap').removeAttr('style');
@@ -143,14 +143,31 @@
 
         });
 
-        $('#datatable').on('click', '.print-window', function() {
+        $('#datatable').on('click', '.print-window', function(e) {
             loadingAlert.show();
+            e.preventDefault();
 
             let id = $(this).data('id');
             let url = "{{ route('application.print', 'id') }}";
             url = url.replace('id', id);
 
-            window.open(url, '_blank');
+            Swal.fire({
+                title: "Cetak pengajuan!",
+                text: "Anda yakin ingin mencetak pengajuan SKBS?.",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Jangan dulu",
+                confirmButtonText: "Cetak",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+
+                    window.open(url,'_blank');
+                }
+            });
+
         });
 
         $('#datatable').on('click', '.applicant-edit', function() {
@@ -201,7 +218,7 @@
 				reverseButtons: true,
 			}).then((result) => {
 				if (result.isConfirmed) {
-					$(this).parent().submit();  
+					$(this).parent().submit();
 				}
 			});
 

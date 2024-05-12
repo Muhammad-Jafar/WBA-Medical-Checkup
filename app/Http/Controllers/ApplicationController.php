@@ -33,6 +33,7 @@ class ApplicationController extends Controller
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
             ->latest()
             ->whereDate('created_at', now()->toDateString())
+            ->where('status', 'PENDING')
             ->get();
 
         $patient = Patient::select('id', 'nik', 'name')->get();
@@ -61,14 +62,16 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function getTab($tab): JsonResponse
+    public function tab($tab): JsonResponse
     {
         $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
             ->latest();
 
         if ($tab == 'today') {
-            $application->whereDate('created_at', now()->toDateString())->get();
+            $application->whereDate('created_at', now()->toDateString())
+                ->where('status', 'PENDING')
+                ->get();
         } elseif ($tab === 'pending') {
             $application->where('status', 'pending')->get();
         } else {
@@ -109,8 +112,7 @@ class ApplicationController extends Controller
             'blod_type' => $request->blod_type,
             'blod_pressure' => $request->blod_pressure,
             'colesterol' => $request->colesterol,
-            'blod_sugar' => $request->blod_sugar,
-            'approved_at' => now(),
+            'blod_sugar' => $request->blod_sugar
         ]);
 
         return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');
@@ -163,12 +165,30 @@ class ApplicationController extends Controller
      * @param string $id
      * @return RedirectResponse
      */
-    public function undoReject(string $id): RedirectResponse
+    public function undo(string $id): RedirectResponse
     {
         Application::findOrFail($id)
             ->update([
                 'status' => 'PENDING',
-                'rejected_at' => null,
+                'rejected_at' => now(),
+                'approved_at' => null
+            ]);
+        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+    }
+
+    /**
+     * Update specified field from table.
+     *
+     * @param string $id
+     * @return RedirectResponse
+     */
+    public function approve(string $id): RedirectResponse
+    {
+        Application::findOrFail($id)
+            ->update([
+                'status' => 'APPROVED',
+                'approved_at' => now(),
+                'rejected_at' => null
             ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }

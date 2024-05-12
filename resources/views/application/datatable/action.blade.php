@@ -1,12 +1,12 @@
 <div class="btn-group" role="group">
     @if ($model->status == 'PENDING')
         <div class="mx-1">
-            <div class="d-inline-block">
-                <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success print-window"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Cetak pengajuan">
+            <form action="{{ route('application.approve', $model->id) }}" method="POST">
+                @csrf @method('PUT')
+                <button type="submit" data-id="{{ $model->id }}" class="btn btn-sm btn-success print-window">
                     <i class="bi bi-printer"></i>
                 </button>
-            </div>
+            </form>
         </div>
 
         @hasrole('admin')
@@ -28,7 +28,7 @@
         </div>
     @elseif ($model->status == 'REJECTED')
         <div class="mx-1">
-            <form action="{{ route('application.undoReject', $model->id) }}" method="POST">
+            <form action="{{ route('application.undo', $model->id) }}" method="POST">
                 @csrf @method('PUT')
                 <button type="submit" class="btn btn-sm btn-success undo-dialog">
                     <i class="bi bi-arrow-counterclockwise"></i>
