@@ -1,25 +1,28 @@
 <div class="btn-group" role="group">
     @if ($model->status == 'PENDING')
         <div class="mx-1">
-            <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success print-window">
-                <i class="bi bi-arrow-right"></i>
-            </button>
+            <div class="d-inline-block">
+                <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success print-window"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Cetak pengajuan">
+                    <i class="bi bi-printer"></i>
+                </button>
+            </div>
         </div>
 
         @hasrole('admin')
-            <div class="mx-1">
-                <form action="{{ route('application.cancel', $model->id) }}" method="POST">
-                    @csrf @method('PUT')
-                    <button type="submit" class="btn btn-sm btn-warning cancel-dialog">
-                        <i class="bi bi-x-circle"></i>
-                    </button>
-                </form>
-            </div>
+        <div class="mx-1">
+            <form action="{{ route('application.cancel', $model->id) }}" method="POST">
+                @csrf @method('PUT')
+                <button type="submit" class="btn btn-sm btn-warning cancel-dialog">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+            </form>
+        </div>
         @endrole
 
         <div class="mx-1">
             <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-light-primary applicant-edit"
-                data-bs-toggle="modal" data-bs-target="#editApplicantModal">
+                    data-bs-toggle="modal" data-bs-target="#editApplicantModal">
                 <i class="bi bi-pencil"></i>
             </button>
         </div>

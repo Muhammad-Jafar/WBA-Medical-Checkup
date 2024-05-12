@@ -19,14 +19,14 @@
     <div>
         <section>
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">
-                        Setelan umum
-                    </h4>
-                    <p class="card-description">
-                        Preferensi yang tersedia untuk kebutuhan setelan umum
-                    </p>
-                </div>
+{{--                <div class="card-header">--}}
+{{--                    <h4 class="card-title">--}}
+{{--                        Setelan umum--}}
+{{--                    </h4>--}}
+{{--                    <p class="card-description">--}}
+{{--                        Preferensi yang tersedia untuk kebutuhan setelan umum--}}
+{{--                    </p>--}}
+{{--                </div>--}}
                 <div class="card-body">
 
                     <div class="table-responsive">
@@ -36,27 +36,27 @@
                                     <tr>
                                         <td class="col-10">
                                             <div class="row d-flex align-items-center">
-                                                <h5 class="text-gray-600">
+                                                <span class="text-2xl font-bold">
                                                     {{ $pref->name }}
-                                                </h5>
-                                                <p class="text-gray-600">
+                                                </span>
+                                                <span class="text-gray-600">
                                                     {{ $pref->desc }}
-                                                </p>
+                                                </span>
                                             </div>
                                         </td>
                                         <td class="col-auto">
-                                            <p class="font-bold">
+                                            <span class="font-semibold">
                                                 @if ($pref->status == 0) FALSE
                                                 @else TRUE
                                                 @endif
-                                            </p>
+                                            </span>
                                         </td>
                                         <td class="col-auto">
-                                            <h5>{{ $pref->input }}</h5>
+                                            <span>{{ $pref->input }}</span>
                                         </td>
                                         <td class="col-auto">
                                             <button type="button" data-id="{{ $pref->id }}" data-bs-toggle="modal"
-                                                data-bs-target="#editDailyLimitModal" class="btn btn-light-secondary applicant-daily-limit">
+                                                data-bs-target="#editDailyLimitModal" class="btn btn-sm btn-light-secondary applicant-daily-limit">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
                                         </td>
