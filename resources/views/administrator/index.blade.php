@@ -45,7 +45,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-hover table-sm w-100">
+                    <table id="datatable" class="table table-hover table-bordered w-100">
                         <thead>
                         <tr>
                             <th scope="col">#</th>

@@ -38,10 +38,10 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="datatable" class="table w-100">
+                    <table id="datatable" class="table table-hover table-bordered w-100">
                         <thead>
                             <tr>
-                                <th scope=" col">#</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">TTL</th>
                                 <th scope="col">Pekerjaan</th>

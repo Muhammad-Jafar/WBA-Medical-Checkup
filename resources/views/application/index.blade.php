@@ -43,13 +43,13 @@
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today">
-                            <h4 class="mt-4 my-2">Daftar permintaan hari ini</h4>
+                            <h4 class="mt-4 my-2">Permintaan hari ini</h4>
                         </div>
                         <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending">
-                            <h4 class="mt-4 my-2">Daftar permintaan tertunda</h4>
+                            <h4 class="mt-4 my-2">Permintaan tertunda</h4>
                         </div>
                         <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all">
-                            <h4 class="mt-4 my-2">Daftar semua permintaan</h4>
+                            <h4 class="mt-4 my-2">Semua permintaan</h4>
                         </div>
                     </div>
 
@@ -98,7 +98,7 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table id="datatable" class="table table-hover table-sm w-100">
+                <table id="datatable" class="table table-hover table-bordered w-100">
                     <thead>
                     <tr>
                         <th scope="col">#</th>

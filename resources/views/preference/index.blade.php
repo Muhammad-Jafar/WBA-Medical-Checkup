@@ -24,22 +24,22 @@
                         Setelan umum
                     </h4>
                     <p class="card-description">
-                        Preferensi yang tersedia untuk kebutuhan setelan umum 
+                        Preferensi yang tersedia untuk kebutuhan setelan umum
                     </p>
                 </div>
                 <div class="card-body">
-                    
+
                     <div class="table-responsive">
-                        <table class="table table-hover w-100">
+                        <table class="table table-hover table-borderless w-100">
                             <tbody>
                                 @foreach ($preference as $pref)
                                     <tr>
                                         <td class="col-10">
                                             <div class="row d-flex align-items-center">
-                                                <h6 class="text-gray-300">
+                                                <h5 class="text-gray-600">
                                                     {{ $pref->name }}
-                                                </h6>
-                                                <p class="text-gray-500">
+                                                </h5>
+                                                <p class="text-gray-600">
                                                     {{ $pref->desc }}
                                                 </p>
                                             </div>
@@ -52,12 +52,10 @@
                                             </p>
                                         </td>
                                         <td class="col-auto">
-                                            <h5>
-                                                {{ $pref->input }}
-                                            </h5>
+                                            <h5>{{ $pref->input }}</h5>
                                         </td>
                                         <td class="col-auto">
-                                            <button type="button" data-id="{{ $pref->id }}" data-bs-toggle="modal" 
+                                            <button type="button" data-id="{{ $pref->id }}" data-bs-toggle="modal"
                                                 data-bs-target="#editDailyLimitModal" class="btn btn-primary btn-sm applicant-daily-limit">
                                                 <i class="bi bi-pencil"></i>
                                                 Edit
@@ -119,7 +117,7 @@
                         <div class="tab-pane fade" id="umum" role="tabpanel" aria-labelledby="umum-tab">
                             <div class="mt-4">
                                 <h5>Setelan umum</h5>
-                                
+
                             </div>
                         </div>
                         <div class="tab-pane fade" id="preferensi" role="tabpanel" aria-labelledby="preferensi-tab">

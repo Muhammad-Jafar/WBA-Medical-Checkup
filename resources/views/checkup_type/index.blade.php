@@ -30,7 +30,7 @@
                                     <div class="dropdown dropdown-color-icon">
                                         <button class="btn btn-light-info dropdown-toggle me-1" type="button" id="dropdownExport" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="bi bi-upload"></i>
-                                            Ekspor data 
+                                            Ekspor data
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownExport">
                                             <div class="dropdown-item">
@@ -62,10 +62,10 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-hover table-sm w-100">
+                    <table id="datatable" class="table table-hover table-bordered w-100">
                         <thead>
                             <tr>
-                                <th scope=" col">#</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Singkatan</th>
                                 <th scope="col">Deskripsi</th>
