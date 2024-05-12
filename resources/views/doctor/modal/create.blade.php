@@ -8,7 +8,7 @@
 			<div class="modal-body">
 				<form action="{{ route('doctor.store') }}" method="POST">
 					@csrf
-					<div class="row">	
+					<div class="row">
 						<div class="col-md-12  mb-3">
 							<label for="name" class="form-label">Nama dokter</label>
 							<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
@@ -38,7 +38,7 @@
 
 					<div class="row">
 						<div class="col-md-12 mb-3">
-							<label for="nip" class="form-label">NIP dokter</label>
+							<label for="nip" class="form-label">NIP dokter (Opsional)</label>
 							<input type="number" class="form-control @error('nip') is-invalid @enderror" name="nip" id="nip"
 								value="{{ old('nip') }}" placeholder="Masukkan nomor NIP">
 

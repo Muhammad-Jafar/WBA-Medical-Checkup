@@ -1,5 +1,11 @@
 @if($model->is_active == 1)
-    <span class="badge rounded-pill bg-success"><i class="bi bi-check-lg"></i></span>
+    <div class="d-flex justify-content-start">
+        <i class="bi bi-check-circle-fill text-success me-2"></i>
+        <h6 class="text-success font-extrabold mt-1">Aktif</h6>
+    </div>
 @else
-    <span class="badge rounded-pill bg-danger"><i class="bi bi-x-lg"></i></span>
+    <div class="d-flex justify-content-start">
+        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+        <h6 class="text-danger font-extrabold mt-1">Tidak aktif</h6>
+    </div>
 @endif

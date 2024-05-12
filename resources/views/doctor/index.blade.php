@@ -60,7 +60,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">NIP</th>
                             <th scope="col">SIP</th>
-                            <th scope="col">Verifikasi</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>

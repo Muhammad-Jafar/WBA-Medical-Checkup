@@ -54,7 +54,7 @@
                             <th scope="col">Posisi</th>
                             <th scope="col">Bergabung pada</th>
                             <th scope="col">Terlihat</th>
-                            <th scope="col">Aktif</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>

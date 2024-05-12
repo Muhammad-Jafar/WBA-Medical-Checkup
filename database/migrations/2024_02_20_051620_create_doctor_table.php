@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('sip');
-            $table->string('nip');
-            $table->enum('verified', ['TRUE', 'FALSE'])->default('FALSE');
+            $table->string('nip')->nullable();
+            $table->enum('verified', ['TRUE', 'FALSE'])->default('TRUE');
             $table->timestamps();
         });
     }

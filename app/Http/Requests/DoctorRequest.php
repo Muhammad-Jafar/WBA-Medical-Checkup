@@ -26,7 +26,7 @@ class DoctorRequest extends FormRequest
         return [
             'name' => ['required', 'min:3', 'max:191'],
             'sip' => ['required'],
-            'nip' => ['required'],
+            'nip' => ['min:3', 'max:191'],
         ];
     }
 
@@ -44,7 +44,8 @@ class DoctorRequest extends FormRequest
 
             'sip.required' => 'Kolom SIP wajib diisi!',
 
-            'nip.required' => 'Kolom NIP wajib diisi!',
+            'nip.min' => 'Kolom NIP minimal :min karakter!',
+            'nip.max' => 'Kolom NIP maksimal :max karakter!!',
         ];
     }
 
