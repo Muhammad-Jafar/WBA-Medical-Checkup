@@ -27,7 +27,7 @@
                         <div class="col-6 col-lg-6">
                             <div class="d-flex justify-content-end pb-3">
                                 <div class="btn-group d-gap gap-2">
-                                    <a href="{{ route('patient.export') }}" class="btn btn-light-success">
+                                    <a href="{{ route('patient.export') }}" class="btn btn-light-success rounded-pill">
                                         <i class="bi bi-upload"></i>
                                         Ekspor data
                                     </a>
@@ -35,14 +35,16 @@
                                         <i class="bi bi-download"></i>
                                         Impor data
                                     </a> --}}
-                                    <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createPatientModal">
+                                    <button type="button" class="btn btn-light-primary rounded-pill"
+                                            data-bs-toggle="modal" data-bs-target="#createPatientModal">
                                         <i class="bi bi-person-plus"></i> Tambah Pasien
                                     </button>
 
                                     @hasrole('admin')
-                                        <a href="{{ route('patient.index.history') }}" class="btn btn-light-secondary">
-                                            <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Riwayat data pasien
-                                        </a>
+                                    <a href="{{ route('patient.index.history') }}" class="btn btn-light-secondary rounded-pill">
+                                        <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Riwayat data
+                                        pasien
+                                    </a>
                                     @endrole
                                 </div>
                             </div>
@@ -54,13 +56,13 @@
                     <div class="table-responsive">
                         <table id="datatable" class="table table-hover table-bordered w-100">
                             <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">TTL</th>
-                                    <th scope="col">Pekerjaan</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">TTL</th>
+                                <th scope="col">Pekerjaan</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
                             </thead>
                         </table>
                     </div>
@@ -71,13 +73,13 @@
     </div>
 
     @push('modal')
-    @include('patient.modal.create')
-    @include('patient.modal.show')
-    @include('patient.modal.edit')
+        @include('patient.modal.create')
+        @include('patient.modal.show')
+        @include('patient.modal.edit')
     @endpush
 
     @push('js')
-    @include('patient.script')
+        @include('patient.script')
     @endpush
 
 </x-app-layout>

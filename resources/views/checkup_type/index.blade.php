@@ -48,10 +48,10 @@
                                     <i class="bi bi-download"></i>
                                     Impor data
                                 </a> --}}
-                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createCheckupTypeModal">
+                                <button type="button" class="btn btn-light-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#createCheckupTypeModal">
                                     <i class="bi bi-person-plus"></i> Tambah pemeriksaan
                                 </button>
-                                <a href="{{ route('checkup-type.index.history') }}" class="btn btn-light-secondary">
+                                <a href="{{ route('checkup-type.index.history') }}" class="btn btn-light-secondary rounded-pill">
                                     <span class="badge bg-danger">{{ $checkupTypeTrashedCount }}</span> Riwayat jenis pemeriksaan
                                 </a>
                             </div>

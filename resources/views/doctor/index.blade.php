@@ -26,7 +26,7 @@
                     <div class="col-6 col-lg-6">
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
-                                <a href="{{ route('doctor.export') }}" class="btn btn-light-success">
+                                <a href="{{ route('doctor.export') }}" class="btn btn-light-success rounded-pill">
                                     <i class="bi bi-upload"></i>
                                     Ekspor data
                                 </a>
@@ -34,14 +34,16 @@
                                     <i class="bi bi-download"></i>
                                     Impor data
                                 </a> --}}
-                                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#createDoctorModal">
+                                <button type="button" class="btn btn-light-primary rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#createDoctorModal">
                                     <i class="bi bi-person-plus"></i> Tambah dokter
                                 </button>
 
                                 @hasrole('admin')
-                                    <a href="{{ route('doctor.index.history') }}" class="btn btn-light-secondary">
-                                        <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Riwayat data dokter
-                                    </a>
+                                <a href="{{ route('doctor.index.history') }}"
+                                   class="btn btn-light-secondary rounded-pill">
+                                    <span class="badge bg-danger">{{ $doctorTrashedCount }}</span> Riwayat data dokter
+                                </a>
                                 @endrole
                             </div>
                         </div>
@@ -53,14 +55,14 @@
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-bordered w-100">
                         <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">NIP</th>
-                                <th scope="col">SIP</th>
-                                <th scope="col">Verifikasi</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">NIP</th>
+                            <th scope="col">SIP</th>
+                            <th scope="col">Verifikasi</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
                         </thead>
                     </table>
                 </div>
@@ -69,12 +71,12 @@
     </div>
 
     @push('modal')
-    @include('doctor.modal.create')
-    @include('doctor.modal.edit')
+        @include('doctor.modal.create')
+        @include('doctor.modal.edit')
     @endpush
 
     @push('js')
-    @include('doctor.script')
+        @include('doctor.script')
     @endpush
 
 </x-app-layout>
