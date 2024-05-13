@@ -27,7 +27,7 @@
                         <div class="col-6 col-lg-6">
                             <div class="d-flex justify-content-end pb-3">
                                 <div class="btn-group d-gap gap-2">
-                                    <a href="{{ route('patient.export') }}" class="btn btn-light-success rounded-pill">
+                                    <a href="{{ route('patient.export') }}" class="btn btn-success rounded-3">
                                         <i class="bi bi-upload"></i>
                                         Ekspor data
                                     </a>
@@ -35,13 +35,14 @@
                                         <i class="bi bi-download"></i>
                                         Impor data
                                     </a> --}}
-                                    <button type="button" class="btn btn-light-primary rounded-pill"
-                                            data-bs-toggle="modal" data-bs-target="#createPatientModal">
+                                    <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                                            data-bs-target="#createPatientModal">
                                         <i class="bi bi-person-plus"></i> Tambah Pasien
                                     </button>
 
                                     @hasrole('admin')
-                                    <a href="{{ route('patient.index.history') }}" class="btn btn-light-secondary rounded-pill">
+                                    <a href="{{ route('patient.index.history') }}"
+                                       class="btn btn-light-secondary rounded-3">
                                         <span class="badge bg-danger">{{ $patientTrashedCount }}</span> Riwayat data
                                         pasien
                                     </a>

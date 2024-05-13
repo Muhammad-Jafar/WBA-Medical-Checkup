@@ -27,7 +27,7 @@
                     <div class="col-6 col-lg-6">
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
-                                <a href="{{ route('checkup-type.index') }}" class="btn btn-primary float-end mx-2">
+                                <a href="{{ route('checkup-type.index') }}" class="btn btn-primary rounded-3 float-end mx-2">
                                     <i class="bi bi-caret-left-square"></i> Kembali
                                 </a>
                             </div>

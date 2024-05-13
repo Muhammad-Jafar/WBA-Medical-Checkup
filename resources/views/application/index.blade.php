@@ -60,7 +60,7 @@
                         {{ $preference }} --}}
 
                         <div class="btn-group d-gap gap-2">
-                            <button type="button" class="btn btn-light-success rounded-pill" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-success rounded-3" data-bs-toggle="modal"
                                     data-bs-target="#exportApplication">
                                 <i class="bi bi-upload"></i>
                                 Ekspor data
@@ -71,13 +71,13 @@
                             </a> --}}
 
                             @if ($repo['checkLimitApplicant'])
-                                <button type="button" class="btn btn-light-primary rounded-pill warning-limit"
+                                <button type="button" class="btn btn-primary rounded-3 warning-limit"
                                         id="showLimitApplicant">
                                     <i class="bi bi-file-earmark-plus"></i>
                                     Ajukan permintaan
                                 </button>
                             @else
-                                <button type="button" class="btn btn-light-primary rounded-pill" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
                                         data-bs-target="#createApplicantModal">
                                     <i class="bi bi-file-earmark-plus"></i>
                                     Ajukan permintaan
@@ -85,7 +85,7 @@
                             @endif
 
                             @hasrole('admin')
-                            <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary rounded-pill">
+                            <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary rounded-3">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span>
                                 Riwayat data permintaan
                             </a>

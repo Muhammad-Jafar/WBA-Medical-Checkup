@@ -16,7 +16,7 @@
                     <div class="input-group">
                         <input class="form-control" type="search" name="findUser" id="findUser"
                                placeholder="Cari nama / nik pasien">
-                        <button class="btn btn-primary">Carikan</button>
+                        <button class="btn btn-outline-primary font-bold">Carikan</button>
                     </div>
                 </div>
 
