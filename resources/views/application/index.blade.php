@@ -118,7 +118,6 @@
 
     @push('modal')
         @include('application.model.create')
-        @include('application.model.process')
         @include('application.model.edit')
         @include('application.model.export')
     @endpush

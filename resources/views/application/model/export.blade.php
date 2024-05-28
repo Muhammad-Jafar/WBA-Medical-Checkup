@@ -6,11 +6,11 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				@include('utilities.loading-alert')
+{{--				@include('utilities.loading-alert')--}}
 
 				<form action="#" method="POST" id="process-applicant-form">
 					@csrf @method('PUT')
-					
+
 					<div class="row">
 						<div class="col-md-12 mb-3">
 							<div class="form-group row align-item-center">
@@ -19,7 +19,7 @@
 								</div>
 								<div class="col-lg-9 col-9">
 									<input type="hidden" name="patient_id" id="patient_id">
-									<input type="text" class="form-control" id="patient" readonly>	
+									<input type="text" class="form-control" id="patient" readonly>9
 								</div>
 							</div>
 						</div>
@@ -46,7 +46,7 @@
 								</div>
 								<div class="col-lg-9 col-9">
 									<input type="hidden" name="doctor_id" id="doctor_id">
-									<input type="text" class="form-control" id="doctor" readonly>	
+									<input type="text" class="form-control" id="doctor" readonly>
 								</div>
 							</div>
 						</div>
@@ -105,7 +105,7 @@
 									<label class="col-form-label" for="blod_type">Golongan darah</label>
 								</div>
 								<div class="col-lg-7 col-8">
-									<input type="text" class="form-control" name="blod_type" id="blod_type" readonly>	
+									<input type="text" class="form-control" name="blod_type" id="blod_type" readonly>
 								</div>
 							</div>
 						</div>
