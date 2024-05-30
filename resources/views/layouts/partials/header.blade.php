@@ -12,13 +12,13 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="col-8 ms-4">
+                {{--<div class="col-8 ms-4">
                     <div class="input-group">
                         <input class="form-control" type="search" name="findUser" id="findUser"
                                placeholder="Cari nama / nik pasien">
                         <button class="btn btn-outline-primary font-bold">Carikan</button>
                     </div>
-                </div>
+                </div>--}}
 
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown me-1">

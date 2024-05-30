@@ -82,7 +82,7 @@
 						<div class="divider-text">Jenis pemeriksaan</div>
 					</div> --}}
 
-					<div class="row">
+					{{--<div class="row">
 						<div class="col-md-12 mb-3">
 							<div class="form-group row align-item-center">
 								<div class="col-lg-3 col-3">
@@ -105,7 +105,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>--}}
 
 					<div class="divider">
 						<div class="divider-text">Pengukuran fisik badan (Opsional)</div>

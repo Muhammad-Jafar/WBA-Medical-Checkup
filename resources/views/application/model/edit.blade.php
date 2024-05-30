@@ -34,7 +34,7 @@
 									<label class="col-form-label" for="purposes">Keperluan</label>
 								</div>
 								<div class="col-lg-9 col-9">
-									<textarea rows="2" type="text" class="form-control" name="purposes" id="purposes" 
+									<textarea rows="2" type="text" class="form-control" name="purposes" id="purposes"
 									style="resize: none;" placeholder="Keperluan pasien"></textarea>
 								</div>
 							</div>
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 
-					<div class="row">
+					{{--<div class="row">
 						<div class="col-md-12 mb-3">
 							<div class="form-group row align-item-center">
 								<div class="col-lg-3 col-3">
@@ -73,7 +73,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>--}}
 
 					<div class="divider">
 						<div class="divider-text">Pengukuran lainnya</div>
@@ -115,7 +115,7 @@
 									<label class="col-form-label" for="blod_type">Golongan darah</label>
 								</div>
 								<div class="col-lg-7 col-8">
-									<input type="text" class="form-control" name="blod_type" id="blod_type" placeholder="Golongan darah">	
+									<input type="text" class="form-control" name="blod_type" id="blod_type" placeholder="Golongan darah">
 								</div>
 							</div>
 						</div>
