@@ -2,13 +2,6 @@
     $(function () {
         let url = "{{ route('api.chart') }}";
 
-        $.ajax({
-            url: url,
-            success: function (response) {
-                initChart(response).render();
-            }
-        });
-
         function initChart(data) {
             const options = {
                 plotOptions: {
@@ -60,10 +53,14 @@
                 },
             };
 
-            return new ApexCharts(
-                document.querySelector("#applicant-chart-dashboard"),
-                options
-            );
+            return new ApexCharts(document.querySelector("#applicant-chart-dashboard"), options);
         }
+
+        $.ajax({
+            url: url,
+            success: function (response) {
+                initChart(response).render();
+            }
+        });
     });
 </script>
