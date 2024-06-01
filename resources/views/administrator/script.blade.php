@@ -5,7 +5,7 @@
         $('#datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('administrator.index') }}",
+            ajax: "{{ route('user.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'email', name: 'email'},
@@ -22,10 +22,10 @@
             loadingAlert.show();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.administrator.edit', 'id') }}"
+            let url = "{{ route('api.user.edit', 'id') }}"
             url = url.replace('id', id);
 
-            let formActionURL = "{{ route('administrator.update', 'id') }}"
+            let formActionURL = "{{ route('user.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
             let editAdminModalEveryInput = $('#editDoctorModal :input').not('button[type=button], input[name=_token], input[name=_method]')

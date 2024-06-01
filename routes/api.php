@@ -37,8 +37,8 @@ Route::name('api.')->prefix('v1')->group(function () {
     Route::get('doctor/{id}/edit', [DoctorController::class, 'edit'])
         ->name('doctor.edit');
 
-    Route::get('administrator/{id}/edit', [AdministratorController::class, 'edit'])
-        ->name('administrator.edit');
+    Route::get('user/{id}/edit', [AdministratorController::class, 'edit'])
+        ->name('user.edit');
 
     /*Route::get('checkup-type/{id}/edit', [CheckupTypeController::class, 'edit'])
         ->name('checkup-type.edit');*/

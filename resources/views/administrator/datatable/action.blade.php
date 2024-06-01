@@ -10,7 +10,7 @@
         </div>
 
         <div class="mx-1">
-            <form action="{{ route('administrator.destroy', $model->id) }}" method="POST">
+            <form action="{{ route('user.destroy', $model->id) }}" method="POST">
                 @csrf @method('DELETE')
                 <button type="submit" class="btn btn-sm btn-danger rounded-3 delete-dialog">
                     <i class="bi bi-trash3"></i>

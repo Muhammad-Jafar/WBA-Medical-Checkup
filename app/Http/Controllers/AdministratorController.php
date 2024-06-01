@@ -52,10 +52,10 @@ class AdministratorController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'position' => $request->position,
-            /*'email_verified_at' => now(),*/
-            /*'remember_token' => Str::random(20)*/
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(20)
         ]);
-        return redirect()->route('administrator.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('user.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -73,7 +73,7 @@ class AdministratorController extends Controller
             'password' => is_null($request->password) ? $user->password : bcrypt($request->password),
             'position' => $request->position,
         ]);
-        return redirect()->route('administrator.index')->with('success', 'Data berhasil diubah!');
+        return redirect()->route('user.index')->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -85,6 +85,6 @@ class AdministratorController extends Controller
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
-        return redirect()->route('administrator.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('user.index')->with('success', 'Data berhasil dihapus!');
     }
 }

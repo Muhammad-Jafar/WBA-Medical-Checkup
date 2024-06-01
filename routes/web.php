@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->except('create', 'show', 'edit');
     Route::resource('doctor', DoctorController::class)
         ->except('create', 'show', 'edit');
-    Route::resource('administrator', AdministratorController::class)
+    Route::resource('user', AdministratorController::class)
         ->except('create', 'show', 'edit');
     /*Route::resource('checkup-type', CheckupTypeController::class)
         ->except('create', 'show', 'edit');*/
