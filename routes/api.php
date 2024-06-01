@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\V1\AdministratorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\v1\PatientController;
@@ -36,8 +37,11 @@ Route::name('api.')->prefix('v1')->group(function () {
     Route::get('doctor/{id}/edit', [DoctorController::class, 'edit'])
         ->name('doctor.edit');
 
-    Route::get('checkup-type/{id}/edit', [CheckupTypeController::class, 'edit'])
-        ->name('checkup-type.edit');
+    Route::get('administrator/{id}/edit', [AdministratorController::class, 'edit'])
+        ->name('administrator.edit');
+
+    /*Route::get('checkup-type/{id}/edit', [CheckupTypeController::class, 'edit'])
+        ->name('checkup-type.edit');*/
 
     Route::get('preference/{id}/edit', [PreferenceControlller::class, 'edit'])
         ->name('preference.edit');

@@ -56,7 +56,7 @@
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-lg">
-                                    <img src="{{ Auth::user()->profile_photo_url }}">
+                                    <img src="{{ Auth::user()->profile_photo_url }}" alt="profile">
                                 </div>
                             </div>
                         </div>

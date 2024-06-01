@@ -24,11 +24,11 @@ class AdministratorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:191',
-            'email' => 'required|email|unique:users,email|max:191',
-            'password' => 'required|min:3|max:191',
-            'password_confirmation' => 'required|same:password',
-            'position' => 'required',
+            'name' => 'min:3|max:191',
+            'email' => 'email|email|max:191',
+            'password' => 'max:191',
+            'password_confirmation' => 'same:password',
+            'position' => '',
         ];
     }
 
@@ -40,23 +40,21 @@ class AdministratorRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Kolom nama lengkap wajib diisi!',
+            /*'name.required' => 'Kolom nama lengkap wajib diisi!',*/
             'name.min' => 'Kolom nama lengkap minimal 3 karakter!',
             'name.max' => 'Kolom nama lengkap maksimal 191 karakter!',
 
-            'email.required' => 'Kolom email wajib diisi!',
+            /*'email.required' => 'Kolom email wajib diisi!',*/
             'email.email' => 'Kolom email harus email yang valid!',
-            'email.unique' => 'Email tersebut sudah terdaftar!',
+//            'email.unique' => 'Email tersebut sudah terdaftar!',
             'email.max' => 'Kolom email maksimal 191 karakter!',
 
-            'password.required' => 'Kolom password wajib diisi!',
-            'password.min' => 'Kolom password minimal 3 karakter!',
+//            'password.min' => 'Kolom password minimal 3 karakter!',
             'password.max' => 'Kolom password maksimal 191 karakter!',
 
-            'password_confirmation.required' => 'Kolom ulangi password wajib diisi!',
             'password_confirmation.same' => 'Kolom ulangi password harus sama dengan kolom password!',
 
-            'position.required' => 'Kolom posisi wajib diisi!',
+            /*'position.required' => 'Kolom posisi wajib diisi!',*/
         ];
     }
 }

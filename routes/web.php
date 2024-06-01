@@ -21,11 +21,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    Route::resource('application', ApplicationController::class)->except('create', 'show', 'edit');
-    Route::resource('patient', PatientController::class)->except('create', 'show', 'edit');
-    Route::resource('doctor', DoctorController::class)->except('create', 'show', 'edit');
-    Route::resource('administrator', AdministratorController::class)->except('create', 'show', 'edit');
-    Route::resource('checkup-type', CheckupTypeController::class)->except('create', 'show', 'edit');
+    Route::resource('application', ApplicationController::class)
+        ->except('create', 'show', 'edit');
+    Route::resource('patient', PatientController::class)
+        ->except('create', 'show', 'edit');
+    Route::resource('doctor', DoctorController::class)
+        ->except('create', 'show', 'edit');
+    Route::resource('administrator', AdministratorController::class)
+        ->except('create', 'show', 'edit');
+    /*Route::resource('checkup-type', CheckupTypeController::class)
+        ->except('create', 'show', 'edit');*/
 
     Route::controller(ApplicationHistoryController::class)->prefix('/application/history')
         ->name('application.')->group(function () {
@@ -63,12 +68,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::delete('{id}', 'destroy')->name('destroy.history');
         });
 
-    Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')
+    /*Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')
         ->name('checkup-type.')->group(function () {
             Route::get('', 'index')->name('index.history');
             Route::post('{id}', 'restore')->name('restore.history');
             Route::delete('{id}', 'destroy')->name('destroy.history');
-        });
+        });*/
 
     Route::controller(PreferenceController::class)->prefix('/preference')
         ->name('preference.')->group(function () {

@@ -7,6 +7,7 @@
 			</div>
 			<div class="modal-body">
                 @include('utilities.loading-alert')
+
 				<form action="#" method="POST" id="edit-patient-form">
 					@csrf @method('PUT')
 					<div class="row">
@@ -27,7 +28,6 @@
 						<div class="col-md-12 mb-3">
 							<label for="gender" class="form-label">Jenis kelamin</label>
 							<select class="form-select" name="gender" id="gender">
-								<option selected>Pilih jenis kelamin</option>
 								<option value="1">Laki-laki</option>
 								<option value="2">Perempuan</option>
 							</select>

@@ -27,12 +27,13 @@
                         <div class="d-flex justify-content-end pb-3">
                             <div class="btn-group d-gap gap-2">
                                 <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
-                                        data-bs-target="#createAdministratorModal">
+                                        data-bs-target="#createAdminModal">
                                     <i class="bi bi-person-plus"></i> Tambah admin
                                 </button>
 
                                 @hasrole('admin')
-                                <a href="{{ route('administrator.index.history') }}" class="btn btn-light-secondary rounded-3">
+                                <a href="{{ route('administrator.index.history') }}"
+                                   class="btn btn-light-secondary rounded-3">
                                     <span class="badge bg-danger">{{ $adminTrashed }}</span>
                                     Riwayat data admin
                                 </a>

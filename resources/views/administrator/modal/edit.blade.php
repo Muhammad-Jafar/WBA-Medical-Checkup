@@ -1,15 +1,14 @@
-<div class="modal fade" id="editAdministratorModal" data-bs-backdrop="static" data-bs-keyboard="false"
-     aria-hidden="true">
+<div class="modal fade" id="editAdminModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ubah data pengguna</h5>
+                <h5 class="modal-title">Ubah data administrator</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 @include('utilities.loading-alert')
 
-                <form action="#" method="post" id="edit-doctor-form">
+                <form action="#" method="post" id="edit-admin-form">
                     @csrf @method('PUT')
                     <div class="row">
                         <div class="col-md-12 mb-3">
@@ -30,8 +29,8 @@
                         <div class="col-md-12 mb-3">
                             <label for="position" class="form-label">Posisi</label>
                             <select class="form-select" name="position" id="position">
-                                <option value="1">Admin</option>
-                                <option value="2">Member</option>
+                                <option value="ADMIN">Admin</option>
+                                <option value="MEMBER">Member</option>
                             </select>
                         </div>
                     </div>

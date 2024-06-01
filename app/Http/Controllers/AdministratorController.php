@@ -36,9 +36,7 @@ class AdministratorController extends Controller
                 ->toJson();
         }
 
-        return view('administrator.index', [
-            'adminTrashed' => $adminTrashed,
-        ]);
+        return view('administrator.index', ['adminTrashed' => $adminTrashed]);
     }
 
     /**
@@ -54,8 +52,8 @@ class AdministratorController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'position' => $request->position,
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(20)
+            /*'email_verified_at' => now(),*/
+            /*'remember_token' => Str::random(20)*/
         ]);
         return redirect()->route('administrator.index')->with('success', 'Data berhasil ditambahkan!');
     }
