@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdministratorRequest extends FormRequest
+class AdministratorUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,10 @@ class AdministratorRequest extends FormRequest
     {
         return [
             'name' => 'min:3|max:191',
-            'email' => 'email|email|max:191',
+            'email' => 'email|max:191',
             'password' => 'max:191',
             'password_confirmation' => 'same:password',
-            'position' => '',
+            'position' => 'required',
         ];
     }
 
@@ -54,7 +54,7 @@ class AdministratorRequest extends FormRequest
 
             'password_confirmation.same' => 'Kolom ulangi password harus sama dengan kolom password!',
 
-            /*'position.required' => 'Kolom posisi wajib diisi!',*/
+            'position.required' => 'Kolom posisi wajib diisi!',
         ];
     }
 }

@@ -44,8 +44,8 @@
                             <label for="position" class="form-label">Posisi</label>
                             <select class="form-select @error('position') is-invalid @enderror"
                                     name="position" id="position" value="{{ old('position') }}">
-                                <option value="1" {{ old('position')==='1' ? 'selected' : '' }}>Admin</option>
-                                <option value="2" {{ old('position')==='2' ? 'selected' : '' }}>Member</option>
+                                <option value="admin" {{ old('position')==='admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="member" {{ old('position')==='member' ? 'selected' : '' }}>Member</option>
                             </select>
                             @error('position')
                             <div class="d-block invalid-feedback">

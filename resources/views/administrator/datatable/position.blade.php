@@ -1,4 +1,4 @@
-@if($model->position === 'ADMIN')
+@if($model->position === 'admin')
     <span class="badge bg-primary font-bold">
         {{ Str::title($model->position) }}
     </span>

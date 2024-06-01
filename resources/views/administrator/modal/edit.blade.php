@@ -29,8 +29,8 @@
                         <div class="col-md-12 mb-3">
                             <label for="position" class="form-label">Posisi</label>
                             <select class="form-select" name="position" id="position">
-                                <option value="ADMIN">Admin</option>
-                                <option value="MEMBER">Member</option>
+                                <option value="admin">Admin</option>
+                                <option value="member">Member</option>
                             </select>
                         </div>
                     </div>

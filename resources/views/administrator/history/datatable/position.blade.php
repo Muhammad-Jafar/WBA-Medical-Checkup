@@ -1,5 +1,9 @@
-@if($model->position === 'ADMIN')
-    <span class="badge rounded-pill bg-light-success">{{ $model->position }}</span>
+@if($model->position === 'admin')
+    <span class="badge bg-primary font-bold">
+        {{ $model->position }}
+    </span>
 @else
-    <span class="badge rounded-pill bg-light-success">{{ $model->position }} </span>
+    <span class="badge bg-light-secondary font-bold">
+        {{ $model->position }}
+    </span>
 @endif

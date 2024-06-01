@@ -34,6 +34,8 @@ class User extends Authenticate
         'password',
         'position',
         'last_login',
+        'remember_token',
+        'email_verified_at',
     ];
 
     /**

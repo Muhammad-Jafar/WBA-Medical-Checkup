@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\AdministratorRequest;
+use App\Http\Requests\AdministratorStoreRequest;
+use App\Http\Requests\AdministratorUpdateRequest;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AdministratorController extends Controller
 {
@@ -42,10 +46,10 @@ class AdministratorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param AdministratorRequest $request
+     * @param AdministratorStoreRequest $request
      * @return RedirectResponse
      */
-    public function store(AdministratorRequest $request): RedirectResponse
+    public function store(AdministratorStoreRequest $request): RedirectResponse
     {
         User::create([
             'name' => $request->name,
@@ -54,25 +58,29 @@ class AdministratorController extends Controller
             'position' => $request->position,
             'email_verified_at' => now(),
             'remember_token' => Str::random(20)
-        ]);
+        ])->assignRole($request->position);
+
         return redirect()->route('user.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param AdministratorRequest $request
+     * @param AdministratorUpdateRequest $request
      * @param User $user
      * @return RedirectResponse
      */
-    public function update(AdministratorRequest $request, User $user): RedirectResponse
+    public function update(AdministratorUpdateRequest $request, User $user): RedirectResponse
     {
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => is_null($request->password) ? $user->password : bcrypt($request->password),
-            'position' => $request->position,
-        ]);
+        $user->removeRole($user->position)
+            ->assignRole($request->position)
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => is_null($request->password) ? $user->password : bcrypt($request->password),
+                'position' => $request->position,
+            ]);
+
         return redirect()->route('user.index')->with('success', 'Data berhasil diubah!');
     }
 
