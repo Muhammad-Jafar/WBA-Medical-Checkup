@@ -25,10 +25,10 @@ return new class extends Migration
             $table->string('blod_pressure', 20)->nullable();
             $table->string('colesterol', 20)->nullable();
             $table->string('blod_sugar', 20)->nullable();
-            $table->timestamp('requested_at');
+            $table->date('requested_at');
             $table->enum('status', ['PENDING','APPROVED','REJECTED'])->default('PENDING');
-            $table->timestamp('approved_at')->nullable();
-            $table->timestamp('rejected_at')->nullable();
+            $table->date('approved_at')->nullable();
+            $table->date('rejected_at')->nullable();
             $table->timestamps();
         });
     }

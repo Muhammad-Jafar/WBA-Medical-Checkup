@@ -18,14 +18,24 @@ class DashboardChartRepository extends Controller implements DashboardChartInter
     }
 
     /**
+     * Hitung seluruh kolom amount pada tabel cash_transactions dipisahkan dengan bulan dari 1-12.
      *
-     * Get total application by status 'PENDING' of today
-     * @return integer
+     * @return array
      */
-    public function countApplicant(): int
+    public function applicantPerMonths(): array
     {
-        return $this->model->where('status', 'PENDING')
-            ->count();
+        $month = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'agu', 'sep', 'okt', 'nov', 'des'];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $applications = $this->model->select('patient_id', 'requested_at')
+                ->whereMonth('requested_at', "{$i}")
+                ->whereYear('requested_at', date('Y'))
+                ->sum('patient_id');
+
+            $result[$month[$i - 1]] = $applications;
+        }
+
+        return $result;
     }
 
     /**
@@ -36,7 +46,8 @@ class DashboardChartRepository extends Controller implements DashboardChartInter
     public function results(): array
     {
         return [
-            'totalApplications' => $this->countTodayApplicant(),
+            'totalApplications' => $this->applicantPerMonths(),
+
         ];
     }
 }

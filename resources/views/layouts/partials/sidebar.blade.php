@@ -12,20 +12,12 @@
 
     <x-maz-sidebar-item name="Laporan" :link="route('dashboard')" icon="bi bi-menu-app-fill"></x-maz-sidebar-item>
 
-    {{--@if( Auth::user()->position == 'ADMIN')
-        <x-maz-sidebar-item name="Setelan" icon="bi bi-gear-fill">
-            <x-maz-sidebar-sub-item name="Administrator" :link="route('user.index')"></x-maz-sidebar-sub-item>
-            --}}{{--<x-maz-sidebar-sub-item name="Jenis Pemeriksaan" :link="route('checkup-type.index')"></x-maz-sidebar-sub-item>--}}{{--
-            <x-maz-sidebar-sub-item name="Setelan umum" :link="route('preference.index')"></x-maz-sidebar-sub-item>
-        </x-maz-sidebar-item>
-    @endif--}}
-
     @hasrole('admin')
         <x-maz-sidebar-item name="Setelan" icon="bi bi-gear-fill">
             <x-maz-sidebar-sub-item name="Administrator" :link="route('user.index')"></x-maz-sidebar-sub-item>
+            {{--<x-maz-sidebar-sub-item name="Jenis Pemeriksaan" :link="route('checkup-type.index')"></x-maz-sidebar-sub-item>--}}
             <x-maz-sidebar-sub-item name="Setelan umum" :link="route('preference.index')"></x-maz-sidebar-sub-item>
         </x-maz-sidebar-item>
     @endrole
 
 </x-maz-sidebar>
-

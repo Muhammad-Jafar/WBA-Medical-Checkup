@@ -2,7 +2,7 @@
 
 namespace App\Contracts;
 
-interface DashboardChartInterface 
+interface DashboardChartInterface
 {
-    public function countApplicant(): Int;
+    public function applicantPerMonths(): array;
 }

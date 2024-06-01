@@ -1,0 +1,69 @@
+<script>
+    $(function () {
+        let url = "{{ route('api.chart') }}";
+
+        $.ajax({
+            url: url,
+            success: function (response) {
+                initChart(response).render();
+            }
+        });
+
+        function initChart(data) {
+            const options = {
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        dataLabels: {
+                            position: 'bottom'
+                        }
+                    }
+                },
+                chart: {
+                    type: "bar",
+                    height: 300
+                },
+                series: [
+                    {
+                        name: "Total",
+                        data: [
+                            data.data.jan,
+                            data.data.feb,
+                            data.data.mar,
+                            data.data.apr,
+                            data.data.mei,
+                            data.data.jun,
+                            data.data.jul,
+                            data.data.agu,
+                            data.data.sep,
+                            data.data.okt,
+                            data.data.nov,
+                            data.data.des,
+                        ],
+                    },
+                ],
+                xaxis: {
+                    categories: [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "Mei",
+                        "Jun",
+                        "Jul",
+                        "Agu",
+                        "Sep",
+                        "Okt",
+                        "Nov",
+                        "Des",
+                    ],
+                },
+            };
+
+            return new ApexCharts(
+                document.querySelector("#applicant-chart-dashboard"),
+                options
+            );
+        }
+    });
+</script>

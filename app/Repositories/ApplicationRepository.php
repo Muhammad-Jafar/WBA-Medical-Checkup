@@ -53,7 +53,7 @@ class ApplicationRepository extends Controller implements ApplicationInterface
      * Get total application by status 'PENDING'
      * @return integer
      */
-    public function recentApplicant(): int
+    public function pendingApplicant(): int
     {
         return $this->model->where('status', 'PENDING')->count();
     }
@@ -66,25 +66,39 @@ class ApplicationRepository extends Controller implements ApplicationInterface
     public function countTodayApplicant(): int
     {
         return $this->model->where('status', 'PENDING')
-            ->whereDate('created_at', now()->toDateString())
+            ->whereDate('requested_at', now()->toDateString())
             ->count();
     }
 
     /**
      *
-     * Get total application by status 'PENDING' of current month
-     * @param string $status
-     * @param string|null $year
-     * @param string|null $month
+     * Get total application of current month or year
+     * @param string $option which is month or year
      * @return Int
      */
-    public function countApplicant(string $status, string $year = null, string $month = null): int
+    public function countApplicant(string $option): int
     {
-        $model = $this->model->select('created_at');
+        $model = $this->model->select('requested_at');
 
-        return $status === 'year'
-            ? $model->whereYear('created_at', $year)->count()
-            : $model->whereYear('created_at', date('Y'))->whereMonth('created_at', $month)->count();
+        return $option === 'year'
+            ? $model->whereYear('requested_at', $option)
+                ->count()
+            : $model->whereYear('requested_at', date('Y'))
+                ->whereMonth('requested_at', date('m'))
+                ->count();
+    }
+
+    /**
+     *
+     * Get total application of current month or year
+     * @return Int
+     */
+    public function countApplicantLastThreeMonth(): int
+    {
+        $model = $this->model->select('requested_at');
+
+        return $model->whereBetween('requested_at', [now()->subMonths(3)->toDateString(), now()->toDateString()])
+            ->count();
     }
 
     /**
@@ -94,9 +108,12 @@ class ApplicationRepository extends Controller implements ApplicationInterface
      */
     public function checkLimitApplicant(): bool
     {
-        $pref = $this->preference->select('input')->where('id_preferences', '1')->value('input');
+        $pref = $this->preference->select('input')->where('id_preferences', '1')
+            ->value('input');
+
         $countApplicantToday = $this->model->where('status', 'PENDING')
-            ->whereDate('requested_at', now()->toDateString())->count();
+            ->whereDate('requested_at', now()->toDateString())
+            ->count();
 
         return $countApplicantToday == $pref;
     }
@@ -109,10 +126,10 @@ class ApplicationRepository extends Controller implements ApplicationInterface
     public function results(): array
     {
         return [
-            'recentApplicant' => $this->recentApplicant(),
+            'recentApplicant' => $this->pendingApplicant(),
             'todayApplicant' => $this->countTodayApplicant(),
-            'currentMonthApplicant' => $this->countApplicant('month', month: date('m')),
-            'currentYearApplicant' => $this->countApplicant('year', month: date('Y')),
+            'currentMonthApplicant' => $this->countApplicant(date('m')),
+            'currentYearApplicant' => $this->countApplicant(date('Y')),
             'checkLimitApplicant' => $this->checkLimitApplicant()
         ];
     }

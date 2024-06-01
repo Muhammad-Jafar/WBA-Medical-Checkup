@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\AdministratorController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\v1\PatientController;
@@ -45,4 +46,6 @@ Route::name('api.')->prefix('v1')->group(function () {
 
     Route::get('preference/{id}/edit', [PreferenceControlller::class, 'edit'])
         ->name('preference.edit');
+
+    Route::get('/chart', DashboardController::class)->name('chart');
 });
