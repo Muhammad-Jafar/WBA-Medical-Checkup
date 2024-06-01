@@ -13,12 +13,12 @@
                     }
                 },
                 chart: {
-                    type: "bar",
+                    type: "area",
                     height: 300
                 },
                 series: [
                     {
-                        name: "Total",
+                        name: "Pengunjung",
                         data: [
                             data.data.jan,
                             data.data.feb,
