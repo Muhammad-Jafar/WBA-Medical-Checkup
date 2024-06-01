@@ -51,6 +51,9 @@
                         "Des",
                     ],
                 },
+                yaxis: {
+                    forceNiceScale: true
+                }
             };
 
             return new ApexCharts(document.querySelector("#applicant-chart-dashboard"), options);

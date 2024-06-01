@@ -25,7 +25,7 @@
 
 <script>
     $(function () {
-        $(".select2").select2();
+       /* $(".select2").select2();*/
 
         $("input[type=date]").flatpickr({
             dateFormat: "d-m-Y",

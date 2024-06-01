@@ -19,7 +19,7 @@ class DashboardChartController extends Controller
     {
         $data = $this->dashboardChartRepository->applicantPerMonths();
 
-        Log::error($data);
+        Log::error("TES RESULT ==>", $data);
 
         return response()->json([
             'code' => Response::HTTP_OK,
