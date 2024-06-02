@@ -93,17 +93,16 @@ class ApplicationRepository extends Controller implements ApplicationInterface
     }
 
     /**
-     *
      * Get limit application by input from references table
      * @return bool
      */
     public function checkLimitApplicant(): bool
     {
-        $pref = $this->preference->select('input')->where('id_preferences', '1')
+        $pref = $this->preference->select('input')
+            ->where('id_preferences', '1')
             ->value('input');
 
-        $countApplicantToday = $this->model->where('status', 'PENDING')
-            ->whereDate('requested_at', now()->toDateString())
+        $countApplicantToday = $this->model->whereDate('requested_at', now()->toDateString())
             ->count();
 
         return $countApplicantToday == $pref;

@@ -10,11 +10,10 @@ class PreferenceController extends Controller
 {
     public function index()
     {
-        $preference = Preference::select('id', 'id_preferences', 'name', 'desc', 'status', 'input')->get();
+        $preference = Preference::select('id', 'id_preferences', 'name', 'desc', 'status', 'input')
+            ->get();
 
-        return view('preference.index', [
-            'preference' => $preference,
-        ]);
+        return view('preference.index', ['preference' => $preference,]);
     }
 
     /**
