@@ -1,10 +1,12 @@
 <div class="modal fade" id="createApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
+
             <div class="modal-header">
                 <h5 class="modal-title">Buat permintaan SKBS</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body">
                 <form action="{{ route('application.store') }}" method="POST">
                     @csrf
@@ -232,6 +234,7 @@
                         <button type="submit" class="btn btn-primary">Simpan & Ajukan</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

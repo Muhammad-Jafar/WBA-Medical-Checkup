@@ -1,8 +1,9 @@
 <script>
     $(function () {
         let loadingAlert = $('.modal-body #loading-alert');
+        const datatable = $('#datatable');
 
-        $('#datatable').DataTable({
+        datatable.DataTable({
             processing: true,
             serverside: true,
             ajax: "{{ route('doctor.index') }}",
@@ -16,7 +17,7 @@
             ]
         });
 
-        $('#datatable').on('click', '.doctor-edit', function () {
+        datatable.on('click', '.doctor-edit', function () {
             loadingAlert.show();
 
             let id = $(this).data('id');
@@ -46,9 +47,7 @@
                     $('#editDoctorModal #nip').val(response.data.nip);
                 }
             });
-
         });
-
     });
 
 </script>

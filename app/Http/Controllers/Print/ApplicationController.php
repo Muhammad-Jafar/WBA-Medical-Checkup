@@ -16,6 +16,7 @@ class ApplicationController extends Controller
             'doctors:id,name,nip'
         )->findOrFail($id);
 
-        return PDF::loadView('application.printing.test', compact('applicant'))->stream();
+        return PDF::loadView('application.printing.print', compact('applicant'))
+            ->stream();
     }
 }

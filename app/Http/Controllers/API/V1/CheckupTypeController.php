@@ -22,7 +22,7 @@ class CheckupTypeController extends Controller implements ApiInterface
     public function edit(int $id): JsonResponse
     {
         $doctor = new CheckupTypeEditResource(CheckupType::findOrFail($id));
-        
+
         return response()->json([
             'code' => Response::HTTP_OK,
             'data' => $doctor

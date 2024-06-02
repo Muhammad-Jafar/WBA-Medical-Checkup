@@ -1,8 +1,9 @@
 <div class="btn-group" role="group">
+
     <div class="mx-1">
         <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success rounded-3 checkup-type-edit"
                 data-bs-toggle="modal" data-bs-target="#editCheckupTypeModal">
-                <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil-square"></i>
         </button>
     </div>
 
@@ -14,4 +15,5 @@
             </button>
         </form>
     </div>
+
 </div>

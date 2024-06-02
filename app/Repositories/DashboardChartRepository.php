@@ -8,7 +8,9 @@ use App\Models\Application;
 
 class DashboardChartRepository extends Controller implements DashboardChartInterface
 {
-    public function __construct(private Application $model) {}
+    public function __construct(private Application $model)
+    {
+    }
 
     /**
      * Hitung seluruh kolom amount pada tabel cash_transactions dipisahkan dengan bulan dari 1-12.
@@ -21,7 +23,7 @@ class DashboardChartRepository extends Controller implements DashboardChartInter
 
         for ($i = 1; $i <= 12; $i++) {
             $applications = $this->model->select('requested_at')
-                ->whereMonth('requested_at', "{$i}")
+                ->whereMonth('requested_at', "$i")
                 ->whereYear('requested_at', date('Y'))
                 ->count();
 

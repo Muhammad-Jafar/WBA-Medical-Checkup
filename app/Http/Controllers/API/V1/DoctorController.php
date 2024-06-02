@@ -22,7 +22,7 @@ class DoctorController extends Controller implements ApiInterface
     public function edit(int $id): JsonResponse
     {
         $doctor = new DoctorEditResource(Doctor::findOrFail($id));
-        
+
         return response()->json([
             'code' => Response::HTTP_OK,
             'data' => $doctor

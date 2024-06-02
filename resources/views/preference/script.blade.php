@@ -1,12 +1,12 @@
 <script>
-    $(function() {
-        $('.applicant-daily-limit').click(function() {
+    $(function () {
+        $('.applicant-daily-limit').click(function () {
             let id = $(this).data('id');
-			let url = "{{ route('api.preference.edit', ':id') }}";
-			url = url.replace(':id', id);
-            
+            let url = "{{ route('api.preference.edit', ':id') }}";
+            url = url.replace(':id', id);
+
             let formActionURL = "{{ route('preference.editDailyLimit', 'id') }}"
-			formActionURL = formActionURL.replace('id', id);
+            formActionURL = formActionURL.replace('id', id);
 
             $.ajax({
                 url: url,

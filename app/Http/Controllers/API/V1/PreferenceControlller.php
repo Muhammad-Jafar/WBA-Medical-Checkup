@@ -13,7 +13,7 @@ class PreferenceControlller extends Controller
     public function edit(int $id): JsonResponse
     {
         $pref = new PreferenceEditResource(Preference::findOrFail($id));
-        
+
         return response()->json([
             'code' => Response::HTTP_OK,
             'data' => $pref

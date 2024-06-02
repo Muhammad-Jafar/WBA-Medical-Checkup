@@ -3,16 +3,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Jenis pemeriksaan</h3>
-                {{-- <p class="text-subtitle text-muted">Daftar dokter.</p> --}}
             </div>
-            {{-- <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('preference.index') }}">Setelan</a></li>
-                        <li class="breadcrumb-item active">Jenis pemeriksaan</li>
-                    </ol>
-                </nav>
-            </div> --}}
         </div>
     </x-slot>
 
@@ -48,11 +39,14 @@
                                     <i class="bi bi-download"></i>
                                     Impor data
                                 </a> --}}
-                                <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal" data-bs-target="#createCheckupTypeModal">
+                                <button type="button" class="btn btn-primary rounded-3" data-bs-toggle="modal"
+                                        data-bs-target="#createCheckupTypeModal">
                                     <i class="bi bi-person-plus"></i> Tambah pemeriksaan
                                 </button>
-                                <a href="{{ route('checkup-type.index.history') }}" class="btn btn-light-secondary rounded-3">
-                                    <span class="badge bg-danger">{{ $checkupTypeTrashedCount }}</span> Riwayat jenis pemeriksaan
+                                <a href="{{ route('checkup-type.index.history') }}"
+                                   class="btn btn-light-secondary rounded-3">
+                                    <span class="badge bg-danger">{{ $checkupTypeTrashedCount }}</span> Riwayat jenis
+                                    pemeriksaan
                                 </a>
                             </div>
                         </div>
@@ -64,13 +58,13 @@
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover w-100">
                         <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Singkatan</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Singkatan</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
                         </thead>
                     </table>
                 </div>
@@ -79,12 +73,12 @@
     </div>
 
     @push('modal')
-    @include('checkup_type.modal.create')
-    @include('checkup_type.modal.edit')
+        @include('checkup_type.modal.create')
+        @include('checkup_type.modal.edit')
     @endpush
 
     @push('js')
-    @include('checkup_type.script')
+        @include('checkup_type.script')
     @endpush
 
 </x-app-layout>

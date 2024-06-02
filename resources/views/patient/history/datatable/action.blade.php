@@ -1,4 +1,5 @@
 <div class="btn-group" role="group">
+
     <div class="mx-1">
         <form action="{{ route('patient.restore.history', $model->id) }}" method="POST">
             @csrf
@@ -16,4 +17,5 @@
             </button>
         </form>
     </div>
+
 </div>

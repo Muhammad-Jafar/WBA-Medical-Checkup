@@ -1,8 +1,9 @@
 <script>
-    $(function() {
+    $(function () {
         let loadingAlert = $('.modal-body #loading-alert');
+        const datatable = $('#datatable');
 
-        $('#datatable').DataTable({
+        datatable.DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('application.index') }}",
@@ -17,7 +18,7 @@
             ]
         });
 
-        $('#today-tab').click(function() {
+        $('#today-tab').click(function () {
             $.ajax({
                 url: "{{ route('application.tab', 'today') }}",
                 data: {tab: "today"},
@@ -59,7 +60,7 @@
 
         });
 
-        $('#pending-tab').click(function() {
+        $('#pending-tab').click(function () {
             $.ajax({
                 url: "{{ route('application.tab', 'pending') }}",
                 data: {tab: "pending"},
@@ -101,7 +102,7 @@
 
         });
 
-        $('#all-tab').click(function() {
+        $('#all-tab').click(function () {
             $.ajax({
                 url: "{{ route('application.tab', 'all') }}",
                 data: {tab: "pending"},
@@ -143,7 +144,7 @@
 
         });
 
-        $('#datatable').on('click', '.print-window', function(e) {
+        datatable.on('click', '.print-window', function (e) {
             loadingAlert.show();
             e.preventDefault();
 
@@ -164,13 +165,13 @@
                 if (result.isConfirmed) {
                     $(this).parent().submit();
 
-                    window.open(url,'_blank');
+                    window.open(url, '_blank');
                 }
             });
 
         });
 
-        $('#datatable').on('click', '.applicant-edit', function() {
+        datatable.on('click', '.applicant-edit', function () {
             loadingAlert.show();
 
             let id = $(this).data('id');
@@ -207,22 +208,23 @@
             });
         });
 
-        $('#showLimitApplicant').click(function(e) {
+        $('#showLimitApplicant').click(function (e) {
             e.preventDefault();
-			Swal.fire({
-				title: "Perhatian!",
-				text: "Permintaan SKBS telah melewati batas harian, silahkan hubungi administrator.",
-				icon: "warning",
-				cancelButtonColor: "#d33",
-				confirmButtonText: "Ya!",
-				reverseButtons: true,
-			}).then((result) => {
-				if (result.isConfirmed) {
-					$(this).parent().submit();
-				}
-			});
+            Swal.fire({
+                title: "Perhatian!",
+                text: "Permintaan SKBS telah melewati batas harian, silahkan hubungi administrator.",
+                icon: "warning",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya!",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+                }
+            });
 
         });
 
     });
+
 </script>

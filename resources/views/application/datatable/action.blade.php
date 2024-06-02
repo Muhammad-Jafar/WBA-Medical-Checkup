@@ -1,4 +1,5 @@
 <div class="btn-group" role="group">
+
     @if ($model->status == 'PENDING')
         <div class="mx-1">
             <form action="{{ route('application.approve', $model->id) }}" method="POST">
@@ -21,7 +22,8 @@
         @endrole
 
         <div class="mx-1">
-            <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-light-primary rounded-3 applicant-edit"
+            <button type="button" data-id="{{ $model->id }}"
+                    class="btn btn-sm btn-light-primary rounded-3 applicant-edit"
                     data-bs-toggle="modal" data-bs-target="#editApplicantModal">
                 <i class="bi bi-pencil"></i>
             </button>
@@ -44,4 +46,5 @@
             </form>
         </div>
     @endif
+
 </div>

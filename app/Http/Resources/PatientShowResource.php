@@ -21,7 +21,6 @@ class PatientShowResource extends JsonResource
             'name' => $this->name,
             'gender' => $this->getGenderName(),
             'born_place' => $this->born_place,
-//            'born_date' => date('d-m-Y', strtotime($this->born_date)),
             'born_date' => $this->born_date,
             'address' => $this->address,
             'occupation' => $this->occupation,

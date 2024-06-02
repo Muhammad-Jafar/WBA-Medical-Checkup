@@ -1,5 +1,6 @@
 <div class="col col-lg-12">
     <div class="row">
+
         <div class="col-6 col-lg-3 col-md-6">
             <div class="card card-stat">
                 <div class="card-body px-3 py-4-5">
@@ -33,9 +34,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <a href="{{ route('cash-transactions.index') }}">
-
-            </a> --}}
         </div>
         <div class="col-6 col-lg-3 col-md-6">
             <div class="card card-stat">
@@ -70,9 +68,7 @@
                     </div>
                 </div>
             </div>
-            {{-- <a href="{{ route('cash-transactions.index') }}">
-
-            </a> --}}
         </div>
     </div>
+
 </div>

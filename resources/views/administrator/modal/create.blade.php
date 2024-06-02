@@ -45,7 +45,8 @@
                             <select class="form-select @error('position') is-invalid @enderror"
                                     name="position" id="position" value="{{ old('position') }}">
                                 <option value="admin" {{ old('position')==='admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="member" {{ old('position')==='member' ? 'selected' : '' }}>Member</option>
+                                <option value="member" {{ old('position')==='member' ? 'selected' : '' }}>Member
+                                </option>
                             </select>
                             @error('position')
                             <div class="d-block invalid-feedback">

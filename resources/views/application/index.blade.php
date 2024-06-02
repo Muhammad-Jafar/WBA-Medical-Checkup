@@ -3,15 +3,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Permintaan</h3>
-                {{-- <p class="text-subtitle text-muted">Daftar dokter.</p> --}}
             </div>
-            {{-- <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Permintaan</a></li>
-                    </ol>
-                </nav>
-            </div> --}}
         </div>
     </x-slot>
 
@@ -56,15 +48,15 @@
                 </div>
                 <div class="col-6 col-lg-6">
                     <div class="d-flex justify-content-end pb-3">
-                        {{-- {{ $applicant }}
-                        {{ $preference }} --}}
 
                         <div class="btn-group d-gap gap-2">
-                            <button type="button" class="btn btn-success rounded-3" data-bs-toggle="modal"
-                                    data-bs-target="#exportApplication">
-                                <i class="bi bi-upload"></i>
-                                Ekspor data
-                            </button>
+
+                            {{-- <button type="button" class="btn btn-success rounded-3" data-bs-toggle="modal"
+                                     data-bs-target="#exportApplication">
+                                 <i class="bi bi-upload"></i>
+                                 Ekspor data
+                             </button>--}}
+
                             {{-- <a href="#" class="btn btn-light-success">
                                 <i class="bi bi-download"></i>
                                 Impor data
@@ -85,7 +77,8 @@
                             @endif
 
                             @hasrole('admin')
-                            <a href="{{ route('application.index.history') }}" class="btn btn-light-secondary rounded-3">
+                            <a href="{{ route('application.index.history') }}"
+                               class="btn btn-light-secondary rounded-3">
                                 <span class="badge bg-danger">{{ $applicationTrashedCount }}</span>
                                 Riwayat data permintaan
                             </a>

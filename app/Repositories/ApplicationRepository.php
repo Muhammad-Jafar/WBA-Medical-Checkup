@@ -5,27 +5,18 @@ namespace App\Repositories;
 use App\Contracts\ApplicationInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
-use App\Models\Doctor;
-use App\Models\Patient;
 use App\Models\Preference;
-use App\Models\User;
 
 class ApplicationRepository extends Controller implements ApplicationInterface
 {
-    private $model, $admin, $doctor, $patient, $preference;
+    private $model, $preference;
 
     public function __construct(
         Application $model,
-        User        $admin,
-        Doctor      $doctor,
-        Patient     $patient,
         Preference  $preference,
     )
     {
         $this->model = $model;
-        $this->admin = $admin;
-        $this->doctor = $doctor;
-        $this->patient = $patient;
         $this->preference = $preference;
     }
 

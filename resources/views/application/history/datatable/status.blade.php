@@ -1,13 +1,10 @@
-@if ($model->status == 'PENDING')
-	<span class="badge bg-light-warning rounded-pill">
-		{{ $model->status }}
-	</span>
-@elseif ($model->status == 'APPROVED')
-	<span class="badge bg-light-success rounded-pill">
-		{{ $model->status }}
-	</span>
-@else
-    <span class="badge bg-light-danger rounded-pill">
-        {{ $model->status }}
-    </span>
-@endif
+@php
+    $status = [
+        'PENDING' => 'bg-light-warning',
+        'APPROVED' => 'bg-light-success',
+    ]
+@endphp
+
+<span class=" badge rounded-pill {{ $status[$model->status] ?? 'bg-light-danger' }} ">
+        {{ Str::title($model->status) }}
+</span>

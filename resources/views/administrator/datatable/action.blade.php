@@ -1,4 +1,5 @@
 <div class="btn-group" role="group">
+
     @if (auth()->id() === $model->id)
         <div class="badge bg-light-secondary">Anda sedang login</div>
     @else

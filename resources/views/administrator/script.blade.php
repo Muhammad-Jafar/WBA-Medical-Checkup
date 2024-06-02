@@ -1,8 +1,9 @@
 <script>
     $(function () {
         let loadingAlert = $('.modal-body #loading-alert');
+        const datatable = $('#datatable');
 
-        $('#datatable').DataTable({
+        datatable.DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('user.index') }}",
@@ -18,7 +19,7 @@
             ]
         });
 
-        $('#datatable').on('click', '.admin-edit', function () {
+        datatable.on('click', '.admin-edit', function () {
             loadingAlert.show();
 
             let id = $(this).data('id');
@@ -48,9 +49,7 @@
                     $('#editAdminModal #position').val(response.data.position);
                 }
             });
-
         })
-
 
     });
 
