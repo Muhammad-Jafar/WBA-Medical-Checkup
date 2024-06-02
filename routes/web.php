@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApplicationController;
@@ -31,6 +32,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->except('create', 'show', 'edit');
     /*Route::resource('checkup-type', CheckupTypeController::class)
         ->except('create', 'show', 'edit');*/
+
+    Route::get('/report', ReportController::class)->name('report');
 
     Route::controller(ApplicationHistoryController::class)->prefix('/application/history')
         ->name('application.')->group(function () {
