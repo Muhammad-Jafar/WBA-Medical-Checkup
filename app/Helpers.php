@@ -130,9 +130,9 @@ if (!function_exists('timeAgo')) {
         } elseif ($interval->i > 0) {
             return $interval->i == 1 ? "1 menit lalu" : $interval->i . " menit lalu";
         } elseif ($interval->s > 0) {
-            return $interval->s == 1 ? "1 detik lalu" : $interval->s . " detik lalu";
+            return $interval->s == 1 ? "1 detik lalu" : $interval->s . " Barusan";
         } else {
-            return "Barusan";
+            return "Saat ini";
         }
     }
 }
