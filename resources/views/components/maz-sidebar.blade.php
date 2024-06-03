@@ -78,7 +78,7 @@
         <div class="menu ps-4 pe-4 text-muted text-sm clearfix">
             <div class="row d-flex">
                 <span class="d-flex justify-content-center"> {{ date('Y') }} &copy; IT RSUD Buton</span>
-                <span class="d-flex justify-content-center">Versi 1.0.0</span>
+                <span class="d-flex justify-content-center">Versi 0.8.0-alpha</span>
             </div>
         </div>
 
