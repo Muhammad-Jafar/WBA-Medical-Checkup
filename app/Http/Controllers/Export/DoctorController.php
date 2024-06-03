@@ -71,3 +71,4 @@ class DoctorController extends Controller implements ExcelExportInterface
         return $sheet;
     }
 }
+

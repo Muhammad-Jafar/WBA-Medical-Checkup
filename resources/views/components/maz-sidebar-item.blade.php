@@ -3,7 +3,7 @@
 @php
 $routeName = Request::route()->getName();
 $active = str_contains($routeName, strtolower($name));
-$classes = $active ? 'sidebar-item active' : 'sidebar-item';
+$classes = $active ? 'sidebar-item active ' : 'sidebar-item';
 @endphp
 
 <li class="{{ $classes }} {{$slot->isEmpty() ? '' : 'has-sub'}} {{ request()->routeIs($slot) ? 'active' : '' }}">

@@ -17,7 +17,7 @@
                                     <label for="patient_id" class="form-label">Nama pasien</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="choices" data-type="select-one" role="combobox" name="patient_id"
+                                    <select class="form-select choices" data-type="select-one" role="combobox" name="patient_id"
                                             id="patient_id">
                                         @foreach ($patients as $patient)
                                             <option

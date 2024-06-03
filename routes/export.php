@@ -5,7 +5,7 @@ use App\Http\Controllers\Export\ApplicationController;
 use App\Http\Controllers\Export\DoctorController;
 use App\Http\Controllers\Export\PatientController;
 
-Route::get('application/export', ApplicationController::class)
+Route::get('application/export/{start_date}/{end_date}/{status}', ApplicationController::class)
     ->name('application.export');
 Route::get('doctor/export', DoctorController::class)
     ->name('doctor.export');
