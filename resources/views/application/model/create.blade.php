@@ -17,7 +17,8 @@
                                     <label for="patient_id" class="form-label">Nama pasien</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="form-select choices" data-type="select-one" role="combobox" name="patient_id"
+                                    <select class="form-select choices" data-type="select-one" role="combobox"
+                                            name="patient_id"
                                             id="patient_id">
                                         @foreach ($patients as $patient)
                                             <option
@@ -160,7 +161,7 @@
                         <div class="col-md-6 mb-3">
                             <label class="col-form-label" for="blod_type">Golongan darah</label>
                             <select class="form-select @error('blod_type') is-invalid @enderror" name="blod_type"
-                                    value="{{ old('blod_type') }}" placeholder="goldar pasien">
+                                    value="{{ old('blod_type') }}">
                                 <option disabled selected>-- Pilih --</option>
                                 <option value="A" {{ old('blod_type')==='A' ? 'selected' : '' }}>Darah A</option>
                                 <option value="B" {{ old('blod_type')==='B' ? 'selected' : '' }}>Darah B</option>
