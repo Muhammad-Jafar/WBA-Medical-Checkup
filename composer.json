@@ -8,19 +8,18 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^7.4|^8.0",
-        "barryvdh/laravel-dompdf": "^2.1",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^v9.2.0",
-        "laravel/jetstream": "^2.1",
-        "laravel/sanctum": "^2.6",
-        "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.0",
-        "maatwebsite/excel": "^3.1",
-        "phpoffice/phpspreadsheet": "^1.29",
+        "php": "^8.2",
+        "barryvdh/laravel-dompdf": "^2.2.0",
+        "guzzlehttp/guzzle": "^7.8.1",
+        "laravel/framework": "^v10.48.12",
+        "laravel/jetstream": "^2.16.2",
+        "laravel/sanctum": "^3.3.3",
+        "laravel/tinker": "^v2.9.0",
+        "livewire/livewire": "^2.12.6",
+        "maatwebsite/excel": "^3.1.55",
+        "phpoffice/phpspreadsheet": "^1.29.0",
         "spatie/laravel-permission": "^6.7",
-        "yajra/laravel-datatables-oracle": "^10.11"
+        "yajra/laravel-datatables-oracle": "^10.11.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -29,7 +28,7 @@
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^v6.1.0",
         "phpunit/phpunit": "^9.3.3",
-        "spatie/ignition": "^1.0"
+        "spatie/ignition": "^1.15.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -56,7 +55,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
