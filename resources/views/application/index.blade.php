@@ -73,11 +73,11 @@
                                  Ekspor data
                              </button>--}}
 
-                            <a href="#" class="btn btn-light-primary rounded-3" data-bs-toggle="modal"
+                            {{--<a href="#" class="btn btn-light-primary rounded-3" data-bs-toggle="modal"
                                data-bs-target="#seeAll">
                                 <i class="bi bi-journals"></i>
                                 Lihat semua permintaan
-                            </a>
+                            </a>--}}
 
 
                             @if ($repo['checkLimitApplicant'])
@@ -128,10 +128,8 @@
     </div>
 
     @push('modal')
-        @include('application.model.create')
-        @include('application.model.edit')
-        @include('application.model.see-all')
-        @include('application.model.export')
+        @include('application.modal.create')
+        @include('application.modal.edit')
     @endpush
 
     @push('js')

@@ -19,7 +19,9 @@ class PatientController extends Controller implements ExcelExportInterface
         $spreadsheet = new Spreadsheet();
         $sheet = $this->setExcelHeader($spreadsheet);
 
-        $administrators = Patient::select('nik', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation', 'created_at')->orderBy('name')->get();
+        $administrators = Patient::select('nik', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation', 'created_at')
+            ->orderBy('name')
+            ->get();
 
         $this->setExcelContent($administrators, $sheet);
 

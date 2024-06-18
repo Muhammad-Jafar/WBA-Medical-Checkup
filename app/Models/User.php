@@ -69,7 +69,7 @@ class User extends Authenticate
     ];
 
     /**
-     * The accessors to append to the model's array form.
+     * The accessors to append to the modal's array form.
      *
      * @var array
      */

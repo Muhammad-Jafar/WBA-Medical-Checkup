@@ -11,6 +11,10 @@
     @include('dashboard.barchart')
     @include('dashboard.last-request')
 
+    @push('modal')
+        @include('dashboard.modal.see-all')
+    @endpush
+
     @push('js')
         @include('dashboard.script')
     @endpush

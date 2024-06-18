@@ -69,7 +69,7 @@
                                 <i class="iconly-boldWork"></i>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8" id="#seeAll">
                             <h6 class="text-muted font-semibold">Hari ini</h6>
                             <h5 class="font-extrabold mb-0"> {{ $totalApplicantCount }} </h5>
                         </div>

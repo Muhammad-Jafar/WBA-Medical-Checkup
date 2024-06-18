@@ -9,7 +9,8 @@ use App\Models\Preference;
 
 class ApplicationRepository extends Controller implements ApplicationInterface
 {
-    private $model, $preference;
+    private Preference $preference;
+    private Application $model;
 
     public function __construct(
         Application $model,

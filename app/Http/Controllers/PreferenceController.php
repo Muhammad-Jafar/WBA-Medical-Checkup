@@ -26,7 +26,8 @@ class PreferenceController extends Controller
     public function editDailyLimit(PreferenceRequest $request, Preference $preference): RedirectResponse
     {
         $preference->update(['input' => $request->inputan]);
-        return redirect()->route('preference.index')->with('success', 'Data berhasil disimpan');
+        return redirect()->route('preference.index')
+            ->with('success', 'Data berhasil disimpan');
     }
 
 }

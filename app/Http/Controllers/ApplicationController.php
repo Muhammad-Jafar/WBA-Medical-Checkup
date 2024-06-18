@@ -15,7 +15,7 @@ use Illuminate\View\View;
 
 class ApplicationController extends Controller
 {
-    private $applicationRepository;
+    private ApplicationRepository $applicationRepository;
 
     public function __construct(ApplicationRepository $applicationRepository)
     {
@@ -33,7 +33,6 @@ class ApplicationController extends Controller
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
             ->latest()
             ->whereDate('created_at', now()->toDateString())
-            /*->where('status', 'PENDING')*/ // application data flow progress
             ->get();
 
         $patient = Patient::select('id', 'nik', 'name')->get();
@@ -115,7 +114,8 @@ class ApplicationController extends Controller
             'blod_sugar' => $request->blod_sugar
         ]);
 
-        return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -128,7 +128,8 @@ class ApplicationController extends Controller
     public function update(ApplicationRequest $request, Application $application): RedirectResponse
     {
         $application->update($request->validated());
-        return redirect()->route('application.index')->with('success', 'Data berhasil diubah!');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -140,7 +141,8 @@ class ApplicationController extends Controller
     public function destroy(Application $application): RedirectResponse
     {
         $application->delete();
-        return redirect()->route('application.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 
     /**
@@ -156,7 +158,8 @@ class ApplicationController extends Controller
                 'status' => 'REJECTED',
                 'rejected_at' => now(),
             ]);
-        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Permintaan berhasil dibatalkan!');
     }
 
     /**
@@ -172,7 +175,8 @@ class ApplicationController extends Controller
                 'status' => 'PENDING',
                 'rejected_at' => null
             ]);
-        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Permintaan berhasil dibatalkan!');
     }
 
     /**
@@ -188,6 +192,7 @@ class ApplicationController extends Controller
                 'status' => 'APPROVED',
                 'approved_at' => now()
             ]);
-        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Permintaan berhasil dibatalkan!');
     }
 }

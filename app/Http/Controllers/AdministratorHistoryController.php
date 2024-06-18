@@ -45,7 +45,8 @@ class AdministratorHistoryController extends Controller
     public function restore(string $id): RedirectResponse
     {
         User::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('administrator.index.history')->with('success', 'Data berhasil dikembalikan!');
+        return redirect()->route('administrator.index.history')
+            ->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
@@ -57,6 +58,7 @@ class AdministratorHistoryController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         User::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('administrator.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('administrator.index.history')
+            ->with('success', 'Data berhasil dihapus permanen!');
     }
 }

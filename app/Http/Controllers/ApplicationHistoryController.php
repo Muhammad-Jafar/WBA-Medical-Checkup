@@ -45,7 +45,8 @@ class ApplicationHistoryController extends Controller
     public function restore(string $id): RedirectResponse
     {
         Application::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('application.index.history')->with('success', 'Data berhasil dikembalikan!');
+        return redirect()->route('application.index.history')
+            ->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
@@ -57,7 +58,8 @@ class ApplicationHistoryController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         Application::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('application.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('application.index.history')
+            ->with('success', 'Data berhasil dihapus permanen!');
     }
 
 }

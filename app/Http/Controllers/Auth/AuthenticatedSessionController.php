@@ -33,7 +33,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        return redirect(RouteServiceProvider::HOME)->with('success', 'Selamat datang ' . auth()->user()->name . ' !');
+        return redirect(RouteServiceProvider::HOME)
+            ->with('success', 'Selamat datang ' . auth()->user()->name . ' !');
     }
 
     /**

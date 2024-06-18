@@ -45,7 +45,8 @@ class PatientHistoryController extends Controller implements HistoryInterface
     public function restore(int $id): RedirectResponse
     {
         Patient::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('patient.index.history')->with('success', 'Data berhasil dikembalikan!');
+        return redirect()->route('patient.index.history')
+            ->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
@@ -57,6 +58,7 @@ class PatientHistoryController extends Controller implements HistoryInterface
     public function destroy(int $id): RedirectResponse
     {
         Patient::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('patient.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('patient.index.history')
+            ->with('success', 'Data berhasil dihapus permanen!');
     }
 }

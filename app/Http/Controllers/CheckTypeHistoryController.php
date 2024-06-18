@@ -42,7 +42,8 @@ class CheckTypeHistoryController extends Controller
     public function restore(int $id): RedirectResponse
     {
         CheckupType::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('checkup-type.index.history')->with('success', 'Data berhasil dikembalikan!');
+        return redirect()->route('checkup-type.index.history')
+            ->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
@@ -54,6 +55,7 @@ class CheckTypeHistoryController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         CheckupType::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('checkup-type.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('checkup-type.index.history')
+            ->with('success', 'Data berhasil dihapus permanen!');
     }
 }

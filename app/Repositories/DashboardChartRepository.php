@@ -8,7 +8,7 @@ use App\Models\Application;
 
 class DashboardChartRepository extends Controller implements DashboardChartInterface
 {
-    public function __construct(private Application $model)
+    public function __construct(private readonly Application $model)
     {
     }
 
