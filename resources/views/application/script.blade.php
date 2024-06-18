@@ -3,6 +3,15 @@
         let loadingAlert = $('.modal-body #loading-alert');
         const datatable = $('#datatable');
         const dropdownStatusText = document.getElementById('dropdownStatusText');
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function (event) {
+                event.preventDefault();
+                dropdownItems.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
 
         datatable.DataTable({
             processing: true,
