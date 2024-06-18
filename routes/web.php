@@ -18,6 +18,8 @@ use App\Http\Controllers\PreferenceController;
 
 require __DIR__ . '/auth.php';
 
+Route::redirect('/', 'login');
+
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
