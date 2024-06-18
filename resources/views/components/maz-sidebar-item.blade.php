@@ -2,7 +2,7 @@
 
 @php
     $routeName = Request::route()->getName();
-    $active = str_contains($routeName, strtolower($route));
+    $active = $routeName === $route;
     $classes = $active ? 'sidebar-item active ' : 'sidebar-item';
 @endphp
 
