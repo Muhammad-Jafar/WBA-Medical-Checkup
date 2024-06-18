@@ -1,6 +1,7 @@
 <script>
     $(function () {
-        let url = "{{ route('api.chart') }}";
+        const url = "{{ route('api.chart') }}";
+        const printButton = document.getElementById('print-window');
 
         function initChart(data) {
             const options = {
@@ -65,6 +66,32 @@
                 initChart(response).render();
             }
         });
+
+        printButton.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let id = $(this).data('id');
+            let url = "{{ route('application.print', 'id') }}";
+            url = url.replace('id', id);
+
+            Swal.fire({
+                title: "Cetak pengajuan!",
+                text: "Anda yakin ingin mencetak pengajuan SKBS?.",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Jangan dulu",
+                confirmButtonText: "Cetak",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+                    window.open(url, '_blank');
+                }
+            });
+        });
     });
+
+
 
 </script>

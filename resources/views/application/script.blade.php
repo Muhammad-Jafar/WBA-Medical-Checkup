@@ -180,11 +180,9 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $(this).parent().submit();
-
                     window.open(url, '_blank');
                 }
             });
-
         });
 
         datatable.on('click', '.applicant-edit', function () {

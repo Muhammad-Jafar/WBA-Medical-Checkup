@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Patient;
 use App\Models\Doctor;
 use Illuminate\View\View;
@@ -20,8 +21,8 @@ class DashboardController extends Controller
      */
     public function __invoke(): View
     {
-        $getTotalApplication = $this->applicationRepository
-            ->countApplicant(date('y'));
+        $getpendingApplicantToday = $this->applicationRepository
+            ->pendingApplicant();
 
         $getLastThreeMonth = $this->applicationRepository
             ->countApplicantLastThreeMonth();
@@ -29,10 +30,18 @@ class DashboardController extends Controller
         $getLatestApplication = $this->applicationRepository
             ->latestApplications(['id', 'user_id', 'doctor_id', 'patient_id', 'purposes', 'created_at'], 5);
 
+        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
+            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+            ->whereDate('requested_at', now()->toDateString())
+            ->where('status', 'PENDING')
+            ->latest()
+            ->get();
+
         return view('dashboard.index', [
             'patientCount' => Patient::count(),
             'doctorCount' => Doctor::count(),
-            'totalApplicantCount' => $getTotalApplication,
+            'applicationsToday' => $application,
+            'totalApplicantCount' => $getpendingApplicantToday,
             'lastThreeMonth' => $getLastThreeMonth,
             'getLatest' => $getLatestApplication,
         ]);

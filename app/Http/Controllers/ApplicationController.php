@@ -31,8 +31,8 @@ class ApplicationController extends Controller
     {
         $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
-            ->latest()
             ->whereDate('created_at', now()->toDateString())
+            ->latest()
             ->get();
 
         $patient = Patient::select('id', 'nik', 'name')->get();
@@ -176,7 +176,7 @@ class ApplicationController extends Controller
                 'rejected_at' => null
             ]);
         return redirect()->route('application.index')
-            ->with('success', 'Permintaan berhasil dibatalkan!');
+            ->with('success', 'Permintaan berhasil dikembalikan!');
     }
 
     /**
@@ -193,6 +193,6 @@ class ApplicationController extends Controller
                 'approved_at' => now()
             ]);
         return redirect()->route('application.index')
-            ->with('success', 'Permintaan berhasil dibatalkan!');
+            ->with('success', 'Permintaan berhasil disetujui dan dicetak!');
     }
 }
