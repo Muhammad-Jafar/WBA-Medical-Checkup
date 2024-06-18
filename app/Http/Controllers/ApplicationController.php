@@ -33,7 +33,7 @@ class ApplicationController extends Controller
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
             ->latest()
             ->whereDate('created_at', now()->toDateString())
-            ->where('status', 'PENDING')
+            /*->where('status', 'PENDING')*/ // application data flow progress
             ->get();
 
         $patient = Patient::select('id', 'nik', 'name')->get();
@@ -70,7 +70,7 @@ class ApplicationController extends Controller
 
         if ($tab == 'today') {
             $application->whereDate('created_at', now()->toDateString())
-                ->where('status', 'PENDING')
+                ->orderBy('status', 'ASC')
                 ->get();
         } elseif ($tab === 'pending') {
             $application->where('status', 'pending')->get();

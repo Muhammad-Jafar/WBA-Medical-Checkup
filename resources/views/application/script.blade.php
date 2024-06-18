@@ -2,6 +2,7 @@
     $(function () {
         let loadingAlert = $('.modal-body #loading-alert');
         const datatable = $('#datatable');
+        const dropdownStatusText = document.getElementById('dropdownStatusText');
 
         datatable.DataTable({
             processing: true,
@@ -19,6 +20,8 @@
         });
 
         $('#today-tab').click(function () {
+            dropdownStatusText.textContent = 'Hari ini';
+
             $.ajax({
                 url: "{{ route('application.tab', 'today') }}",
                 data: {tab: "today"},
@@ -61,6 +64,8 @@
         });
 
         $('#pending-tab').click(function () {
+            dropdownStatusText.textContent = 'Status tertunda';
+
             $.ajax({
                 url: "{{ route('application.tab', 'pending') }}",
                 data: {tab: "pending"},
@@ -103,6 +108,8 @@
         });
 
         $('#all-tab').click(function () {
+            dropdownStatusText.textContent = 'Semua data';
+
             $.ajax({
                 url: "{{ route('application.tab', 'all') }}",
                 data: {tab: "pending"},

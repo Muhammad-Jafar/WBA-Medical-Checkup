@@ -13,37 +13,53 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6 col-lg-6">
-                    <ul class="nav nav-tabs" id="applicationTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a href="#today" class="nav-link active" id="today-tab" data-bs-toggle="tab" role="tab"
-                               aria-controls="today" aria-selected="true">
-                                <h5> Hari ini</h5>
-                            </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#pending" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab"
-                               aria-controls="pending" aria-selected="false" tabindex="-1">
-                                <h5>Tertunda</h5>
-                            </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#all" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab"
-                               aria-controls="all" aria-selected="false" tabindex="-1">
-                                <h5>Semua</h5>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today">
-                            <h4 class="mt-4 my-2">Permintaan hari ini</h4>
-                        </div>
-                        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending">
-                            <h4 class="mt-4 my-2">Permintaan tertunda</h4>
-                        </div>
-                        <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all">
-                            <h4 class="mt-4 my-2">Semua permintaan</h4>
+                    <h4>Daftar permintaan</h4>
+
+                    <div class="btn-group dropdown me-1 mb-1">
+                        <button class="btn btn-light-primary" id="selected-filter">Tampilkan data</button>
+                        <button type="button" class="btn btn-light-primary dropdown-toggle me-1"
+                                data-bs-toggle="dropdown" aria-haspopup="true" data-reference="parent">
+                            <span id="dropdownStatusText">Hari ini</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <h6 class="dropdown-header">Berdasarkan:</h6>
+                            <a class="dropdown-item active" id="today-tab">Hari ini</a>
+                            <a class="dropdown-item" id="pending-tab">Status tertunda</a>
+                            <a class="dropdown-item" id="all-tab">Semua data</a>
                         </div>
                     </div>
+
+                    {{-- <ul class="nav nav-tabs" id="applicationTabs" role="tablist">
+                         <li class="nav-item" role="presentation">
+                             <a href="#today" class="nav-link active" id="today-tab" data-bs-toggle="tab" role="tab"
+                                aria-controls="today" aria-selected="true">
+                                 <h5> Hari ini</h5>
+                             </a>
+                         </li>
+                         <li class="nav-item" role="presentation">
+                             <a href="#pending" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab"
+                                aria-controls="pending" aria-selected="false" tabindex="-1">
+                                 <h5>Tertunda</h5>
+                             </a>
+                         </li>
+                         <li class="nav-item" role="presentation">
+                             <a href="#all" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab"
+                                aria-controls="all" aria-selected="false" tabindex="-1">
+                                 <h5>Semua</h5>
+                             </a>
+                         </li>
+                     </ul>
+                     <div class="tab-content" id="myTabContent">
+                         <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today">
+                             <h4 class="mt-4 my-2">Permintaan hari ini</h4>
+                         </div>
+                         <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending">
+                             <h4 class="mt-4 my-2">Permintaan tertunda</h4>
+                         </div>
+                         <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all">
+                             <h4 class="mt-4 my-2">Semua permintaan</h4>
+                         </div>
+                     </div>--}}
 
                 </div>
                 <div class="col-6 col-lg-6">
@@ -57,10 +73,12 @@
                                  Ekspor data
                              </button>--}}
 
-                            {{-- <a href="#" class="btn btn-light-success">
-                                <i class="bi bi-download"></i>
-                                Impor data
-                            </a> --}}
+                            <a href="#" class="btn btn-light-primary rounded-3" data-bs-toggle="modal"
+                               data-bs-target="#seeAll">
+                                <i class="bi bi-journals"></i>
+                                Lihat semua permintaan
+                            </a>
+
 
                             @if ($repo['checkLimitApplicant'])
                                 <button type="button" class="btn btn-primary rounded-3 warning-limit"
@@ -112,6 +130,7 @@
     @push('modal')
         @include('application.model.create')
         @include('application.model.edit')
+        @include('application.model.see-all')
         @include('application.model.export')
     @endpush
 

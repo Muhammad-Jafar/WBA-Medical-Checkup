@@ -56,8 +56,7 @@ class ApplicationRepository extends Controller implements ApplicationInterface
      */
     public function countTodayApplicant(): int
     {
-        return $this->model->where('status', 'PENDING')
-            ->whereDate('requested_at', now()->toDateString())
+        return $this->model->whereDate('requested_at', now()->toDateString())
             ->count();
     }
 
