@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <h6 class="text-muted font-semibold">Total SKBS</h6>
+                            <h6 class="text-muted font-semibold">Hari ini</h6>
                             <h5 class="font-extrabold mb-0"> {{ $totalApplicantCount }} </h5>
                         </div>
                     </div>

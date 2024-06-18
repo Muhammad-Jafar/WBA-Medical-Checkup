@@ -14,14 +14,13 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticate
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
-    use HasRoles;
-    use SoftDeletes;
-
+    use HasApiTokens,
+        HasFactory,
+        HasProfilePhoto,
+        Notifiable,
+        TwoFactorAuthenticatable,
+        HasRoles,
+        SoftDeletes;
 
     /**
      * Fiil the colom of users talbe
@@ -43,7 +42,7 @@ class User extends Authenticate
      *
      * @var string
      */
-    protected $guard_name = 'admin';
+    protected string $guard_name = 'admin';
 
 
     /**

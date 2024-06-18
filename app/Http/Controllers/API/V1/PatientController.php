@@ -2,33 +2,37 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Models\Patient;
 use App\Contracts\ApiInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ApiResponseResource;
 use App\Http\Resources\PatientEditResource;
 use App\Http\Resources\PatientShowResource;
+use App\Models\Patient;
+use Exception;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class PatientController extends Controller implements ApiInterface
 {
     public function show(int $id): JsonResponse
     {
-        $patient = new PatientShowResource(Patient::findOrFail($id));
+        try {
+            $patient = new PatientShowResource(Patient::findOrFail($id));
 
-        return response()->json([
-            'code' => Response::HTTP_OK,
-            'data' => $patient
-        ]);
+            return ApiResponseResource::Success($patient);
+        } catch (Exception) {
+            return ApiResponseResource::Error();
+        }
     }
 
     public function edit(int $id): JsonResponse
     {
-        $patient = new PatientEditResource(Patient::findOrFail($id));
 
-        return response()->json([
-            'code' => Response::HTTP_OK,
-            'data' => $patient
-        ]);
+        try {
+            $patient = new PatientEditResource(Patient::findOrFail($id));
+
+            return ApiResponseResource::Success($patient);
+        } catch (Exception) {
+            return ApiResponseResource::Error();
+        }
     }
 }

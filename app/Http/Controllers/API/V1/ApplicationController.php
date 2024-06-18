@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Models\Application;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ApiResponseResource;
 use App\Http\Resources\ApplicationEditResource;
+use App\Models\Application;
+use Exception;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class ApplicationController extends Controller
 {
     public function edit(string $id): JsonResponse
     {
-        $application = new ApplicationEditResource(
-            Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-                ->findOrFail($id)
-        );
+        try {
+            $application = new ApplicationEditResource(
+                Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
+                    ->findOrFail($id)
+            );
 
-        return response()->json([
-            'code' => Response::HTTP_OK,
-            'data' => $application
-        ]);
+            return ApiResponseResource::Success($application);
+
+        } catch (Exception) {
+            return ApiResponseResource::Error();
+        }
     }
 }

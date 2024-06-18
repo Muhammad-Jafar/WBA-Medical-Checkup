@@ -1,31 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\API\v1;
+namespace App\Http\Controllers\API\V1;
 
-use App\Models\Doctor;
-use App\Contracts\ApiInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ApiResponseResource;
 use App\Http\Resources\DoctorEditResource;
+use App\Models\Doctor;
+use Exception;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
-class DoctorController extends Controller implements ApiInterface
+class DoctorController extends Controller
 {
-    public function show(int $id): JsonResponse
-    {
-        return response()->json([
-            'code' => Response::HTTP_OK,
-            'data' => ['message' => 'No function found']
-        ]);
-    }
-
     public function edit(int $id): JsonResponse
     {
-        $doctor = new DoctorEditResource(Doctor::findOrFail($id));
+        try {
+            $doctor = new DoctorEditResource(Doctor::findOrFail($id));
 
-        return response()->json([
-            'code' => Response::HTTP_OK,
-            'data' => $doctor
-        ]);
+            return ApiResponseResource::Success($doctor);
+        } catch (Exception) {
+            return ApiResponseResource::Error();
+        }
     }
 }

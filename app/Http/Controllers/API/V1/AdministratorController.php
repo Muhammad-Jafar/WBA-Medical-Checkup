@@ -4,19 +4,21 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AdministratorEditResource;
+use App\Http\Resources\ApiResponseResource;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdministratorController extends Controller
 {
     public function edit(int $id): JsonResponse
     {
-        $admin = new AdministratorEditResource(User::findOrFail($id));
+        try {
+            $admin = new AdministratorEditResource(User::findOrFail($id));
 
-        return response()->json([
-            'code' => Response::HTTP_OK,
-            'data' => $admin
-        ]);
+            return ApiResponseResource::Success($admin);
+        } catch (Exception) {
+            return ApiResponseResource::Error();
+        }
     }
 }
