@@ -41,13 +41,13 @@ return [
             'provider' => 'users',
         ],
 
-        'admin' => [
+        /*'admin' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
+        ],*/
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'sanctum',
             'provider' => 'users',
             'hash' => false,
         ],

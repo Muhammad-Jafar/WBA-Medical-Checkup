@@ -170,8 +170,7 @@ class ApplicationController extends Controller
         Application::findOrFail($id)
             ->update([
                 'status' => 'PENDING',
-                'rejected_at' => now(),
-                'approved_at' => null
+                'rejected_at' => null
             ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }
@@ -187,8 +186,7 @@ class ApplicationController extends Controller
         Application::findOrFail($id)
             ->update([
                 'status' => 'APPROVED',
-                'approved_at' => now(),
-                'rejected_at' => null
+                'approved_at' => now()
             ]);
         return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
     }

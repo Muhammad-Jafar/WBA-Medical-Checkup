@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->ulid('id')->primary();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('patient_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('doctor_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
@@ -25,10 +25,10 @@ return new class extends Migration
             $table->string('blod_pressure', 20)->nullable();
             $table->string('colesterol', 20)->nullable();
             $table->string('blod_sugar', 20)->nullable();
-            $table->date('requested_at');
+            $table->dateTime('requested_at');
             $table->enum('status', ['PENDING','APPROVED','REJECTED'])->default('PENDING');
-            $table->date('approved_at')->nullable();
-            $table->date('rejected_at')->nullable();
+            $table->dateTime('approved_at')->nullable();
+            $table->dateTime('rejected_at')->nullable();
             $table->timestamps();
         });
     }

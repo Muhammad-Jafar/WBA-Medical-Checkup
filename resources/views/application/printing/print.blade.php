@@ -44,13 +44,14 @@
         font-weight: normal;
     }
 </style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cetak SKBS</title>
 </head>
-<body>
 
+<body>
 <div class="page-portrait">
     <table>
         <tbody>
@@ -104,7 +105,7 @@
                                                             <bnsp> / {{ monthToBulanRomawi(date('m')) }}
                                                                 / {{ date("Y") }}</h4>
 
-    <o:p>
+    <o:p></o:p>
         <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify; line-height:1.5">
             &nbsp; &nbsp; &nbsp;
             Yang bertanda tangan di bawah ini <b> dr. {{ strtoupper($applicant->doctors->name) }}.</b>
@@ -113,7 +114,7 @@
             menerangkan bahwa telah
             memeriksa dengan teliti seorang:
         </p>
-        <o:p>
+        <o:p></o:p>
 
             <table>
                 <tbody style="font-family: 'Arial', sans-serif; line-height:2">
@@ -164,7 +165,7 @@
                 </tbody>
             </table>
 
-            <o:p>
+            <o:p></o:p>
                 <p style="font-family: 'Arial', sans-serif; font-size:12pt; text-align:justify; line-height:1.5">
                     &nbsp; &nbsp; &nbsp;
                     Dari hasil pemeriksaan fisik yang dilakukan, maka yang bersangkutan dinyatakan
@@ -180,7 +181,7 @@
                     &nbsp; &nbsp; &nbsp;
                     Demikian surat keterangan ini diberikan untuk dipergunakan sebagaimana mestinya.
                 </p>
-                <o:p>
+                <o:p></o:p>
 
                     <table>
                         <tbody style="font-family: 'Arial', sans-serif; ">
@@ -208,10 +209,6 @@
                         </tbody>
                     </table>
 </div>
-
-<script>
-    window.open('{{ route("application.export") }}', '_blank');
-</script>
 
 </body>
 </html>

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class LogoutController extends Controller
 {
-    public function logout()
+    public function logout(Request $request)
     {
-        auth()->user()->currentAccessToken()->delete();
+
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json([
             'code' => Response::HTTP_OK,

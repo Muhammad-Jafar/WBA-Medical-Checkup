@@ -20,7 +20,9 @@ require __DIR__ . '/auth.php';
 
 Route::redirect('/', 'login');
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+/*Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {*/
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
