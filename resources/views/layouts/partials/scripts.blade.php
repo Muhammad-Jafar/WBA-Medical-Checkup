@@ -27,6 +27,8 @@
     $(function () {
        /* $(".select2").select2();*/
 
+        const datatable = $("#datatable");
+
         $("input[type=date]").flatpickr({
             dateFormat: "d-m-Y",
             locale: "id",
@@ -59,7 +61,7 @@
             })
         });
 
-        $("#datatable").on('click', '.delete-dialog', function (e) {
+        datatable.on('click', '.delete-dialog', function (e) {
             e.preventDefault();
             Swal.fire({
                 title: "Hapus?",
@@ -78,7 +80,7 @@
             });
         });
 
-        $("#datatable").on('click', '.restore-button', function (e) {
+        datatable.on('click', '.restore-button', function (e) {
             e.preventDefault();
             Swal.fire({
                 title: "Kembalikan?",
@@ -97,7 +99,7 @@
             });
         });
 
-        $("#datatable").on('click', '.cancel-dialog', function (e) {
+        datatable.on('click', '.cancel-dialog', function (e) {
             e.preventDefault();
             Swal.fire({
                 title: "Batalkan?",
@@ -116,7 +118,7 @@
             });
         });
 
-        $("#datatable").on('click', '.undo-dialog', function (e) {
+        datatable.on('click', '.undo-dialog', function (e) {
             e.preventDefault();
             Swal.fire({
                 title: "Kembalikan?",
@@ -135,7 +137,7 @@
             });
         });
 
-        $("#datatable").on('click', '.delete-permanent-button', function (e) {
+        datatable.on('click', '.delete-permanent-button', function (e) {
             e.preventDefault();
             Swal.fire({
                 title: "Hapus permanen?",

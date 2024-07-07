@@ -195,4 +195,14 @@ class ApplicationController extends Controller
         return redirect()->route('application.index')
             ->with('success', 'Permintaan berhasil disetujui dan dicetak!');
     }
+
+    /**
+     * Store self application request
+     *
+     * @return view
+     * */
+    public function selfRequest(): View
+    {
+        return view('application.modal.public-form');
+    }
 }
