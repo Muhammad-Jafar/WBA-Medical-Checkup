@@ -72,5 +72,6 @@
                 </div>
             </div>
         </div>
+    </div>
 
 </x-guest-vertical-layout>
