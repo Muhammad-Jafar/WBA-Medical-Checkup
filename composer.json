@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^2.2.0",
+        "google/apiclient": "^2.17",
         "guzzlehttp/guzzle": "^7.8.1",
         "laravel/framework": "^v10.48.12",
         "laravel/jetstream": "^2.16.2",
