@@ -28,7 +28,8 @@ class PatientSeeder extends Seeder
                 'born_place' => $fake->city,
                 'born_date' => $fake->dateTimeBetween('-50 years', '-20 years')->format('Y-m-d'),
                 'address' => $fake->address,
-                'occupation' => $fake->jobTitle
+                'occupation' => $fake->jobTitle,
+                'phone' => $fake->phoneNumber,
             ]);
         }
     }

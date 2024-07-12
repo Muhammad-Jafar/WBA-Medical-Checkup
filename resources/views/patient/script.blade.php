@@ -40,6 +40,7 @@
                     $('#showPatientModal #born_date').val(response.data.born_date);
                     $('#showPatientModal #address').val(response.data.address);
                     $('#showPatientModal #occupation').val(response.data.occupation);
+                    $('#showPatientModal #phone').val(response.data.phone);
                 }
             });
         });
@@ -75,6 +76,7 @@
                     $('#editPatientModal #born_date').val(response.data.born_date);
                     $('#editPatientModal #address').val(response.data.address);
                     $('#editPatientModal #occupation').val(response.data.occupation);
+                    $('#editPatientModal #phone').val(response.data.phone);
                 }
             });
         });

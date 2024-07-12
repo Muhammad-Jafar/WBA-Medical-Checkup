@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Google\SheetsController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -23,6 +24,8 @@ Route::redirect('/', 'login');
 /*Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {*/
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('/sheet', [SheetsController::class, 'sync'])->name('sheet');
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 

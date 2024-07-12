@@ -17,9 +17,7 @@ class PatientHistoryController extends Controller implements HistoryInterface
      */
     public function index(): View|JsonResponse
     {
-        $patients = Patient::select(
-            'id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation'
-        )
+        $patients = Patient::select('id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation')
             ->orderBy('name')
             ->onlyTrashed()
             ->get();

@@ -32,6 +32,7 @@ class PatientRequest extends FormRequest
             'born_date' => ['required', 'date'],
             'address' => ['required'],
             'occupation' => ['required'],
+            'phone' => ['required'],
         ];
     }
 
@@ -61,6 +62,8 @@ class PatientRequest extends FormRequest
             'address.required' => 'Kolom alamat wajib diisi!',
 
             'occupation.required' => 'Kolom pekerjaan wajib diisi!',
+
+            'phone.required' => 'Kolom nomor telepon wajib diisi!',
         ];
     }
 

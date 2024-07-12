@@ -23,7 +23,8 @@ class Patient extends Model
         'born_place',
         'born_date',
         'address',
-        'occupation'
+        'occupation',
+        'phone'
     ];
 
     /**

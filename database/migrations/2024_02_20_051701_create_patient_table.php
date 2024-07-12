@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('born_date');
             $table->text('address');
             $table->string('occupation');
+            $table->string('phone');
             $table->timestamps();
         });
     }

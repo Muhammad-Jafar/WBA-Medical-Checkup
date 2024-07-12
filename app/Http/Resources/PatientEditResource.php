@@ -24,6 +24,7 @@ class PatientEditResource extends JsonResource
             'born_date' => $this->born_date,
             'address' => $this->address,
             'occupation' => $this->occupation,
+            'phone' => $this->phone,
         ];
     }
 

@@ -17,7 +17,6 @@ class PatientController extends Controller implements ApiInterface
     {
         try {
             $patient = new PatientShowResource(Patient::findOrFail($id));
-
             return ApiResponseResource::Success($patient);
         } catch (Exception) {
             return ApiResponseResource::Error();
@@ -26,10 +25,8 @@ class PatientController extends Controller implements ApiInterface
 
     public function edit(int $id): JsonResponse
     {
-
         try {
             $patient = new PatientEditResource(Patient::findOrFail($id));
-
             return ApiResponseResource::Success($patient);
         } catch (Exception) {
             return ApiResponseResource::Error();
