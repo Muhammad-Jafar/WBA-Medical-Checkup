@@ -2,6 +2,19 @@
 
 use Carbon\Carbon;
 
+if (!function_exists('toInt')) {
+    /**
+     * From string to int
+     *
+     * @param string $string
+     * @returns Integer
+     */
+    function toInt(string $string)
+    {
+        return (int)$string;
+    }
+}
+
 if (!function_exists('indonesianCurrency')) {
     /**
      * Ubah mata uang menjadi format indonesia
