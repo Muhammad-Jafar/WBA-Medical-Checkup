@@ -37,8 +37,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         ->except('create', 'show', 'edit');
     Route::resource('user', AdministratorController::class)
         ->except('create', 'show', 'edit');
-    /*Route::resource('checkup-type', CheckupTypeController::class)
-        ->except('create', 'show', 'edit');*/
+    Route::resource('checkup-type', CheckupTypeController::class)
+        ->except('create', 'show', 'edit');
 
     Route::get('/report', ReportController::class)->name('report');
 
@@ -79,12 +79,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::delete('{id}', 'destroy')->name('destroy.history');
         });
 
-    /*Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')
+    Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')
         ->name('checkup-type.')->group(function () {
             Route::get('', 'index')->name('index.history');
             Route::post('{id}', 'restore')->name('restore.history');
             Route::delete('{id}', 'destroy')->name('destroy.history');
-        });*/
+        });
 
     Route::controller(PreferenceController::class)->prefix('/preference')
         ->name('preference.')->group(function () {
