@@ -23,9 +23,9 @@
                             <th scope="col">#</th>
                             <th scope="col">Pasien</th>
                             <th scope="col">Keperluan</th>
-                            <th scope="col">Dokter Pemeriksa</th>
-                            <th scope="col">Oleh</th>
+                            <th scope="col">Pada tanggal</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Oleh</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
@@ -42,10 +42,7 @@
                                     {{ $application->purposes }}
                                 </td>
                                 <td class="col-auto">
-                                    dr. {{ $application->doctors->name }}
-                                </td>
-                                <td class="col-auto">
-                                    {{ date('d M Y - H:m T ', strtotime($application->created_at)) }}
+                                    {{ date('d M Y - H:m T', strtotime($application->created_at)) }}
                                 </td>
                                 <td class="col-auto">
                                     <span

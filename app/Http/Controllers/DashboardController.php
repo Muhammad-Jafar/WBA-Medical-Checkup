@@ -22,7 +22,7 @@ class DashboardController extends Controller
     public function __invoke(): View
     {
         $getpendingApplicantToday = $this->applicationRepository
-            ->pendingApplicant();
+            ->pendingApplicant('today');
 
         $getLastThreeMonth = $this->applicationRepository
             ->countApplicantLastThreeMonth();
@@ -31,7 +31,7 @@ class DashboardController extends Controller
             ->latestApplications(['id', 'user_id', 'doctor_id', 'patient_id', 'purposes', 'created_at'], 5);
 
         $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status', 'created_at')
             ->whereDate('requested_at', now()->toDateString())
             ->where('status', 'PENDING')
             ->latest()

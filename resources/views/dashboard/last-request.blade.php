@@ -32,7 +32,7 @@
                             dr. {{ $latestApplication->doctors->name }}
                         </td>
                         <td class="col-auto">
-                            {{ date('d M Y - H:m T ', strtotime($latestApplication->created_at)) }}
+                            {{ date('d M Y - H:m T', strtotime($latestApplication->created_at)) }}
                         </td>
                         <td class="col-auto">
                             {{ $latestApplication->users->name }}
