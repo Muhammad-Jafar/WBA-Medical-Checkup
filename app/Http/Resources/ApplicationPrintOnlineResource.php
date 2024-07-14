@@ -19,6 +19,7 @@ class ApplicationPrintOnlineResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'patient_id' => $this->patient_id,
+            'checkuptype_id' => $this->checkuptype_id,
             'purposes' => $this->purposes,
             'height_body' => $this->height_body,
             'mass_body' => $this->mass_body,
@@ -26,6 +27,12 @@ class ApplicationPrintOnlineResource extends JsonResource
             'blod_pressure' => $this->blod_pressure,
             'colesterol' => $this->colesterol,
             'blod_sugar' => $this->blod_sugar,
+            'amphe' => $this->amphe,
+            'metham' => $this->metham,
+            'benzo' => $this->benzo,
+            'thc' => $this->thc,
+            'cocain' => $this->cocain,
+            'opiate' => $this->opiate,
             'requested_at' => $this->requested_at,
             'status' => $this->status,
             'approved_at' => $this->approved_at,
@@ -37,6 +44,10 @@ class ApplicationPrintOnlineResource extends JsonResource
                 'id' => $this->patients->id,
                 'name' => $this->patients->name
             ],
+            'checkup_types' => [
+                'id' => $this->checkup_type->id,
+                'abbreviated_word' => $this->checkup_type->abbreviated_word,
+            ]
         ];
     }
 }

@@ -31,7 +31,9 @@ class ApplicationController extends Controller
     {
         try {
             $application = new ApplicationPrintOnlineResource(
-                Application::with('users:id,name', 'patients:id,name')
+                Application::with(
+                    'users:id,name', 'patients:id,name', 'checkup_type:id,abbreviated_word'
+                )
                     ->findOrFail($id)
             );
             return ApiResponseResource::Success($application);

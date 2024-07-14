@@ -29,8 +29,10 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+        $application = Application::with(
+            'users:id,name', 'patients:id,name', 'doctors:id,name', 'checkup_type:id,abbreviated_word'
+        )
+            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'checkuptype_id','purposes', 'status')
             ->whereDate('created_at', now()->toDateString())
             ->latest()
             ->get();
@@ -44,6 +46,7 @@ class ApplicationController extends Controller
             return datatables()->of($application)
                 ->addIndexColumn()
                 ->addColumn('patient', fn($model) => $model->patients->name)
+                ->addColumn('checkup_type', fn($model) => $model->checkup_type->abbreviated_word)
                 ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : '-')
                 ->addColumn('admin', fn($model) => $model->users->name)
                 ->addColumn('status', 'application.datatable.status')

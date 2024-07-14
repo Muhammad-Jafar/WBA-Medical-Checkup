@@ -1,4 +1,5 @@
-<div class="modal fade" id="printThirdApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+<div class="modal fade" id="printThirdApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
 
@@ -32,7 +33,7 @@
                                     <label class="col-form-label" for="doctor">Jenis Pemeriksaan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="text" class="form-control" name="Paket 1" disabled>
+                                    <input type="text" class="form-control" id="checkuptype_id" disabled>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +88,7 @@
                     </div>
 
                     <div class="divider">
-                        <div class="divider-text"> <b>Pemeriksaan Paket 2</b> </div>
+                        <div class="divider-text"><b>Pemeriksaan Paket 2</b></div>
                     </div>
 
                     <div class="row">
@@ -125,7 +126,7 @@
                     </div>
 
                     <div class="divider">
-                        <div class="divider-text"> <b>Pemeriksaan Paket 3</b> </div>
+                        <div class="divider-text"><b>Pemeriksaan Paket 3</b></div>
                     </div>
 
                     <div class="row">

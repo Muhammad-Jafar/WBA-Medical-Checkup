@@ -115,6 +115,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Pasien</th>
                         <th scope="col">Keperluan</th>
+                        <th scope="col">Jenis Pemeriksaan</th>
                         <th scope="col">Dokter Pemeriksa</th>
                         <th scope="col">Oleh</th>
                         <th scope="col">Status</th>
@@ -130,8 +131,11 @@
     @push('modal')
         @include('application.modal.create')
         @include('application.modal.edit')
-        @include('application.modal.print-first-packet')
-        @include('application.modal.print-offline')
+        @include('application.modal.online.print-first-packet')
+        @include('application.modal.online.print-second-packet')
+        @include('application.modal.online.print-third-packet')
+        @include('application.modal.online.print-four-packet')
+        @include('application.modal.offline.print-offline')
     @endpush
 
     @push('js')
