@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Google;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Repositories\GoogleSheetsRepository;
+use Illuminate\Support\Str;
 
 class SheetsController extends Controller
 {
@@ -18,30 +19,24 @@ class SheetsController extends Controller
     public function sync()
     {
         $data = $this->sheets->read();
-        $isNiKExist = $this->sheets->filterNik();
+        array_shift($data);
+        $patientId = null;
 
-        if (!$isNiKExist) {
-            foreach ($data as $row => $sheet) {
+        foreach ($data as $sheet) {
+            $getIndex = $this->sheets->getIndexCheckupType($sheet[14]);
+            $isNikExist = $this->sheets->isNikExist($sheet[3]);
+            $newPatientId = Str::ulid();
 
-                if ($sheet == 0) {
-                    continue;
-                }
+            if ($isNikExist == null) {
+                $this->sheets->storePatient($sheet, $newPatientId);
+                $patientId = Patient::select('id')->where('nik', $sheet[3])->first();
+            }
 
-               /* Patient::created([
-                    'name' => $sheet[$row][2],
-                    'nik' => $sheet[$row][3],
-                    'gender' => $sheet[$row][4],
-                    'born_place' => $sheet[$row][5],
-                    'born_date' => $sheet[$row][6],
-                    'address' => $sheet[$row][7],
-                    'occupation' => $sheet[$row][8],
-                    'phone' => $sheet[$row][9],
-                ]);*/
-
-                return response()->json($row[2]);
+            if ($patientId != null) {
+                $this->sheets->createApplication($sheet, $patientId->id, $getIndex);
             }
         }
 
-        /*return response()->json("Success");*/
+        return response()->json('Success to store data');
     }
 }
