@@ -23,6 +23,7 @@ class Application extends Model
         'user_id',
         'patient_id',
         'doctor_id',
+        'checkuptype_id',
         'purposes',
         'height_body',
         'mass_body',
@@ -64,6 +65,16 @@ class Application extends Model
     public function doctors(): BelongsTo
     {
         return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
+
+    /**
+     * Get checkup_type class relationship
+     *
+     * @return BelongsTo
+     */
+    public function checkup_type(): BelongsTo
+    {
+        return $this->belongsTo(CheckupType::class, 'checkuptype_id');
     }
 
     /**

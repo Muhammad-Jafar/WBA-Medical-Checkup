@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
  */
 interface ApiInterface
 {
-    public function show(int $id): JsonResponse;
-    public function edit(int $id): JsonResponse;
+    public function show(string $id): JsonResponse;
+
+    public function edit(string $id): JsonResponse;
 }

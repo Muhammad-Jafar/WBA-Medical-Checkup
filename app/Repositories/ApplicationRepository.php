@@ -33,7 +33,8 @@ class ApplicationRepository extends Controller implements ApplicationInterface
      */
     public function latestApplications(array $columns, ?int $limit): object
     {
-        $model = $this->model->with('users', 'doctors', 'patients')->select($columns);
+        $model = $this->model->with('users', 'doctors', 'patients')->select($columns)
+            ->where('status', 'APPROVED');
 
         return is_null($limit)
             ? $model->latest()->get()
@@ -43,11 +44,18 @@ class ApplicationRepository extends Controller implements ApplicationInterface
     /**
      *
      * Get total application by status 'PENDING'
+     * @param ?string $today
      * @return integer
      */
-    public function pendingApplicant(): int
+    public function pendingApplicant(?string $today = null): int
     {
-        return $this->model->where('status', 'PENDING')->count();
+        $model = $this->model->select('status', 'requested_at');
+
+        return is_null($today)
+            ? $model->where('status', 'PENDING')->count()
+            : $model->where('status', 'PENDING')
+                ->whereDate('requested_at', now()->toDateString())
+                ->count();
     }
 
     /**

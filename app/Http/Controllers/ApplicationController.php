@@ -44,7 +44,7 @@ class ApplicationController extends Controller
             return datatables()->of($application)
                 ->addIndexColumn()
                 ->addColumn('patient', fn($model) => $model->patients->name)
-                ->addColumn('doctor', fn($model) => $model->doctors->name)
+                ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : '-')
                 ->addColumn('admin', fn($model) => $model->users->name)
                 ->addColumn('status', 'application.datatable.status')
                 ->addColumn('action', 'application.datatable.action')
@@ -64,7 +64,7 @@ class ApplicationController extends Controller
     public function tab($tab): JsonResponse
     {
         $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+            ->select('id', 'user_id', 'patient_id', 'purposes', 'status')
             ->latest();
 
         if ($tab == 'today') {
@@ -81,7 +81,7 @@ class ApplicationController extends Controller
             return datatables()->of($application)
                 ->addIndexColumn()
                 ->addColumn('patient', fn($model) => $model->patients->name)
-                ->addColumn('doctor', fn($model) => $model->doctors->name)
+                ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : '-')
                 ->addColumn('admin', fn($model) => $model->users->name)
                 ->addColumn('status', 'application.datatable.status')
                 ->addColumn('action', 'application.datatable.action')

@@ -8,6 +8,7 @@ use App\Http\Controllers\API\V1\LoginController;
 use App\Http\Controllers\API\v1\LogoutController;
 use App\Http\Controllers\API\v1\PatientController;
 use App\Http\Controllers\API\V1\PreferenceControlller;
+use App\Http\Controllers\API\V1\CheckupTypeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,6 +27,9 @@ Route::name('api.')->prefix('v1')->group(function () {
         Route::get('application/{id}/edit', [ApplicationController::class, 'edit'])
             ->name('application.edit');
 
+        Route::get('application/{id}/printOnline', [ApplicationController::class, 'printOnline'])
+            ->name('application.printOnline');
+
         Route::get('patient/{id}', [PatientController::class, 'show'])
             ->name('patient.show');
 
@@ -38,8 +42,8 @@ Route::name('api.')->prefix('v1')->group(function () {
         Route::get('user/{id}/edit', [AdministratorController::class, 'edit'])
             ->name('user.edit');
 
-        /*Route::get('checkup-type/{id}/edit', [CheckupTypeController::class, 'edit'])
-            ->name('checkup-type.edit');*/
+        Route::get('checkup-type/{id}/edit', [CheckupTypeController::class, 'edit'])
+            ->name('checkup-type.edit');
 
         Route::get('preference/{id}/edit', [PreferenceControlller::class, 'edit'])
             ->name('preference.edit');
