@@ -37,12 +37,16 @@
 
     @hasrole('admin')
     <x-maz-sidebar-menu titleMenu="Setelan">
+        <x-maz-sidebar-item name="Jenis Pemeriksaan"
+                            :link="route('checkup-type.index')"
+                            route="checkup-type.index"
+                            icon="">
+        </x-maz-sidebar-item>
         <x-maz-sidebar-item name="Administrator"
                             :link="route('user.index')"
                             route="user.index"
                             icon="bi bi-person-lines-fill">
         </x-maz-sidebar-item>
-        {{--<x-maz-sidebar-sub-item name="Jenis Pemeriksaan" :link="route('checkup-type.index')"></x-maz-sidebar-sub-item>--}}
         <x-maz-sidebar-item name="Setelan umum"
                             :link="route('preference.index')"
                             route="preference.index"
