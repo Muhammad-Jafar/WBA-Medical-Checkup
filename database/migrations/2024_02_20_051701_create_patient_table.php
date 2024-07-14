@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id();
+            $table->ulid('id')->primary();
             $table->string('nik')->unique();
             $table->string('name');
             $table->tinyInteger('gender');

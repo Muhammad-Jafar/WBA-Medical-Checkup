@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 
 class PatientController extends Controller implements ApiInterface
 {
-    public function show(int $id): JsonResponse
+    public function show(string $id): JsonResponse
     {
         try {
             $patient = new PatientShowResource(Patient::findOrFail($id));
@@ -23,7 +23,7 @@ class PatientController extends Controller implements ApiInterface
         }
     }
 
-    public function edit(int $id): JsonResponse
+    public function edit(string $id): JsonResponse
     {
         try {
             $patient = new PatientEditResource(Patient::findOrFail($id));
