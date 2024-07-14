@@ -2,12 +2,17 @@
 
     @if ($model->status == 'PENDING')
         <div class="mx-1">
-            <form action="{{ route('application.approve', $model->id) }}" method="POST">
+            {{--<form action="{{ route('application.approve', $model->id) }}" method="POST">
                 @csrf @method('PUT')
                 <button type="submit" data-id="{{ $model->id }}" class="btn btn-sm btn-success rounded-3 print-window">
                     <i class="bi bi-printer"></i>
                 </button>
-            </form>
+            </form>--}}
+            <button type="button" data-id="{{ $model->id }}"
+                    class="btn btn-sm btn-success rounded-3 applicant-print"
+                    data-bs-toggle="modal" data-bs-target="#printApplicantModal">
+                <i class="bi bi-printer"></i>
+            </button>
         </div>
 
         @hasrole('admin')
@@ -49,7 +54,8 @@
         <div class="mx-1">
             <form action="{{ route('application.approve', $model->id) }}" method="POST">
                 @csrf @method('PUT')
-                <button type="submit" data-id="{{ $model->id }}" class="btn btn-sm btn-success rounded-3 print-window">
+                <button type="submit" data-id="{{ $model->id }}"
+                        class="btn btn-sm btn-success rounded-3 print-window">
                     <i class="bi bi-printer"></i>
                 </button>
             </form>

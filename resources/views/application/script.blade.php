@@ -160,27 +160,34 @@
 
         });
 
-        datatable.on('click', '.print-window', function (e) {
+        datatable.on('click', '.applicant-print', function () {
             loadingAlert.show();
-            e.preventDefault();
 
+            let url = "{{ route('api.application.printOnline', 'id') }}";
             let id = $(this).data('id');
-            let url = "{{ route('application.print', 'id') }}";
+
             url = url.replace('id', id);
 
-            Swal.fire({
-                title: "Cetak pengajuan!",
-                text: "Anda yakin ingin mencetak pengajuan SKBS?.",
-                icon: "warning",
-                showCancelButton: true,
-                cancelButtonColor: "#d33",
-                cancelButtonText: "Jangan dulu",
-                confirmButtonText: "Cetak",
-                reverseButtons: true,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(this).parent().submit();
-                    window.open(url, '_blank');
+            $('#printApplicantModal input').each(function () {
+                $(this).val('Sedang mengambil data..');
+            });
+
+            $.ajax({
+                url: url,
+                success: function (response) {
+                    loadingAlert.slideUp();
+
+                    /*printApplicantModalEveryInput.prop('disabled', false);
+                    $('#printApplicantModal #print-applicant-form').attr('action', formActionURL)*/
+
+                    $('#printApplicantModal #patient_name').val(response.data.patients.name);
+                    $('#printApplicantModal #purposes').val(response.data.purposes);
+                    $('#printApplicantModal #height_body').val(response.data.height_body);
+                    $('#printApplicantModal #mass_body').val(response.data.mass_body);
+                    $('#printApplicantModal #blod_type').val(response.data.blod_type);
+                    $('#printApplicantModal #blod_pressure').val(response.data.blod_pressure);
+                    $('#printApplicantModal #colesterol').val(response.data.colesterol);
+                    $('#printApplicantModal #blod_sugar').val(response.data.blod_sugar);
                 }
             });
         });

@@ -130,6 +130,8 @@
     @push('modal')
         @include('application.modal.create')
         @include('application.modal.edit')
+        @include('application.modal.print-first-packet')
+        @include('application.modal.print-offline')
     @endpush
 
     @push('js')
