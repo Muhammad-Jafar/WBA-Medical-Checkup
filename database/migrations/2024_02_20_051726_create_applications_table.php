@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('patient_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('doctor_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')
+                ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUlid('patient_id')->constrained('patients')
+                ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('doctor_id')->nullable()->constrained('doctors')
+                ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('checkuptype_id')->constrained('checkup_types')
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('purposes');
             $table->string('height_body', 20)->nullable();
             $table->string('mass_body', 20)->nullable();
