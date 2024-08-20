@@ -5,9 +5,11 @@ namespace App\Repositories;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\Patient;
+use Carbon\Carbon;
 use Google\Client;
 use Google_Service_Sheets as Sheets;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class GoogleSheetsRepository extends Controller
 {
@@ -24,7 +26,7 @@ class GoogleSheetsRepository extends Controller
         $this->range = 'A:O';
     }
 
-    public function setupClient()
+    private function setupClient()
     {
         $client = new Client();
         $client->setApplicationName("Google Sheets");
@@ -35,35 +37,57 @@ class GoogleSheetsRepository extends Controller
         return $client;
     }
 
-    public function read()
+    private function getSheet()
     {
         return $this->service->spreadsheets_values
             ->get($this->documentId, $this->range)
             ->getValues();
     }
 
-    public function isNikExist(string $nik)
+    /**
+     * Get date for given sheets data,
+     * with option either custom date or default (today)
+     *
+     * @param string|null $date
+     * @return array
+     * */
+    public function read(string $date = null): array
     {
-        $check = Patient::select('nik')->where('nik', $nik)->first();
-        return $check ? $check->nik : null;
+        $data = array_slice($this->getSheet(), 1);
+        $customDate = $date ? Carbon::parse($date) : Carbon::now();
+
+        return array_values(
+            array_filter($data, function ($item) use ($customDate) {
+                $timestamp = Carbon::createFromFormat('d/m/Y H:i:s', $item[0]);
+                return $timestamp->isSameDay($customDate);
+            })
+        );
     }
 
-    public function getNik()
+    /**
+     * Check if the application form is only exist once for same NIK in a day
+     *
+     * @param string $date
+     * @return string
+     * */
+    public function isApplicationExist(string $date): string
     {
-        $data = $this->read();
-        array_shift($data);
-
-        foreach ($data as $nik) {
-            $patient = Patient::select('nik')->where('nik', $nik[3])->first();
-            if ($patient) {
-                return $patient->nik;
-            }
-        }
-
-        return '';
+        return Application::select('patient_id')
+            ->where(
+                'requested_at',
+                Carbon::createFromFormat('d/m/Y H:i:s', $date)->format('Y-m-d')
+            )
+            ->first()
+            ->patient_id;
     }
 
-    public function getIndexCheckupType(string $checkupType): int
+    /**
+     * Get type of checkup
+     *
+     * @param string $checkupType
+     * @return int
+     * */
+    private function getCheckupType(string $checkupType): int
     {
         $trimmedString = '';
 
@@ -79,11 +103,33 @@ class GoogleSheetsRepository extends Controller
         };
     }
 
-    public function storePatient(array $sheet, string $id)
+    /**
+     * Get patient id by NIK
+     *
+     * @param string $id
+     * @return string
+     * */
+    private function getPatientId(string $id): string
     {
-        if (!$this->isNikExist($sheet[3])) {
+        return Patient::select('id')
+            ->where('nik', $id)
+            ->first();
+    }
+
+    /**
+     * Store pateint if isn't exists
+     * then return patientId
+     * @param array $sheet
+     * @return string
+     * */
+    public function getOrCreatePatient(array $sheet): string
+    {
+        $patientId = $this->getPatientId($sheet[3]);
+        $newPatientId = Str::ulid();
+
+        if (!$patientId) {
             Patient::create([
-                'id' => $id,
+                'id' => $newPatientId,
                 'name' => $sheet[2],
                 'nik' => $sheet[3],
                 'gender' => $sheet[4] ? 1 : 0,
@@ -94,16 +140,29 @@ class GoogleSheetsRepository extends Controller
                 'phone' => $sheet[9],
             ]);
         }
+
+        return $patientId ?: $newPatientId;
     }
 
-    public function createApplication(array $sheet, string $patientId, int $checkupTypeId)
+    /**
+     * Create patient application request
+     *
+     * @param string $patientId
+     * @param array $sheet
+     * @param int $checkupTypeId
+     * @return void
+     * */
+    public function createApplication(string $patientId, array $sheet, int $checkupTypeId)
     {
+        $checkypType = $this->getCheckupType($checkupTypeId);
+
         Application::create([
             'user_id' => Auth::user()->id,
             'patient_id' => $patientId,
-            'checkuptype_id' => $checkupTypeId,
+            'checkuptype_id' => $checkypType,
             'purposes' => $sheet[10],
-            'requested_at' => now(),
+            'requested_at' => Carbon::createFromFormat('d/m/Y H:i:s', $sheet[0])
+                ->format('Y-m-d H:i:s'),
             'height_body' => $sheet[11],
             'mass_body' => $sheet[12],
             'blod_type' => $sheet[13],
