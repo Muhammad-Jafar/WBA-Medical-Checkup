@@ -55,7 +55,8 @@
             let formActionURL = "{{ route('patient.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
-            let editPatientModalEveryInput = $('#editPatientModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+            let editPatientModalEveryInput = $('#editPatientModal :input')
+                .not('button[type=button], input[name=_token], input[name=_method]')
                 .each(function () {
                     $(this).not('select').val('Sedang mengambil data..');
                     $(this).prop('disabled', true);
@@ -65,10 +66,9 @@
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
-
                     editPatientModalEveryInput.prop('disabled', false);
-                    $('#editPatientModal #edit-patient-form').attr('action', formActionURL)
 
+                    $('#editPatientModal #edit-patient-form').attr('action', formActionURL)
                     $('#editPatientModal #nik').val(response.data.nik);
                     $('#editPatientModal #name').val(response.data.name);
                     $('#editPatientModal #gender').val(response.data.gender).select();

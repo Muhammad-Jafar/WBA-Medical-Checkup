@@ -29,7 +29,8 @@
             let formActionURL = "{{ route('user.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
-            let editAdminModalEveryInput = $('#editDoctorModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+            let editAdminModalEveryInput = $('#editDoctorModal :input')
+                .not('button[type=button], input[name=_token], input[name=_method]')
                 .each(function () {
                     $(this).not('select').val('Sedang mengambil data..');
                     $(this).prop('disabled', true);
@@ -39,11 +40,9 @@
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
-
                     editAdminModalEveryInput.prop('disabled', false);
 
                     $('#editAdminModal #edit-admin-form').attr('action', formActionURL)
-
                     $('#editAdminModal #name').val(response.data.name);
                     $('#editAdminModal #email').val(response.data.email);
                     $('#editAdminModal #position').val(response.data.position);

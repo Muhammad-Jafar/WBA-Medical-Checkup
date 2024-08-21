@@ -12,7 +12,6 @@
                 url: url,
                 success: function (res) {
                     $('#editDailyLimitModal #edit-applicant-daily-limit').attr('action', formActionURL)
-
                     $('#editDailyLimitModal #inputan').val(res.data.input);
                 }
             });
