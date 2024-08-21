@@ -45,10 +45,6 @@ class ApplicationEditResource extends JsonResource
                 'id' => $this->patients->id,
                 'name' => $this->patients->name
             ],
-            /*'doctors' => [
-                'id' => $this->doctors->id,
-                'name' => $this->doctors->name
-            ],*/
             'checkup_types' => [
                 'id' => $this->checkup_type->id,
                 'abbreviated_word' => $this->checkup_type->abbreviated_word

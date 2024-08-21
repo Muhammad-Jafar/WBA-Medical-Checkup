@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ApplicationPrintOnlineResource extends JsonResource
+class ApplicationPrintResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -50,8 +50,8 @@ class ApplicationPrintOnlineResource extends JsonResource
                 'name' => $this->doctors->name
             ],
             'checkup_types' => [
-                'id' => $this->checkup_types->id,
-                'abbreviated_word' => $this->checkup_types->abbreviated_word,
+                'id' => $this->checkup_type->id,
+                'abbreviated_word' => $this->checkup_type->abbreviated_word,
             ]
         ];
     }

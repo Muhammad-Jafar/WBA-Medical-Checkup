@@ -16,7 +16,7 @@
                     <h4>Daftar permintaan</h4>
 
                     <div class="btn-group dropdown me-1 mb-1">
-                        <button class="btn btn-light-primary" id="selected-filter"> <b>Tampilkan data</b></button>
+                        <button class="btn btn-light-primary" id="selected-filter"><b>Tampilkan data</b></button>
                         <button type="button" class="btn btn-light-primary dropdown-toggle me-1"
                                 data-bs-toggle="dropdown" aria-haspopup="true" data-reference="parent">
                             <span id="dropdownStatusText">Hari ini</span>
@@ -135,7 +135,7 @@
         @include('application.modal.online.print-second-packet')
         @include('application.modal.online.print-third-packet')
         @include('application.modal.online.print-four-packet')
-        @include('application.modal.offline.print-offline')
+        @include('application.modal.print')
     @endpush
 
     @push('js')

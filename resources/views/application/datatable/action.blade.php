@@ -8,40 +8,11 @@
                     <i class="bi bi-printer"></i>
                 </button>
             </form>--}}
-
-            @switch($model->checkuptype_id)
-                @case($model->checkuptype_id = 2)
-                    <button type="button" data-id="{{ $model->id }}"
-                            class="btn btn-sm btn-success rounded-3 applicant-print-second"
-                            data-bs-toggle="modal" data-bs-target="#printSecondApplicantModal">
-                        <i class="bi bi-printer"></i>
-                    </button>
-                    @break
-
-                @case($model->checkuptype_id = 3)
-                    <button type="button" data-id="{{ $model->id }}"
-                            class="btn btn-sm btn-success rounded-3 applicant-print-third"
-                            data-bs-toggle="modal" data-bs-target="#printThirdApplicantModal">
-                        <i class="bi bi-printer"></i>
-                    </button>
-                    @break
-
-                @case($model->checkuptype_id = 4)
-                    <button type="button" data-id="{{ $model->id }}"
-                            class="btn btn-sm btn-success rounded-3 applicant-print-four"
-                            data-bs-toggle="modal" data-bs-target="#printFourApplicantModal">
-                        <i class="bi bi-printer"></i>
-                    </button>
-                    @break
-
-                @default
-                    <button type="button" data-id="{{ $model->id }}"
-                            class="btn btn-sm btn-success rounded-3 applicant-print-first"
-                            data-bs-toggle="modal" data-bs-target="#printFirstApplicantModal">
-                        <i class="bi bi-printer"></i>
-                    </button>
-                    @break
-            @endswitch
+            <button type="button" data-id="{{ $model->id }}"
+                    class="btn btn-sm btn-success rounded-3 applicant-print"
+                    data-bs-toggle="modal" data-bs-target="#printApplicantModal">
+                <i class="bi bi-printer"></i>
+            </button>
         </div>
 
         @hasrole('admin')

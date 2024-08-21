@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiResponseResource;
 use App\Http\Resources\ApplicationEditResource;
-use App\Http\Resources\ApplicationPrintOnlineResource;
+use App\Http\Resources\ApplicationPrintResource;
 use App\Models\Application;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -19,7 +19,6 @@ class ApplicationController extends Controller
                 Application::with(
                     'users:id,name',
                     'patients:id,name',
-                    'doctors:id,name', // null
                     'checkup_type:id,abbreviated_word'
                 )->findOrFail($id)
             );
@@ -29,10 +28,10 @@ class ApplicationController extends Controller
         }
     }
 
-    public function printOnline(string $id): JsonResponse
+    public function print(string $id): JsonResponse
     {
         try {
-            $application = new ApplicationPrintOnlineResource(
+            $application = new ApplicationPrintResource(
                 Application::with(
                     'users:id,name',
                     'patients:id,name',
