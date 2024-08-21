@@ -68,17 +68,18 @@ class GoogleSheetsRepository extends Controller
      * Check if the application form is only exist once for same NIK in a day
      *
      * @param string $date
-     * @return string
+     * @return null|string
      * */
-    public function isApplicationExist(string $date): string
+    public function isApplicationExist(string $date): ?string
     {
-        return Application::select('patient_id')
+        $application = Application::select('patient_id')
             ->where(
                 'requested_at',
                 Carbon::createFromFormat('d/m/Y H:i:s', $date)->format('Y-m-d')
             )
-            ->first()
-            ->patient_id;
+            ->first();
+
+        return $application ? $application->patient_id : null;
     }
 
     /**
@@ -106,14 +107,16 @@ class GoogleSheetsRepository extends Controller
     /**
      * Get patient id by NIK
      *
-     * @param string $id
-     * @return string
+     * @param string $nik
+     * @return null|string
      * */
-    private function getPatientId(string $id): string
+    private function getOrNullPatientId(string $nik): ?string
     {
-        return Patient::select('id')
-            ->where('nik', $id)
+        $patient = Patient::select('id')
+            ->where('nik', $nik)
             ->first();
+
+        return $patient ? $patient->id : null;
     }
 
     /**
@@ -124,12 +127,10 @@ class GoogleSheetsRepository extends Controller
      * */
     public function getOrCreatePatient(array $sheet): string
     {
-        $patientId = $this->getPatientId($sheet[3]);
-        $newPatientId = Str::ulid();
+        $patientId = $this->getOrNullPatientId($sheet[3]);
 
         if (!$patientId) {
             Patient::create([
-                'id' => $newPatientId,
                 'name' => $sheet[2],
                 'nik' => $sheet[3],
                 'gender' => $sheet[4] ? 1 : 0,
@@ -141,7 +142,7 @@ class GoogleSheetsRepository extends Controller
             ]);
         }
 
-        return $patientId ?: $newPatientId;
+        return $patientId ?: Patient::latest('id')->first()->id;
     }
 
     /**
@@ -149,12 +150,12 @@ class GoogleSheetsRepository extends Controller
      *
      * @param string $patientId
      * @param array $sheet
-     * @param int $checkupTypeId
+     * @param string $checkuptypeId
      * @return void
      * */
-    public function createApplication(string $patientId, array $sheet, int $checkupTypeId)
+    public function createApplication(string $patientId, array $sheet, string $checkuptypeId)
     {
-        $checkypType = $this->getCheckupType($checkupTypeId);
+        $checkypType = $this->getCheckupType($checkuptypeId);
 
         Application::create([
             'user_id' => Auth::user()->id,

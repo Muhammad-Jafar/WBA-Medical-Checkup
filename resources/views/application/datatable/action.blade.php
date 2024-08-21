@@ -42,7 +42,6 @@
                     </button>
                     @break
             @endswitch
-
         </div>
 
         @hasrole('admin')

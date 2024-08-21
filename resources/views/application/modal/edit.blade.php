@@ -19,11 +19,9 @@
                                     <label class="col-form-label" for="patient">Nama pasien</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="form-control choices" name="patient_id" id="patient_id">
-                                        @foreach ($patients as $patient)
-                                            <option value="{{ $patient->id }}"> {{ $patient->name }} </option>
-                                        @endforeach
-                                    </select>
+                                    <input type="hidden" class="form-control" name="patient_id" id="patient_id">
+                                    <input type="text" class="form-control" name="patient_name" id="patient_name"
+                                           placeholder="Masukkan nama pasien" readonly>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +48,7 @@
                                     <label class="col-form-label" for="doctor">Dokter pemeriksa</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="form-select choices" name="doctor_id" id="doctor_id">
+                                    <select class="form-select" name="doctor_id" id="doctor_id">
                                         @foreach ($doctors as $doctor)
                                             <option value="{{ $doctor->id }}"> {{ $doctor->name }} </option>
                                         @endforeach
@@ -60,24 +58,24 @@
                         </div>
                     </div>
 
-                    {{--<div class="row">
+                    <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-group row align-item-center">
                                 <div class="col-lg-3 col-3">
-                                    <label class="col-form-label" for="doctor">Pemeriksaan</label>
+                                    <label class="col-form-label" for="checkuptype">Pemeriksaan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="form-select choices" name="check-type" id="check-type">
-                                        @foreach ($checkupType as $ct)
-                                            <option value="{{ $ct->id }}"> {{ $ct->name }} </option>
+                                    <select class="form-select" name="checkuptype_id" id="checkuptype_id">
+                                        @foreach ($checkupTypes as $ct)
+                                            <option value="{{ $ct->id }}"> {{ $ct->name }} - {{ $ct->description }} </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div>--}}
+                    </div>
 
-                    <div class="divider">
+                   {{-- <div class="divider">
                         <div class="divider-text">Pengukuran lainnya</div>
                     </div>
 
@@ -169,7 +167,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

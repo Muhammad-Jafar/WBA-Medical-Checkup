@@ -16,12 +16,14 @@ class ApplicationController extends Controller
     {
         try {
             $application = new ApplicationEditResource(
-                Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-                    ->findOrFail($id)
+                Application::with(
+                    'users:id,name',
+                    'patients:id,name',
+                    'doctors:id,name', // null
+                    'checkup_type:id,abbreviated_word'
+                )->findOrFail($id)
             );
-
             return ApiResponseResource::Success($application);
-
         } catch (Exception) {
             return ApiResponseResource::Error();
         }
@@ -32,9 +34,11 @@ class ApplicationController extends Controller
         try {
             $application = new ApplicationPrintOnlineResource(
                 Application::with(
-                    'users:id,name', 'patients:id,name', 'checkup_type:id,abbreviated_word'
-                )
-                    ->findOrFail($id)
+                    'users:id,name',
+                    'patients:id,name',
+                    'doctors:id,name',
+                    'checkup_type:id,abbreviated_word'
+                )->findOrFail($id)
             );
             return ApiResponseResource::Success($application);
         } catch (Exception) {

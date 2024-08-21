@@ -19,6 +19,7 @@ class ApplicationPrintOnlineResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'patient_id' => $this->patient_id,
+            'doctor_id' => $this->doctor_id,
             'checkuptype_id' => $this->checkuptype_id,
             'purposes' => $this->purposes,
             'height_body' => $this->height_body,
@@ -44,9 +45,13 @@ class ApplicationPrintOnlineResource extends JsonResource
                 'id' => $this->patients->id,
                 'name' => $this->patients->name
             ],
+            'doctors' => [
+                'id' => $this->doctors->id,
+                'name' => $this->doctors->name
+            ],
             'checkup_types' => [
-                'id' => $this->checkup_type->id,
-                'abbreviated_word' => $this->checkup_type->abbreviated_word,
+                'id' => $this->checkup_types->id,
+                'abbreviated_word' => $this->checkup_types->abbreviated_word,
             ]
         ];
     }

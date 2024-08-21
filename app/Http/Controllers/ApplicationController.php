@@ -30,17 +30,20 @@ class ApplicationController extends Controller
     public function index()
     {
         $application = Application::with(
-            'users:id,name', 'patients:id,name', 'doctors:id,name', 'checkup_type:id,abbreviated_word'
+            'users:id,name',
+            'patients:id,name',
+            'doctors:id,name',
+            'checkup_type:id,abbreviated_word'
         )
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'checkuptype_id', 'purposes', 'status')
             ->whereDate('created_at', now()->toDateString())
             ->latest()
             ->get();
 
-        $patient = Patient::select('id', 'nik', 'name')->get();
-        $doctor = Doctor::select('id', 'nip', 'name')->get();
+        $patient = Patient::select('id', 'nik', 'name')->orderBy('name')->get();
+        $doctor = Doctor::select('id', 'nip', 'name')->orderBy('name')->get();
         $applicationTrashedCount = Application::onlyTrashed()->count();
-        $checkupType = CheckupType::select('id', 'name', 'abbreviated_word')->get();
+        $checkupType = CheckupType::orderBy('name')->get();
 
         if (request()->ajax()) {
             return datatables()->of($application)
@@ -59,7 +62,7 @@ class ApplicationController extends Controller
             'patients' => $patient,
             'doctors' => $doctor,
             'applicationTrashedCount' => $applicationTrashedCount,
-            'checkupType' => $checkupType,
+            'checkupTypes' => $checkupType,
             'repo' => $this->applicationRepository->results(),
         ]);
     }
@@ -108,6 +111,7 @@ class ApplicationController extends Controller
             'user_id' => Auth::id(),
             'patient_id' => $request->patient_id,
             'doctor_id' => $request->doctor_id,
+            'checkuptype_id' => $request->checkuptype_id,
             'purposes' => $request->purposes,
             'requested_at' => now(),
             'height_body' => $request->height_body,

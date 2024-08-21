@@ -16,14 +16,14 @@ class SheetsController extends Controller
 
     public function sync()
     {
-        $data = $this->sheets->read();
+        $data = $this->sheets->read('2024-08-20');
 
         foreach ($data as $sheet) {
             $patientId = $this->sheets->getOrCreatePatient($sheet);
             $isApplicationExist = $this->sheets->isApplicationExist($sheet[0]);
 
             if ($patientId && !$isApplicationExist) {
-                $this->sheets->createApplication($patientId->id, $sheet, $sheet[14]);
+                $this->sheets->createApplication($patientId, $sheet, $sheet[14]);
             }
         }
 
