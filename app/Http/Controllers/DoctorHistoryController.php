@@ -8,7 +8,7 @@ use Illuminate\View\View;
 use App\Contracts\HistoryInterface;
 use Illuminate\Http\RedirectResponse;
 
-class DoctorHistoryController extends Controller implements HistoryInterface
+class DoctorHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.

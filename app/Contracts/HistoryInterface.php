@@ -12,6 +12,6 @@ use Illuminate\View\View;
 interface HistoryInterface
 {
     public function index(): View|JsonResponse;
-    public function restore(int $id): RedirectResponse;
-    public function destroy(int $id): RedirectResponse;
+    public function restore(string $id): RedirectResponse;
+    public function destroy(string $id): RedirectResponse;
 }

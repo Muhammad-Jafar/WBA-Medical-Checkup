@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 class DashboardChartController extends Controller
 {
     public function __construct(
-        private DashboardChartRepository $dashboardChartRepository,
+        private readonly DashboardChartRepository $dashboardChartRepository,
     )
     {
     }

@@ -25,7 +25,7 @@ class PatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nik' => ['required', 'min:16', 'max:16'],
+            'nik' => ['required', 'unique:patients,nik','min:16', 'max:16'],
             'name' => ['required', 'min:3', 'max:191'],
             'gender' => ['required'],
             'born_place' => ['required', 'min:3', 'max:191'],
@@ -47,6 +47,7 @@ class PatientRequest extends FormRequest
             'nik.required' => 'Kolom NIK wajib diisi!',
             'nik.min' => 'Kolom NIK harus :min karakter!',
             'nik.max' => 'Kolom NIK harus :max karakter!',
+            'nik.unique' => 'NIK tersebut sudah terdaftar!',
 
             'name.required' => 'Kolom nama lengkap wajib diisi!',
             'name.min' => 'Kolom nama lengkap minimal :min karakter!',
