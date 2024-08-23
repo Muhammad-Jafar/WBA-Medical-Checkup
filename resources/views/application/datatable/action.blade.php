@@ -2,17 +2,49 @@
 
     @if ($model->status == 'PENDING')
         <div class="mx-1">
+            @csrf @method('PUT')
             {{--<form action="{{ route('application.approve', $model->id) }}" method="POST">
                 @csrf @method('PUT')
                 <button type="submit" data-id="{{ $model->id }}" class="btn btn-sm btn-success rounded-3 print-window">
                     <i class="bi bi-printer"></i>
                 </button>
             </form>--}}
-            <button type="button" data-id="{{ $model->id }}"
-                    class="btn btn-sm btn-success rounded-3 applicant-print"
-                    data-bs-toggle="modal" data-bs-target="#printApplicantModal">
-                <i class="bi bi-printer"></i>
-            </button>
+
+            @switch($model->checkuptype_id)
+                @case($model->checkuptype_id == 2)
+                    <button type="button" data-id="{{ $model->id }}"
+                            class="btn btn-sm btn-success rounded-3 applicant-print-second"
+                            data-bs-toggle="modal" data-bs-target="#printSecondApplicantModal">
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    @break
+                @case($model->checkuptype_id == 3)
+                    <button type="button" data-id="{{ $model->id }}"
+                            class="btn btn-sm btn-success rounded-3 applicant-print-third"
+                            data-bs-toggle="modal" data-bs-target="#printThirdApplicantModal">
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    @break
+                @case($model->checkuptype_id == 4)
+                    <button type="button" data-id="{{ $model->id }}"
+                            class="btn btn-sm btn-success rounded-3 applicant-print-four"
+                            data-bs-toggle="modal" data-bs-target="#printFourApplicantModal">
+                        <i class="bi bi-printer"></i>
+                    </button>
+                    @break
+                @default
+
+                    <button type="button" data-id="{{ $model->id }}"
+                            class="btn btn-sm btn-success rounded-3 applicant-print-first"
+                            data-bs-toggle="modal" data-bs-target="#printFirstApplicantModal">
+                        <i class="bi bi-printer"></i>
+                    </button>
+            @endswitch
+            {{-- <button type="button" data-id="{{ $model->id }}"
+                     class="btn btn-sm btn-success rounded-3 applicant-print"
+                     data-bs-toggle="modal" data-bs-target="#printApplicantModal">
+                 <i class="bi bi-printer"></i>
+             </button>--}}
         </div>
 
         @hasrole('admin')

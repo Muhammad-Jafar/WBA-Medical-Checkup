@@ -25,41 +25,10 @@
                             <h6 class="dropdown-header">Berdasarkan:</h6>
                             <a class="dropdown-item active" id="today-tab">Hari ini</a>
                             <a class="dropdown-item" id="pending-tab">Status tertunda</a>
+                            <a class="dropdown-item" id="rejected-tab">Status tertolak</a>
                             <a class="dropdown-item" id="all-tab">Semua data</a>
                         </div>
                     </div>
-
-                    {{-- <ul class="nav nav-tabs" id="applicationTabs" role="tablist">
-                         <li class="nav-item" role="presentation">
-                             <a href="#today" class="nav-link active" id="today-tab" data-bs-toggle="tab" role="tab"
-                                aria-controls="today" aria-selected="true">
-                                 <h5> Hari ini</h5>
-                             </a>
-                         </li>
-                         <li class="nav-item" role="presentation">
-                             <a href="#pending" class="nav-link" id="pending-tab" data-bs-toggle="tab" role="tab"
-                                aria-controls="pending" aria-selected="false" tabindex="-1">
-                                 <h5>Tertunda</h5>
-                             </a>
-                         </li>
-                         <li class="nav-item" role="presentation">
-                             <a href="#all" class="nav-link" id="all-tab" data-bs-toggle="tab" role="tab"
-                                aria-controls="all" aria-selected="false" tabindex="-1">
-                                 <h5>Semua</h5>
-                             </a>
-                         </li>
-                     </ul>
-                     <div class="tab-content" id="myTabContent">
-                         <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today">
-                             <h4 class="mt-4 my-2">Permintaan hari ini</h4>
-                         </div>
-                         <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending">
-                             <h4 class="mt-4 my-2">Permintaan tertunda</h4>
-                         </div>
-                         <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all">
-                             <h4 class="mt-4 my-2">Semua permintaan</h4>
-                         </div>
-                     </div>--}}
 
                 </div>
                 <div class="col-6 col-lg-6">
@@ -131,11 +100,10 @@
     @push('modal')
         @include('application.modal.create')
         @include('application.modal.edit')
-        @include('application.modal.online.print-first-packet')
-        @include('application.modal.online.print-second-packet')
-        @include('application.modal.online.print-third-packet')
-        @include('application.modal.online.print-four-packet')
-        @include('application.modal.print')
+        @include('application.modal.print-first-packet')
+        @include('application.modal.print-second-packet')
+        @include('application.modal.print-third-packet')
+        @include('application.modal.print-four-packet')
     @endpush
 
     @push('js')

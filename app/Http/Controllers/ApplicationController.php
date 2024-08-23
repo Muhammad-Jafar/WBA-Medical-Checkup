@@ -29,12 +29,13 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $application = Application::with(
-            'users:id,name',
-            'patients:id,name',
-            'doctors:id,name',
-            'checkup_type:id,abbreviated_word'
-        )
+        $application = Application
+            ::with(
+                'users:id,name',
+                'patients:id,name',
+                'doctors:id,name',
+                'checkup_type:id,abbreviated_word'
+            )
             ->select('id', 'user_id', 'patient_id', 'doctor_id', 'checkuptype_id', 'purposes', 'status')
             ->whereDate('created_at', now()->toDateString())
             ->latest()
@@ -69,8 +70,14 @@ class ApplicationController extends Controller
 
     public function tab($tab): JsonResponse
     {
-        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-            ->select('id', 'user_id', 'patient_id', 'checkuptype_id', 'purposes', 'status')
+        $application = Application
+            ::with(
+                'users:id,name',
+                'patients:id,name',
+                'doctors:id,name',
+                'checkup_type:id,abbreviated_word'
+            )
+            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'checkuptype_id', 'purposes', 'status')
             ->latest();
 
         if ($tab == 'today') {
@@ -79,6 +86,8 @@ class ApplicationController extends Controller
                 ->get();
         } elseif ($tab === 'pending') {
             $application->where('status', 'pending')->get();
+        } elseif ($tab === 'rejected') {
+            $application->where('status', 'rejected')->get();
         } else {
             $application->get();
         }
