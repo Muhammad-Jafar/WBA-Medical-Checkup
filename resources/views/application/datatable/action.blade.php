@@ -33,7 +33,6 @@
                     </button>
                     @break
                 @default
-
                     <button type="button" data-id="{{ $model->id }}"
                             class="btn btn-sm btn-success rounded-3 applicant-print-first"
                             data-bs-toggle="modal" data-bs-target="#printFirstApplicantModal">

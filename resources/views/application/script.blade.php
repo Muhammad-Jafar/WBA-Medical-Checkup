@@ -174,7 +174,7 @@
             e.preventDefault();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.application.print', 'id') }}";
+            let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
 
             let formActionUrl = "{{ route('application.print', 'id') }}";
@@ -193,9 +193,7 @@
                     $('#printFirstApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
                     $('#printFirstApplicantModal #purposes').val(response.data.purposes);
                     $('#printFirstApplicantModal #first-print-applicant-form')
-                        .attr('action', formActionUrl, function () {
-                            window.open(url, '_blank');
-                        })
+                        .attr('action', formActionUrl)
 
                     /*.submit(() => {
                         Swal.fire({
@@ -218,19 +216,22 @@
             });
         });
 
-        datatable.on('click', '.applicant-print-second', function () {
+        datatable.on('click', '.applicant-print-second', function (e) {
             loadingAlert.show();
+            e.preventDefault();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.application.print', 'id') }}";
+            let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
+
+            let formActionUrl = "{{ route('application.print', 'id') }}";
+            formActionUrl = formActionUrl.replace('id', id);
 
             $.ajax({
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
 
-                    /*$('#printApplicantModal #second-print-applicant-form').attr('action', formActionURL)*/
                     $('#printSecondApplicantModal #patient_id').val(response.data.patient_id);
                     $('#printSecondApplicantModal #patient_name').val(response.data.patients.name);
                     $('#printSecondApplicantModal #doctor_id').val(response.data.doctor_id);
@@ -240,23 +241,28 @@
                     $('#printSecondApplicantModal #purposes').val(response.data.purposes);
                     $('#printSecondApplicantModal #height_body').val(response.data.height_body);
                     $('#printSecondApplicantModal #mass_body').val(response.data.mass_body);
+                    $('#printSecondApplicantModal #second-print-applicant-form')
+                        .attr('action', formActionUrl);
                 }
             });
         });
 
-        datatable.on('click', '.applicant-print-third', function () {
+        datatable.on('click', '.applicant-print-third', function (e) {
             loadingAlert.show();
+            e.preventDefault();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.application.print', 'id') }}";
+            let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
+
+            let formActionUrl = "{{ route('application.print', 'id') }}";
+            formActionUrl = formActionUrl.replace('id', id);
 
             $.ajax({
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
 
-                    /*$('#printApplicantModal #print-applicant-form').attr('action', formActionURL)*/
                     $('#printThirdApplicantModal #patient_id').val(response.data.patient_id);
                     $('#printThirdApplicantModal #patient_name').val(response.data.patients.name);
                     $('#printThirdApplicantModal #doctor_id').val(response.data.doctor_id);
@@ -269,23 +275,28 @@
                     $('#printThirdApplicantModal #blod_pressure').val(response.data.blod_pressure);
                     $('#printThirdApplicantModal #blod_sugar').val(response.data.blod_sugar);
                     $('#printThirdApplicantModal #colesterol').val(response.data.colesterol);
+                    $('#printThirdApplicantModal #third-print-applicant-form')
+                        .attr('action', formActionUrl);
                 }
             });
         });
 
-        datatable.on('click', '.applicant-print-four', function () {
+        datatable.on('click', '.applicant-print-four', function (e) {
             loadingAlert.show();
+            e.preventDefault();
 
             let id = $(this).data('id');
-            let url = "{{ route('api.application.print', 'id') }}";
+            let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
+
+            let formActionUrl = "{{ route('application.print', 'id') }}";
+            formActionUrl = formActionUrl.replace('id', id);
 
             $.ajax({
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
 
-                    /*$('#printApplicantModal #print-applicant-form').attr('action', formActionURL)*/
                     $('#printFourApplicantModal #patient_id').val(response.data.patient_id);
                     $('#printFourApplicantModal #patient_name').val(response.data.patients.name);
                     $('#printFourApplicantModal #doctor_id').val(response.data.doctor_id);
@@ -299,6 +310,8 @@
                     $('#printFourApplicantModal #thc').val(response.data.thc);
                     $('#printFourApplicantModal #cocain').val(response.data.cocain);
                     $('#printFourApplicantModal #opiate').val(response.data.opiate);
+                    $('#printFourApplicantModal #four-print-applicant-form')
+                        .attr('action', formActionUrl)
                 }
             });
         });

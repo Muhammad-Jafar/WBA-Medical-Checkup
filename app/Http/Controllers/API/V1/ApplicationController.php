@@ -28,7 +28,7 @@ class ApplicationController extends Controller
         }
     }
 
-    public function print(string $id): JsonResponse
+    public function generate(string $id): JsonResponse
     {
         try {
             $application = new ApplicationPrintResource(

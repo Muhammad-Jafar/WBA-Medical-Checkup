@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Print\ApplicationController;
+use Illuminate\Support\Facades\Route;
 
-Route::put('application/print/{id}', [ApplicationController::class, 'generate'])
+Route::put('application/print/{id}', [ApplicationController::class, 'print'])
     ->name('application.print');
-
-/*Route::get('application/print/{id}', [ApplicationController::class, 'generate'])
-    ->name('application.print');*/

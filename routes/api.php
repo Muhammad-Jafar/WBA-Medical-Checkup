@@ -27,8 +27,8 @@ Route::name('api.')->prefix('v1')->group(function () {
         Route::get('application/{id}/edit', [ApplicationController::class, 'edit'])
             ->name('application.edit');
 
-        Route::get('application/{id}/print', [ApplicationController::class, 'print'])
-            ->name('application.print');
+        Route::get('application/{id}/generate', [ApplicationController::class, 'generate'])
+            ->name('application.generate');
 
         Route::get('patient/{id}', [PatientController::class, 'show'])
             ->name('patient.show');

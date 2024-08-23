@@ -11,7 +11,7 @@
             <div class="modal-body">
                 @include('utilities.loading-alert')
 
-                <form action="#" method="POST" id="print-applicant-form">
+                <form action="#" method="POST" id="third-print-applicant-form">
                     @csrf @method('PUT')
                     <div class="row">
                         <div class="col-md-12 mb-3">
