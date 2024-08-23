@@ -59,16 +59,6 @@
                             {data: 'action', name: 'action'},
                         ]
                     });
-                },
-                error: function () {
-                    $('#datatable-wrap').css('display', 'none');
-
-                    Toastify({
-                        text: "Kesalahan internal!",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#f3616d",
-                    }).showToast()
                 }
             });
 
@@ -104,16 +94,41 @@
                             {data: 'action', name: 'action'},
                         ]
                     });
-                },
-                error: function () {
-                    $('#datatable-wrap').css('display', 'none');
+                }
+            });
+
+        });
+
+        $('#rejected-tab').click(function () {
+            dropdownStatusText.textContent = 'Status tertolak';
+
+            $.ajax({
+                url: "{{ route('application.tab', 'rejected') }}",
+                data: {tab: "pending"},
+                success: function (data) {
+                    $('#datatable-wrap').removeAttr('style');
 
                     Toastify({
-                        text: "Kesalahan internal!",
+                        text: "Berhasil mengambil data",
                         duration: 3000,
                         close: true,
-                        backgroundColor: "#f3616d",
-                    }).showToast()
+                        backgroundColor: "#4fbe87",
+                    }).showToast();
+
+                    $('#datatable').DataTable({
+                        data: data.data,
+                        destroy: true,
+                        columns: [
+                            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                            {data: 'patient', name: 'patients.name'},
+                            {data: 'purposes', name: 'purposes'},
+                            {data: 'checkup_type', name: 'checkup_type.abbreviated_word'},
+                            {data: 'doctor', name: 'doctors.name'},
+                            {data: 'admin', name: 'users.name'},
+                            {data: 'status', name: 'status'},
+                            {data: 'action', name: 'action'},
+                        ]
+                    });
                 }
             });
 
@@ -149,72 +164,141 @@
                             {data: 'action', name: 'action'},
                         ]
                     });
-                },
-                error: function () {
-                    $('#datatable-wrap').css('display', 'none');
-
-                    Toastify({
-                        text: "Kesalahan internal!",
-                        duration: 3000,
-                        close: true,
-                        backgroundColor: "#f3616d",
-                    }).showToast()
                 }
             });
 
         });
 
-        datatable.on('click', '.applicant-print', function () {
+        datatable.on('click', '.applicant-print-first', function (e) {
+            loadingAlert.show();
+            e.preventDefault();
+
+            let id = $(this).data('id');
+            let url = "{{ route('api.application.print', 'id') }}";
+            url = url.replace('id', id);
+
+            let formActionUrl = "{{ route('application.print', 'id') }}";
+            formActionUrl = formActionUrl.replace('id', id);
+
+            $.ajax({
+                url: url,
+                success: function (response) {
+                    loadingAlert.slideUp();
+
+                    $('#printFirstApplicantModal #patient_id').val(response.data.patient_id);
+                    $('#printFirstApplicantModal #patient_name').val(response.data.patients.name);
+                    $('#printFirstApplicantModal #doctor_id').val(response.data.doctor_id);
+                    $('#printFirstApplicantModal #doctor_name').val(response.data.doctors.name);
+                    $('#printFirstApplicantModal #checkuptype_id').val(response.data.checkuptype_id);
+                    $('#printFirstApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
+                    $('#printFirstApplicantModal #purposes').val(response.data.purposes);
+                    $('#printFirstApplicantModal #first-print-applicant-form')
+                        .attr('action', formActionUrl, function () {
+                            window.open(url, '_blank');
+                        })
+
+                    /*.submit(() => {
+                        Swal.fire({
+                            title: "Cetak pengajuan!",
+                            text: "Anda yakin ingin mencetak pengajuan SKBS?.",
+                            icon: "warning",
+                            showCancelButton: true,
+                            cancelButtonColor: "#d33",
+                            cancelButtonText: "Jangan dulu",
+                            confirmButtonText: "Cetak",
+                            reverseButtons: true,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $('#printFirstApplicantModal #first-print-applicant-form').submit();
+                                window.open(url, '_blank');
+                            }
+                        });
+                    })*/
+                }
+            });
+        });
+
+        datatable.on('click', '.applicant-print-second', function () {
             loadingAlert.show();
 
             let id = $(this).data('id');
             let url = "{{ route('api.application.print', 'id') }}";
             url = url.replace('id', id);
 
-            let printApplicantModalEveryInput = $('#printApplicantModal :input')
-                .not('button[type=button], input[name=_token], input[name=_method]')
-                .each(function () {
-                    $(this).not('select').val('Sedang mengambil data..');
-                    $(this).prop('disabled', true);
-                });
+            $.ajax({
+                url: url,
+                success: function (response) {
+                    loadingAlert.slideUp();
+
+                    /*$('#printApplicantModal #second-print-applicant-form').attr('action', formActionURL)*/
+                    $('#printSecondApplicantModal #patient_id').val(response.data.patient_id);
+                    $('#printSecondApplicantModal #patient_name').val(response.data.patients.name);
+                    $('#printSecondApplicantModal #doctor_id').val(response.data.doctor_id);
+                    $('#printSecondApplicantModal #doctor_name').val(response.data.doctors.name);
+                    $('#printSecondApplicantModal #checkuptype_id').val(response.data.checkuptype_id);
+                    $('#printSecondApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
+                    $('#printSecondApplicantModal #purposes').val(response.data.purposes);
+                    $('#printSecondApplicantModal #height_body').val(response.data.height_body);
+                    $('#printSecondApplicantModal #mass_body').val(response.data.mass_body);
+                }
+            });
+        });
+
+        datatable.on('click', '.applicant-print-third', function () {
+            loadingAlert.show();
+
+            let id = $(this).data('id');
+            let url = "{{ route('api.application.print', 'id') }}";
+            url = url.replace('id', id);
 
             $.ajax({
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
-                    printApplicantModalEveryInput.prop('disabled', false);
-                    const checkupType = response.data.checkuptype_id;
-                    const packetVisibility = [
-                        [false, false, false], // checkupType 1
-                        [true, false, false],  // checkupType 2
-                        [true, true, false],   // checkupType 3
-                        [false, false, true]    // checkupType 4
-                    ];
-
-                    $('#printApplicantModal #paket-2, #printApplicantModal #paket-3, #printApplicantModal #paket-4')
-                        .each(function (index, element) {
-                            $(element).toggle(packetVisibility[checkupType - 1][index]);
-                        });
 
                     /*$('#printApplicantModal #print-applicant-form').attr('action', formActionURL)*/
-                    $('#printApplicantModal #patient_id').val(response.data.patient_id);
-                    $('#printApplicantModal #patient_name').val(response.data.patients.name);
-                    $('#printApplicantModal #doctor_id').val(response.data.doctor_id);
-                    $('#printApplicantModal #doctor_name').val(response.data.doctors.name);
-                    $('#printApplicantModal #checkuptype_id').val(response.data.checkuptype_id);
-                    $('#printApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
-                    $('#printApplicantModal #purposes').val(response.data.purposes);
-                    $('#printApplicantModal #height_body').val(response.data.height_body);
-                    $('#printApplicantModal #mass_body').val(response.data.mass_body);
-                    $('#printApplicantModal #blod_pressure').val(response.data.blod_pressure);
-                    $('#printApplicantModal #blod_sugar').val(response.data.blod_sugar);
-                    $('#printApplicantModal #colesterol').val(response.data.colesterol);
-                    $('#printApplicantModal #amphe').val(response.data.amphe);
-                    $('#printApplicantModal #metham').val(response.data.metham);
-                    $('#printApplicantModal #benzo').val(response.data.benzo);
-                    $('#printApplicantModal #thc').val(response.data.thc);
-                    $('#printApplicantModal #cocain').val(response.data.cocain);
-                    $('#printApplicantModal #opiate').val(response.data.opiate);
+                    $('#printThirdApplicantModal #patient_id').val(response.data.patient_id);
+                    $('#printThirdApplicantModal #patient_name').val(response.data.patients.name);
+                    $('#printThirdApplicantModal #doctor_id').val(response.data.doctor_id);
+                    $('#printThirdApplicantModal #doctor_name').val(response.data.doctors.name);
+                    $('#printThirdApplicantModal #checkuptype_id').val(response.data.checkuptype_id);
+                    $('#printThirdApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
+                    $('#printThirdApplicantModal #purposes').val(response.data.purposes);
+                    $('#printThirdApplicantModal #height_body').val(response.data.height_body);
+                    $('#printThirdApplicantModal #mass_body').val(response.data.mass_body);
+                    $('#printThirdApplicantModal #blod_pressure').val(response.data.blod_pressure);
+                    $('#printThirdApplicantModal #blod_sugar').val(response.data.blod_sugar);
+                    $('#printThirdApplicantModal #colesterol').val(response.data.colesterol);
+                }
+            });
+        });
+
+        datatable.on('click', '.applicant-print-four', function () {
+            loadingAlert.show();
+
+            let id = $(this).data('id');
+            let url = "{{ route('api.application.print', 'id') }}";
+            url = url.replace('id', id);
+
+            $.ajax({
+                url: url,
+                success: function (response) {
+                    loadingAlert.slideUp();
+
+                    /*$('#printApplicantModal #print-applicant-form').attr('action', formActionURL)*/
+                    $('#printFourApplicantModal #patient_id').val(response.data.patient_id);
+                    $('#printFourApplicantModal #patient_name').val(response.data.patients.name);
+                    $('#printFourApplicantModal #doctor_id').val(response.data.doctor_id);
+                    $('#printFourApplicantModal #doctor_name').val(response.data.doctors.name);
+                    $('#printFourApplicantModal #checkuptype_id').val(response.data.checkuptype_id);
+                    $('#printFourApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
+                    $('#printFourApplicantModal #purposes').val(response.data.purposes);
+                    $('#printFourApplicantModal #amphe').val(response.data.amphe);
+                    $('#printFourApplicantModal #metham').val(response.data.metham);
+                    $('#printFourApplicantModal #benzo').val(response.data.benzo);
+                    $('#printFourApplicantModal #thc').val(response.data.thc);
+                    $('#printFourApplicantModal #cocain').val(response.data.cocain);
+                    $('#printFourApplicantModal #opiate').val(response.data.opiate);
                 }
             });
         });
@@ -242,7 +326,7 @@
                     loadingAlert.slideUp();
                     editApplicantModalEveryInput.prop('disabled', false);
 
-                    $('#editApplicantModal #edit-applicant-form').attr('action', formActionURL)
+                    $('#editApplicantModal #edit-applicant-form').attr('action', formActionURL);
                     $('#editApplicantModal #patient_id').val(response.data.patient_id);
                     $('#editApplicantModal #patient_name').val(response.data.patients.name);
                     $('#editApplicantModal #doctor_id').val(response.data.doctor_id).select();

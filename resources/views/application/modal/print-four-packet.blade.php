@@ -17,23 +17,12 @@
                         <div class="col-md-12 mb-3">
                             <div class="form-group row align-item-center">
                                 <div class="col-lg-3 col-3">
-                                    <label for="patient_name" class="form-label">Nama pasien</label>
+                                    <label for="patient" class="form-label">Nama pasien</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="text" class="form-control" id="patient_name" disabled>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <div class="form-group row align-item-center">
-                                <div class="col-lg-3 col-3">
-                                    <label class="col-form-label" for="doctor">Jenis Pemeriksaan</label>
-                                </div>
-                                <div class="col-lg-9 col-9">
-                                    <input type="text" class="form-control" name="Paket 1" disabled>
+                                    <input type="hidden" class="form-control" name="patient_id" id="patient_id">
+                                    <input type="text" class="form-control" name="patient_name" id="patient_name"
+                                           readonly>
                                 </div>
                             </div>
                         </div>
@@ -46,16 +35,9 @@
                                     <label class="col-form-label" for="purposes">Keperluan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-									<textarea class="form-control @error('purposes') is-invalid @enderror"
-                                              name="purposes" id="purposes"
-                                              rows="2" placeholder="Untuk keperluan apa?"
-                                              style="resize: none;">{{ old('purposes') }}</textarea>
-
-                                    @error('purposes')
-                                    <div class="d-block invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+										<textarea rows="2" type="text" class="form-control" name="purposes"
+                                                  id="purposes" style="resize: none;" readonly>
+                                        </textarea>
                                 </div>
                             </div>
                         </div>
@@ -68,25 +50,26 @@
                                     <label class="col-form-label" for="doctor">Dokter pemeriksa</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="form-select choices" name="doctor_id" id="doctor_id">
-                                        @foreach ($doctors as $doctor)
-                                            <option
-                                                value="{{ $doctor->id }}" {{ collect(old('doctor_id'))->contains($doctor->id) ? 'selected' : '' }}>
-                                                {{ $doctor->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('doctor_id')
-                                    <div class="d-block invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+                                    <input type="hidden" id="doctor_id">
+                                    <input class="form-control" id="doctor_name" readonly>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group row align-item-center">
+                                <div class="col-lg-3 col-3">
+                                    <label class="col-form-label" for="checkuptype">Jenis Pemeriksaan</label>
+                                </div>
+                                <div class="col-lg-9 col-9">
+                                    <input type="hidden" id="checkuptype_id">
+                                    <input class="form-control" id="checkuptype_name" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="divider">
                         <div class="divider-text"><b>Pemeriksaan Paket 4</b></div>
@@ -190,7 +173,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan & Ajukan</button>
+                        <button type="submit" class="btn btn-success"> <i class="bi bi-printer"></i> Cetak</button>
                     </div>
                 </form>
 
