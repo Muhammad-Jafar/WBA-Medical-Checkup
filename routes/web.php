@@ -51,7 +51,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::controller(ApplicationController::class)->prefix('/application')
         ->name('application.')->group(function () {
-            Route::view('/self-request', 'application.self-assign.public-form')->name('self-request');
             Route::get('/{tab}', 'tab')->name('tab');
             Route::put('/cancel/{id}', 'cancel')->name('cancel');
             Route::put('/undo/{id}', 'undo')->name('undo');

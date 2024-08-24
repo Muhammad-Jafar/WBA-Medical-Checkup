@@ -48,6 +48,10 @@
                                 Lihat semua permintaan
                             </a>--}}
 
+                            <a href="{{ route('sheet') }}" class="btn btn-outline-success rounded-3">
+                                <i class="bi bi-arrow-repeat"></i>
+                                Sinkronkan
+                            </a>
 
                             @if ($repo['checkLimitApplicant'])
                                 <button type="button" class="btn btn-primary rounded-3 warning-limit"

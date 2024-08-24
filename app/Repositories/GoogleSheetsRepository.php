@@ -67,12 +67,14 @@ class GoogleSheetsRepository extends Controller
     /**
      * Check if the application form is only exist once for same NIK in a day
      *
+     * @param string $patientId
      * @param string $date
      * @return null|string
      * */
-    public function isApplicationExist(string $date): ?string
+    public function isApplicationExist(string $patientId, string $date): ?string
     {
         $application = Application::select('patient_id')
+            ->where('patient_id', $patientId)
             ->where(
                 'requested_at',
                 Carbon::createFromFormat('d/m/Y H:i:s', $date)->format('Y-m-d')

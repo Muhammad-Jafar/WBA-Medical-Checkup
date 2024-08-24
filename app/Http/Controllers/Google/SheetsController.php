@@ -16,17 +16,18 @@ class SheetsController extends Controller
 
     public function sync()
     {
-        $data = $this->sheets->read('2024-08-20');
+        $data = $this->sheets->read();
 
         foreach ($data as $sheet) {
             $patientId = $this->sheets->getOrCreatePatient($sheet);
-            $isApplicationExist = $this->sheets->isApplicationExist($sheet[0]);
+            $isApplicationExist = $this->sheets->isApplicationExist($patientId, $sheet[0]);
 
             if ($patientId && !$isApplicationExist) {
                 $this->sheets->createApplication($patientId, $sheet, $sheet[14]);
             }
         }
 
-        return response()->json('Success to store data');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil disinkron!');
     }
 }
