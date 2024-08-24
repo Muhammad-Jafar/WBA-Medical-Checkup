@@ -40,7 +40,7 @@
         <x-maz-sidebar-item name="Jenis Pemeriksaan"
                             :link="route('checkup-type.index')"
                             route="checkup-type.index"
-                            icon="">
+                            icon="bi bi-file-earmark-medical-fill">
         </x-maz-sidebar-item>
         <x-maz-sidebar-item name="Administrator"
                             :link="route('user.index')"

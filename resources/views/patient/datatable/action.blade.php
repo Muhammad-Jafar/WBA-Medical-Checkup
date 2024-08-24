@@ -5,9 +5,12 @@
                 data-bs-toggle="modal" data-bs-target="#showPatientModal">
             <i class="bi bi-eye"></i>
         </button>
+    </div>
+
+    <div class="mx-1">
         <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success rounded-3 patient-edit"
                 data-bs-toggle="modal" data-bs-target="#editPatientModal">
-            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil"></i>
         </button>
     </div>
 

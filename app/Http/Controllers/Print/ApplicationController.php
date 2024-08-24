@@ -17,14 +17,7 @@ class ApplicationController extends Controller
             'checkup_type:id,abbreviated_word'
         )->findOrFail($id);
 
-        $documentType = match ($applicant->checkup_type->id) {
-            2 => 'application.printing.doc-paket-2',
-            3 => 'application.printing.doc-paket-3',
-            4 => 'application.printing.doc-paket-4',
-            default => 'application.printing.doc-paket-1',
-        };
-
-        return PDF::loadView($documentType, compact('applicant'))
+        return PDF::loadView('application.printing.print', compact('applicant'))
             ->stream();
     }
 }

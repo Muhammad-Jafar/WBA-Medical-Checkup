@@ -4,7 +4,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title">Cetak permintaan SKBS daring - Paket 3</h5>
+                <h5 class="modal-title">Permintaan SKBS - Paket 3</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -50,7 +50,7 @@
                                     <label class="col-form-label" for="doctor">Dokter pemeriksa</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="hidden" id="doctor_id">
+                                    <input type="hidden" class="form-control" name="doctor_id" id="doctor_id">
                                     <input class="form-control" id="doctor_name" readonly>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                     <label class="col-form-label" for="checkuptype">Jenis Pemeriksaan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="hidden" id="checkuptype_id">
+                                    <input type="hidden" class="form-control" name="checkuptype_id" id="checkuptype_id">
                                     <input class="form-control" id="checkuptype_name" readonly>
                                 </div>
                             </div>
@@ -80,9 +80,8 @@
                             <label class="col-form-label" for="height_body">Tinggi Badan</label>
                             <div class="input-group">
                                 <input class="form-control @error('height_body') is-invalid @enderror"
-                                       name="height_body"
-                                       value="{{ old('height_body') }}" placeholder="Tinggi badan pasien" type="text"
-                                       aria-describedby="basic-addon2">
+                                       name="height_body" id="height_body" value="{{ old('height_body') }}"
+                                       placeholder="Tinggi badan pasien" type="text" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="basic-addon2">cm</span>
 
                                 @error('height_body')
@@ -95,9 +94,9 @@
                         <div class="col-md-6 mb-3">
                             <label class="col-form-label" for="mass_body">Berat Badan</label>
                             <div class="input-group">
-                                <input class="form-control @error('mass_body') is-invalid @enderror" name="mass_body"
-                                       value="{{ old('mass_body') }}" placeholder="Berat badan pasien" type="text"
-                                       aria-describedby="basic-addon2">
+                                <input class="form-control @error('mass_body') is-invalid @enderror"
+                                       name="mass_body" id="mass_body" value="{{ old('mass_body') }}"
+                                       placeholder="Berat badan pasien" type="text" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="basic-addon2">Kg</span>
 
                                 @error('mass_body')
@@ -118,8 +117,9 @@
                             <label class="col-form-label" for="blod_pressure">Tekanan darah</label>
                             <div class="input-group">
                                 <input class="form-control @error('blod_pressure') is-invalid @enderror"
-                                       type="text" name="blod_pressure" value="{{ old('blod_pressure') }}"
-                                       placeholder="tekanan darah pasien" aria-describedby="basic-addon2">
+                                       type="text" name="blod_pressure" id="blod_pressure"
+                                       value="{{ old('blod_pressure') }}" placeholder="tekanan darah pasien"
+                                       aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="basic-addon2">MmHg</span>
 
                                 @error('blod_pressure')
@@ -133,9 +133,9 @@
                         <div class="col-md-6 mb-3">
                             <label class="col-form-label" for="colesterol">Kolesterol</label>
                             <div class="input-group">
-                                <input class="form-control @error('colesterol') is-invalid @enderror" name="colesterol"
-                                       value="{{ old('colesterol') }}" placeholder="kolesterol pasien" type="text"
-                                       aria-describedby="basic-addon2">
+                                <input class="form-control @error('colesterol') is-invalid @enderror"
+                                       name="colesterol" id="colesterol" value="{{ old('colesterol') }}"
+                                       placeholder="kolesterol pasien" type="text" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="basic-addon2">mg/dL</span>
 
                                 @error('colesterol')
@@ -151,9 +151,9 @@
                         <div class="col-md-6 mb-3">
                             <label class="col-form-label" for="blod_sugar">Gula darah</label>
                             <div class="input-group">
-                                <input class="form-control @error('blod_sugar') is-invalid @enderror" name="blod_sugar"
-                                       value="{{ old('blod_sugar') }}" placeholder="gula darah pasien" type="text"
-                                       aria-describedby="basic-addon2">
+                                <input class="form-control @error('blod_sugar') is-invalid @enderror"
+                                       name="blod_sugar" id="blod_sugar" value="{{ old('blod_sugar') }}"
+                                       placeholder="gula darah pasien" type="text" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="basic-addon2">mg/dL</span>
 
                                 @error('blod_sugar')
@@ -167,7 +167,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-success"> <i class="bi bi-printer"></i> Cetak</button>
+                        <button type="submit" class="btn btn-primary">Perbarui</button>
                     </div>
                 </form>
 

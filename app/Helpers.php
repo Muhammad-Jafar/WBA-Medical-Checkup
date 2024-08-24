@@ -1,7 +1,5 @@
 <?php
 
-use Carbon\Carbon;
-
 if (!function_exists('toInt')) {
     /**
      * From string to int
@@ -28,12 +26,29 @@ if (!function_exists('indonesianCurrency')) {
     }
 }
 
+if (!function_exists('getDayname')) {
+    /**
+     * Get name of the given date
+     *
+     * @param null|string $date
+     * @returns string
+     * */
+    function getDayname(string $date = null): string
+    {
+        if ($date == null) {
+            $date = date('Y-m-d');
+        }
+
+        return date('l', strtotime($date));
+    }
+}
+
 if (!function_exists('monthToBulan')) {
     /**
      * Convert the month to a string with indonesian format.
      *
      * @param $input
-     * @return string | null
+     * @return string
      */
     function monthToBulan($input): string
     {
@@ -61,7 +76,7 @@ if (!function_exists('monthToFullBulan')) {
      * Convert the month to a string with indonesian format.
      *
      * @param $input
-     * @return string | null
+     * @return string
      */
     function monthToFullBulan($input): string
     {
@@ -98,7 +113,7 @@ if (!function_exists('monthToBulanRomawi')) {
      * Convert the month to a string with indonesian format.
      *
      * @param $input
-     * @return string | null
+     * @return string
      */
     function monthToBulanRomawi($input): string
     {

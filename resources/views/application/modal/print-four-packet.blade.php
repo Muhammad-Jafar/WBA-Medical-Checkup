@@ -4,7 +4,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title">Cetak permintaan SKBS daring - Paket 4</h5>
+                <h5 class="modal-title">Permintaan SKBS - Paket 4</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -50,7 +50,7 @@
                                     <label class="col-form-label" for="doctor">Dokter pemeriksa</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="hidden" id="doctor_id">
+                                    <input type="hidden" class="form-control" name="doctor_id" id="doctor_id">
                                     <input class="form-control" id="doctor_name" readonly>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                     <label class="col-form-label" for="checkuptype">Jenis Pemeriksaan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="hidden" id="checkuptype_id">
+                                    <input type="hidden" class="form-control" name="checkuptype_id" id="checkuptype_id">
                                     <input class="form-control" id="checkuptype_name" readonly>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                             <label class="col-form-label" for="amphetamine">Amphetamine</label>
                             <div class="input-group">
                                 <input class="form-control @error('amphetamine') is-invalid @enderror"
-                                       type="text" name="amphetamine" value="{{ old('height_body') }}"
+                                       type="text" name="amphe" id="amphe" value="{{ old('height_body') }}"
                                        placeholder="Amphetamine" aria-describedby="basic-addon2">
 
                                 @error('amphetamine')
@@ -96,7 +96,7 @@
                             </label>
                             <div class="input-group">
                                 <input class="form-control @error('methamphetamine') is-invalid @enderror"
-                                       name="methamphetamine" value="{{ old('methamphetamine') }}"
+                                       name="metham" id="metham" value="{{ old('methamphetamine') }}"
                                        placeholder="Methamphetamine" type="text" aria-describedby="basic-addon2">
 
                                 @error('methamphetamine')
@@ -113,7 +113,7 @@
                             <label class="col-form-label" for="benzodiazepine">Benzodiazepine</label>
                             <div class="input-group">
                                 <input class="form-control @error('benzodiazepine') is-invalid @enderror"
-                                       name="benzodiazepine" value="{{ old('benzodiazepine') }}"
+                                       name="benzo" id="benzo" value="{{ old('benzodiazepine') }}"
                                        placeholder="Benzodiazepine" type="text" aria-describedby="basic-addon2">
 
                                 @error('benzodiazepine')
@@ -126,9 +126,9 @@
                         <div class="col-md-6 mb-3">
                             <label class="col-form-label" for="thc">Tetrahidrokannabinol (THC)</label>
                             <div class="input-group">
-                                <input class="form-control @error('thc') is-invalid @enderror" name="thc"
-                                       value="{{ old('thc') }}" placeholder="THC" type="text"
-                                       aria-describedby="basic-addon2">
+                                <input class="form-control @error('thc') is-invalid @enderror"
+                                       name="thc" id="thc" value="{{ old('thc') }}"
+                                       placeholder="THC" type="text" aria-describedby="basic-addon2">
                                 <span class="input-group-text" id="basic-addon2">(Includes Ecstasy)</span>
 
                                 @error('thc')
@@ -145,7 +145,7 @@
                             <label class="col-form-label" for="cocain">Cocain</label>
                             <div class="input-group">
                                 <input class="form-control @error('cocain') is-invalid @enderror"
-                                       name="cocain" value="{{ old('cocain') }}" placeholder="Cocain"
+                                       name="cocain" id="cocain" value="{{ old('cocain') }}" placeholder="Cocain"
                                        type="text" aria-describedby="basic-addon2">
 
                                 @error('cocain')
@@ -158,9 +158,9 @@
                         <div class="col-md-6 mb-3">
                             <label class="col-form-label" for="opiate">Opiate</label>
                             <div class="input-group">
-                                <input class="form-control @error('opiate') is-invalid @enderror" name="opiate"
-                                       value="{{ old('opiate') }}" placeholder="Opiate" type="text"
-                                       aria-describedby="basic-addon2">
+                                <input class="form-control @error('opiate') is-invalid @enderror"
+                                       name="opiate" id="opiate" value="{{ old('opiate') }}"
+                                       placeholder="Opiate" type="text" aria-describedby="basic-addon2">
 
                                 @error('opiate')
                                 <div class="d-block invalid-feedback">
@@ -173,7 +173,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-success"> <i class="bi bi-printer"></i> Cetak</button>
+                        <button type="submit" class="btn btn-primary">Perbarui</button>
                     </div>
                 </form>
 

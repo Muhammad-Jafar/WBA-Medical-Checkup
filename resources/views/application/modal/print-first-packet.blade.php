@@ -4,7 +4,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title">Cetak permintaan SKBS - {{ "ddd" }}</h5>
+                <h5 class="modal-title">Permintaan SKBS - Paket 1</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -50,8 +50,8 @@
                                     <label class="col-form-label" for="doctor">Dokter pemeriksa</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="hidden" id="doctor_id">
-                                    <input class="form-control" id="doctor_name" readonly>
+                                    <input type="hidden" class="form-control" name="doctor_id" id="doctor_id">
+                                    <input class="form-control" name="doctor_name" id="doctor_name" readonly>
                                 </div>
                             </div>
                         </div>
@@ -64,8 +64,8 @@
                                     <label class="col-form-label" for="checkuptype">Jenis Pemeriksaan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <input type="hidden" id="checkuptype_id">
-                                    <input class="form-control" id="checkuptype_name" readonly>
+                                    <input type="hidden" class="form-control" name="checkuptype_id" id="checkuptype_id">
+                                    <input class="form-control" name="checkuptype_name" id="checkuptype_name" readonly>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,6 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-success"> <i class="bi bi-printer"></i> Cetak</button>
                     </div>
                 </form>
 

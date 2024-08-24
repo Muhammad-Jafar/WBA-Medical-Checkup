@@ -177,9 +177,6 @@
             let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionUrl = "{{ route('application.print', 'id') }}";
-            formActionUrl = formActionUrl.replace('id', id);
-
             $.ajax({
                 url: url,
                 success: function (response) {
@@ -192,26 +189,6 @@
                     $('#printFirstApplicantModal #checkuptype_id').val(response.data.checkuptype_id);
                     $('#printFirstApplicantModal #checkuptype_name').val(response.data.checkup_types.abbreviated_word);
                     $('#printFirstApplicantModal #purposes').val(response.data.purposes);
-                    $('#printFirstApplicantModal #first-print-applicant-form')
-                        .attr('action', formActionUrl)
-
-                    /*.submit(() => {
-                        Swal.fire({
-                            title: "Cetak pengajuan!",
-                            text: "Anda yakin ingin mencetak pengajuan SKBS?.",
-                            icon: "warning",
-                            showCancelButton: true,
-                            cancelButtonColor: "#d33",
-                            cancelButtonText: "Jangan dulu",
-                            confirmButtonText: "Cetak",
-                            reverseButtons: true,
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $('#printFirstApplicantModal #first-print-applicant-form').submit();
-                                window.open(url, '_blank');
-                            }
-                        });
-                    })*/
                 }
             });
         });
@@ -224,7 +201,7 @@
             let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionUrl = "{{ route('application.print', 'id') }}";
+            let formActionUrl = "{{ route('application.update', 'id') }}";
             formActionUrl = formActionUrl.replace('id', id);
 
             $.ajax({
@@ -241,8 +218,7 @@
                     $('#printSecondApplicantModal #purposes').val(response.data.purposes);
                     $('#printSecondApplicantModal #height_body').val(response.data.height_body);
                     $('#printSecondApplicantModal #mass_body').val(response.data.mass_body);
-                    $('#printSecondApplicantModal #second-print-applicant-form')
-                        .attr('action', formActionUrl);
+                    $('#printSecondApplicantModal #second-print-applicant-form').attr('action', formActionUrl);
                 }
             });
         });
@@ -255,7 +231,7 @@
             let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionUrl = "{{ route('application.print', 'id') }}";
+            let formActionUrl = "{{ route('application.update', 'id') }}";
             formActionUrl = formActionUrl.replace('id', id);
 
             $.ajax({
@@ -275,8 +251,7 @@
                     $('#printThirdApplicantModal #blod_pressure').val(response.data.blod_pressure);
                     $('#printThirdApplicantModal #blod_sugar').val(response.data.blod_sugar);
                     $('#printThirdApplicantModal #colesterol').val(response.data.colesterol);
-                    $('#printThirdApplicantModal #third-print-applicant-form')
-                        .attr('action', formActionUrl);
+                    $('#printThirdApplicantModal #third-print-applicant-form').attr('action', formActionUrl);
                 }
             });
         });
@@ -289,7 +264,7 @@
             let url = "{{ route('api.application.generate', 'id') }}";
             url = url.replace('id', id);
 
-            let formActionUrl = "{{ route('application.print', 'id') }}";
+            let formActionUrl = "{{ route('application.update', 'id') }}";
             formActionUrl = formActionUrl.replace('id', id);
 
             $.ajax({
@@ -310,8 +285,32 @@
                     $('#printFourApplicantModal #thc').val(response.data.thc);
                     $('#printFourApplicantModal #cocain').val(response.data.cocain);
                     $('#printFourApplicantModal #opiate').val(response.data.opiate);
-                    $('#printFourApplicantModal #four-print-applicant-form')
-                        .attr('action', formActionUrl)
+                    $('#printFourApplicantModal #four-print-applicant-form').attr('action', formActionUrl);
+                }
+            });
+        });
+
+        datatable.on('click', '.applicant-print', function (e) {
+            loadingAlert.show();
+            e.preventDefault();
+
+            let id = $(this).data('id');
+            let url = "{{ route('application.print', 'id') }}";
+            url = url.replace('id', id);
+
+            Swal.fire({
+                title: "Cetak pengajuan!",
+                text: "Anda yakin ingin mencetak pengajuan SKBS?",
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Jangan dulu",
+                confirmButtonText: "Cetak",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent().submit();
+                    window.open(url, '_blank');
                 }
             });
         });
