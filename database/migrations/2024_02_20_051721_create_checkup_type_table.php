@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('checkup_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('abbreviated_word');
-            $table->string('description');
+            $table->string('name', 25);
+            $table->string('abbreviated_word', 10);
+            $table->string('description', 100);
             $table->timestamps();
         });
     }

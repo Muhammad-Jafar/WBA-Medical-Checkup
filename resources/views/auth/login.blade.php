@@ -2,9 +2,7 @@
 
     <div id="auth-left">
         <div class="auth-logo">
-            <a href="index.html">
-                <img src="{{ asset('/images/logo/logo.png') }}" alt="Logo">
-            </a>
+            <img src="{{ asset('/images/logo/logo.png') }}" alt="Logo">
         </div>
         <h4 class="auth-title">Medical Checkup</h4>
         <div class="auth-subtitle mb-5">
@@ -26,17 +24,24 @@
 
         <form action="{{ route('login') }}" method="POST">
             @csrf
+
+            @error('email')
+            <div class="alert alert-danger alert-dismissible fade show text-sm" role="alert">
+                <strong>Gagal!</strong> {{ $message }}.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @enderror
+
             <div class="form-group position-relative has-icon-left mb-4">
-                <input class="form-control form-control-xl" type="email" name="email" placeholder="Email"
-                       value="user@gmail.com">
+                <input class="form-control form-control-xl" type="email" name="email"
+                       placeholder="Email" id="email" value="user@gmail.com">
                 <div class="form-control-icon">
                     <i class="bi bi-person"></i>
                 </div>
             </div>
             <div class="form-group position-relative has-icon-left mb-4">
                 <input class="form-control form-control-xl" type="password" name="password"
-                       placeholder="Password"
-                       value="sandi">
+                       placeholder="Password" id="password" value="sandi">
                 <div class="form-control-icon">
                     <i class="bi bi-shield-lock"></i>
                 </div>
@@ -57,5 +62,29 @@
             @endif
         </div> --}}
     </div>
+
+    @push('js')
+        <script>
+            $(function () {
+                $('form').submit(function () {
+                    let URL = "{{ route('api.login') }}";
+                    let email = $('#email').val();
+                    let password = $('#password').val();
+
+                    $.ajax({
+                        url: URL,
+                        type: 'post',
+                        data: {
+                            'email': email,
+                            'password': password
+                        },
+                        success: function (res) {
+                            localStorage.setItem('token', res.token);
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 
 </x-guest-layout>

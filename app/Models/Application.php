@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Application extends Model
 {
-    use HasFactory, SoftDeletes, HasUuids;
+    use HasFactory,
+        SoftDeletes,
+        HasUlids;
 
     /**
      * The attributes that should be protected.
@@ -21,6 +23,7 @@ class Application extends Model
         'user_id',
         'patient_id',
         'doctor_id',
+        'checkuptype_id',
         'purposes',
         'height_body',
         'mass_body',
@@ -28,6 +31,12 @@ class Application extends Model
         'blod_pressure',
         'colesterol',
         'blod_sugar',
+        'amphe',
+        'metham',
+        'benzo',
+        'thc',
+        'cocain',
+        'opiate',
         'requested_at',
         'status',
         'approved_at',
@@ -62,6 +71,16 @@ class Application extends Model
     public function doctors(): BelongsTo
     {
         return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
+
+    /**
+     * Get checkup_type class relationship
+     *
+     * @return BelongsTo
+     */
+    public function checkup_type(): BelongsTo
+    {
+        return $this->belongsTo(CheckupType::class, 'checkuptype_id');
     }
 
     /**

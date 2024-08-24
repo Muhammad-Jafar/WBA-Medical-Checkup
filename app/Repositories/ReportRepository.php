@@ -8,7 +8,7 @@ use App\Models\Application;
 
 class ReportRepository extends Controller implements ReportInterface
 {
-    public function __construct(private Application $model)
+    public function __construct(private readonly Application $model)
     {
     }
 
@@ -17,7 +17,7 @@ class ReportRepository extends Controller implements ReportInterface
      *
      * @param string $start tanggal awal.
      * @param string $end tanggal akhir.
-     * @param string|null $status status pasien (PENDING, APPROVED, REJECTED) OR ALL for no status matter
+     * @param string $status status pasien (PENDING, APPROVED, REJECTED) OR ALL for no status matter
      * @return array
      */
     public function filterByDateRangeWithStatus(string $start, string $end, string $status): array

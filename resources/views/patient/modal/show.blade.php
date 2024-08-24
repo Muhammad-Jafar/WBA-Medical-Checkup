@@ -55,6 +55,13 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="phone" class="form-label">Kontak</label>
+                        <input type="text" class="form-control" id="phone" disabled>
+                    </div>
+                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>

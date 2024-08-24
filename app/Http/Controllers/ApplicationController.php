@@ -15,7 +15,7 @@ use Illuminate\View\View;
 
 class ApplicationController extends Controller
 {
-    private $applicationRepository;
+    private ApplicationRepository $applicationRepository;
 
     public function __construct(ApplicationRepository $applicationRepository)
     {
@@ -29,23 +29,29 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
-            ->latest()
+        $application = Application
+            ::with(
+                'users:id,name',
+                'patients:id,name',
+                'doctors:id,name',
+                'checkup_type:id,abbreviated_word'
+            )
+            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'checkuptype_id', 'purposes', 'status')
             ->whereDate('created_at', now()->toDateString())
-            ->where('status', 'PENDING')
+            ->latest()
             ->get();
 
-        $patient = Patient::select('id', 'nik', 'name')->get();
-        $doctor = Doctor::select('id', 'nip', 'name')->get();
+        $patient = Patient::select('id', 'nik', 'name')->orderBy('name')->get();
+        $doctor = Doctor::select('id', 'nip', 'name')->orderBy('name')->get();
         $applicationTrashedCount = Application::onlyTrashed()->count();
-        $checkupType = CheckupType::select('id', 'name', 'abbreviated_word')->get();
+        $checkupType = CheckupType::orderBy('name')->get();
 
         if (request()->ajax()) {
             return datatables()->of($application)
                 ->addIndexColumn()
                 ->addColumn('patient', fn($model) => $model->patients->name)
-                ->addColumn('doctor', fn($model) => $model->doctors->name)
+                ->addColumn('checkup_type', fn($model) => $model->checkup_type->abbreviated_word)
+                ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : '-')
                 ->addColumn('admin', fn($model) => $model->users->name)
                 ->addColumn('status', 'application.datatable.status')
                 ->addColumn('action', 'application.datatable.action')
@@ -57,23 +63,31 @@ class ApplicationController extends Controller
             'patients' => $patient,
             'doctors' => $doctor,
             'applicationTrashedCount' => $applicationTrashedCount,
-            'checkupType' => $checkupType,
+            'checkupTypes' => $checkupType,
             'repo' => $this->applicationRepository->results(),
         ]);
     }
 
     public function tab($tab): JsonResponse
     {
-        $application = Application::with('users:id,name', 'patients:id,name', 'doctors:id,name')
-            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'purposes', 'status')
+        $application = Application
+            ::with(
+                'users:id,name',
+                'patients:id,name',
+                'doctors:id,name',
+                'checkup_type:id,abbreviated_word'
+            )
+            ->select('id', 'user_id', 'patient_id', 'doctor_id', 'checkuptype_id', 'purposes', 'status')
             ->latest();
 
         if ($tab == 'today') {
             $application->whereDate('created_at', now()->toDateString())
-                ->where('status', 'PENDING')
+                ->orderBy('status', 'ASC')
                 ->get();
         } elseif ($tab === 'pending') {
             $application->where('status', 'pending')->get();
+        } elseif ($tab === 'rejected') {
+            $application->where('status', 'rejected')->get();
         } else {
             $application->get();
         }
@@ -82,7 +96,8 @@ class ApplicationController extends Controller
             return datatables()->of($application)
                 ->addIndexColumn()
                 ->addColumn('patient', fn($model) => $model->patients->name)
-                ->addColumn('doctor', fn($model) => $model->doctors->name)
+                ->addColumn('checkup_type', fn($model) => $model->checkup_type->abbreviated_word)
+                ->addColumn('doctor', fn($model) => $model->doctors ? $model->doctors->name : '-')
                 ->addColumn('admin', fn($model) => $model->users->name)
                 ->addColumn('status', 'application.datatable.status')
                 ->addColumn('action', 'application.datatable.action')
@@ -105,6 +120,7 @@ class ApplicationController extends Controller
             'user_id' => Auth::id(),
             'patient_id' => $request->patient_id,
             'doctor_id' => $request->doctor_id,
+            'checkuptype_id' => $request->checkuptype_id,
             'purposes' => $request->purposes,
             'requested_at' => now(),
             'height_body' => $request->height_body,
@@ -115,7 +131,8 @@ class ApplicationController extends Controller
             'blod_sugar' => $request->blod_sugar
         ]);
 
-        return redirect()->route('application.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -128,7 +145,8 @@ class ApplicationController extends Controller
     public function update(ApplicationRequest $request, Application $application): RedirectResponse
     {
         $application->update($request->validated());
-        return redirect()->route('application.index')->with('success', 'Data berhasil diubah!');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -140,7 +158,8 @@ class ApplicationController extends Controller
     public function destroy(Application $application): RedirectResponse
     {
         $application->delete();
-        return redirect()->route('application.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('application.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 
     /**
@@ -156,7 +175,8 @@ class ApplicationController extends Controller
                 'status' => 'REJECTED',
                 'rejected_at' => now(),
             ]);
-        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Permintaan berhasil dibatalkan!');
     }
 
     /**
@@ -170,10 +190,10 @@ class ApplicationController extends Controller
         Application::findOrFail($id)
             ->update([
                 'status' => 'PENDING',
-                'rejected_at' => now(),
-                'approved_at' => null
+                'rejected_at' => null
             ]);
-        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Permintaan berhasil dikembalikan!');
     }
 
     /**
@@ -187,9 +207,19 @@ class ApplicationController extends Controller
         Application::findOrFail($id)
             ->update([
                 'status' => 'APPROVED',
-                'approved_at' => now(),
-                'rejected_at' => null
+                'approved_at' => now()
             ]);
-        return redirect()->route('application.index')->with('success', 'Permintaan berhasil dibatalkan!');
+        return redirect()->route('application.index')
+            ->with('success', 'Permintaan berhasil disetujui dan dicetak!');
+    }
+
+    /**
+     * Store self application request
+     *
+     * @return view
+     * */
+    public function selfRequest(): View
+    {
+        return view('application.modal.public-form');
     }
 }

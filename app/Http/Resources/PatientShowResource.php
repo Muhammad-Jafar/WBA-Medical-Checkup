@@ -13,7 +13,7 @@ class PatientShowResource extends JsonResource
      * @param Request $request
      * @return array
      */
-    public function toArray($request): array
+    public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
@@ -21,9 +21,10 @@ class PatientShowResource extends JsonResource
             'name' => $this->name,
             'gender' => $this->getGenderName(),
             'born_place' => $this->born_place,
-            'born_date' => $this->born_date,
+            'born_date' => monthToFullBulan($this->born_date),
             'address' => $this->address,
             'occupation' => $this->occupation,
+            'phone' => $this->phone,
         ];
     }
 }

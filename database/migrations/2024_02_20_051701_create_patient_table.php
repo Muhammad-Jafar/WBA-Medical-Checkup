@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id();
+            $table->ulid('id')->primary();
             $table->string('nik')->unique();
             $table->string('name');
             $table->tinyInteger('gender');
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('born_date');
             $table->text('address');
             $table->string('occupation');
+            $table->string('phone');
             $table->timestamps();
         });
     }

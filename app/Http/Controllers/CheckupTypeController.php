@@ -46,7 +46,8 @@ class CheckupTypeController extends Controller
     public function store(CheckupTypeRequest $request): RedirectResponse
     {
         CheckupType::create($request->validated());
-        return redirect()->route('checkup-type.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('checkup-type.index')
+            ->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -59,7 +60,8 @@ class CheckupTypeController extends Controller
     public function update(CheckupTypeRequest $request, CheckupType $checkupType): RedirectResponse
     {
         $checkupType->update($request->validated());
-        return redirect()->route('checkup-type.index')->with('success', 'Data berhasil diubah!');
+        return redirect()->route('checkup-type.index')
+            ->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -71,6 +73,7 @@ class CheckupTypeController extends Controller
     public function destroy(CheckupType $checkupType): RedirectResponse
     {
         $checkupType->delete();
-        return redirect()->route('checkup-type.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('checkup-type.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

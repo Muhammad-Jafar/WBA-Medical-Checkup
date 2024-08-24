@@ -17,9 +17,7 @@ class PatientHistoryController extends Controller implements HistoryInterface
      */
     public function index(): View|JsonResponse
     {
-        $patients = Patient::select(
-            'id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation'
-        )
+        $patients = Patient::select('id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation')
             ->orderBy('name')
             ->onlyTrashed()
             ->get();
@@ -39,24 +37,26 @@ class PatientHistoryController extends Controller implements HistoryInterface
     /**
      * Restore the specified resource from storage.
      *
-     * @param int $id
+     * @param string $id
      * @return RedirectResponse
      */
-    public function restore(int $id): RedirectResponse
+    public function restore(string $id): RedirectResponse
     {
         Patient::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('patient.index.history')->with('success', 'Data berhasil dikembalikan!');
+        return redirect()->route('patient.index.history')
+            ->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param string $id
      * @return RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         Patient::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('patient.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('patient.index.history')
+            ->with('success', 'Data berhasil dihapus permanen!');
     }
 }

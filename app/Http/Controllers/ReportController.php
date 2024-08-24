@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class ReportController extends Controller
 {
-    public function __construct(private ReportRepository $reportRepository)
+    public function __construct(private readonly ReportRepository $reportRepository)
     {
     }
 
@@ -33,8 +33,6 @@ class ReportController extends Controller
             $filteredResult = $this->reportRepository->filterByDateRangeWithStatus($startDate, $endDate, $status);
         }
 
-        return view('reports.index', [
-            'reports' => $filteredResult,
-        ]);
+        return view('reports.index', ['reports' => $filteredResult]);
     }
 }

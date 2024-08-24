@@ -2,7 +2,7 @@
     <div class="mx-1">
         <button type="button" data-id="{{ $model->id }}" class="btn btn-sm btn-success rounded-3 doctor-edit"
                 data-bs-toggle="modal" data-bs-target="#editDoctorModal">
-            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil"></i>
         </button>
     </div>
 

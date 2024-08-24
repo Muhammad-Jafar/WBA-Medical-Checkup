@@ -44,7 +44,8 @@ class PatientController extends Controller
     public function store(PatientRequest $request): RedirectResponse
     {
         Patient::create($request->validated());
-        return redirect()->route('patient.index')->with('success', 'Data berhasil ditambahkan!');
+        return redirect()->route('patient.index')
+            ->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -57,7 +58,8 @@ class PatientController extends Controller
     public function update(PatientRequest $request, Patient $patient): RedirectResponse
     {
         $patient->update($request->validated());
-        return redirect()->route('patient.index')->with('success', 'Data berhasil diubah!');
+        return redirect()->route('patient.index')
+            ->with('success', 'Data berhasil diubah!');
     }
 
     /**
@@ -69,6 +71,7 @@ class PatientController extends Controller
     public function destroy(Patient $patient): RedirectResponse
     {
         $patient->delete();
-        return redirect()->route('patient.index')->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('patient.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

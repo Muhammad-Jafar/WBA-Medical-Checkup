@@ -20,7 +20,7 @@ class TrackUserLogin
      * @param object $event
      * @return void
      */
-    public function handle($event)
+    public function handle(object $event)
     {
         $event->user->update(['last_login' => now()]);
     }

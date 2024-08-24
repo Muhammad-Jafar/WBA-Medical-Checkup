@@ -6,10 +6,10 @@ return [
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
-         * Eloquent model should be used to retrieve your permissions. Of course, it
-         * is often just the "Permission" model but you may use whatever you like.
+         * Eloquent modal should be used to retrieve your permissions. Of course, it
+         * is often just the "Permission" modal but you may use whatever you like.
          *
-         * The model you want to use as a Permission model needs to implement the
+         * The modal you want to use as a Permission modal needs to implement the
          * `Spatie\Permission\Contracts\Permission` contract.
          */
 
@@ -17,10 +17,10 @@ return [
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
-         * Eloquent model should be used to retrieve your roles. Of course, it
-         * is often just the "Role" model but you may use whatever you like.
+         * Eloquent modal should be used to retrieve your roles. Of course, it
+         * is often just the "Role" modal but you may use whatever you like.
          *
-         * The model you want to use as a Role model needs to implement the
+         * The modal you want to use as a Role modal needs to implement the
          * `Spatie\Permission\Contracts\Role` contract.
          */
 
@@ -79,7 +79,7 @@ return [
         'permission_pivot_key' => null, //default 'permission_id',
 
         /*
-         * Change this if you want to name the related model primary key other than
+         * Change this if you want to name the related modal primary key other than
          * `model_id`.
          *
          * For example, this would be nice if your primary keys are all UUIDs. In
@@ -89,7 +89,7 @@ return [
         'model_morph_key' => 'model_id',
 
         /*
-         * Change this if you want to use the teams feature and your related model's
+         * Change this if you want to use the teams feature and your related modal's
          * foreign key is other than `team_id`.
          */
 

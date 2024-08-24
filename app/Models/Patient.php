@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,7 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Patient extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory,
+        SoftDeletes,
+        HasUlids;
 
     /**
      * The attributes that should be protected.
@@ -23,7 +26,8 @@ class Patient extends Model
         'born_place',
         'born_date',
         'address',
-        'occupation'
+        'occupation',
+        'phone'
     ];
 
     /**

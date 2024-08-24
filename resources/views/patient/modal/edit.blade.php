@@ -66,6 +66,14 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="phone" class="form-label">Kontak</label>
+                            <input type="text" class="form-control" name="phone" id="phone"
+                                   placeholder="Kontak">
+                        </div>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-success">Simpan</button>

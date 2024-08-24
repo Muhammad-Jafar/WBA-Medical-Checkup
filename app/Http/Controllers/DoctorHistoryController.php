@@ -8,7 +8,7 @@ use Illuminate\View\View;
 use App\Contracts\HistoryInterface;
 use Illuminate\Http\RedirectResponse;
 
-class DoctorHistoryController extends Controller implements HistoryInterface
+class DoctorHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,7 +43,8 @@ class DoctorHistoryController extends Controller implements HistoryInterface
     public function restore(int $id): RedirectResponse
     {
         Doctor::onlyTrashed()->findOrFail($id)->restore();
-        return redirect()->route('doctor.index.history')->with('success', 'Data berhasil dikembalikan!');
+        return redirect()->route('doctor.index.history')
+            ->with('success', 'Data berhasil dikembalikan!');
     }
 
     /**
@@ -55,7 +56,8 @@ class DoctorHistoryController extends Controller implements HistoryInterface
     public function destroy(int $id): RedirectResponse
     {
         Doctor::onlyTrashed()->findOrFail($id)->forceDelete();
-        return redirect()->route('doctor.index.history')->with('success', 'Data berhasil dihapus permanen!');
+        return redirect()->route('doctor.index.history')
+            ->with('success', 'Data berhasil dihapus permanen!');
     }
 
 }

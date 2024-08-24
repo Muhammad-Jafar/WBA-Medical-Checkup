@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Google\SheetsController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -18,7 +19,13 @@ use App\Http\Controllers\PreferenceController;
 
 require __DIR__ . '/auth.php';
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+Route::redirect('/', 'login');
+
+/*Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {*/
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('/sheet', [SheetsController::class, 'sync'])->name('sheet');
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
@@ -30,8 +37,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->except('create', 'show', 'edit');
     Route::resource('user', AdministratorController::class)
         ->except('create', 'show', 'edit');
-    /*Route::resource('checkup-type', CheckupTypeController::class)
-        ->except('create', 'show', 'edit');*/
+    Route::resource('checkup-type', CheckupTypeController::class)
+        ->except('create', 'show', 'edit');
 
     Route::get('/report', ReportController::class)->name('report');
 
@@ -71,12 +78,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::delete('{id}', 'destroy')->name('destroy.history');
         });
 
-    /*Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')
+    Route::controller(CheckTypeHistoryController::class)->prefix('/checkup-type/history')
         ->name('checkup-type.')->group(function () {
             Route::get('', 'index')->name('index.history');
             Route::post('{id}', 'restore')->name('restore.history');
             Route::delete('{id}', 'destroy')->name('destroy.history');
-        });*/
+        });
 
     Route::controller(PreferenceController::class)->prefix('/preference')
         ->name('preference.')->group(function () {

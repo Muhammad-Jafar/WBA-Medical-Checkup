@@ -61,21 +61,24 @@
             </div>
         </div>
         <div class="col-6 col-lg-3 col-md-6">
-            <div class="card card-stat">
-                <div class="card-body px-3 py-4-5">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="stats-icon green">
-                                <i class="iconly-boldWork"></i>
+            <a href="#">
+                <div class="card card-stat" data-bs-toggle="modal" data-bs-target="#seeAll">
+                    <div class="card-body px-3 py-4-5">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="stats-icon green">
+                                    <i class="iconly-boldWork"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h6 class="text-muted font-semibold">Total SKBS</h6>
-                            <h5 class="font-extrabold mb-0"> {{ $totalApplicantCount }} </h5>
+                            <div class="col-md-8">
+                                <h6 class="text-muted font-semibold">Hari ini</h6>
+                                <h5 class="font-extrabold mb-0"> {{ $totalApplicantCount }} </h5>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
     </div>

@@ -1,5 +1,5 @@
 <div class="modal fade" id="createApplicantModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -18,11 +18,11 @@
                                 </div>
                                 <div class="col-lg-9 col-9">
                                     <select class="form-select choices" data-type="select-one" role="combobox"
-                                            name="patient_id"
-                                            id="patient_id">
+                                            name="patient_id" id="patient_id">
                                         @foreach ($patients as $patient)
                                             <option
-                                                value="{{ $patient->id }}" {{ old('patient_id')==="$patient->id" ? 'selected' : '' }}>
+                                                value="{{ $patient->id }}"
+                                                {{ old('patient_id') === "$patient->id" ? 'selected' : '' }}>
                                                 {{ $patient->nik }} - {{ $patient->name }}
                                             </option>
                                         @endforeach
@@ -86,26 +86,22 @@
                         </div>
                     </div>
 
-                    {{-- <div class="divider divider-left">
-                        <div class="divider-text">Jenis pemeriksaan</div>
-                    </div> --}}
-
-                    {{--<div class="row">
+                    <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-group row align-item-center">
                                 <div class="col-lg-3 col-3">
-                                    <label class="col-form-label" for="doctor">Pemeriksaan</label>
+                                    <label class="col-form-label" for="checkuptype">Pemeriksaan</label>
                                 </div>
                                 <div class="col-lg-9 col-9">
-                                    <select class="form-select @error('checkup-type') is-invalid @enderror" name="checkup-type">
-                                        @foreach ($checkupType as $type)
-                                            <option value="{{ $type->id }}" {{ collect(old('checkup-type'))->contains($type->id) ? 'selected' : '' }}>
-                                                {{ $type->abbreviated_word }}
+                                    <select class="form-select @error('checkuptype_id') is-invalid @enderror" name="checkuptype_id">
+                                        @foreach ($checkupTypes as $type)
+                                            <option value="{{ $type->id }}" {{ collect(old('checkuptype_id'))->contains($type->id) ? 'selected' : '' }}>
+                                                {{ $type->abbreviated_word }} - {{ $type->description }}
                                             </option>
                                         @endforeach
                                     </select>
 
-                                    @error('checkup-type')
+                                    @error('checkuptype_id')
                                     <div class="d-block invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -113,9 +109,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>--}}
+                    </div>
 
-                    <div class="divider">
+                    {{-- <div class="divider divider-left">
+                        <div class="divider-text">Jenis pemeriksaan</div>
+                    </div> --}}
+
+                    {{--<div class="divider">
                         <div class="divider-text">Pengukuran fisik badan (Opsional)</div>
                     </div>
 
@@ -228,11 +228,11 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan & Ajukan</button>
+                        <button type="submit" class="btn btn-primary">Ajukan</button>
                     </div>
                 </form>
 

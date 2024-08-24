@@ -37,11 +37,9 @@
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
-
                     editDoctorModalEveryInput.prop('disabled', false);
 
                     $('#editDoctorModal #edit-doctor-form').attr('action', formActionURL)
-
                     $('#editDoctorModal #name').val(response.data.name);
                     $('#editDoctorModal #sip').val(response.data.sip);
                     $('#editDoctorModal #nip').val(response.data.nip);

@@ -26,7 +26,8 @@
             let formActionURL = "{{ route('checkup-type.update', 'id') }}"
             formActionURL = formActionURL.replace('id', id);
 
-            let editCheckupTypeModalEveryInput = $('#editCheckupTypeModal :input').not('button[type=button], input[name=_token], input[name=_method]')
+            let editCheckupTypeModalEveryInput = $('#editCheckupTypeModal :input')
+                .not('button[type=button], input[name=_token], input[name=_method]')
                 .each(function () {
                     $(this).not('select').val('Sedang mengambil data..');
                     $(this).prop('disabled', true);
@@ -36,11 +37,9 @@
                 url: url,
                 success: function (response) {
                     loadingAlert.slideUp();
-
                     editCheckupTypeModalEveryInput.prop('disabled', false);
 
                     $('#editCheckupTypeModal #edit-checkup-type-form').attr('action', formActionURL)
-
                     $('#editCheckupTypeModal #name').val(response.data.name);
                     $('#editCheckupTypeModal #abbreviated_word').val(response.data.abbreviated_word);
                     $('#editCheckupTypeModal #description').val(response.data.description);

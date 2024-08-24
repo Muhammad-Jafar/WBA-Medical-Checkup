@@ -26,14 +26,21 @@ class ApplicationRequest extends FormRequest
     {
         return [
             'patient_id' => ['required'],
-            'purposes' => ['required', 'max:191'],
             'doctor_id' => ['required'],
+            'checkuptype_id' => ['required'],
+            'purposes' => ['required', 'max:191'],
             'height_body' => ['max:191'],
             'mass_body' => ['max:191'],
             'blod_type' => ['max:191'],
             'blod_pressure' => ['max:191'],
             'colesterol' => ['max:191'],
             'blod_sugar' => ['max:191'],
+            'amphe' => ['max:191'],
+            'metham' => ['max:191'],
+            'benzo' => ['max:191'],
+            'thc' => ['max:191'],
+            'cocain' => ['max:191'],
+            'opiate' => ['max:191'],
         ];
     }
 
@@ -46,24 +53,22 @@ class ApplicationRequest extends FormRequest
     {
         return [
             'patient_id.required' => 'Kolom Nama pasien wajib diisi!',
-
+            'doctor_id.required' => 'Kolom Dokter pemeriksa wajib diisi!',
+            'checkuptype_id.required' => 'Kolom jenis pemeriksaan wajib diisi!',
             'purposes.required' => 'Kolom Keperluan pasien wajib diisi!',
             'purposes.max' => 'Kolom keperluan maksimal :max karakter!!',
-
-            'doctor_id.required' => 'Kolom Dokter pemeriksa wajib diisi!',
-
             'height_body.max' => 'Kolom tinggi badan maksimal :max karakter!!',
-
             'mass_body.max' => 'Kolom keperluan maksimal :max karakter!!',
-
             'blod_type.max' => 'Kolom keperluan maksimal :max karakter!!',
-
             'blod_pressure.max' => 'Kolom keperluan maksimal :max karakter!!',
-
             'colesterol.max' => 'Kolom keperluan maksimal :max karakter!!',
-
             'blod_sugar.max' => 'Kolom keperluan maksimal :max karakter!!',
+            'amphe.max' => 'Kolom amphe maksimal :max karakter!!',
+            'metham.max' => 'Kolom metham maksimal :max karakter!!',
+            'benzo.max' => 'Kolom benzo maksimal :max karakter!!',
+            'thc.max' => 'Kolom thc maksimal :max karakter!!',
+            'cocain.max' => 'Kolom cocain maksimal :max karakter!!',
+            'opiate.max' => 'Kolom opiate maksimal :max karakter!!',
         ];
     }
-
 }
