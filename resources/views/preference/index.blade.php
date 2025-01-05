@@ -11,14 +11,6 @@
     <div>
         <section>
             <div class="card">
-                {{--                <div class="card-header">--}}
-                {{--                    <h4 class="card-title">--}}
-                {{--                        Setelan umum--}}
-                {{--                    </h4>--}}
-                {{--                    <p class="card-description">--}}
-                {{--                        Preferensi yang tersedia untuk kebutuhan setelan umum--}}
-                {{--                    </p>--}}
-                {{--                </div>--}}
                 <div class="card-body">
 
                     <div class="table-responsive">

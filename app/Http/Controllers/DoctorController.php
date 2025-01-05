@@ -20,7 +20,6 @@ class DoctorController extends Controller
         $doctors = Doctor::select('id', 'name', 'nip', 'sip', 'verified')
             ->orderBy('name')
             ->get();
-
         $doctorTrashedCount = Doctor::onlyTrashed()->count();
 
         if (request()->ajax()) {

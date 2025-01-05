@@ -23,7 +23,6 @@ class AdministratorController extends Controller
         $user = User::select('id', 'email', 'name', 'position', 'created_at', 'last_login', 'is_active')
             ->orderBy('position')
             ->get();
-
         $adminTrashed = User::onlyTrashed()->count();
 
         if (request()->ajax()) {

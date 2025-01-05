@@ -1,28 +1,24 @@
 <?php
 
-use App\Http\Controllers\Google\SheetsController;
-use App\Http\Controllers\ReportController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\ApplicationHistoryController;
-use App\Http\Controllers\PatientController;
-use App\Http\Controllers\PatientHistoryController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\DoctorHistoryController;
-use App\Http\Controllers\CheckupTypeController;
-use App\Http\Controllers\CheckTypeHistoryController;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AdministratorHistoryController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\ApplicationHistoryController;
+use App\Http\Controllers\CheckTypeHistoryController;
+use App\Http\Controllers\CheckupTypeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorHistoryController;
+use App\Http\Controllers\Google\SheetsController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientHistoryController;
 use App\Http\Controllers\PreferenceController;
-
+use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
 Route::redirect('/', 'login');
-
-/*Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {*/
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/sheet', [SheetsController::class, 'sync'])->name('sheet');

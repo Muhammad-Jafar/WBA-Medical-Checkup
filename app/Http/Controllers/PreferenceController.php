@@ -13,7 +13,7 @@ class PreferenceController extends Controller
         $preference = Preference::select('id', 'id_preferences', 'name', 'desc', 'status', 'input')
             ->get();
 
-        return view('preference.index', ['preference' => $preference,]);
+        return view('preference.index', ['preference' => $preference]);
     }
 
     /**
@@ -26,6 +26,7 @@ class PreferenceController extends Controller
     public function editDailyLimit(PreferenceRequest $request, Preference $preference): RedirectResponse
     {
         $preference->update(['input' => $request->inputan]);
+
         return redirect()->route('preference.index')
             ->with('success', 'Data berhasil disimpan');
     }

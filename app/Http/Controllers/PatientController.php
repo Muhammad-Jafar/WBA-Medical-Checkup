@@ -17,14 +17,13 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::select('id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation')
+        $patient = Patient::select('id', 'name', 'gender', 'born_place', 'born_date', 'address', 'occupation')
             ->orderBy('name')
             ->get();
-
         $patientTrashedCount = Patient::onlyTrashed()->count();
 
         if (request()->ajax()) {
-            return datatables()->of($patients)
+            return datatables()->of($patient)
                 ->addIndexColumn()
                 ->addColumn('born_place', fn($model) => $model->born_place . ', ' . monthToFullBulan($model->born_date))
                 ->addColumn('action', 'patient.datatable.action')

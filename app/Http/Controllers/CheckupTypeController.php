@@ -20,7 +20,6 @@ class CheckupTypeController extends Controller
         $checkupType = CheckupType::select('*')
             ->orderBy('name')
             ->get();
-
         $checkupTypeTrashedCount = CheckupType::onlyTrashed()->count();
 
         if (request()->ajax()) {

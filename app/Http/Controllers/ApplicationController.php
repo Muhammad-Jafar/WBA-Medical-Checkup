@@ -11,6 +11,7 @@ use App\Repositories\ApplicationRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class ApplicationController extends Controller
@@ -41,10 +42,20 @@ class ApplicationController extends Controller
             ->latest()
             ->get();
 
-        $patient = Patient::select('id', 'nik', 'name')->orderBy('name')->get();
-        $doctor = Doctor::select('id', 'nip', 'name')->orderBy('name')->get();
-        $applicationTrashedCount = Application::onlyTrashed()->count();
-        $checkupType = CheckupType::orderBy('name')->get();
+        $applicationData = Cache::remember('applicationData', now()->addHours(2), function () {
+            $patient = Patient::select('id', 'nik', 'name')->orderBy('name')->get();
+            $doctor = Doctor::select('id', 'nip', 'name')->orderBy('name')->get();
+            $applicationTrashedCount = Application::onlyTrashed()->count();
+            $checkupType = CheckupType::orderBy('name')->get();
+
+            return [
+                'patients' => $patient,
+                'doctors' => $doctor,
+                'applicationTrashedCount' => $applicationTrashedCount,
+                'checkupTypes' => $checkupType,
+                'repo' => $this->applicationRepository->results(),
+            ];
+        });
 
         if (request()->ajax()) {
             return datatables()->of($application)
@@ -59,13 +70,7 @@ class ApplicationController extends Controller
                 ->toJson();
         }
 
-        return view('application.index', [
-            'patients' => $patient,
-            'doctors' => $doctor,
-            'applicationTrashedCount' => $applicationTrashedCount,
-            'checkupTypes' => $checkupType,
-            'repo' => $this->applicationRepository->results(),
-        ]);
+        return view('application.index', $applicationData);
     }
 
     public function tab($tab): JsonResponse
@@ -211,15 +216,5 @@ class ApplicationController extends Controller
             ]);
         return redirect()->route('application.index')
             ->with('success', 'Permintaan berhasil disetujui dan dicetak!');
-    }
-
-    /**
-     * Store self application request
-     *
-     * @return view
-     * */
-    public function selfRequest(): View
-    {
-        return view('application.modal.public-form');
     }
 }

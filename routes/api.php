@@ -11,11 +11,6 @@ use App\Http\Controllers\API\V1\PreferenceControlller;
 use App\Http\Controllers\API\V1\CheckupTypeController;
 use Illuminate\Support\Facades\Route;
 
-
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 Route::name('api.')->prefix('v1')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])
         ->name('login');
